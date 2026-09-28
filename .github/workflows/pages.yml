@@ -34,7 +34,10 @@ jobs:
       - name: Fail if the build left anything unassembled
         run: |
           set -e
+          # body.html is the template and holds the placeholder on purpose;
+          # only the pages build.py writes must come out fully assembled.
           for f in site/*.html; do
+            case "$(basename "$f")" in body.html) continue ;; esac
             if grep -q '__I18N_DICT__' "$f"; then
               echo "::error file=$f::translation placeholder was never replaced"
               exit 1
