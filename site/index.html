@@ -631,6 +631,17 @@ footer nav a:hover{transform:translateY(-1px)}
                                rgba(204,170,103,.28) 78%,transparent)}
   .nav .btn{margin-inline-start:calc(var(--navGap,22px) / 2)}
 }
+
+/* right-hand band: one column sized to its widest line and placed at the end,
+   so the gold eyebrow sits directly above the headline instead of hugging
+   the edge on its own */
+.band--right .band-inner{display:grid;justify-content:end;justify-items:start;text-align:start}
+.band--right .band-inner>*{margin-left:0;margin-right:0;max-width:none}
+.band--right .band-inner .lead{max-width:34ch}
+.band--right .eyebrow{flex-direction:row}
+@media (max-width:720px){
+  .band--right .band-inner{justify-content:start}
+}
 </style>
 </head>
 <body>
