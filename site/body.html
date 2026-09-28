@@ -302,23 +302,19 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 @media (prefers-reduced-motion:reduce){.coin{animation:none}.glint::after{animation:none;opacity:.35;left:20%}}
 
 /* ============ Vertrauen: Handschlag (Scroll, WebGL) ============ */
-.trust{position:relative;height:235vh;background:var(--hero-bg)}
-.trust .pin{position:sticky;top:0;height:100vh;overflow:hidden;
-  display:grid;grid-template-rows:1fr auto;align-items:center}
-#tcanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.trust-inner{position:relative;z-index:2;grid-row:2;text-align:center;
-  padding:0 var(--gutter) clamp(52px,10vh,116px)}
-.trust-glow{position:absolute;left:50%;top:46%;width:min(820px,94vw);aspect-ratio:2.1/1;
-  transform:translate(-50%,-50%) scale(var(--g,.5));pointer-events:none;filter:blur(22px);
-  opacity:var(--go,.22);transition:opacity .2s linear;
+.trust{position:relative;background:var(--hero-bg);overflow:hidden}
+.trust .pin{position:relative;display:grid;place-items:center}
+.trust-inner{position:relative;z-index:2;text-align:center;
+  padding:clamp(72px,12vw,140px) var(--gutter)}
+.trust-glow{position:absolute;left:50%;top:50%;width:min(820px,94vw);aspect-ratio:2.1/1;
+  transform:translate(-50%,-50%) scale(1.05);pointer-events:none;filter:blur(22px);
+  opacity:.5;
   background:radial-gradient(ellipse at center,rgba(204,170,103,.62),rgba(204,170,103,.16) 44%,transparent 72%)}
 .trust-eye{justify-content:center;color:var(--gold)}
 .trust-line{position:relative;color:#fff;margin-top:20px;
   font-size:clamp(1.9rem,4.4vw,3.5rem);text-shadow:0 2px 30px rgba(10,24,34,.7)}
 .trust-sub{position:relative;margin-top:18px;color:var(--hero-muted);font-size:1.08rem;
   max-width:52ch;margin-inline:auto}
-@media (prefers-reduced-motion:reduce){.trust{height:auto}.trust .pin{position:relative;height:auto;
-  padding-block:clamp(56px,9vw,104px)}#tcanvas{position:relative;height:min(52vh,420px)}}
 
 /* ============ Standort ============ */
 .loc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,64px);align-items:center}
@@ -366,8 +362,8 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 /* ============ Bildbänder mit Parallax ============ */
 .band{position:relative;overflow:hidden;isolation:isolate;background:var(--hero-bg);
   min-height:clamp(400px,58vh,600px);display:grid;align-items:center}
-.band-media{position:absolute;inset:-14% 0;z-index:0;will-change:transform}
-.band-media img{width:100%;height:100%;object-fit:cover;display:block}
+.band-media{position:absolute;inset:0;z-index:0}
+.band-media img,.band-media video{width:100%;height:100%;object-fit:cover;display:block}
 .band-scrim{position:absolute;inset:0;z-index:1;pointer-events:none}
 .band .band-scrim{background:linear-gradient(90deg,rgba(9,22,32,.92) 0%,rgba(9,22,32,.72) 34%,rgba(9,22,32,.06) 62%)}
 .band--right .band-scrim{background:linear-gradient(270deg,rgba(9,22,32,.92) 0%,rgba(9,22,32,.7) 36%,rgba(9,22,32,.05) 66%)}
@@ -476,7 +472,10 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 </section>
 
 <section class="band " id="band-marke">
-  <div class="band-media" aria-hidden="true"><picture><source type="image/webp" srcset="img/brand-bars-1100.webp 1100w, img/brand-bars-1800.webp 1800w" sizes="100vw"><img src="img/brand-bars-1800.jpg" srcset="img/brand-bars-1100.jpg 1100w, img/brand-bars-1800.jpg 1800w" sizes="100vw" alt="Drei goldene S&#228;ulen mit einem goldenen Ring &#8211; das Zeichen von Smart Finance Consulting als 3D-Motiv" loading="lazy" decoding="async"></picture></div>
+  <div class="band-media" aria-hidden="true"><video class="band-vid" muted loop playsinline preload="none"
+           poster="img/brand-bars-1100.jpg" aria-label="Drei goldene S&#228;ulen mit einem goldenen Ring, das Zeichen von Smart Finance Consulting">
+      <source src="video/brand-bars.mp4" type="video/mp4">
+    </video></div>
   <div class="band-scrim" aria-hidden="true"></div>
   <div class="wrap band-inner">
       <p class="eyebrow">Unser Ansatz</p>
@@ -579,7 +578,10 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 </section>
 
 <section class="band band--right" id="band-digital">
-  <div class="band-media" aria-hidden="true"><picture><source type="image/webp" srcset="img/desk-1100.webp 1100w, img/desk-1800.webp 1800w" sizes="100vw"><img src="img/desk-1800.jpg" srcset="img/desk-1100.jpg 1100w, img/desk-1800.jpg 1800w" sizes="100vw" alt="Schreibtisch mit Laptop, Unterlagen, F&#252;llfederhalter und Kaffeetasse im warmen Abendlicht" loading="lazy" decoding="async"></picture></div>
+  <div class="band-media" aria-hidden="true"><video class="band-vid" muted loop playsinline preload="none"
+           poster="img/desk-1100.jpg" aria-label="Schreibtisch mit Laptop, Unterlagen und Kaffee im warmen Abendlicht">
+      <source src="video/desk.mp4" type="video/mp4">
+    </video></div>
   <div class="band-scrim" aria-hidden="true"></div>
   <div class="wrap band-inner">
       <p class="eyebrow">Digital arbeiten</p>
@@ -638,7 +640,6 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 
 <section class="trust" id="vertrauen">
   <div class="pin">
-    <canvas id="tcanvas" aria-hidden="true"></canvas>
     <div class="trust-inner">
       <div class="trust-glow" aria-hidden="true"></div>
       <p class="eyebrow trust-eye">Zusammenarbeit</p>
@@ -800,247 +801,27 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   <a class="btn btn-gold" href="#kontakt">Erstgespräch</a>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.150.1/three.min.js"></script>
-<script>
-(function(){
-  var sec=document.getElementById('vertrauen'), cv=document.getElementById('tcanvas');
-  if(!sec||!cv||!window.THREE) return;
-  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var rnd; try{ rnd=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true}); }catch(e){ return; }
-  rnd.setPixelRatio(Math.min(devicePixelRatio,2));
-  rnd.outputEncoding=THREE.sRGBEncoding;
-  rnd.toneMapping=THREE.ACESFilmicToneMapping; rnd.toneMappingExposure=.86;
-  rnd.shadowMap.enabled=true; rnd.shadowMap.type=THREE.PCFSoftShadowMap;
 
-  var scene=new THREE.Scene();
-  var cam=new THREE.PerspectiveCamera(38,1,.1,100); cam.position.set(0,0,7.3);
-
-  // ---------- procedural skin and cloth maps ----------
-  function noiseTex(rep,amp){
-    var c=document.createElement('canvas'); c.width=c.height=256;
-    var x=c.getContext('2d'), d=x.createImageData(256,256);
-    for(var i=0;i<d.data.length;i+=4){
-      var v=128+(Math.random()-.5)*amp;
-      d.data[i]=d.data[i+1]=d.data[i+2]=v; d.data[i+3]=255;
-    }
-    x.putImageData(d,0,0);
-    var t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.repeat.set(rep,rep);
-    return t;
-  }
-  function skinTex(){                                  // mottled skin, never a flat fill
-    var c=document.createElement('canvas'); c.width=c.height=256;
-    var x=c.getContext('2d');
-    x.fillStyle='#9c6347'; x.fillRect(0,0,256,256);
-    for(var i=0;i<420;i++){
-      var r=6+Math.random()*26;
-      x.fillStyle=['rgba(138,82,56,.16)','rgba(176,114,84,.16)','rgba(150,70,58,.13)'][i%3];
-      x.beginPath(); x.arc(Math.random()*256,Math.random()*256,r,0,7); x.fill();
-    }
-    var t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.repeat.set(2,2);
-    return t;
-  }
-  var skin=new THREE.MeshPhysicalMaterial({
-    map:skinTex(), bumpMap:noiseTex(9,54), bumpScale:.0045,
-    roughness:.66, clearcoat:.24, clearcoatRoughness:.72
-  });
-  skin.envMapIntensity=.62;
-  var nailMat=new THREE.MeshPhysicalMaterial({color:0xc2917a,roughness:.28,clearcoat:.7,clearcoatRoughness:.2});
-  var fabric=new THREE.MeshStandardMaterial({color:0x0c1824,roughness:.95,metalness:0,
-    bumpMap:noiseTex(26,70), bumpScale:.006});
-  fabric.envMapIntensity=.22;
-  var shirt=new THREE.MeshStandardMaterial({color:0xd6d2c6,roughness:.86,bumpMap:noiseTex(30,40),bumpScale:.003});
-  shirt.envMapIntensity=.45;
-  var gold=new THREE.MeshStandardMaterial({color:0xccaa67,metalness:1,roughness:.26});
-
-  // ---------- environment ----------
-  var ec=document.createElement('canvas'); ec.width=64; ec.height=32;
-  var ex=ec.getContext('2d'), gr=ex.createLinearGradient(0,0,0,32);
-  gr.addColorStop(0,'#cdb590'); gr.addColorStop(.45,'#3d4d5c'); gr.addColorStop(1,'#0c1720');
-  ex.fillStyle=gr; ex.fillRect(0,0,64,32);
-  ex.fillStyle='rgba(255,236,198,.75)'; ex.beginPath(); ex.ellipse(15,8,9,4,0,0,7); ex.fill();
-  var et=new THREE.CanvasTexture(ec); et.mapping=THREE.EquirectangularReflectionMapping;
-  var pm=new THREE.PMREMGenerator(rnd); scene.environment=pm.fromEquirectangular(et).texture;
-
-  var key=new THREE.DirectionalLight(0xffe4bb,1.55); key.position.set(-3.4,4.2,4.6);
-  key.castShadow=true; key.shadow.mapSize.set(1024,1024); key.shadow.bias=-.0016;
-  var sc=key.shadow.camera; sc.left=-2.6; sc.right=2.6; sc.top=2.6; sc.bottom=-2.6; sc.near=.5; sc.far=16;
-  scene.add(key);
-  var rim=new THREE.DirectionalLight(0xccaa67,1.4); rim.position.set(4.6,1.4,-3.2); scene.add(rim);
-  var fil=new THREE.DirectionalLight(0x7fa6c4,.24); fil.position.set(2.4,-2.6,3.4); scene.add(fil);
-  scene.add(new THREE.HemisphereLight(0x9db6c9,0x18242f,.55));
-
-  // ---------- geometry helper: a tube whose radius varies along its length ----------
-  function taperTube(pts,rFn,seg,rad){
-    var curve=new THREE.CatmullRomCurve3(pts.map(function(q){return new THREE.Vector3(q[0],q[1],q[2]);}));
-    var fr=curve.computeFrenetFrames(seg,false), pos=[],nor=[],uv=[],idx=[];
-    for(var i=0;i<=seg;i++){
-      var t=i/seg, P=curve.getPointAt(t), N=fr.normals[i], B=fr.binormals[i], r=rFn(t);
-      for(var j=0;j<=rad;j++){
-        var a=j/rad*Math.PI*2, cx=Math.cos(a), sy=Math.sin(a);
-        var nx=N.x*cx+B.x*sy, ny=N.y*cx+B.y*sy, nz=N.z*cx+B.z*sy;
-        pos.push(P.x+nx*r,P.y+ny*r,P.z+nz*r); nor.push(nx,ny,nz); uv.push(j/rad,t);
-      }
-    }
-    for(var i2=0;i2<seg;i2++) for(var j2=0;j2<rad;j2++){
-      var a2=i2*(rad+1)+j2, b2=a2+rad+1;
-      idx.push(a2,a2+1,b2, b2,a2+1,b2+1);
-    }
-    var g=new THREE.BufferGeometry();
-    g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
-    g.setAttribute('normal',new THREE.Float32BufferAttribute(nor,3));
-    g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));
-    g.setIndex(idx); g.computeVertexNormals();
-    return {geo:g,curve:curve};
-  }
-  // fingers taper toward the tip, swell at the two joints and round off at the end
-  function fingerR(base){
-    return function(t){
-      var taper=base*(1-.34*t);
-      var joint=1+.115*Math.exp(-Math.pow((t-.31)/.10,2))+.09*Math.exp(-Math.pow((t-.63)/.085,2));
-      var tip=t>.88?.62+.38*Math.sqrt(Math.max(0,1-Math.pow((t-.88)/.12,2))):1;
-      var root=t<.06?.86+.14*(t/.06):1;
-      return taper*joint*tip*root;
-    };
-  }
-  function addMesh(g,m,parent){
-    var me=new THREE.Mesh(g,m); me.castShadow=true; me.receiveShadow=true; parent.add(me); return me;
-  }
-
-  var root=new THREE.Group(); scene.add(root);
-  var clasp=new THREE.Group(); clasp.rotation.z=-.10; root.add(clasp);
-
-  // joined palms
-  var palm=new THREE.Mesh(new THREE.SphereGeometry(1,48,32),skin);
-  palm.scale.set(.56,.70,.44); palm.castShadow=palm.receiveShadow=true; clasp.add(palm);
-  [-1,1].forEach(function(d){
-    var w=new THREE.Mesh(new THREE.CylinderGeometry(.30,.38,.55,32),skin);
-    w.rotation.z=Math.PI/2; w.position.x=d*.62; w.castShadow=w.receiveShadow=true; clasp.add(w);
-  });
-
-  // four fingers wrapped across the front, each its own length and thickness
-  var FING=[{y:.335,r:.107,z:.445,e:.46},{y:.125,r:.105,z:.465,e:.50},
-            {y:-.085,r:.099,z:.445,e:.45},{y:-.285,r:.084,z:.405,e:.38}];
-  FING.forEach(function(f){
-    var pts=[[-.53,f.y+.075,.10],[-.21,f.y+.02,f.z],[.17,f.y-.045,f.z*.93],[f.e,f.y-.145,.10]];
-    var tt=taperTube(pts,fingerR(f.r),40,18);
-    addMesh(tt.geo,skin,clasp);
-    var P=tt.curve.getPointAt(.9), out=P.clone().normalize();       // fingernail on the outer face
-    out.y=0; out.normalize();
-    var n=new THREE.Mesh(new THREE.SphereGeometry(f.r*.92,16,12),nailMat);
-    n.scale.set(.74,.92,.20);
-    n.position.copy(P).addScaledVector(out,f.r*.40);
-    n.lookAt(P.clone().addScaledVector(out,2));
-    n.castShadow=false; n.receiveShadow=true; clasp.add(n);
-  });
-  // thumb across the top, thicker and shorter
-  var th=taperTube([[.47,.395,.19],[.09,.555,.26],[-.27,.505,.12]],fingerR(.126),34,18);
-  addMesh(th.geo,skin,clasp);
-  // far hand: fingers curling over the back edge
-  [.225,-.005,-.235].forEach(function(yb){
-    var t2=taperTube([[-.49,yb+.05,-.12],[-.15,yb,-.40],[.21,yb-.05,-.37],[.47,yb-.12,-.10]],
-                     fingerR(.089),32,16);
-    addMesh(t2.geo,skin,clasp);
-  });
-
-  // ---------- sleeves ----------
-  function label(txt){
-    var c=document.createElement('canvas'); c.width=1024; c.height=200;
-    var x=c.getContext('2d');
-    x.font='600 68px Outfit, "Segoe UI", sans-serif'; x.textAlign='center'; x.textBaseline='middle';
-    try{ x.letterSpacing='12px'; }catch(e){}
-    x.fillStyle='rgba(222,193,134,.96)'; x.fillText(txt,512,104);
-    var t=new THREE.CanvasTexture(c); t.anisotropy=4; return t;
-  }
-  var labels=[];
-  function arm(dir,txt){
-    var g=new THREE.Group(), L=3.6, R=.44;
-    var sl=new THREE.Mesh(new THREE.CylinderGeometry(.58,R,L,44,1),fabric);
-    sl.rotation.z=-dir*Math.PI/2; sl.position.x=dir*(1.02+L/2);
-    sl.castShadow=sl.receiveShadow=true; g.add(sl);
-    var cf=new THREE.Mesh(new THREE.CylinderGeometry(.455,.445,.26,36),shirt);
-    cf.rotation.z=Math.PI/2; cf.position.x=dir*.97; cf.castShadow=cf.receiveShadow=true; g.add(cf);
-    var cl=new THREE.Mesh(new THREE.CylinderGeometry(.062,.062,.05,18),gold);
-    cl.rotation.x=Math.PI/2; cl.position.set(dir*.97,-.34,.30); g.add(cl);
-    var pg=new THREE.PlaneGeometry(1.9,.62,28,10), po=pg.attributes.position, SR=.50;
-    for(var i=0;i<po.count;i++){
-      var y=po.getY(i);
-      po.setZ(i,Math.sqrt(Math.max(SR*SR-y*y,1e-4))*1.015);
-    }
-    pg.computeVertexNormals();
-    var lb=new THREE.Mesh(pg,new THREE.MeshBasicMaterial({map:label(txt),transparent:true,depthWrite:false}));
-    lb.position.x=dir*1.95; lb.userData.dir=dir; labels.push(lb); g.add(lb);
-    return g;
-  }
-  var armL=arm(-1,'SMART FINANCE'), armR=arm(1,'MANDANT');
-  root.add(armL); root.add(armR);
-
-  var ease=function(t){ t=t<0?0:t>1?1:t; return t*t*(3-2*t); };
-  function apply(p){
-    var gap=2.6*(1-ease((p-.04)/.44));
-    armL.position.x=-gap; armR.position.x=gap;
-    var sh=p>.50?Math.sin((p-.50)*Math.PI*6)*Math.max(0,1-(p-.50)/.30)*.15:0;
-    clasp.position.y=sh; armL.position.y=sh*.72; armR.position.y=sh*.72;
-    clasp.rotation.z=-.10+sh*.26; root.rotation.y=(p-.5)*.20;
-    var g=ease((p-.44)/.36);
-    sec.style.setProperty('--g',(.5+g*.7).toFixed(3));
-    sec.style.setProperty('--go',(.16+g*.74).toFixed(3));
-  }
-  function resize(){
-    var w=cv.clientWidth,h=cv.clientHeight; if(!w||!h) return;
-    rnd.setSize(w,h,false); cam.aspect=w/h;
-    var narrow=w<760;
-    cam.position.z=narrow?10.6:7.3;
-    root.position.y=narrow?1.25:.5;
-    labels.forEach(function(l){
-      l.position.x=l.userData.dir*(narrow?1.15:1.95);
-      var k=narrow?.5:1; l.scale.set(k,k,1);
-    });
-    cam.updateProjectionMatrix();
-  }
-  function prog(){
-    var r=sec.getBoundingClientRect(), d=sec.offsetHeight-innerHeight;
-    return d<=0?.6:Math.min(1,Math.max(0,-r.top/d));
-  }
-  var live=false,queued=false;
-  function draw(){ queued=false; apply(reduce?.62:prog()); rnd.render(scene,cam); }
-  function tick(){ if(!queued){ queued=true; requestAnimationFrame(draw); } }
-  addEventListener('resize',function(){ resize(); tick(); });
-  resize();
-  if(reduce){ draw(); return; }
-  new IntersectionObserver(function(es){ live=es[0].isIntersecting; if(live) tick(); },
-    {rootMargin:'120px'}).observe(sec);
-  addEventListener('scroll',function(){ if(live) tick(); },{passive:true});
-  draw();
-})();
-</script>
 
 <script>
 (function(){
-  var bands=[].slice.call(document.querySelectorAll('.band'));
-  if(!bands.length||matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  var live=[],queued=false;
-  function draw(){
-    queued=false;
-    for(var i=0;i<live.length;i++){
-      var el=live[i], r=el.getBoundingClientRect();
-      var p=(r.top+r.height/2-innerHeight/2)/(innerHeight/2+r.height/2);
-      p=p<-1?-1:p>1?1:p;
-      el.firstElementChild.style.transform='translate3d(0,'+(p*-7).toFixed(2)+'%,0)';
-    }
+  var vids=[].slice.call(document.querySelectorAll('.band-vid'));
+  if(!vids.length) return;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){
+    vids.forEach(function(v){ v.removeAttribute('loop'); });
+    return;
   }
-  function tick(){ if(!queued){ queued=true; requestAnimationFrame(draw); } }
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){
-      var i=live.indexOf(e.target);
-      if(e.isIntersecting && i<0) live.push(e.target);
-      else if(!e.isIntersecting && i>=0) live.splice(i,1);
+      var v=e.target;
+      if(e.isIntersecting){
+        if(v.getAttribute('preload')==='none'){ v.setAttribute('preload','auto'); v.load(); }
+        try{ v.currentTime=0; }catch(err){}
+        var pr=v.play(); if(pr && pr.catch) pr.catch(function(){});
+      } else { v.pause(); }
     });
-    tick();
-  },{rootMargin:'140px'});
-  bands.forEach(function(b){ io.observe(b); });
-  addEventListener('scroll',tick,{passive:true});
-  addEventListener('resize',tick,{passive:true});
-  tick();
+  },{threshold:.25});
+  vids.forEach(function(v){ io.observe(v); });
 })();
 </script>
 
