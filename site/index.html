@@ -6,30 +6,25 @@
 <title>Smart Finance Consulting</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&family=Amiri:wght@400;700&family=Cairo:wght@300;400;500;600;700&display=swap">
 <style>
 :root{
   --navy:#132A3B; --navy-2:#1F3D54; --gold:#CCAA67; --gold-ink:#8C6E2F; --gold-soft:#F4ECDC;
   --teal:#087C80; --teal-soft:#E4F1F1;
   --nrw-green:#3F983E; --nrw-red:#C1001F;
-  --bg:#FFFFFF; --bg-alt:#F3F5F7; --surface:#FFFFFF; --ink:#16232E; --muted:#56646F; --line:#DCE2E7;
-  --hero-bg:#132A3B; --hero-ink:#F2F5F7; --hero-muted:#AFBCC6;
-  --shadow:0 1px 2px rgba(19,42,59,.06),0 10px 28px rgba(19,42,59,.08);
+  color-scheme:dark;
+  --bg:#0D1C27; --bg-alt:#112433; --surface:#15293A; --ink:#E7EDF1; --muted:#9EAFBC; --line:#26404F;
+  --gold-ink:#D9BB7E; --gold-soft:#2A2A22; --teal:#4FB8BB; --teal-soft:#11323A;
+  --hero-bg:#0A1822; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
   --serif:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
   --sans:"Outfit","Segoe UI",system-ui,-apple-system,sans-serif;
   --wrap:1180px; --gutter:clamp(16px,4vw,40px);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  color-scheme:dark;
-  --bg:#0D1C27; --bg-alt:#112433; --surface:#15293A; --ink:#E7EDF1; --muted:#9EAFBC; --line:#26404F;
-  --gold-ink:#D9BB7E; --gold-soft:#2A2A22; --teal:#4FB8BB; --teal-soft:#11323A;
-  --hero-bg:#0A1822; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
-}}
-:root[data-theme="dark"]{
-  color-scheme:dark;
-  --bg:#0D1C27; --bg-alt:#112433; --surface:#15293A; --ink:#E7EDF1; --muted:#9EAFBC; --line:#26404F;
-  --gold-ink:#D9BB7E; --gold-soft:#2A2A22; --teal:#4FB8BB; --teal-soft:#11323A;
-  --hero-bg:#0A1822; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#FFFFFF; --bg-alt:#F3F5F7; --surface:#FFFFFF; --ink:#16232E; --muted:#56646F; --line:#DCE2E7;
+  --gold-ink:#8C6E2F; --gold-soft:#F4ECDC; --teal:#087C80; --teal-soft:#E4F1F1;
+  --hero-bg:#132A3B; --shadow:0 1px 2px rgba(19,42,59,.06),0 10px 28px rgba(19,42,59,.08);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -66,13 +61,13 @@ p{margin:0}
 .logo b{font:700 clamp(1.3rem,2.1vw,1.72rem)/1 var(--serif);letter-spacing:.13em;white-space:nowrap}
 .logo .wordmark>span{font:500 clamp(.6rem,.78vw,.68rem)/1 var(--sans);letter-spacing:.4em;
   color:var(--gold);margin-top:7px;text-transform:uppercase}
-.nav{display:flex;align-items:center;gap:clamp(12px,1.4vw,22px)}
-.nav a{color:#D5DEE4;text-decoration:none;font-size:.89rem;white-space:nowrap}
+.nav{display:flex;align-items:center;gap:clamp(10px,1.2vw,19px)}
+.nav a{color:#D5DEE4;text-decoration:none;font-size:.86rem;white-space:nowrap}
 .nav a:hover{color:var(--gold)}
-.nav .btn{padding:12px 17px;font-size:.88rem;color:#132A3B;white-space:nowrap}
+.nav .btn{padding:11px 15px;font-size:.85rem;color:#132A3B;white-space:nowrap}
 .nav .btn:hover{color:#132A3B}
 .menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:4px;padding:9px 12px;font:500 .9rem var(--sans)}
-@media (max-width:1200px){
+@media (max-width:1240px){
   .menu-btn{display:block}
   .nav{position:absolute;inset:88px 0 auto 0;background:var(--hero-bg);flex-direction:column;align-items:flex-start;gap:0;padding:8px var(--gutter) 22px;border-bottom:1px solid rgba(204,170,103,.25)}
   .nav:not(.open){display:none}
@@ -357,7 +352,7 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 .social{display:flex;gap:11px;align-items:center}
 .social .icon-btn{width:42px;height:42px}
 .foot-col{display:grid;gap:18px}
-@media (max-width:1200px){
+@media (max-width:1240px){
   .nav a.wa{width:auto;height:auto;border:0;border-radius:0;justify-items:start;
     display:flex;align-items:center;gap:10px;color:var(--gold)}
   .nav a.wa svg{width:22px;height:22px}
@@ -389,6 +384,109 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   .band-inner>*{max-width:100%}
 }
 @media (prefers-reduced-motion:reduce){.band-media{transform:none!important}}
+
+/* ============ Sprache & Design ============ */
+:root[lang="ar"]{--serif:"Amiri","Cormorant Garamond",Georgia,serif;
+  --sans:"Cairo","Outfit",system-ui,sans-serif}
+:root[lang="ar"] .logo b,:root[lang="ar"] .coin-cap,:root[lang="ar"] .note-brand b{font-family:var(--serif)}
+.lang{display:flex;align-items:center;gap:2px;padding:3px;border-radius:999px;flex:none;
+  border:1px solid rgba(204,170,103,.4)}
+.lang button{border:0;background:none;cursor:pointer;color:#C3CED6;border-radius:999px;
+  font:600 .72rem/1 var(--sans);letter-spacing:.06em;padding:7px 9px;transition:background .2s,color .2s}
+.lang button:hover{color:var(--gold)}
+.lang button[aria-pressed="true"]{background:var(--gold);color:#12222F}
+.theme-btn{width:40px;height:40px}
+.theme-btn .sun{display:none}
+:root[data-theme="light"] .theme-btn .sun{display:block}
+:root[data-theme="light"] .theme-btn .moon{display:none}
+
+/* ---- RTL ---- */
+[dir="rtl"] .checks li{padding-left:0;padding-right:28px}
+[dir="rtl"] .checks li::before{left:auto;right:6px}
+[dir="rtl"] .arrow::after{content:"\2190"}
+[dir="rtl"] .arrow:hover::after{transform:translateX(-3px)}
+[dir="rtl"] .faq summary{padding:22px 0 22px 40px}
+[dir="rtl"] .faq summary::after{right:auto;left:4px}
+[dir="rtl"] .note-serial{left:auto;right:6px}
+[dir="rtl"] .note-head,[dir="rtl"] .note-foot{padding-left:0;padding-right:42px}
+[dir="rtl"] .note-stars{left:auto;right:-8px}
+[dir="rtl"] .note-holo{right:auto;left:10px}
+[dir="rtl"] .banknote{padding-right:clamp(16px,2.6vw,22px);
+  padding-left:calc(var(--holo) + clamp(18px,3vw,26px))}
+[dir="rtl"] .note-paper .wm{right:auto;left:-18px}
+[dir="rtl"] .voucher .v-row span:last-child,[dir="rtl"] .booking .line code:last-child{text-align:left}
+[dir="rtl"] .stamp{right:auto;left:18px}
+[dir="rtl"] .values b,[dir="rtl"] .loc dt,[dir="rtl"] .info dt{text-align:right}
+/* the photo dictates this side, so it must not flip with the text direction */
+.band--right .band-inner{justify-items:right;text-align:right}
+.band--right .band-inner>*{margin-left:auto;margin-right:0;max-width:21ch}
+[dir="rtl"] .band--right .eyebrow{flex-direction:row}
+@media (max-width:720px){
+  .band--right .band-inner{justify-items:left;text-align:left}
+  .band--right .band-inner>*{margin-left:0}
+  [dir="rtl"] .band--right .band-inner{justify-items:right;text-align:right}
+}
+
+.top-tools{display:flex;align-items:center;gap:10px;flex:none;order:3}
+.nav{order:2}
+.top .wrap>.logo{order:1}
+.top-tools .icon-btn{width:38px;height:38px}
+.lang button{padding:6px 8px;font-size:.7rem}
+
+@media (max-width:760px){
+  .top .wrap{height:74px;gap:10px}
+  .top-tools{gap:7px}
+  .top-tools .wa{display:none}
+  .logo .mark{width:34px;height:34px}
+  .logo{gap:9px}
+  .logo b{font-size:1rem;letter-spacing:.09em}
+  .logo .wordmark>span{font-size:.5rem;letter-spacing:.3em;margin-top:5px}
+  .lang{padding:2px}
+  .lang button{padding:6px 6px;font-size:.66rem;letter-spacing:.02em}
+  .top-tools .icon-btn{width:34px;height:34px}
+  .menu-btn{padding:7px 10px;font-size:.8rem}
+  .nav:not(.open){display:none}
+  .nav{inset:74px 0 auto 0}
+}
+@media (max-width:430px){
+  .logo .wordmark>span{display:none}
+  .logo b{font-size:.95rem}
+}
+@media (max-width:700px){
+  .mbar{grid-template-columns:1fr auto 1.3fr}
+  .mbar .icon-btn{width:46px;height:46px;border-color:rgba(204,170,103,.5);color:var(--gold)}
+}
+
+@media (max-width:405px){
+  /* at this width the wordmark, the language switch and the menu cannot all fit;
+     the mark alone carries the brand and the hero states the name immediately */
+  .logo .wordmark{display:none}
+  .logo .mark{width:38px;height:38px}
+}
+@media (max-width:480px){
+  .menu-btn{width:38px;height:38px;padding:0;font-size:0;display:grid;place-items:center}
+  .menu-btn::after{content:"\2630";font-size:17px;line-height:1;color:#fff}
+  .lang button{padding:5px 5px;font-size:.62rem}
+  .top-tools{gap:6px}
+}
+
+/* long German compounds must be allowed to break, or they widen their grid track */
+body{overflow-wrap:break-word}
+h1,h2,h3,p,li,dd,dt,summary,label,.lead{overflow-wrap:break-word}
+p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
+:root[lang="ar"] p,:root[lang="ar"] li,:root[lang="ar"] dd,
+:root[lang="ar"] summary,:root[lang="ar"] .lead{hyphens:manual;-webkit-hyphens:manual}
+.tandem>*,.svc>*,.steps>*,.feat>*,.about>*,.loc>*{min-width:0}
+
+@media (max-width:400px){
+  /* break-word does not shrink a grid track's min-content size; anywhere does */
+  .party,.card,.feat div,.values div,.loc dd,.info dd,.checks li,.who{overflow-wrap:anywhere}
+  .card,.party{padding:24px 18px}
+  .note-paper{padding:18px 15px}
+  .loc-pin{padding:14px}
+  .checks li{padding-left:24px}
+  [dir="rtl"] .checks li{padding-left:0;padding-right:24px}
+}
 </style>
 </head>
 <body>
@@ -399,18 +497,25 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#start" aria-label="Smart Finance Consulting &#8211; Startseite"><svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><use href="#sfmark"/></svg><span class="wordmark"><b>SMART FINANCE</b><span>Consulting</span></span></a>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menü</button>
     <nav class="nav" id="nav">
-      <a href="#leistungen">Leistungen</a>
-      <a href="#agenda">Digital arbeiten</a>
-      <a href="#zusammenarbeit">Steuerberatung</a>
-      <a href="#ueber-uns">Über uns</a>
-      <a href="#standort">Standort</a>
-      <a href="#kontakt">Kontakt</a>
+      <a data-i18n="k1" href="#leistungen">Leistungen</a>
+      <a data-i18n="k2" href="#agenda">Digital arbeiten</a>
+      <a data-i18n="k3" href="#zusammenarbeit">Steuerberatung</a>
+      <a data-i18n="k4" href="#ueber-uns">&#220;ber uns</a>
+      <a data-i18n="k6" href="#kontakt">Kontakt</a>
+      <a data-i18n="k7" class="btn btn-gold" href="#kontakt">Erstgespr&#228;ch</a>
+    </nav>
+    <div class="top-tools">
+      <div class="lang" role="group" aria-label="Sprache">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="ar" aria-pressed="false">AR</button>
+      </div>
+      <button class="icon-btn theme-btn" id="themeBtn" type="button" aria-label="Design wechseln"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="moon" fill="currentColor" d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/><g class="sun" fill="currentColor"><circle cx="12" cy="12" r="4.6"/><path d="M12 1.6v3M12 19.4v3M1.6 12h3M19.4 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M19.4 4.6l-2.1 2.1M6.7 17.3l-2.1 2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></g></svg></button>
       <a class="icon-btn wa" href="https://wa.me/491629631605" target="_blank" rel="noopener"
          aria-label="Per WhatsApp schreiben"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.1 15.07l-.3-.18-3.1.82.83-3.02-.2-.31A8.1 8.1 0 0 1 12.04 3.8zm4.66 10.2c-.25-.13-1.48-.73-1.71-.81-.23-.09-.4-.13-.56.12-.17.25-.65.81-.8.98-.14.17-.29.19-.54.06-.25-.12-1.06-.39-2.02-1.24-.75-.67-1.25-1.49-1.4-1.74-.14-.25-.01-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.6c.12.18 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.48-.6 1.69-1.19.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg></a>
-      <a class="btn btn-gold" href="#kontakt">Erstgespräch</a>
-    </nav>
+      <button data-i18n="k0" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Men&#252;</button>
+    </div>
   </div>
 </header>
 
@@ -418,15 +523,15 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 <section class="hero">
   <div class="wrap">
     <div>
-      <p class="eyebrow">Neuss · Nordrhein-Westfalen</p>
-      <h1 style="margin-top:22px">Ihre Zahlen. Ihre Systeme. <em>Intelligent verbunden.</em></h1>
-      <p class="sub">Smart Finance Consulting unterstützt Selbstständige sowie kleine und mittelständische Unternehmen dabei, kaufmännische Abläufe zu organisieren, ihre wirtschaftliche Situation zu verstehen und fundierte Entscheidungen zu treffen.</p>
-      <ul class="tags"><li>Buchhaltung</li><li>Lohnabrechnung</li><li>Unternehmensberatung</li><li>Controlling</li><li>Digitalisierung</li></ul>
+      <p data-i18n="k8" class="eyebrow">Neuss · Nordrhein-Westfalen</p>
+      <h1 data-i18n="k9" style="margin-top:22px">Ihre Zahlen. Ihre Systeme. <em>Intelligent verbunden.</em></h1>
+      <p data-i18n="k10" class="sub">Smart Finance Consulting unterstützt Selbstständige sowie kleine und mittelständische Unternehmen dabei, kaufmännische Abläufe zu organisieren, ihre wirtschaftliche Situation zu verstehen und fundierte Entscheidungen zu treffen.</p>
+      <ul class="tags"><li data-i18n="k11">Buchhaltung</li><li data-i18n="k12">Lohnabrechnung</li><li data-i18n="k13">Unternehmensberatung</li><li data-i18n="k14">Controlling</li><li data-i18n="k15">Digitalisierung</li></ul>
       <div class="cta-row">
-        <a class="btn btn-gold arrow" href="#kontakt">Erstgespräch vereinbaren</a>
-        <a class="btn btn-ghost" href="#leistungen">Unsere Leistungen kennenlernen</a>
+        <a data-i18n="k16" class="btn btn-gold arrow" href="#kontakt">Erstgespräch vereinbaren</a>
+        <a data-i18n="k17" class="btn btn-ghost" href="#leistungen">Unsere Leistungen kennenlernen</a>
       </div>
-      <p class="micro">Persönlich · unverbindlich · mit festem Ansprechpartner</p>
+      <p data-i18n="k18" class="micro">Persönlich · unverbindlich · mit festem Ansprechpartner</p>
     </div>
 <div class="coin-wrap">
       <div class="coin-stage">
@@ -473,7 +578,7 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
           <div class="glint" aria-hidden="true"></div>
         </div>
       </div>
-      <p class="coin-cap">Buchhaltung &#183; Lohn &#183; Controlling</p>
+      <p data-i18n="k19" class="coin-cap">Buchhaltung &#183; Lohn &#183; Controlling</p>
     </div>
   </div>
 </section>
@@ -485,65 +590,65 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
     </video></div>
   <div class="band-scrim" aria-hidden="true"></div>
   <div class="wrap band-inner">
-      <p class="eyebrow">Unser Ansatz</p>
-      <h2>Pers&#246;nlich. Unternehmerisch. Digital.</h2>
-      <p class="lead">Wir verbinden kaufm&#228;nnische Betreuung mit betriebswirtschaftlicher Beratung und digitalen Prozessen.</p>
+      <p data-i18n="k20" class="eyebrow">Unser Ansatz</p>
+      <h2 data-i18n="k21">Pers&#246;nlich. Unternehmerisch. Digital.</h2>
+      <p data-i18n="k22" class="lead">Wir verbinden kaufm&#228;nnische Betreuung mit betriebswirtschaftlicher Beratung und digitalen Prozessen.</p>
   </div>
 </section>
 
 <section class="section" id="leistungen">
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">Was wir für Sie übernehmen</p>
-      <h2>Verlässlich im kaufmännischen Alltag. Aus Zahlen werden Entscheidungen.</h2>
-      <p class="lead">Wir verbinden kaufmännische Betreuung mit betriebswirtschaftlicher Beratung und digitalen Prozessen – strukturiert und passend zu Ihrem Unternehmen.</p>
+      <p data-i18n="k23" class="eyebrow">Was wir für Sie übernehmen</p>
+      <h2 data-i18n="k24">Verlässlich im kaufmännischen Alltag. Aus Zahlen werden Entscheidungen.</h2>
+      <p data-i18n="k25" class="lead">Wir verbinden kaufmännische Betreuung mit betriebswirtschaftlicher Beratung und digitalen Prozessen – strukturiert und passend zu Ihrem Unternehmen.</p>
     </div>
     <div class="svc">
       <article class="card wide">
-        <span class="n">Buchhaltung</span>
-        <h3>Laufende Geschäftsvorfälle, sauber gebucht</h3>
-        <p>Wir buchen Ihre laufenden Geschäftsvorfälle und schaffen eine strukturierte Grundlage für Ihre kaufmännischen Abläufe.</p>
+        <span data-i18n="k11" class="n">Buchhaltung</span>
+        <h3 data-i18n="k26">Laufende Geschäftsvorfälle, sauber gebucht</h3>
+        <p data-i18n="k27">Wir buchen Ihre laufenden Geschäftsvorfälle und schaffen eine strukturierte Grundlage für Ihre kaufmännischen Abläufe.</p>
         <ul class="checks">
-          <li>Buchen laufender Geschäftsvorfälle</li>
-          <li>Digitale Verarbeitung und Organisation von Belegen</li>
-          <li>Abstimmung der Datenbereitstellung für die Steuerberatung</li>
+          <li data-i18n="k28">Buchen laufender Geschäftsvorfälle</li>
+          <li data-i18n="k29">Digitale Verarbeitung und Organisation von Belegen</li>
+          <li data-i18n="k30">Abstimmung der Datenbereitstellung für die Steuerberatung</li>
         </ul>
       </article>
       <article class="card wide">
-        <span class="n">Lohnabrechnung</span>
-        <h3>Lohn und Gehalt mit klaren Abläufen</h3>
-        <p>Wir begleiten die laufende Lohn- und Gehaltsabrechnung mit gepflegten Mitarbeiterdaten und digitaler Dokumentenorganisation.</p>
+        <span data-i18n="k12" class="n">Lohnabrechnung</span>
+        <h3 data-i18n="k31">Lohn und Gehalt mit klaren Abläufen</h3>
+        <p data-i18n="k32">Wir begleiten die laufende Lohn- und Gehaltsabrechnung mit gepflegten Mitarbeiterdaten und digitaler Dokumentenorganisation.</p>
         <ul class="checks">
-          <li>Laufende Lohn- und Gehaltsabrechnung</li>
-          <li>Lohnsteuer-Anmeldungen im gesetzlich zulässigen Umfang</li>
-          <li>Digitale Bereitstellung der Abrechnungsunterlagen</li>
+          <li data-i18n="k33">Laufende Lohn- und Gehaltsabrechnung</li>
+          <li data-i18n="k34">Lohnsteuer-Anmeldungen im gesetzlich zulässigen Umfang</li>
+          <li data-i18n="k35">Digitale Bereitstellung der Abrechnungsunterlagen</li>
         </ul>
       </article>
       <article class="card">
-        <span class="n">Unternehmensberatung</span>
-        <h3>Umsetzbare Schritte für Ihren Alltag</h3>
+        <span data-i18n="k13" class="n">Unternehmensberatung</span>
+        <h3 data-i18n="k36">Umsetzbare Schritte für Ihren Alltag</h3>
         <ul class="checks">
-          <li>Analyse kaufmännischer Strukturen</li>
-          <li>Kosten- und Prozessoptimierung</li>
-          <li>Begleitung bei Wachstum</li>
+          <li data-i18n="k37">Analyse kaufmännischer Strukturen</li>
+          <li data-i18n="k38">Kosten- und Prozessoptimierung</li>
+          <li data-i18n="k39">Begleitung bei Wachstum</li>
         </ul>
       </article>
       <article class="card">
-        <span class="n">Controlling</span>
-        <h3>Zahlen, die steuern helfen</h3>
+        <span data-i18n="k14" class="n">Controlling</span>
+        <h3 data-i18n="k40">Zahlen, die steuern helfen</h3>
         <ul class="checks">
-          <li>Budgetplanung und Soll-Ist-Vergleiche</li>
-          <li>Liquiditätsplanung und Forecasting</li>
-          <li>Individuelle Management-Auswertungen</li>
+          <li data-i18n="k41">Budgetplanung und Soll-Ist-Vergleiche</li>
+          <li data-i18n="k42">Liquiditätsplanung und Forecasting</li>
+          <li data-i18n="k43">Individuelle Management-Auswertungen</li>
         </ul>
       </article>
       <article class="card">
-        <span class="n">Digitalisierung</span>
-        <h3>Prozesse, die den Alltag einfacher machen</h3>
+        <span data-i18n="k15" class="n">Digitalisierung</span>
+        <h3 data-i18n="k44">Prozesse, die den Alltag einfacher machen</h3>
         <ul class="checks">
-          <li>Digitale Beleg- und Dokumentenprozesse</li>
-          <li>Weniger manuelle Dateneingaben</li>
-          <li>Einführung passender Software</li>
+          <li data-i18n="k45">Digitale Beleg- und Dokumentenprozesse</li>
+          <li data-i18n="k46">Weniger manuelle Dateneingaben</li>
+          <li data-i18n="k47">Einführung passender Software</li>
         </ul>
       </article>
     </div>
@@ -553,34 +658,34 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 <section class="section alt" id="zusammenarbeit">
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">Kaufmännische Betreuung und steuerliche Kompetenz</p>
-      <h2>Persönlich beraten. Fachlich vernetzt.</h2>
-      <p class="lead">Die laufende kaufmännische Betreuung übernimmt unser internes Team. Steuerliche Angelegenheiten betreut unsere rechtlich befugte Partnergesellschaft – in enger Abstimmung und mit klar geregelten Verantwortlichkeiten.</p>
+      <p data-i18n="k48" class="eyebrow">Kaufmännische Betreuung und steuerliche Kompetenz</p>
+      <h2 data-i18n="k49">Persönlich beraten. Fachlich vernetzt.</h2>
+      <p data-i18n="k50" class="lead">Die laufende kaufmännische Betreuung übernimmt unser internes Team. Steuerliche Angelegenheiten betreut unsere rechtlich befugte Partnergesellschaft – in enger Abstimmung und mit klar geregelten Verantwortlichkeiten.</p>
     </div>
     <div class="tandem">
       <div class="party us">
         <span class="who">Smart Finance Consulting</span>
-        <h3>Kaufmännisch &amp; betriebswirtschaftlich</h3>
+        <h3 data-i18n="k51">Kaufmännisch &amp; betriebswirtschaftlich</h3>
         <ul class="checks">
-          <li>Buchhaltung und Lohnabrechnung</li>
-          <li>Controlling und Unternehmensberatung</li>
-          <li>Digitalisierung mit Agenda</li>
-          <li>Ein fester Ansprechpartner</li>
+          <li data-i18n="k52">Buchhaltung und Lohnabrechnung</li>
+          <li data-i18n="k53">Controlling und Unternehmensberatung</li>
+          <li data-i18n="k54">Digitalisierung mit Agenda</li>
+          <li data-i18n="k55">Ein fester Ansprechpartner</li>
         </ul>
       </div>
-      <div class="link-col" aria-hidden="true"><i></i><b>in enger Abstimmung</b><i></i></div>
+      <div class="link-col" aria-hidden="true"><i></i><b data-i18n="k56">in enger Abstimmung</b><i></i></div>
       <div class="party partner">
         <span class="who">[Name der Steuerberatungsgesellschaft] mbH</span>
-        <h3>Steuerberatung</h3>
+        <h3 data-i18n="k3">Steuerberatung</h3>
         <ul class="checks">
-          <li>Betriebliche und private Steuererklärungen</li>
-          <li>Jahresabschlüsse und Einnahmenüberschussrechnungen</li>
-          <li>Beratung bei Gründungen und Umstrukturierungen</li>
-          <li>Begleitung von Betriebsprüfungen</li>
+          <li data-i18n="k57">Betriebliche und private Steuererklärungen</li>
+          <li data-i18n="k58">Jahresabschlüsse und Einnahmenüberschussrechnungen</li>
+          <li data-i18n="k59">Beratung bei Gründungen und Umstrukturierungen</li>
+          <li data-i18n="k60">Begleitung von Betriebsprüfungen</li>
         </ul>
       </div>
     </div>
-    <p class="note">Die steuerlichen Leistungen werden durch die rechtlich eigenständige Steuerberatungsgesellschaft in eigener Verantwortung erbracht. Smart Finance Consulting übernimmt die vereinbarten kaufmännischen und betriebswirtschaftlichen Leistungen.</p>
+    <p data-i18n="k61" class="note">Die steuerlichen Leistungen werden durch die rechtlich eigenständige Steuerberatungsgesellschaft in eigener Verantwortung erbracht. Smart Finance Consulting übernimmt die vereinbarten kaufmännischen und betriebswirtschaftlichen Leistungen.</p>
   </div>
 </section>
 
@@ -591,42 +696,42 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
     </video></div>
   <div class="band-scrim" aria-hidden="true"></div>
   <div class="wrap band-inner">
-      <p class="eyebrow">Digital arbeiten</p>
-      <h2>Belege, Daten und Prozesse &#8211; sinnvoll verbunden.</h2>
+      <p data-i18n="k2" class="eyebrow">Digital arbeiten</p>
+      <h2 data-i18n="k62">Belege, Daten und Prozesse &#8211; sinnvoll verbunden.</h2>
   </div>
 </section>
 
 <section class="section" id="agenda">
   <div class="wrap agenda">
     <div class="head">
-      <p class="eyebrow">Digital arbeiten</p>
-      <h2>Moderne Buchhaltung mit Agenda.</h2>
-      <p class="lead">Wir setzen auf Agenda als professionelle Softwarebasis. Gemeinsam legen wir fest, welche digitalen Prozesse für Sie sinnvoll sind – so digital, wie es zu Ihrem Unternehmen passt.</p>
-      <div class="benefits"><span>Weniger Verwaltungsaufwand</span><span>Strukturierte Informationen</span><span>Persönliche Betreuung</span></div>
+      <p data-i18n="k2" class="eyebrow">Digital arbeiten</p>
+      <h2 data-i18n="k63">Moderne Buchhaltung mit Agenda.</h2>
+      <p data-i18n="k64" class="lead">Wir setzen auf Agenda als professionelle Softwarebasis. Gemeinsam legen wir fest, welche digitalen Prozesse für Sie sinnvoll sind – so digital, wie es zu Ihrem Unternehmen passt.</p>
+      <div class="benefits"><span data-i18n="k65">Weniger Verwaltungsaufwand</span><span data-i18n="k66">Strukturierte Informationen</span><span data-i18n="k67">Persönliche Betreuung</span></div>
     <aside class="voucher" aria-label="Beispiel: digitaler Beleg mit Buchungsvorschlag in Agenda">
-      <div class="v-head"><b>Eingangsrechnung</b><small>XRechnung</small></div>
-      <div class="v-row"><span>Lieferant</span><span>Bürobedarf Rhein GmbH</span></div>
-      <div class="v-row"><span>Rechnungsdatum</span><span>14.09.2026</span></div>
-      <div class="v-row"><span>Netto</span><span>210,00 €</span></div>
-      <div class="v-row"><span>USt 19 %</span><span>39,90 €</span></div>
-      <div class="v-row" style="border-top:1px solid #DDE2E6;margin-top:4px;padding-top:10px"><span><b style="color:#16232E">Brutto</b></span><span>249,90 €</span></div>
+      <div class="v-head"><b data-i18n="k68">Eingangsrechnung</b><small>XRechnung</small></div>
+      <div class="v-row"><span data-i18n="k69">Lieferant</span><span>Bürobedarf Rhein GmbH</span></div>
+      <div class="v-row"><span data-i18n="k70">Rechnungsdatum</span><span>14.09.2026</span></div>
+      <div class="v-row"><span data-i18n="k71">Netto</span><span>210,00 €</span></div>
+      <div class="v-row"><span data-i18n="k72">USt 19 %</span><span>39,90 €</span></div>
+      <div class="v-row" style="border-top:1px solid #DDE2E6;margin-top:4px;padding-top:10px"><span><b data-i18n="k73" style="color:#16232E">Brutto</b></span><span>249,90 €</span></div>
       <div class="booking">
-        <div class="lbl">Buchungsvorschlag · Agenda</div>
-        <div class="line"><code>4930</code><span>Bürobedarf</span><code>210,00</code></div>
-        <div class="line"><code>1576</code><span>Vorsteuer 19 %</span><code>39,90</code></div>
-        <div class="line"><code>1200</code><span>an Bank</span><code>249,90</code></div>
+        <div data-i18n="k78" class="lbl">Buchungsvorschlag · Agenda</div>
+        <div class="line"><code>4930</code><span data-i18n="k74">Bürobedarf</span><code>210,00</code></div>
+        <div class="line"><code>1576</code><span data-i18n="k75">Vorsteuer 19 %</span><code>39,90</code></div>
+        <div class="line"><code>1200</code><span data-i18n="k76">an Bank</span><code>249,90</code></div>
       </div>
-      <div class="stamp">Geprüft</div>
-      <p class="v-foot">Beispieldarstellung · SKR 03</p>
+      <div data-i18n="k79" class="stamp">Geprüft</div>
+      <p data-i18n="k77" class="v-foot">Beispieldarstellung · SKR 03</p>
     </aside>
     </div>
     <div class="feat">
-      <div><h3>Belege digital bereitstellen</h3><p>Belege und Unterlagen digital übermitteln – für einen geordneten Informationsfluss zwischen Ihnen und unserem Büro.</p></div>
-      <div><h3>Bank- und PayPal-Umsätze</h3><p>Kontobewegungen werden digital eingelesen und mithilfe von Buchungsvorschlägen weiterverarbeitet.</p></div>
-      <div><h3>Automatisierung mit Kontrolle</h3><p>Agenda schlägt Buchungen vor, wir prüfen sie. Das reduziert wiederkehrende Erfassungsschritte.</p></div>
-      <div><h3>E-Rechnungen</h3><p>Annahme und Verarbeitung von XRechnung und ZUGFeRD – Prüfung und Freigabe im Browser.</p></div>
-      <div><h3>Nachvollziehbar archiviert</h3><p>GoBD-konforme Archivierung mit Volltextsuche: Belege bleiben geordnet und leicht auffindbar.</p></div>
-      <div><h3>Auswertungen online</h3><p>Betriebswirtschaftliche Berichte und ausgewählte Kennzahlen übersichtlich im Agenda-Cockpit.</p></div>
+      <div><h3 data-i18n="k80">Belege digital bereitstellen</h3><p data-i18n="k81">Belege und Unterlagen digital übermitteln – für einen geordneten Informationsfluss zwischen Ihnen und unserem Büro.</p></div>
+      <div><h3 data-i18n="k82">Bank- und PayPal-Umsätze</h3><p data-i18n="k83">Kontobewegungen werden digital eingelesen und mithilfe von Buchungsvorschlägen weiterverarbeitet.</p></div>
+      <div><h3 data-i18n="k84">Automatisierung mit Kontrolle</h3><p data-i18n="k85">Agenda schlägt Buchungen vor, wir prüfen sie. Das reduziert wiederkehrende Erfassungsschritte.</p></div>
+      <div><h3 data-i18n="k86">E-Rechnungen</h3><p data-i18n="k87">Annahme und Verarbeitung von XRechnung und ZUGFeRD – Prüfung und Freigabe im Browser.</p></div>
+      <div><h3 data-i18n="k88">Nachvollziehbar archiviert</h3><p data-i18n="k89">GoBD-konforme Archivierung mit Volltextsuche: Belege bleiben geordnet und leicht auffindbar.</p></div>
+      <div><h3 data-i18n="k90">Auswertungen online</h3><p data-i18n="k91">Betriebswirtschaftliche Berichte und ausgewählte Kennzahlen übersichtlich im Agenda-Cockpit.</p></div>
     </div>
   </div>
 </section>
@@ -634,13 +739,13 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 <section class="section alt" id="ablauf">
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">So starten wir</p>
-      <h2>In drei Schritten zur Zusammenarbeit.</h2>
+      <p data-i18n="k92" class="eyebrow">So starten wir</p>
+      <h2 data-i18n="k93">In drei Schritten zur Zusammenarbeit.</h2>
     </div>
     <ol class="steps">
-      <li><h3>Erstgespräch</h3><p>In einem persönlichen Gespräch klären wir Ihren Bedarf und die nächsten Schritte.</p></li>
-      <li><h3>Analyse &amp; Einrichtung</h3><p>Wir prüfen Ihre bestehenden Systeme und richten passende Übermittlungswege und Agenda-Funktionen ein.</p></li>
-      <li><h3>Laufende Betreuung</h3><p>Buchhaltung, Lohn und Auswertungen laufen strukturiert – mit einem festen Ansprechpartner.</p></li>
+      <li><h3 data-i18n="k7">Erstgespräch</h3><p data-i18n="k98">In einem persönlichen Gespräch klären wir Ihren Bedarf und die nächsten Schritte.</p></li>
+      <li><h3 data-i18n="k94">Analyse &amp; Einrichtung</h3><p data-i18n="k95">Wir prüfen Ihre bestehenden Systeme und richten passende Übermittlungswege und Agenda-Funktionen ein.</p></li>
+      <li><h3 data-i18n="k96">Laufende Betreuung</h3><p data-i18n="k97">Buchhaltung, Lohn und Auswertungen laufen strukturiert – mit einem festen Ansprechpartner.</p></li>
     </ol>
   </div>
 </section>
@@ -649,9 +754,9 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   <div class="pin">
     <div class="trust-inner">
       <div class="trust-glow" aria-hidden="true"></div>
-      <p class="eyebrow trust-eye">Zusammenarbeit</p>
-      <h2 class="trust-line">Vertrauen ist die Basis<br>der Zusammenarbeit.</h2>
-      <p class="trust-sub">Ein fester Ansprechpartner, klare Absprachen und nachvollziehbare Zahlen &#8211;
+      <p data-i18n="k99" class="eyebrow trust-eye">Zusammenarbeit</p>
+      <h2 data-i18n="k100" class="trust-line">Vertrauen ist die Basis<br>der Zusammenarbeit.</h2>
+      <p data-i18n="k101" class="trust-sub">Ein fester Ansprechpartner, klare Absprachen und nachvollziehbare Zahlen &#8211;
         von der ersten Buchung bis zur Auswertung.</p>
     </div>
   </div>
@@ -661,13 +766,13 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   <div class="wrap about">
     <div class="portrait">[Foto des Inhabers]</div>
     <div>
-      <p class="eyebrow">Über Smart Finance Consulting</p>
-      <h2 style="margin-top:18px">Persönlich. Unternehmerisch. Digital.</h2>
-      <p class="lead" style="margin-top:18px">Der Inhaber von Smart Finance Consulting verfügt über ein abgeschlossenes Diplomstudium im wirtschaftswissenschaftlichen Bereich. Dieser betriebswirtschaftliche Hintergrund prägt unseren Blick auf Zahlen, Prozesse und unternehmerische Entscheidungen.</p>
+      <p data-i18n="k102" class="eyebrow">Über Smart Finance Consulting</p>
+      <h2 data-i18n="k21" style="margin-top:18px">Persönlich. Unternehmerisch. Digital.</h2>
+      <p data-i18n="k103" class="lead" style="margin-top:18px">Der Inhaber von Smart Finance Consulting verfügt über ein abgeschlossenes Diplomstudium im wirtschaftswissenschaftlichen Bereich. Dieser betriebswirtschaftliche Hintergrund prägt unseren Blick auf Zahlen, Prozesse und unternehmerische Entscheidungen.</p>
       <div class="values">
-        <div><b>Verständlich</b><span>Klare Kommunikation statt Fachjargon.</span></div>
-        <div><b>Verbindlich</b><span>Ein fester Ansprechpartner für Ihr Unternehmen.</span></div>
-        <div><b>Passend</b><span>Lösungen, die zu Ihren Systemen und Abläufen passen.</span></div>
+        <div><b data-i18n="k104">Verständlich</b><span data-i18n="k105">Klare Kommunikation statt Fachjargon.</span></div>
+        <div><b data-i18n="k106">Verbindlich</b><span data-i18n="k107">Ein fester Ansprechpartner für Ihr Unternehmen.</span></div>
+        <div><b data-i18n="k108">Passend</b><span data-i18n="k109">Lösungen, die zu Ihren Systemen und Abläufen passen.</span></div>
       </div>
     </div>
   </div>
@@ -676,15 +781,15 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 <section class="section alt" id="faq">
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">Häufige Fragen</p>
-      <h2>Gut verbunden. Sorgfältig organisiert.</h2>
+      <p data-i18n="k110" class="eyebrow">Häufige Fragen</p>
+      <h2 data-i18n="k111">Gut verbunden. Sorgfältig organisiert.</h2>
     </div>
     <div class="faq">
-      <details open><summary>Übernehmen Sie auch die Steuerberatung?</summary><p>Steuerberatung und steuerliche Vorbehaltsaufgaben übernimmt die beauftragte, rechtlich eigenständige Steuerberatungsgesellschaft. Wir kümmern uns um die kaufmännische Betreuung und stimmen uns eng mit ihr ab.</p></details>
-      <details><summary>Ich nutze bereits eine andere Software. Geht das?</summary><p>Sprechen Sie uns an. Wir prüfen anhand Ihres Systems und einer geeigneten Beispieldatei, welche Daten und Dokumente sich übernehmen lassen – über eine Schnittstelle oder einen strukturierten Import, etwa als CSV-Buchungsstapel.</p></details>
-      <details><summary>Können Sie E-Rechnungen verarbeiten?</summary><p>Ja. XRechnung und ZUGFeRD können in den dafür vorgesehenen Agenda-Lösungen angenommen und verarbeitet werden. Den passenden Belegweg legen wir bei der Einrichtung fest.</p></details>
-      <details><summary>Wie sicher sind meine Daten?</summary><p>Für die eingesetzten Agenda-Cloud-Lösungen beschreibt der Hersteller eine verschlüsselte Datenübertragung und Speicherung sowie den Betrieb in einem Rechenzentrum in Deutschland.</p></details>
-      <details><summary>Muss ich komplett digital arbeiten?</summary><p>Nein. Wir wählen die Funktionen, die zu Ihrem Unternehmen passen, und stimmen den digitalen Austausch auf die vereinbarte Zusammenarbeit ab.</p></details>
+      <details open><summary data-i18n="k112">Übernehmen Sie auch die Steuerberatung?</summary><p data-i18n="k113">Steuerberatung und steuerliche Vorbehaltsaufgaben übernimmt die beauftragte, rechtlich eigenständige Steuerberatungsgesellschaft. Wir kümmern uns um die kaufmännische Betreuung und stimmen uns eng mit ihr ab.</p></details>
+      <details><summary data-i18n="k114">Ich nutze bereits eine andere Software. Geht das?</summary><p data-i18n="k115">Sprechen Sie uns an. Wir prüfen anhand Ihres Systems und einer geeigneten Beispieldatei, welche Daten und Dokumente sich übernehmen lassen – über eine Schnittstelle oder einen strukturierten Import, etwa als CSV-Buchungsstapel.</p></details>
+      <details><summary data-i18n="k116">Können Sie E-Rechnungen verarbeiten?</summary><p data-i18n="k117">Ja. XRechnung und ZUGFeRD können in den dafür vorgesehenen Agenda-Lösungen angenommen und verarbeitet werden. Den passenden Belegweg legen wir bei der Einrichtung fest.</p></details>
+      <details><summary data-i18n="k118">Wie sicher sind meine Daten?</summary><p data-i18n="k119">Für die eingesetzten Agenda-Cloud-Lösungen beschreibt der Hersteller eine verschlüsselte Datenübertragung und Speicherung sowie den Betrieb in einem Rechenzentrum in Deutschland.</p></details>
+      <details><summary data-i18n="k120">Muss ich komplett digital arbeiten?</summary><p data-i18n="k121">Nein. Wir wählen die Funktionen, die zu Ihrem Unternehmen passen, und stimmen den digitalen Austausch auf die vereinbarte Zusammenarbeit ab.</p></details>
     </div>
   </div>
 </section>
@@ -692,18 +797,18 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 <section class="section" id="standort">
   <div class="wrap loc">
     <div>
-      <p class="eyebrow">Standort</p>
-      <h2 style="margin-top:18px">Mitten in Neuss.</h2>
-      <p class="lead" style="margin-top:18px">Sie finden uns in der Mainstra&#223;e. Termine nach Vereinbarung &#8211;
+      <p data-i18n="k5" class="eyebrow">Standort</p>
+      <h2 data-i18n="k122" style="margin-top:18px">Mitten in Neuss.</h2>
+      <p data-i18n="k123" class="lead" style="margin-top:18px">Sie finden uns in der Mainstra&#223;e. Termine nach Vereinbarung &#8211;
         melden Sie sich gern vorab telefonisch oder per E-Mail.</p>
       <dl>
-        <div><dt>Adresse</dt><dd>Mainstra&#223;e 26&#8211;30<br>41469 Neuss</dd></div>
-        <div><dt>Telefon</dt><dd>+49 2131 5398501</dd></div>
-        <div><dt>Termine</dt><dd>Nach Vereinbarung</dd></div>
+        <div><dt data-i18n="k124">Adresse</dt><dd>Mainstra&#223;e 26&#8211;30<br>41469 Neuss</dd></div>
+        <div><dt data-i18n="k125">Telefon</dt><dd>+49 2131 5398501</dd></div>
+        <div><dt data-i18n="k128">Termine</dt><dd data-i18n="k129">Nach Vereinbarung</dd></div>
       </dl>
       <div class="loc-actions">
-        <a class="btn btn-navy arrow" href="https://maps.app.goo.gl/UEfZgx9Jsora8MZEA" target="_blank" rel="noopener">In Google Maps &#246;ffnen</a>
-        <a class="btn" style="border-color:var(--line);color:var(--ink)" href="https://www.google.com/maps/dir/?api=1&amp;destination=Smart+Finance+Consulting%2C+Mainstra%C3%9Fe+26-30%2C+41469+Neuss"
+        <a data-i18n="k130" class="btn btn-navy arrow" href="https://maps.app.goo.gl/UEfZgx9Jsora8MZEA" target="_blank" rel="noopener">In Google Maps &#246;ffnen</a>
+        <a data-i18n="k131" class="btn" style="border-color:var(--line);color:var(--ink)" href="https://www.google.com/maps/dir/?api=1&amp;destination=Smart+Finance+Consulting%2C+Mainstra%C3%9Fe+26-30%2C+41469+Neuss"
            target="_blank" rel="noopener">Route planen</a>
       </div>
     </div>
@@ -721,15 +826,15 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 <section class="section contact" id="kontakt">
   <div class="wrap">
     <div>
-      <p class="eyebrow">Kontakt</p>
-      <h2 style="margin-top:18px">Lassen Sie uns über Ihr Unternehmen sprechen.</h2>
-      <p class="lead" style="margin-top:18px">In einem persönlichen Erstgespräch klären wir Ihren Bedarf und die nächsten Schritte.</p>
+      <p data-i18n="k6" class="eyebrow">Kontakt</p>
+      <h2 data-i18n="k132" style="margin-top:18px">Lassen Sie uns über Ihr Unternehmen sprechen.</h2>
+      <p data-i18n="k133" class="lead" style="margin-top:18px">In einem persönlichen Erstgespräch klären wir Ihren Bedarf und die nächsten Schritte.</p>
       <dl class="info">
-        <div><dt>Adresse</dt><dd>Mainstraße 26–30<br>41469 Neuss</dd></div>
-        <div><dt>Telefon</dt><dd>+49 2131 5398501</dd></div>
-        <div><dt>Mobil</dt><dd>+49 162 9631605</dd></div>
-        <div><dt>E-Mail</dt><dd>info@smartfinance-nrw.de</dd></div>
-        <div><dt>Termine</dt><dd class="plain">Nach Vereinbarung</dd></div>
+        <div><dt data-i18n="k124">Adresse</dt><dd>Mainstraße 26–30<br>41469 Neuss</dd></div>
+        <div><dt data-i18n="k125">Telefon</dt><dd>+49 2131 5398501</dd></div>
+        <div><dt data-i18n="k126">Mobil</dt><dd>+49 162 9631605</dd></div>
+        <div><dt data-i18n="k127">E-Mail</dt><dd>info@smartfinance-nrw.de</dd></div>
+        <div><dt data-i18n="k128">Termine</dt><dd data-i18n="k129" class="plain">Nach Vereinbarung</dd></div>
       </dl>
     </div>
 <form class="banknote" id="form" novalidate>
@@ -743,35 +848,33 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
         <svg class="note-stars" viewBox="0 0 60 60" aria-hidden="true"><polygon points="30.0,3.4 31.1,6.5 34.4,6.6 31.7,8.6 32.7,11.7 30.0,9.8 27.3,11.7 28.3,8.6 25.6,6.6 28.9,6.5"/><polygon points="41.0,6.3 42.1,9.5 45.4,9.5 42.7,11.5 43.7,14.7 41.0,12.8 38.3,14.7 39.3,11.5 36.6,9.5 39.9,9.5"/><polygon points="49.1,14.4 50.1,17.5 53.4,17.6 50.8,19.6 51.8,22.7 49.1,20.8 46.3,22.7 47.3,19.6 44.7,17.6 48.0,17.5"/><polygon points="52.0,25.4 53.1,28.5 56.4,28.6 53.7,30.6 54.7,33.7 52.0,31.8 49.3,33.7 50.3,30.6 47.6,28.6 50.9,28.5"/><polygon points="49.1,36.4 50.1,39.5 53.4,39.6 50.8,41.6 51.8,44.7 49.1,42.8 46.3,44.7 47.3,41.6 44.7,39.6 48.0,39.5"/><polygon points="41.0,44.5 42.1,47.6 45.4,47.6 42.7,49.6 43.7,52.8 41.0,50.9 38.3,52.8 39.3,49.6 36.6,47.6 39.9,47.6"/><polygon points="30.0,47.4 31.1,50.5 34.4,50.6 31.7,52.6 32.7,55.7 30.0,53.8 27.3,55.7 28.3,52.6 25.6,50.6 28.9,50.5"/><polygon points="19.0,44.5 20.1,47.6 23.4,47.6 20.7,49.6 21.7,52.8 19.0,50.9 16.3,52.8 17.3,49.6 14.6,47.6 17.9,47.6"/><polygon points="10.9,36.4 12.0,39.5 15.3,39.6 12.7,41.6 13.7,44.7 10.9,42.8 8.2,44.7 9.2,41.6 6.6,39.6 9.9,39.5"/><polygon points="8.0,25.4 9.1,28.5 12.4,28.6 9.7,30.6 10.7,33.7 8.0,31.8 5.3,33.7 6.3,30.6 3.6,28.6 6.9,28.5"/><polygon points="10.9,14.4 12.0,17.5 15.3,17.6 12.7,19.6 13.7,22.7 10.9,20.8 8.2,22.7 9.2,19.6 6.6,17.6 9.9,17.5"/><polygon points="19.0,6.3 20.1,9.5 23.4,9.5 20.7,11.5 21.7,14.7 19.0,12.8 16.3,14.7 17.3,11.5 14.6,9.5 17.9,9.5"/></svg>
         <div class="note-brand">
           <b>SMART FINANCE</b><span>CONSULTING</span>
-          <small>Erstgespr&#228;ch &#183; kostenlos &#183; unverbindlich</small>
+          <small data-i18n="k134">Erstgespr&#228;ch &#183; kostenlos &#183; unverbindlich</small>
         </div>
         <div class="note-value"><b>50</b><i>MIN</i></div>
       </header>
       <div class="note-paper">
         <svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><use href="#sfmark"/></svg>
-        <h3>Erstgespr&#228;ch anfragen</h3>
-        <p class="hint">Wir melden uns innerhalb eines Werktags bei Ihnen.</p>
+        <h3 data-i18n="k135">Erstgespr&#228;ch anfragen</h3>
+        <p data-i18n="k136" class="hint">Wir melden uns innerhalb eines Werktags bei Ihnen.</p>
         <div class="two">
-          <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
-          <label for="f-firma">Unternehmen<input id="f-firma" name="firma" autocomplete="organization"></label>
+          <label for="f-name"><span data-i18n="k137">Name</span><input id="f-name" name="name" autocomplete="name" required></label>
+          <label for="f-firma"><span data-i18n="k138">Unternehmen</span><input id="f-firma" name="firma" autocomplete="organization"></label>
         </div>
         <div class="two">
-          <label for="f-mail">E-Mail<input id="f-mail" name="email" type="email" autocomplete="email" required></label>
-          <label for="f-tel">Telefon<input id="f-tel" name="tel" type="tel" autocomplete="tel"></label>
+          <label for="f-mail"><span data-i18n="k127">E-Mail</span><input id="f-mail" name="email" type="email" autocomplete="email" required></label>
+          <label for="f-tel"><span data-i18n="k125">Telefon</span><input id="f-tel" name="tel" type="tel" autocomplete="tel"></label>
         </div>
-        <label for="f-thema">Worum geht es?
-          <select id="f-thema" name="thema">
-            <option>Buchhaltung</option><option>Lohnabrechnung</option>
-            <option>Controlling &amp; Beratung</option><option>Digitalisierung mit Agenda</option>
-            <option>Etwas anderes</option>
+        <label for="f-thema"><span data-i18n="k140">Worum geht es?</span><select id="f-thema" name="thema">
+            <option data-i18n="k11">Buchhaltung</option><option data-i18n="k12">Lohnabrechnung</option>
+            <option data-i18n="k141">Controlling &amp; Beratung</option><option data-i18n="k54">Digitalisierung mit Agenda</option>
+            <option data-i18n="k142">Etwas anderes</option>
           </select>
         </label>
-        <label for="f-msg">Nachricht<textarea id="f-msg" name="nachricht" rows="3"></textarea></label>
-        <label class="consent" for="f-ok"><input id="f-ok" type="checkbox" required>
-          Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden
-          (siehe Datenschutzerkl&#228;rung).</label>
-        <button class="btn btn-navy" type="submit">Anfrage senden</button>
-        <p class="ok" id="ok" hidden>Entwurf: Das Formular wird beim Livegang an Ihr Postfach angebunden.</p>
+        <label for="f-msg"><span data-i18n="k139">Nachricht</span><textarea id="f-msg" name="nachricht" rows="3"></textarea></label>
+        <label class="consent" for="f-ok"><input id="f-ok" type="checkbox" required><span data-i18n="k143">Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden
+          (siehe Datenschutzerkl&#228;rung).</span></label>
+        <button data-i18n="k144" class="btn btn-navy" type="submit">Anfrage senden</button>
+        <p data-i18n="k145" class="ok" id="ok" hidden>Entwurf: Das Formular wird beim Livegang an Ihr Postfach angebunden.</p>
       </div>
       <div class="note-foot">
         <span class="note-micro">SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;</span>
@@ -787,11 +890,11 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   <div class="wrap">
     <div>
       <a class="logo" href="#start"><svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><use href="#sfmark"/></svg><span class="wordmark"><b>SMART FINANCE</b><span>Consulting</span></span></a>
-      <small>Kaufmännische Betreuung, Beratung und Digitalisierung in Neuss. Steuerliche Leistungen erbringt die rechtlich eigenständige Partner-Steuerberatungsgesellschaft.</small>
+      <small data-i18n="k146">Kaufmännische Betreuung, Beratung und Digitalisierung in Neuss. Steuerliche Leistungen erbringt die rechtlich eigenständige Partner-Steuerberatungsgesellschaft.</small>
     </div>
     <div class="foot-col">
       <nav aria-label="Rechtliches">
-        <a href="#leistungen">Leistungen</a><a href="#standort">Standort</a><a href="#kontakt">Kontakt</a><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a>
+        <a data-i18n="k1" href="#leistungen">Leistungen</a><a data-i18n="k5" href="#standort">Standort</a><a data-i18n="k6" href="#kontakt">Kontakt</a><a data-i18n="k147" href="#impressum">Impressum</a><a data-i18n="k148" href="#datenschutz">Datenschutz</a>
       </nav>
       <!-- TODO vor dem Livegang: echte Profil-URLs eintragen -->
       <div class="social">
@@ -804,8 +907,10 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 </footer>
 
 <div class="mbar">
-  <a class="btn btn-ghost" href="tel:+4921315398501">Anrufen</a>
-  <a class="btn btn-gold" href="#kontakt">Erstgespräch</a>
+  <a data-i18n="k149" class="btn btn-ghost" href="tel:+4921315398501">Anrufen</a>
+  
+  <a class="icon-btn wa-bar" href="https://wa.me/491629631605" target="_blank" rel="noopener"
+         aria-label="Per WhatsApp schreiben"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.1 15.07l-.3-.18-3.1.82.83-3.02-.2-.31A8.1 8.1 0 0 1 12.04 3.8zm4.66 10.2c-.25-.13-1.48-.73-1.71-.81-.23-.09-.4-.13-.56.12-.17.25-.65.81-.8.98-.14.17-.29.19-.54.06-.25-.12-1.06-.39-2.02-1.24-.75-.67-1.25-1.49-1.4-1.74-.14-.25-.01-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.6c.12.18 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.48-.6 1.69-1.19.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg></a><a data-i18n="k7" class="btn btn-gold" href="#kontakt">Erstgespräch</a>
 </div>
 
 
@@ -829,6 +934,46 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
     });
   },{threshold:.25});
   vids.forEach(function(v){ io.observe(v); });
+})();
+</script>
+
+<script>
+(function(){
+  var I18N={"k0":{"de":"Menü","en":"Menu","ar":"القائمة"},"k1":{"de":"Leistungen","en":"Services","ar":"خدماتنا"},"k2":{"de":"Digital arbeiten","en":"Digital","ar":"العمل الرقمي"},"k3":{"de":"Steuerberatung","en":"Tax advice","ar":"الاستشارات الضريبية"},"k4":{"de":"Über uns","en":"About us","ar":"من نحن"},"k5":{"de":"Standort","en":"Location","ar":"الموقع"},"k6":{"de":"Kontakt","en":"Contact","ar":"تواصل معنا"},"k7":{"de":"Erstgespräch","en":"Book a call","ar":"استشارة أولى"},"k8":{"de":"Neuss · Nordrhein-Westfalen","en":"Neuss · North Rhine-Westphalia","ar":"نويس · شمال الراين-وستفاليا"},"k9":{"de":"Ihre Zahlen. Ihre Systeme. <em>Intelligent verbunden.</em>","en":"Your figures. Your systems. <em>Intelligently connected.</em>","ar":"أرقامك. أنظمتك. <em>مترابطة بذكاء.</em>"},"k10":{"de":"Smart Finance Consulting unterstützt Selbstständige sowie kleine und mittelständische Unternehmen dabei, kaufmännische Abläufe zu organisieren, ihre wirtschaftliche Situation zu verstehen und fundierte Entscheidungen zu treffen.","en":"Smart Finance Consulting helps self-employed professionals and small and medium-sized companies organise their commercial processes, understand their financial position and make well-founded decisions.","ar":"تساعد Smart Finance Consulting أصحاب المهن الحرة والشركات الصغيرة والمتوسطة على تنظيم عملياتهم المحاسبية، وفهم وضعهم المالي، واتخاذ قرارات مبنية على أسس سليمة."},"k11":{"de":"Buchhaltung","en":"Bookkeeping","ar":"المحاسبة"},"k12":{"de":"Lohnabrechnung","en":"Payroll","ar":"الرواتب"},"k13":{"de":"Unternehmensberatung","en":"Business consulting","ar":"الاستشارات الإدارية"},"k14":{"de":"Controlling","en":"Controlling","ar":"الرقابة المالية"},"k15":{"de":"Digitalisierung","en":"Digitalisation","ar":"الرقمنة"},"k16":{"de":"Erstgespräch vereinbaren","en":"Book an initial consultation","ar":"احجز استشارة أولى"},"k17":{"de":"Unsere Leistungen kennenlernen","en":"Explore our services","ar":"تعرّف على خدماتنا"},"k18":{"de":"Persönlich · unverbindlich · mit festem Ansprechpartner","en":"Personal · no obligation · one dedicated contact","ar":"شخصي · بدون التزام · مع مسؤول ثابت"},"k19":{"de":"Buchhaltung · Lohn · Controlling","en":"Bookkeeping · Payroll · Controlling","ar":"المحاسبة · الرواتب · الرقابة المالية"},"k20":{"de":"Unser Ansatz","en":"Our approach","ar":"منهجنا"},"k21":{"de":"Persönlich. Unternehmerisch. Digital.","en":"Personal. Entrepreneurial. Digital.","ar":"شخصي. ريادي. رقمي."},"k22":{"de":"Wir verbinden kaufmännische Betreuung mit betriebswirtschaftlicher Beratung und digitalen Prozessen.","en":"We combine commercial support with business consulting and digital processes.","ar":"نجمع بين الإدارة المحاسبية والاستشارات الإدارية والعمليات الرقمية."},"k23":{"de":"Was wir für Sie übernehmen","en":"What we take care of","ar":"ما الذي نتولاه عنك"},"k24":{"de":"Verlässlich im kaufmännischen Alltag. Aus Zahlen werden Entscheidungen.","en":"Dependable day to day. Turning figures into decisions.","ar":"موثوقون في التفاصيل اليومية. نحوّل الأرقام إلى قرارات."},"k25":{"de":"Wir verbinden kaufmännische Betreuung mit betriebswirtschaftlicher Beratung und digitalen Prozessen – strukturiert und passend zu Ihrem Unternehmen.","en":"We combine commercial support with business consulting and digital processes — structured and tailored to your company.","ar":"نجمع بين الإدارة المحاسبية والاستشارات الإدارية والعمليات الرقمية، بشكل منظّم ومناسب لشركتك."},"k26":{"de":"Laufende Geschäftsvorfälle, sauber gebucht","en":"Day-to-day transactions, cleanly recorded","ar":"معاملاتك اليومية، مقيّدة بدقة"},"k27":{"de":"Wir buchen Ihre laufenden Geschäftsvorfälle und schaffen eine strukturierte Grundlage für Ihre kaufmännischen Abläufe.","en":"We record your day-to-day transactions and build a structured basis for your commercial processes.","ar":"نقيّد معاملاتك اليومية ونبني أساساً منظّماً لعملياتك المحاسبية."},"k28":{"de":"Buchen laufender Geschäftsvorfälle","en":"Recording day-to-day transactions","ar":"تقييد المعاملات اليومية"},"k29":{"de":"Digitale Verarbeitung und Organisation von Belegen","en":"Digital processing and filing of receipts","ar":"معالجة وأرشفة المستندات رقمياً"},"k30":{"de":"Abstimmung der Datenbereitstellung für die Steuerberatung","en":"Coordinating data hand-over to the tax firm","ar":"تنسيق تسليم البيانات لمكتب الضرائب"},"k31":{"de":"Lohn und Gehalt mit klaren Abläufen","en":"Payroll with clear processes","ar":"رواتب بإجراءات واضحة"},"k32":{"de":"Wir begleiten die laufende Lohn- und Gehaltsabrechnung mit gepflegten Mitarbeiterdaten und digitaler Dokumentenorganisation.","en":"We run your ongoing payroll with well-maintained employee records and digital document management.","ar":"ندير رواتبك الشهرية ببيانات موظفين محدّثة وتنظيم رقمي للمستندات."},"k33":{"de":"Laufende Lohn- und Gehaltsabrechnung","en":"Ongoing payroll processing","ar":"معالجة الرواتب الشهرية"},"k34":{"de":"Lohnsteuer-Anmeldungen im gesetzlich zulässigen Umfang","en":"Payroll tax filings within the legally permitted scope","ar":"إقرارات ضريبة الرواتب ضمن النطاق المسموح قانوناً"},"k35":{"de":"Digitale Bereitstellung der Abrechnungsunterlagen","en":"Digital delivery of payroll documents","ar":"تسليم مستندات الرواتب رقمياً"},"k36":{"de":"Umsetzbare Schritte für Ihren Alltag","en":"Practical steps for your daily work","ar":"خطوات قابلة للتطبيق في عملك اليومي"},"k37":{"de":"Analyse kaufmännischer Strukturen","en":"Analysis of commercial structures","ar":"تحليل الهياكل المحاسبية"},"k38":{"de":"Kosten- und Prozessoptimierung","en":"Cost and process optimisation","ar":"تحسين التكاليف والعمليات"},"k39":{"de":"Begleitung bei Wachstum","en":"Support through growth","ar":"مرافقتك في مراحل النمو"},"k40":{"de":"Zahlen, die steuern helfen","en":"Figures that help you steer","ar":"أرقام تساعدك على القيادة"},"k41":{"de":"Budgetplanung und Soll-Ist-Vergleiche","en":"Budget planning and variance analysis","ar":"تخطيط الموازنات ومقارنة المخطط بالفعلي"},"k42":{"de":"Liquiditätsplanung und Forecasting","en":"Cash-flow planning and forecasting","ar":"تخطيط السيولة والتوقعات المالية"},"k43":{"de":"Individuelle Management-Auswertungen","en":"Tailored management reporting","ar":"تقارير إدارية مخصّصة"},"k44":{"de":"Prozesse, die den Alltag einfacher machen","en":"Processes that simplify your day","ar":"عمليات تبسّط يومك"},"k45":{"de":"Digitale Beleg- und Dokumentenprozesse","en":"Digital receipt and document workflows","ar":"مسارات رقمية للمستندات والفواتير"},"k46":{"de":"Weniger manuelle Dateneingaben","en":"Less manual data entry","ar":"إدخال يدوي أقل للبيانات"},"k47":{"de":"Einführung passender Software","en":"Introducing the right software","ar":"اعتماد البرمجيات المناسبة"},"k48":{"de":"Kaufmännische Betreuung und steuerliche Kompetenz","en":"Commercial support and tax expertise","ar":"إدارة محاسبية وخبرة ضريبية"},"k49":{"de":"Persönlich beraten. Fachlich vernetzt.","en":"Personal advice. Professionally connected.","ar":"استشارة شخصية. شبكة مهنية."},"k50":{"de":"Die laufende kaufmännische Betreuung übernimmt unser internes Team. Steuerliche Angelegenheiten betreut unsere rechtlich befugte Partnergesellschaft – in enger Abstimmung und mit klar geregelten Verantwortlichkeiten.","en":"Our in-house team handles the ongoing commercial work. Tax matters are handled by our legally authorised partner firm — in close coordination and with clearly defined responsibilities.","ar":"يتولى فريقنا الداخلي الأعمال المحاسبية الجارية. أما الشؤون الضريبية فتتولاها شركتنا الشريكة المرخّصة قانوناً، بتنسيق وثيق ومسؤوليات محدّدة بوضوح."},"k51":{"de":"Kaufmännisch &amp; betriebswirtschaftlich","en":"Commercial &amp; business advisory","ar":"محاسبي وإداري"},"k52":{"de":"Buchhaltung und Lohnabrechnung","en":"Bookkeeping and payroll","ar":"المحاسبة والرواتب"},"k53":{"de":"Controlling und Unternehmensberatung","en":"Controlling and business consulting","ar":"الرقابة المالية والاستشارات الإدارية"},"k54":{"de":"Digitalisierung mit Agenda","en":"Digitalisation with Agenda","ar":"الرقمنة عبر Agenda"},"k55":{"de":"Ein fester Ansprechpartner","en":"One dedicated contact","ar":"مسؤول ثابت واحد"},"k56":{"de":"in enger Abstimmung","en":"in close coordination","ar":"بتنسيق وثيق"},"k57":{"de":"Betriebliche und private Steuererklärungen","en":"Business and private tax returns","ar":"الإقرارات الضريبية للشركات والأفراد"},"k58":{"de":"Jahresabschlüsse und Einnahmenüberschussrechnungen","en":"Annual accounts and cash-basis statements","ar":"القوائم المالية السنوية وحسابات الإيراد والمصروف"},"k59":{"de":"Beratung bei Gründungen und Umstrukturierungen","en":"Advice on formations and restructuring","ar":"استشارات التأسيس وإعادة الهيكلة"},"k60":{"de":"Begleitung von Betriebsprüfungen","en":"Support during tax audits","ar":"مرافقتك في التدقيق الضريبي"},"k61":{"de":"Die steuerlichen Leistungen werden durch die rechtlich eigenständige Steuerberatungsgesellschaft in eigener Verantwortung erbracht. Smart Finance Consulting übernimmt die vereinbarten kaufmännischen und betriebswirtschaftlichen Leistungen.","en":"Tax services are provided by the legally independent tax consultancy under its own responsibility. Smart Finance Consulting provides the agreed commercial and business advisory services.","ar":"تُقدَّم الخدمات الضريبية من قبل شركة الاستشارات الضريبية المستقلة قانونياً وعلى مسؤوليتها الخاصة. وتتولى Smart Finance Consulting الخدمات المحاسبية والإدارية المتفق عليها."},"k62":{"de":"Belege, Daten und Prozesse – sinnvoll verbunden.","en":"Receipts, data and processes — sensibly connected.","ar":"المستندات والبيانات والعمليات، مترابطة بمنطق."},"k63":{"de":"Moderne Buchhaltung mit Agenda.","en":"Modern bookkeeping with Agenda.","ar":"محاسبة حديثة عبر Agenda."},"k64":{"de":"Wir setzen auf Agenda als professionelle Softwarebasis. Gemeinsam legen wir fest, welche digitalen Prozesse für Sie sinnvoll sind – so digital, wie es zu Ihrem Unternehmen passt.","en":"We use Agenda as our professional software base. Together we decide which digital processes make sense for you — as digital as suits your company.","ar":"نعتمد على Agenda كأساس برمجي احترافي. ونحدّد معاً أي العمليات الرقمية تناسبك، بالقدر الذي يلائم شركتك."},"k65":{"de":"Weniger Verwaltungsaufwand","en":"Less admin","ar":"إدارة أقل"},"k66":{"de":"Strukturierte Informationen","en":"Structured information","ar":"معلومات منظّمة"},"k67":{"de":"Persönliche Betreuung","en":"Personal support","ar":"متابعة شخصية"},"k68":{"de":"Eingangsrechnung","en":"Incoming invoice","ar":"فاتورة واردة"},"k69":{"de":"Lieferant","en":"Supplier","ar":"المورّد"},"k70":{"de":"Rechnungsdatum","en":"Invoice date","ar":"تاريخ الفاتورة"},"k71":{"de":"Netto","en":"Net","ar":"الصافي"},"k72":{"de":"USt 19 %","en":"VAT 19%","ar":"ضريبة القيمة المضافة ١٩٪"},"k73":{"de":"Brutto","en":"Gross","ar":"الإجمالي"},"k74":{"de":"Bürobedarf","en":"Office supplies","ar":"قرطاسية"},"k75":{"de":"Vorsteuer 19 %","en":"Input VAT 19%","ar":"ضريبة مدخلات ١٩٪"},"k76":{"de":"an Bank","en":"to Bank","ar":"إلى البنك"},"k77":{"de":"Beispieldarstellung · SKR 03","en":"Illustrative example · SKR 03","ar":"مثال توضيحي · SKR 03"},"k78":{"de":"Buchungsvorschlag · Agenda","en":"Posting suggestion · Agenda","ar":"اقتراح قيد · Agenda"},"k79":{"de":"Geprüft","en":"Checked","ar":"مُدقَّق"},"k80":{"de":"Belege digital bereitstellen","en":"Submit receipts digitally","ar":"تسليم المستندات رقمياً"},"k81":{"de":"Belege und Unterlagen digital übermitteln – für einen geordneten Informationsfluss zwischen Ihnen und unserem Büro.","en":"Send receipts and documents digitally, for an orderly flow of information between you and our office.","ar":"أرسل مستنداتك رقمياً، لتدفّق منظّم للمعلومات بينك وبين مكتبنا."},"k82":{"de":"Bank- und PayPal-Umsätze","en":"Bank and PayPal transactions","ar":"حركات البنك وPayPal"},"k83":{"de":"Kontobewegungen werden digital eingelesen und mithilfe von Buchungsvorschlägen weiterverarbeitet.","en":"Account movements are imported digitally and processed with posting suggestions.","ar":"تُستورد حركات الحساب رقمياً وتُعالَج عبر اقتراحات القيود."},"k84":{"de":"Automatisierung mit Kontrolle","en":"Automation with oversight","ar":"أتمتة تحت الرقابة"},"k85":{"de":"Agenda schlägt Buchungen vor, wir prüfen sie. Das reduziert wiederkehrende Erfassungsschritte.","en":"Agenda suggests the postings and we review them. That cuts out repetitive data entry.","ar":"يقترح Agenda القيود ونراجعها نحن. هذا يختصر خطوات الإدخال المتكررة."},"k86":{"de":"E-Rechnungen","en":"E-invoices","ar":"الفواتير الإلكترونية"},"k87":{"de":"Annahme und Verarbeitung von XRechnung und ZUGFeRD – Prüfung und Freigabe im Browser.","en":"Receiving and processing XRechnung and ZUGFeRD — review and approval in the browser.","ar":"استقبال ومعالجة صيغ XRechnung وZUGFeRD، مع المراجعة والاعتماد عبر المتصفح."},"k88":{"de":"Nachvollziehbar archiviert","en":"Traceably archived","ar":"أرشفة قابلة للتتبّع"},"k89":{"de":"GoBD-konforme Archivierung mit Volltextsuche: Belege bleiben geordnet und leicht auffindbar.","en":"GoBD-compliant archiving with full-text search: receipts stay ordered and easy to find.","ar":"أرشفة متوافقة مع معيار GoBD مع بحث في النص الكامل: تبقى المستندات مرتبة وسهلة الاستدعاء."},"k90":{"de":"Auswertungen online","en":"Reports online","ar":"تقارير عبر الإنترنت"},"k91":{"de":"Betriebswirtschaftliche Berichte und ausgewählte Kennzahlen übersichtlich im Agenda-Cockpit.","en":"Management reports and selected key figures, clearly laid out in the Agenda cockpit.","ar":"تقارير إدارية ومؤشرات مختارة معروضة بوضوح في لوحة Agenda."},"k92":{"de":"So starten wir","en":"How we start","ar":"كيف نبدأ"},"k93":{"de":"In drei Schritten zur Zusammenarbeit.","en":"Three steps to working together.","ar":"ثلاث خطوات لبدء التعاون."},"k94":{"de":"Analyse &amp; Einrichtung","en":"Analysis &amp; setup","ar":"التحليل والإعداد"},"k95":{"de":"Wir prüfen Ihre bestehenden Systeme und richten passende Übermittlungswege und Agenda-Funktionen ein.","en":"We review your existing systems and set up suitable transfer routes and Agenda functions.","ar":"نراجع أنظمتك الحالية ونجهّز قنوات النقل ووظائف Agenda المناسبة."},"k96":{"de":"Laufende Betreuung","en":"Ongoing support","ar":"المتابعة المستمرة"},"k97":{"de":"Buchhaltung, Lohn und Auswertungen laufen strukturiert – mit einem festen Ansprechpartner.","en":"Bookkeeping, payroll and reporting run in a structured way — with one dedicated contact.","ar":"تسير المحاسبة والرواتب والتقارير بانتظام، مع مسؤول ثابت واحد."},"k98":{"de":"In einem persönlichen Gespräch klären wir Ihren Bedarf und die nächsten Schritte.","en":"In a personal conversation we clarify your needs and the next steps.","ar":"في لقاء شخصي نحدّد احتياجك والخطوات التالية."},"k99":{"de":"Zusammenarbeit","en":"Working together","ar":"التعاون"},"k100":{"de":"Vertrauen ist die Basis<br>der Zusammenarbeit.","en":"Trust is the basis<br>of working together.","ar":"الثقة أساس<br>كل تعاون."},"k101":{"de":"Ein fester Ansprechpartner, klare Absprachen und nachvollziehbare Zahlen – von der ersten Buchung bis zur Auswertung.","en":"One dedicated contact, clear agreements and figures you can trace — from the first entry to the final report.","ar":"مسؤول ثابت واحد، اتفاقات واضحة، وأرقام قابلة للتتبّع، من أول قيد حتى التقرير النهائي."},"k102":{"de":"Über Smart Finance Consulting","en":"About Smart Finance Consulting","ar":"عن Smart Finance Consulting"},"k103":{"de":"Der Inhaber von Smart Finance Consulting verfügt über ein abgeschlossenes Diplomstudium im wirtschaftswissenschaftlichen Bereich. Dieser betriebswirtschaftliche Hintergrund prägt unseren Blick auf Zahlen, Prozesse und unternehmerische Entscheidungen.","en":"The owner of Smart Finance Consulting holds a completed diploma degree in economics. That business background shapes how we look at figures, processes and entrepreneurial decisions.","ar":"يحمل مالك Smart Finance Consulting شهادة دبلوم جامعية في العلوم الاقتصادية. هذه الخلفية الإدارية تشكّل نظرتنا إلى الأرقام والعمليات والقرارات الريادية."},"k104":{"de":"Verständlich","en":"Clear","ar":"واضح"},"k105":{"de":"Klare Kommunikation statt Fachjargon.","en":"Plain language instead of jargon.","ar":"لغة مفهومة بدل المصطلحات المعقّدة."},"k106":{"de":"Verbindlich","en":"Reliable","ar":"ملتزم"},"k107":{"de":"Ein fester Ansprechpartner für Ihr Unternehmen.","en":"One dedicated contact for your company.","ar":"مسؤول ثابت واحد لشركتك."},"k108":{"de":"Passend","en":"Fitting","ar":"مناسب"},"k109":{"de":"Lösungen, die zu Ihren Systemen und Abläufen passen.","en":"Solutions that fit your systems and processes.","ar":"حلول تناسب أنظمتك وإجراءاتك."},"k110":{"de":"Häufige Fragen","en":"Frequently asked questions","ar":"أسئلة شائعة"},"k111":{"de":"Gut verbunden. Sorgfältig organisiert.","en":"Well connected. Carefully organised.","ar":"مترابط جيداً. منظّم بعناية."},"k112":{"de":"Übernehmen Sie auch die Steuerberatung?","en":"Do you also provide tax advice?","ar":"هل تقدّمون الاستشارات الضريبية أيضاً؟"},"k113":{"de":"Steuerberatung und steuerliche Vorbehaltsaufgaben übernimmt die beauftragte, rechtlich eigenständige Steuerberatungsgesellschaft. Wir kümmern uns um die kaufmännische Betreuung und stimmen uns eng mit ihr ab.","en":"Tax advice and reserved tax activities are handled by the appointed, legally independent tax consultancy. We take care of the commercial side and coordinate closely with them.","ar":"تتولى شركة الاستشارات الضريبية المستقلة قانوناً كل ما يخص الاستشارات والمهام الضريبية المحفوظة. أما نحن فنتولى الجانب المحاسبي بالتنسيق الوثيق معها."},"k114":{"de":"Ich nutze bereits eine andere Software. Geht das?","en":"I already use different software. Is that a problem?","ar":"أستخدم برنامجاً آخر. هل هذا ممكن؟"},"k115":{"de":"Sprechen Sie uns an. Wir prüfen anhand Ihres Systems und einer geeigneten Beispieldatei, welche Daten und Dokumente sich übernehmen lassen – über eine Schnittstelle oder einen strukturierten Import, etwa als CSV-Buchungsstapel.","en":"Get in touch. Using your system and a sample file, we check which data and documents can be carried over — through an interface or a structured import such as a CSV posting batch.","ar":"تواصل معنا. من خلال نظامك وملف عيّنة، نتحقق من البيانات والمستندات القابلة للنقل، عبر واجهة برمجية أو استيراد منظّم مثل ملف CSV."},"k116":{"de":"Können Sie E-Rechnungen verarbeiten?","en":"Can you process e-invoices?","ar":"هل تعالجون الفواتير الإلكترونية؟"},"k117":{"de":"Ja. XRechnung und ZUGFeRD können in den dafür vorgesehenen Agenda-Lösungen angenommen und verarbeitet werden. Den passenden Belegweg legen wir bei der Einrichtung fest.","en":"Yes. XRechnung and ZUGFeRD can be received and processed in the relevant Agenda solutions. We define the right document route during setup.","ar":"نعم. يمكن استقبال ومعالجة صيغتي XRechnung وZUGFeRD في حلول Agenda المخصّصة لذلك. ونحدّد المسار المناسب للمستندات أثناء الإعداد."},"k118":{"de":"Wie sicher sind meine Daten?","en":"How secure is my data?","ar":"ما مدى أمان بياناتي؟"},"k119":{"de":"Für die eingesetzten Agenda-Cloud-Lösungen beschreibt der Hersteller eine verschlüsselte Datenübertragung und Speicherung sowie den Betrieb in einem Rechenzentrum in Deutschland.","en":"For the Agenda cloud solutions in use, the vendor describes encrypted transfer and storage, and operation in a data centre in Germany.","ar":"بالنسبة لحلول Agenda السحابية المستخدمة، تذكر الشركة المصنّعة أن النقل والتخزين مشفّران، وأن التشغيل يتم في مركز بيانات داخل ألمانيا."},"k120":{"de":"Muss ich komplett digital arbeiten?","en":"Do I have to go fully digital?","ar":"هل يجب أن أعمل رقمياً بالكامل؟"},"k121":{"de":"Nein. Wir wählen die Funktionen, die zu Ihrem Unternehmen passen, und stimmen den digitalen Austausch auf die vereinbarte Zusammenarbeit ab.","en":"No. We pick the functions that suit your company and align the digital exchange with what we agree.","ar":"لا. نختار الوظائف التي تناسب شركتك ونوائم التبادل الرقمي مع ما نتفق عليه."},"k122":{"de":"Mitten in Neuss.","en":"In the heart of Neuss.","ar":"في قلب مدينة نويس."},"k123":{"de":"Sie finden uns in der Mainstraße. Termine nach Vereinbarung – melden Sie sich gern vorab telefonisch oder per E-Mail.","en":"You will find us on Mainstraße. Appointments by arrangement — feel free to call or email in advance.","ar":"تجدنا في شارع Mainstraße. المواعيد بالحجز المسبق، ويسعدنا تواصلك هاتفياً أو بالبريد الإلكتروني."},"k124":{"de":"Adresse","en":"Address","ar":"العنوان"},"k125":{"de":"Telefon","en":"Phone","ar":"الهاتف"},"k126":{"de":"Mobil","en":"Mobile","ar":"الجوال"},"k127":{"de":"E-Mail","en":"Email","ar":"البريد الإلكتروني"},"k128":{"de":"Termine","en":"Appointments","ar":"المواعيد"},"k129":{"de":"Nach Vereinbarung","en":"By arrangement","ar":"بالحجز المسبق"},"k130":{"de":"In Google Maps öffnen","en":"Open in Google Maps","ar":"افتح في خرائط Google"},"k131":{"de":"Route planen","en":"Get directions","ar":"خطّط الطريق"},"k132":{"de":"Lassen Sie uns über Ihr Unternehmen sprechen.","en":"Let's talk about your company.","ar":"لنتحدّث عن شركتك."},"k133":{"de":"In einem persönlichen Erstgespräch klären wir Ihren Bedarf und die nächsten Schritte.","en":"In a personal first conversation we clarify your needs and the next steps.","ar":"في استشارة أولى شخصية نحدّد احتياجك والخطوات التالية."},"k134":{"de":"Erstgespräch · kostenlos · unverbindlich","en":"Initial consultation · free · no obligation","ar":"استشارة أولى · مجانية · بدون التزام"},"k135":{"de":"Erstgespräch anfragen","en":"Request a consultation","ar":"اطلب استشارة"},"k136":{"de":"Wir melden uns innerhalb eines Werktags bei Ihnen.","en":"We will get back to you within one working day.","ar":"سنعاود التواصل معك خلال يوم عمل واحد."},"k137":{"de":"Name","en":"Name","ar":"الاسم"},"k138":{"de":"Unternehmen","en":"Company","ar":"الشركة"},"k139":{"de":"Nachricht","en":"Message","ar":"الرسالة"},"k140":{"de":"Worum geht es?","en":"What is it about?","ar":"ما الموضوع؟"},"k141":{"de":"Controlling &amp; Beratung","en":"Controlling &amp; consulting","ar":"الرقابة المالية والاستشارات"},"k142":{"de":"Etwas anderes","en":"Something else","ar":"موضوع آخر"},"k143":{"de":"Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden (siehe Datenschutzerklärung).","en":"I agree that my details may be used to process my enquiry (see privacy policy).","ar":"أوافق على استخدام بياناتي لمعالجة طلبي (راجع سياسة الخصوصية)."},"k144":{"de":"Anfrage senden","en":"Send enquiry","ar":"إرسال الطلب"},"k145":{"de":"Entwurf: Das Formular wird beim Livegang an Ihr Postfach angebunden.","en":"Draft: the form will be connected to your inbox when the site goes live.","ar":"مسودة: سيُربط النموذج ببريدك عند إطلاق الموقع."},"k146":{"de":"Kaufmännische Betreuung, Beratung und Digitalisierung in Neuss. Steuerliche Leistungen erbringt die rechtlich eigenständige Partner-Steuerberatungsgesellschaft.","en":"Commercial support, consulting and digitalisation in Neuss. Tax services are provided by the legally independent partner tax consultancy.","ar":"إدارة محاسبية واستشارات ورقمنة في مدينة نويس. الخدمات الضريبية تقدّمها شركة الاستشارات الضريبية الشريكة المستقلة قانوناً."},"k147":{"de":"Impressum","en":"Legal notice","ar":"بيانات الناشر"},"k148":{"de":"Datenschutz","en":"Privacy","ar":"الخصوصية"},"k149":{"de":"Anrufen","en":"Call","ar":"اتصل"}};
+  var ARIA={lang:{de:"Sprache",en:"Language",ar:"اللغة"},
+            theme:{de:"Design wechseln",en:"Switch theme",ar:"تبديل المظهر"},
+            legal:{de:"Rechtliches",en:"Legal",ar:"قانوني"}};
+  var R=document.documentElement, LS=null;
+  try{ LS=window.localStorage; }catch(e){}
+  function get(k,d){ try{ return LS&&LS.getItem(k)||d; }catch(e){ return d; } }
+  function set(k,v){ try{ LS&&LS.setItem(k,v); }catch(e){} }
+
+  function applyLang(l){
+    R.lang=l; R.dir = (l==='ar') ? 'rtl' : 'ltr';
+    var n=document.querySelectorAll('[data-i18n]');
+    for(var i=0;i<n.length;i++){
+      var t=I18N[n[i].getAttribute('data-i18n')];
+      if(t && t[l]) n[i].innerHTML=t[l];
+    }
+    var g=document.querySelector('.lang'); if(g) g.setAttribute('aria-label',ARIA.lang[l]);
+    var tb=document.getElementById('themeBtn'); if(tb) tb.setAttribute('aria-label',ARIA.theme[l]);
+    var lg=document.querySelector('footer nav'); if(lg) lg.setAttribute('aria-label',ARIA.legal[l]);
+    var bs=document.querySelectorAll('.lang button');
+    for(var j=0;j<bs.length;j++) bs[j].setAttribute('aria-pressed', String(bs[j].dataset.lang===l));
+    set('sf-lang',l);
+  }
+  function applyTheme(t){
+    R.setAttribute('data-theme',t); set('sf-theme',t);
+  }
+  applyTheme(get('sf-theme','dark'));
+  applyLang(get('sf-lang','de'));
+
+  document.querySelector('.lang').addEventListener('click',function(e){
+    var b=e.target.closest('button[data-lang]'); if(b) applyLang(b.dataset.lang);
+  });
+  document.getElementById('themeBtn').addEventListener('click',function(){
+    applyTheme(R.getAttribute('data-theme')==='light'?'dark':'light');
+  });
 })();
 </script>
 
