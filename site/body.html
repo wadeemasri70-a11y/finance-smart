@@ -362,6 +362,32 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   .nav a.wa svg{width:22px;height:22px}
   .nav a.wa::after{content:"WhatsApp"}
 }
+
+/* ============ Bildbänder mit Parallax ============ */
+.band{position:relative;overflow:hidden;isolation:isolate;background:var(--hero-bg);
+  min-height:clamp(400px,58vh,600px);display:grid;align-items:center}
+.band-media{position:absolute;inset:-14% 0;z-index:0;will-change:transform}
+.band-media img{width:100%;height:100%;object-fit:cover;display:block}
+.band-scrim{position:absolute;inset:0;z-index:1;pointer-events:none}
+.band .band-scrim{background:linear-gradient(90deg,rgba(9,22,32,.92) 0%,rgba(9,22,32,.72) 34%,rgba(9,22,32,.06) 62%)}
+.band--right .band-scrim{background:linear-gradient(270deg,rgba(9,22,32,.92) 0%,rgba(9,22,32,.7) 36%,rgba(9,22,32,.05) 66%)}
+.band-inner{position:relative;z-index:2;padding-block:clamp(56px,8vw,92px)}
+.band-inner>*{max-width:32ch}
+.band--right .band-inner{justify-items:end;text-align:right;display:grid}
+.band--right .band-inner>*{margin-left:auto;max-width:21ch}
+.band h2{color:#fff;font-size:clamp(1.9rem,3.6vw,3rem);margin-top:18px}
+.band .lead{color:#C4D0D9;margin-top:16px}
+.band .eyebrow{color:var(--gold);white-space:nowrap}
+.band--right .eyebrow{flex-direction:row-reverse}
+@media (max-width:720px){
+  .band{min-height:auto}
+  .band .band-scrim,.band--right .band-scrim{background:linear-gradient(rgba(9,22,32,.62),rgba(9,22,32,.88))}
+  .band--right .band-inner{justify-items:start;text-align:left}
+  .band--right .band-inner>*{margin-left:0}
+  .band--right .eyebrow{flex-direction:row}
+  .band-inner>*{max-width:100%}
+}
+@media (prefers-reduced-motion:reduce){.band-media{transform:none!important}}
 </style>
 
 <svg width="0" height="0" aria-hidden="true" style="position:absolute"><symbol id="sfmark" viewBox="0 0 120 120"><g fill="currentColor" fill-rule="evenodd"><path d="M68.44,3.89L68.11,4.22L68.11,38.85L75.67,39.18L79.40,40.05L80.71,40.05L81.04,39.73L81.04,4.22L80.49,3.89Z M50.90,15.51L50.36,16.05L50.36,20.66L51.01,40.38L51.56,40.93L52.22,40.93L55.73,39.84L60.99,39.18L62.52,39.18L63.29,38.63L63.29,16.27L62.74,15.73L61.64,15.51Z M32.93,29.32L32.38,29.86L32.38,47.84L32.93,48.16L33.59,47.95L36.66,46.19L39.95,45.10L40.93,44.33L44.11,43.34L45.32,42.36L45.32,29.64L44.77,29.32Z M66.90,42.03L59.23,42.68L49.81,44.66L48.71,45.32L45.21,46.19L39.95,48.60L38.63,48.82L28.99,54.30L21.53,60.44L19.01,63.18L19.01,63.62L16.38,66.68L13.75,71.51L12.22,75.67L11.34,80.49L11.34,84.00L12.22,89.26L14.85,95.18L16.60,97.81L18.03,98.58L16.60,93.42L16.38,87.73L17.04,84.22L19.23,78.74L22.52,73.70L26.14,69.86L26.79,69.64L30.08,66.58L36.88,62.19L38.19,61.75L43.01,59.34L48.27,57.59L49.15,56.93L50.25,56.93L54.41,55.40L59.67,54.52L61.42,53.86L67.34,53.21L77.86,53.21L81.81,53.64L90.58,56.05L95.84,58.68L96.27,59.34L98.68,60.66L102.30,64.27L104.71,68.00L106.68,73.70L106.90,76.99L107.45,76.88L108.22,73.26L108.44,68.00L107.12,61.64L105.59,58.58L103.62,56.16L103.18,55.07L102.19,54.52L100.44,52.55L93.86,48.38L84.88,44.66L76.55,42.68Z M70.63,56.27L68.11,56.60L68.11,109.86L69.32,110.19L75.89,106.90L79.40,104.93L81.26,102.85L81.26,58.36L81.04,57.48L79.62,56.71Z M61.64,57.15L53.97,58.90L52.44,59.78L51.34,59.78L50.14,61.21L50.14,112.71L50.36,114.90L50.68,115.23L51.67,115.12L62.08,112.82L63.29,111.84L63.29,57.70L62.74,57.15Z M44.33,62.41L34.68,67.45L33.15,68.55L32.38,69.75L32.38,114.47L32.93,115.23L34.25,115.23L38.63,115.89L44.33,115.89L45.32,115.34L45.53,62.74Z M97.59,62.85L99.01,66.68L99.23,68.66L99.23,73.04L98.79,75.23L98.36,76.77L95.29,82.25L91.45,86.52L88.16,88.93L86.96,90.36L86.74,98.68L87.51,99.23L89.15,97.81L95.95,91.67L95.95,91.23L99.45,87.29L100.99,84.00L101.42,83.78L102.74,80.05L103.18,77.64L102.96,71.73L100.77,66.68Z M20.00,84.11L19.01,87.51L19.01,92.99L19.45,95.18L20.11,97.59L21.86,101.32L24.05,104.60L25.37,105.70L26.25,105.48L26.25,97.15L22.52,92.55L20.77,88.60Z"/></g></symbol></svg>
@@ -446,6 +472,16 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
       </div>
       <p class="coin-cap">Buchhaltung &#183; Lohn &#183; Controlling</p>
     </div>
+  </div>
+</section>
+
+<section class="band " id="band-marke">
+  <div class="band-media" aria-hidden="true"><picture><source type="image/webp" srcset="img/brand-bars-1100.webp 1100w, img/brand-bars-1800.webp 1800w" sizes="100vw"><img src="img/brand-bars-1800.jpg" srcset="img/brand-bars-1100.jpg 1100w, img/brand-bars-1800.jpg 1800w" sizes="100vw" alt="Drei goldene S&#228;ulen mit einem goldenen Ring &#8211; das Zeichen von Smart Finance Consulting als 3D-Motiv" loading="lazy" decoding="async"></picture></div>
+  <div class="band-scrim" aria-hidden="true"></div>
+  <div class="wrap band-inner">
+      <p class="eyebrow">Unser Ansatz</p>
+      <h2>Pers&#246;nlich. Unternehmerisch. Digital.</h2>
+      <p class="lead">Wir verbinden kaufm&#228;nnische Betreuung mit betriebswirtschaftlicher Beratung und digitalen Prozessen.</p>
   </div>
 </section>
 
@@ -539,6 +575,15 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
       </div>
     </div>
     <p class="note">Die steuerlichen Leistungen werden durch die rechtlich eigenständige Steuerberatungsgesellschaft in eigener Verantwortung erbracht. Smart Finance Consulting übernimmt die vereinbarten kaufmännischen und betriebswirtschaftlichen Leistungen.</p>
+  </div>
+</section>
+
+<section class="band band--right" id="band-digital">
+  <div class="band-media" aria-hidden="true"><picture><source type="image/webp" srcset="img/desk-1100.webp 1100w, img/desk-1800.webp 1800w" sizes="100vw"><img src="img/desk-1800.jpg" srcset="img/desk-1100.jpg 1100w, img/desk-1800.jpg 1800w" sizes="100vw" alt="Schreibtisch mit Laptop, Unterlagen, F&#252;llfederhalter und Kaffeetasse im warmen Abendlicht" loading="lazy" decoding="async"></picture></div>
+  <div class="band-scrim" aria-hidden="true"></div>
+  <div class="wrap band-inner">
+      <p class="eyebrow">Digital arbeiten</p>
+      <h2>Belege, Daten und Prozesse &#8211; sinnvoll verbunden.</h2>
   </div>
 </section>
 
@@ -966,6 +1011,36 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
     {rootMargin:'120px'}).observe(sec);
   addEventListener('scroll',function(){ if(live) tick(); },{passive:true});
   draw();
+})();
+</script>
+
+<script>
+(function(){
+  var bands=[].slice.call(document.querySelectorAll('.band'));
+  if(!bands.length||matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var live=[],queued=false;
+  function draw(){
+    queued=false;
+    for(var i=0;i<live.length;i++){
+      var el=live[i], r=el.getBoundingClientRect();
+      var p=(r.top+r.height/2-innerHeight/2)/(innerHeight/2+r.height/2);
+      p=p<-1?-1:p>1?1:p;
+      el.firstElementChild.style.transform='translate3d(0,'+(p*-7).toFixed(2)+'%,0)';
+    }
+  }
+  function tick(){ if(!queued){ queued=true; requestAnimationFrame(draw); } }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var i=live.indexOf(e.target);
+      if(e.isIntersecting && i<0) live.push(e.target);
+      else if(!e.isIntersecting && i>=0) live.splice(i,1);
+    });
+    tick();
+  },{rootMargin:'140px'});
+  bands.forEach(function(b){ io.observe(b); });
+  addEventListener('scroll',tick,{passive:true});
+  addEventListener('resize',tick,{passive:true});
+  tick();
 })();
 </script>
 
