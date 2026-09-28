@@ -22,7 +22,7 @@
   --sans:"Outfit","Segoe UI",system-ui,-apple-system,sans-serif;
   --wrap:1180px; --gutter:clamp(16px,4vw,40px);
 }
-:root[data-theme="light"]{
+:root[data-sf-theme="light"]{
   color-scheme:light;
   --bg:#FFFFFF; --bg-alt:#F3F5F7; --surface:#FFFFFF; --ink:#16232E; --muted:#56646F; --line:#DCE2E7;
   --gold-ink:#8C6E2F; --gold-soft:#F4ECDC; --teal:#087C80; --teal-soft:#E4F1F1;
@@ -149,7 +149,7 @@ p{margin:0}
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);counter-reset:s;list-style:none;padding:0;margin:0}
 .steps li{counter-increment:s;display:grid;gap:10px;padding-top:22px;border-top:1px solid var(--navy)}
-:root[data-theme="dark"] .steps li{border-top-color:var(--gold)}
+:root:not([data-sf-theme="light"]) .steps li{border-top-color:var(--gold)}
 .steps li::before{content:counter(s,decimal-leading-zero);font:600 2.6rem/1 var(--serif);color:var(--gold-ink)}
 .steps p{color:var(--muted)}
 @media (max-width:780px){.steps{grid-template-columns:1fr}}
@@ -399,8 +399,8 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 .lang button[aria-pressed="true"]{background:var(--gold);color:#12222F}
 .theme-btn{width:40px;height:40px}
 .theme-btn .sun{display:none}
-:root[data-theme="light"] .theme-btn .sun{display:block}
-:root[data-theme="light"] .theme-btn .moon{display:none}
+:root[data-sf-theme="light"] .theme-btn .sun{display:block}
+:root[data-sf-theme="light"] .theme-btn .moon{display:none}
 
 /* ---- RTL ---- */
 [dir="rtl"] .checks li{padding-left:0;padding-right:28px}
@@ -1008,10 +1008,18 @@ p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
     set('sf-lang',l);
   }
   function applyTheme(t){
-    R.setAttribute('data-theme',t); set('sf-theme',t);
+    R.setAttribute('data-sf-theme',t);   // ours: drives the palette
+    R.setAttribute('data-theme',t);      // keeps native controls in step
+    R.style.colorScheme = t;
+    set('sf-theme',t);
   }
-  applyTheme(get('sf-theme','dark'));
+  var THEME = get('sf-theme','dark');
+  applyTheme(THEME);
   applyLang(get('sf-lang','de'));
+  // if anything outside the page rewrites data-theme, put ours back
+  new MutationObserver(function(){
+    if(R.getAttribute('data-sf-theme')!==THEME) applyTheme(THEME);
+  }).observe(R,{attributes:true,attributeFilter:['data-theme','data-sf-theme']});
 
   var lg0=document.querySelector('.lang');
   if(lg0) lg0.addEventListener('click',function(e){
@@ -1019,7 +1027,8 @@ p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
   });
   var tb0=document.getElementById('themeBtn');
   if(tb0) tb0.addEventListener('click',function(){
-    applyTheme(R.getAttribute('data-theme')==='light'?'dark':'light');
+    THEME = (THEME==='light') ? 'dark' : 'light';
+    applyTheme(THEME);
   });
 })();
 </script>
