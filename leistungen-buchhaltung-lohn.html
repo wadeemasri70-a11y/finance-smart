@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Digitale Belegverarbeitung, Datenaustausch und Sicherheit mit Agenda.">
+<meta name="description" content="Buchhaltung und Lohnabrechnung f&#252;r kleine und mittelst&#228;ndische Unternehmen in Neuss.">
 <title>Smart Finance Consulting</title>
 <style>
 /* Fonts are served from this site. Loading them from Google would send every
@@ -529,17 +529,21 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 /* long German compounds must be allowed to break, or they widen their grid track */
 body{overflow-wrap:break-word}
 h1,h2,h3,p,li,dd,dt,summary,label,.lead{overflow-wrap:break-word}
-p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
+h1,h2,h3,p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
+:root[lang="ar"] h1,:root[lang="ar"] h2,:root[lang="ar"] h3,
 :root[lang="ar"] p,:root[lang="ar"] li,:root[lang="ar"] dd,
 :root[lang="ar"] summary,:root[lang="ar"] .lead{hyphens:manual;-webkit-hyphens:manual}
-.tandem>*,.svc>*,.steps>*,.feat>*,.about>*,.loc>*{min-width:0}
+.tandem>*,.svc>*,.steps>*,.feat>*,.about>*,.loc>*,.agenda>*,.head>*{min-width:0}
 
 @media (max-width:400px){
   /* break-word does not shrink a grid track's min-content size; anywhere does */
-  .party,.card,.feat div,.values div,.loc dd,.info dd,.checks li,.who{overflow-wrap:anywhere}
+  .party,.card,.feat div,.values div,.loc dd,.info dd,.checks li,.who,
+  h1,h2,h3,p,li,dd,dt,.lead,.eyebrow,.stair span{overflow-wrap:anywhere}
   .card,.party{padding:24px 18px}
   .note-paper{padding:18px 15px}
   .loc-pin{padding:14px}
+  .voucher{padding:18px 15px 15px;font-size:.86rem}
+  .voucher .v-row{gap:8px}
   .checks li{padding-left:24px}
   [dir="rtl"] .checks li{padding-left:0;padding-right:24px}
 }
@@ -727,48 +731,50 @@ footer nav a:hover{transform:translateY(-1px)}
 <main id="start">
   <section class="phero">
     <div class="wrap">
-      <p data-i18n="k2" class="eyebrow">Digital arbeiten</p>
-      <h1 data-i18n="k111">Gut verbunden. Sorgf&#228;ltig organisiert.</h1>
-      <p data-i18n="k64" class="lead">Wir setzen auf Agenda als professionelle Softwarebasis. Gemeinsam legen wir fest, welche digitalen Prozesse f&#252;r Sie sinnvoll sind &#8211; so digital, wie es zu Ihrem Unternehmen passt.</p>
+      <p data-i18n="k1" class="eyebrow">Leistungen</p>
+      <h1 data-i18n="k151">Verl&#228;sslich im kaufm&#228;nnischen Alltag.</h1>
+      <p data-i18n="k152" class="lead">Wir unterst&#252;tzen Sie beim Buchen laufender Gesch&#228;ftsvorf&#228;lle und schaffen eine strukturierte Grundlage f&#252;r Ihre kaufm&#228;nnischen Abl&#228;ufe. Digitale Unterlagen helfen dabei, Informationen geordnet bereitzustellen und die laufende Bearbeitung zu erleichtern.</p>
     </div>
   </section>
   <section class="section">
     <div class="wrap svc-block">
       <div class="head">
-        <p data-i18n="k190" class="eyebrow">Datenaustausch</p>
-        <h2 data-i18n="k173">Wir ber&#252;cksichtigen Ihre bestehenden Systeme</h2>
-        <p data-i18n="k174" class="lead">Sie arbeiten bereits mit einer Software f&#252;r Rechnungen oder Belegverwaltung? Wir pr&#252;fen den passenden &#220;bermittlungsweg. Je nach System k&#246;nnen Dokumente oder geeignete Buchungsdaten &#252;ber eine Schnittstelle oder einen strukturierten Import in den Arbeitsprozess einbezogen werden.</p>
+        <p data-i18n="k11" class="eyebrow">Buchhaltung</p>
+        <h2 data-i18n="k26">Laufende Gesch&#228;ftsvorf&#228;lle, sauber gebucht</h2>
+        <p data-i18n="k27" class="lead">Wir buchen Ihre laufenden Gesch&#228;ftsvorf&#228;lle und schaffen eine strukturierte Grundlage f&#252;r Ihre kaufm&#228;nnischen Abl&#228;ufe.</p>
       </div>
       <ul class="checks">
-          <li data-i18n="k175">Strukturierte Buchungsdaten</li>
-          <li data-i18n="k177">Elektronische Rechnungen</li>
-          <li data-i18n="k180">Bankkonten und PayPal</li>
-          <li data-i18n="k170">Einrichtung geeigneter &#220;bermittlungs- und Importwege</li>
+          <li data-i18n="k28">Buchen laufender Gesch&#228;ftsvorf&#228;lle</li>
+          <li data-i18n="k29">Digitale Verarbeitung und Organisation von Belegen</li>
+          <li data-i18n="k153">Strukturierung des laufenden Beleg- und Informationsflusses</li>
+          <li data-i18n="k154">Aufbereitung betriebswirtschaftlicher Informationen</li>
+          <li data-i18n="k30">Abstimmung der Datenbereitstellung f&#252;r die Steuerberatung</li>
       </ul>
     </div>
   </section>
   <section class="section alt">
     <div class="wrap svc-block">
       <div class="head">
-        <p data-i18n="k191" class="eyebrow">Sicherheit</p>
-        <h2 data-i18n="k172">Sicherheit bei der digitalen Zusammenarbeit</h2>
-        <p data-i18n="k182" class="lead">F&#252;r die eingesetzten Agenda-Cloud-L&#246;sungen beschreibt der Hersteller verschl&#252;sselte Daten&#252;bertragung und Speicherung sowie den Betrieb in einem Rechenzentrum in Deutschland. Wir stimmen den digitalen Austausch und die Bereitstellung von Unterlagen auf die vereinbarte Zusammenarbeit ab.</p>
+        <p data-i18n="k12" class="eyebrow">Lohnabrechnung</p>
+        <h2 data-i18n="k31">Lohn und Gehalt mit klaren Abl&#228;ufen</h2>
+        <p data-i18n="k32" class="lead">Wir begleiten die laufende Lohn- und Gehaltsabrechnung mit gepflegten Mitarbeiterdaten und digitaler Dokumentenorganisation.</p>
       </div>
       <ul class="checks">
-          <li data-i18n="k80">Belege digital bereitstellen</li>
-          <li data-i18n="k84">Automatisierung mit Kontrolle</li>
-          <li data-i18n="k88">Nachvollziehbar archiviert</li>
-          <li data-i18n="k90">Auswertungen online</li>
+          <li data-i18n="k33">Laufende Lohn- und Gehaltsabrechnung</li>
+          <li data-i18n="k155">Pflege abrechnungsrelevanter Mitarbeiter- und Lohndaten</li>
+          <li data-i18n="k34">Lohnsteuer-Anmeldungen im gesetzlich zul&#228;ssigen Umfang</li>
+          <li data-i18n="k35">Digitale Bereitstellung der Abrechnungsunterlagen</li>
+          <li data-i18n="k156">Organisation und Optimierung wiederkehrender Lohnprozesse</li>
       </ul>
     </div>
   </section>
   <section class="section">
     <div class="wrap">
       <div class="infobox">
-        <h3 data-i18n="k184">Sie nutzen eine andere Software?</h3>
-        <p data-i18n="k192">Sprechen Sie uns an. Wir pr&#252;fen anhand Ihres Systems und einer geeigneten Beispieldatei, welche Daten und Dokumente sich &#252;bernehmen lassen.</p>
+        <h3 data-i18n="k157">Digitale Zusammenarbeit mit Agenda</h3>
+        <p data-i18n="k158">Agenda unterst&#252;tzt die Online-Bereitstellung von Lohndokumenten sowie die strukturierte Erfassung von Mitarbeiterdaten. Welche Portal-Funktionen eingesetzt werden, stimmen wir mit Ihnen anhand Ihres Bedarfs ab.</p>
       </div>
-      <p data-i18n="k183" class="note">Eine Schnittstelle zur Beleg&#252;bermittlung umfasst nicht automatisch die vollst&#228;ndige &#220;bernahme aller Buchungen, Stammdaten oder Archivbest&#228;nde. Der Umfang wird f&#252;r den jeweiligen Datenweg festgelegt.</p>
+      <p data-i18n="k159" class="note">Unsere Buchhaltungs- und Lohnleistungen erfolgen im Rahmen der gesetzlichen Befugnisse. Steuerberatung und steuerliche Vorbehaltsaufgaben &#252;bernimmt die hierf&#252;r beauftragte Steuerberatungsgesellschaft.</p>
     </div>
   </section>
   <section class="section alt">

@@ -3,9 +3,14 @@
 header, footer and translations exist in exactly one place."""
 import io, re, os, json, glob
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-R = lambda f: io.open(os.path.join(HERE, f), encoding="utf-8").read()
-W = lambda f, t: io.open(os.path.join(HERE, f), "w", encoding="utf-8").write(t)
+# GitHub Pages can only serve a branch root or /docs, so the finished pages go
+# to the repository root and only the parts they are assembled from live here.
+SRC  = os.path.dirname(os.path.abspath(__file__))
+OUT  = os.path.dirname(SRC)
+R = lambda f: io.open(os.path.join(SRC, f), encoding="utf-8").read()
+W = lambda f, t: io.open(os.path.join(OUT, f), "w", encoding="utf-8").write(t)
+# the artifact preview form is a build input for claude.ai, never a served page
+WS = lambda f, t: io.open(os.path.join(SRC, f), "w", encoding="utf-8").write(t)
 
 src   = R("body.html")
 i18n  = R("i18n.json").strip()
@@ -41,9 +46,9 @@ HOME_DESC = ("Buchhaltung, Lohnabrechnung, Controlling und Digitalisierung "
 W("index.html", page(home, HOME_DESC, False))
 # the artifact preview publishes a page WITHOUT its own doctype/head, so emit
 # that form too - with the dictionary substituted, which body.html itself lacks
-W("artifact-page.html", head + "\n\n" + symbol + "\n" + header + "\n" + home + "\n" + tail)
-built = ["index.html", "artifact-page.html"]
-for f in sorted(glob.glob(os.path.join(HERE, "pages", "*.html"))):
+WS("artifact-page.html", head + "\n\n" + symbol + "\n" + header + "\n" + home + "\n" + tail)
+built = ["index.html"]
+for f in sorted(glob.glob(os.path.join(SRC, "pages", "*.html"))):
     body = R(os.path.join("pages", os.path.basename(f)))
     d = re.search(r'<!--\s*desc:\s*(.*?)\s*-->', body)
     desc = d.group(1) if d else ""
@@ -51,7 +56,7 @@ for f in sorted(glob.glob(os.path.join(HERE, "pages", "*.html"))):
     out = os.path.basename(f)
     W(out, page(main, desc, True))
     built.append(out)
-for f in built:
-    if "__I18N_DICT__" in R(f):
-        raise SystemExit("BUILD FAILED: %s still contains the dictionary placeholder" % f)
-print("built:", ", ".join(built))
+for base, name in [(OUT, f) for f in built] + [(SRC, "artifact-page.html")]:
+    if "__I18N_DICT__" in io.open(os.path.join(base, name), encoding="utf-8").read():
+        raise SystemExit("BUILD FAILED: %s still contains the dictionary placeholder" % name)
+print("built into %s: %s" % (OUT, ", ".join(built)))

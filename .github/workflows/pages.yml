@@ -1,72 +1,44 @@
-# Builds the site and publishes it to GitHub Pages.
+# Rebuilds the pages from src/body.html and checks the result.
 #
-# Pages can only serve from a branch root or /docs, and the site lives in
-# site/ -- hence the 404. This workflow sidesteps that: it runs the build,
-# copies only the files a visitor needs into _site/, and hands that to Pages.
-# Set Settings -> Pages -> Source to "GitHub Actions" for it to take effect.
-name: Deploy site to GitHub Pages
+# The finished site sits at the repository root, so a plain
+# "Deploy from a branch -> / (root)" Pages setting serves it as-is; this
+# workflow only guards against a stale or half-built page being committed.
+name: Check the built site
 
 on:
   push:
     branches: ["**"]
-    paths: ["site/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-# Let a running deploy finish rather than cancelling it half-published.
-concurrency:
-  group: pages
-  cancel-in-progress: false
 
 jobs:
-  build:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Rebuild the pages from body.html
-        run: python3 site/build.py
+      - name: Rebuild the pages from src/body.html
+        run: python3 src/build.py
 
-      - name: Fail if the build left anything unassembled
+      - name: The committed pages must match a fresh build
+        run: |
+          if ! git diff --quiet; then
+            echo "::error::a committed page differs from what src/build.py produces"
+            git diff --stat
+            exit 1
+          fi
+          echo "every page matches a fresh build"
+
+      - name: No page may ship an unreplaced placeholder
         run: |
           set -e
-          # body.html is the template and holds the placeholder on purpose;
-          # only the pages build.py writes must come out fully assembled.
-          for f in site/*.html; do
-            case "$(basename "$f")" in body.html) continue ;; esac
+          for f in *.html; do
             if grep -q '__I18N_DICT__' "$f"; then
               echo "::error file=$f::translation placeholder was never replaced"
               exit 1
             fi
           done
-          test -s site/index.html
-
-      - name: Collect the files a visitor actually needs
-        run: |
-          set -e
-          mkdir _site
-          cp site/*.html site/*.svg _site/
-          cp -r site/fonts site/img site/video site/brand _site/
-          # build inputs and the artifact-only page are not part of the site
-          rm -f _site/body.html _site/artifact-page.html
-          # stop Pages running the files through Jekyll
-          touch _site/.nojekyll
-          du -sh _site
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          test -s index.html && test -f .nojekyll
+          echo "index.html and .nojekyll present, no placeholders"
