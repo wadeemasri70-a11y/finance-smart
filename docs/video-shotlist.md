@@ -1,31 +1,27 @@
 # Shot list — Smart Finance Consulting
-**5 shots · 15 seconds · 16:9**
+**5 shots · 15 seconds · 16:9 · text-to-video**
 
-No shot contains generated text. All wording is added in the edit, which is how
-brand films are made anyway — it is the only way the spelling is guaranteed and
-the typeface stays your own. Every prompt is complete and self-contained: paste
-it as it stands, nothing to append.
+Pure text-to-video: no image input anywhere. Every prompt is complete and
+self-contained — paste it as it stands and nothing needs to be appended.
 
-At 15 seconds there is no room for six shots without it feeling choppy, so the
-office shot is dropped; it is kept at the bottom as an optional swap. The
-handshake keeps 4 seconds because two names have to be read on screen, and a
-name needs roughly two seconds to land.
+No shot contains generated text. All wording, and the logo itself, are added in
+the edit. That is how brand films are made anyway, and with no reference image
+in play it is the only way your mark appears correctly at all.
 
-Generate each shot at whatever length your tool produces (most give 5–10 s) and
-trim to the durations below. Take the calmest stretch of the clip, not the start.
+## The look sentence
 
----
+Without an image reference, consistency across the five shots comes from one
+thing only: this sentence appearing **word for word** at the end of every
+prompt. It is already included in each prompt below. Do not paraphrase it, and
+do not change the wording between shots, or they will not cut together.
 
-## Reference files (`site/brand/`)
+```
+Deep navy background, warm gold accents, a single warm key light from camera
+left, soft falloff into deep shadow, shallow depth of field, 85mm lens, subtle
+film grain, locked-off camera, 4k.
+```
 
-| File | Where it is used |
-|------|------------------|
-| `frame-16x9.png` | first frame of shot 1, last frame of shot 5 |
-| `frame-9x16.png` | the vertical cut for Reels and Stories |
-| `logo-transparent.png` | the logo overlay on shot 5 |
-
-A logo reference transfers palette and mood only. It will not redraw your logo
-correctly, which is why the logo is an overlay, never generated.
+If your tool exposes a seed, reuse the same seed across all five shots.
 
 ## Negative prompt — use on all five shots
 
@@ -36,19 +32,21 @@ distorted anatomy, blurry, low quality, oversaturated, cartoon, plastic skin,
 camera shake, fast motion
 ```
 
+Generate each shot at whatever length your tool produces (most give 5–10 s) and
+trim to the durations below, taking the calmest stretch rather than the start.
+
 ---
 
-## Shot 1 · Logo materialises · 0:00–0:02.5 · 2.5 s
-
-Image-to-video. First frame: `frame-16x9.png`.
+## Shot 1 · The mark forms · 0:00–0:02.5 · 2.5 s
 
 ```
-The three gold bars in the centre of frame slowly extrude upward out of a dark
-navy surface while a thin luminous gold ring orbits once around them.
-Volumetric light catches the polished gold edges. Deep navy background, warm
-gold accents, a single warm key light from camera left, soft falloff into deep
-shadow, shallow depth of field, 85mm lens, subtle film grain, locked-off
-camera, premium, minimal, 4k.
+Abstract 3D animation. Three polished gold bars of increasing height rise
+slowly out of a dark navy reflective surface in the centre of frame, and a
+thin luminous gold ring sweeps once around them in a tilted orbit. Volumetric
+light catches the polished gold edges. Nothing else in frame, generous empty
+space around the shapes. Deep navy background, warm gold accents, a single warm
+key light from camera left, soft falloff into deep shadow, shallow depth of
+field, 85mm lens, subtle film grain, locked-off camera, 4k.
 ```
 
 Overlay: none.
@@ -61,9 +59,10 @@ Overlay: none.
 Abstract 3D scene, a row of tall polished gold bars of increasing height rising
 slowly from a dark navy reflective surface, a thin luminous gold ring drifting
 around them, fine golden particles floating in the air, volumetric light beams
-from camera left. Deep navy background, warm gold accents, soft falloff into
-deep shadow, shallow depth of field, 85mm lens, subtle film grain, very slow
-upward camera move, subtle, premium, minimal, 4k.
+from camera left, very slow upward camera move. Deep navy background, warm gold
+accents, a single warm key light from camera left, soft falloff into deep
+shadow, shallow depth of field, 85mm lens, subtle film grain, locked-off
+camera, 4k.
 ```
 
 Overlay: none.
@@ -75,9 +74,10 @@ Overlay: none.
 ```
 Slow cinematic push-in over a dark wooden desk. An open laptop shows soft
 out-of-focus golden charts, beside it a neat stack of documents, a fountain pen
-and a cup of coffee. Warm golden window light from camera left, deep navy and
-gold colour grade, soft falloff into deep shadow, shallow depth of field, 85mm
-lens, subtle film grain, no people, 4k.
+and a cup of coffee. No people in frame. Deep navy background, warm gold
+accents, a single warm key light from camera left, soft falloff into deep
+shadow, shallow depth of field, 85mm lens, subtle film grain, locked-off
+camera, 4k.
 ```
 
 Overlay: none.
@@ -91,11 +91,11 @@ stay intact for the whole clip.
 
 ```
 Extreme close-up, two businessmen shaking hands, only forearms and hands in
-frame. Dark navy suit sleeves, crisp white shirt cuffs, one polished gold
-cufflink catching the light. Hands already clasped, holding steady with a very
-slow subtle movement. Deep navy background, a single warm key light from camera
-left, soft falloff into deep shadow, shallow depth of field, 85mm lens, subtle
-film grain, locked-off camera, shot on Arri Alexa, 4k.
+frame, no faces. Dark navy suit sleeves, crisp white shirt cuffs, one polished
+gold cufflink catching the light. The hands are already clasped and hold steady
+with a very slow subtle movement. Deep navy background, warm gold accents, a
+single warm key light from camera left, soft falloff into deep shadow, shallow
+depth of field, 85mm lens, subtle film grain, locked-off camera, 4k.
 ```
 
 **Overlay — the two names appear here:**
@@ -116,20 +116,19 @@ dark.
 
 ## Shot 5 · End card · 0:12–0:15 · 3 s
 
-Image-to-video. Last frame: `frame-16x9.png`.
-
 ```
-Fine golden particles drift slowly through a dark navy void and gather towards
-the centre of frame, leaving the centre of the frame clear and empty.
-Volumetric light from camera left, soft falloff into deep shadow, shallow depth
-of field, subtle film grain, locked-off camera, elegant, minimal, 4k.
+Fine golden particles drift slowly through a dark navy void and gather into a
+soft glowing cluster, leaving the very centre of the frame clear and empty.
+Volumetric light from camera left. Deep navy background, warm gold accents, a
+single warm key light from camera left, soft falloff into deep shadow, shallow
+depth of field, 85mm lens, subtle film grain, locked-off camera, 4k.
 ```
 
-**Overlay:** `logo-transparent.png` centred, 34 % of frame width, fading in
-from 0:12.8 to 0:13.4 and holding to the end.
+**Overlay:** `site/brand/logo-transparent.png` centred, 34 % of frame width,
+fading in from 0:12.8 to 0:13.4 and holding to the end. This is the only place
+your logo appears, so do not skip it.
 
-There is no room for a tagline under the logo at this length — it would be on
-screen for barely a second. Leave it out, or use the 24-second cut for that.
+No tagline at this length — it would be on screen for barely a second.
 
 ---
 
@@ -161,20 +160,19 @@ meaning regardless.
 
 ## Vertical cut (9:16, for Reels)
 
-Same five shots, same order. Regenerate in 9:16 rather than cropping — cropping
-a 16:9 close-up cuts the hands in half. Use `frame-9x16.png` for shots 1 and 5,
-and move the two names in shot 4 to stacked lines, centred, instead of left and
-right.
+Same five shots, same order and the same prompts — just switch the tool to
+9:16 rather than cropping, because cropping a 16:9 close-up cuts the hands in
+half. In shot 4 stack the two names as centred lines instead of left and right.
 
-## Optional swap — office shot
+## Optional swap — office instead of desk
 
-If you would rather have the office than the desk, replace shot 3 with this at
-the same 2.5 s:
+Replace shot 3 with this, same 2.5 s:
 
 ```
 Slow dolly through a modern accounting office at golden hour. Empty desks with
 monitors, glass partitions, warm sunlight through tall windows, dust motes
-drifting in the light beams. Deep navy and gold colour grade, soft falloff into
-deep shadow, shallow depth of field, 85mm lens, subtle film grain, no people,
-4k.
+drifting in the light beams, no people in frame. Deep navy background, warm
+gold accents, a single warm key light from camera left, soft falloff into deep
+shadow, shallow depth of field, 85mm lens, subtle film grain, locked-off
+camera, 4k.
 ```
