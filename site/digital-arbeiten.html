@@ -642,6 +642,25 @@ footer nav a:hover{transform:translateY(-1px)}
 @media (max-width:720px){
   .band--right .band-inner{justify-content:start}
 }
+
+/* ============ Rechtstexte ============ */
+.legal{max-width:76ch}
+.legal h2{font-size:clamp(1.45rem,2.4vw,1.95rem);margin-top:clamp(36px,5vw,54px)}
+.legal h2:first-of-type{margin-top:0}
+.legal h3{font-size:1.14rem;margin-top:26px}
+.legal p,.legal li{color:var(--muted);margin-top:12px;font-size:1rem;line-height:1.7}
+.legal ul{margin:12px 0 0;padding-inline-start:22px;display:grid;gap:8px}
+.legal a{color:var(--teal)}
+.legal dl{display:grid;gap:0;margin-top:16px}
+.legal dl div{display:grid;grid-template-columns:230px 1fr;gap:14px;padding:12px 0;
+  border-top:1px solid var(--line)}
+.legal dt{color:var(--gold-ink);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;padding-top:3px}
+.legal dd{margin:0;color:var(--ink)}
+.legal .todo{background:var(--gold-soft);border-inline-start:3px solid var(--gold);
+  border-radius:0 4px 4px 0;padding:16px 20px;margin-top:20px;color:var(--ink);font-size:.95rem}
+.legal .stand{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);
+  font-size:.88rem;color:var(--muted)}
+@media (max-width:620px){.legal dl div{grid-template-columns:1fr;gap:3px}}
 </style>
 </head>
 <body>
@@ -733,7 +752,7 @@ footer nav a:hover{transform:translateY(-1px)}
     </div>
     <div class="foot-col">
       <nav aria-label="Rechtliches">
-        <a data-i18n="k1" href="index.html#leistungen">Leistungen</a><a data-i18n="k5" href="index.html#standort">Standort</a><a data-i18n="k6" href="index.html#kontakt">Kontakt</a><a data-i18n="k147" href="index.html#impressum">Impressum</a><a data-i18n="k148" href="index.html#datenschutz">Datenschutz</a>
+        <a data-i18n="k1" href="index.html#leistungen">Leistungen</a><a data-i18n="k5" href="index.html#standort">Standort</a><a data-i18n="k6" href="index.html#kontakt">Kontakt</a><a data-i18n="k147" href="impressum.html">Impressum</a><a data-i18n="k148" href="datenschutz.html">Datenschutz</a>
       </nav>
       <!-- TODO vor dem Livegang: echte Profil-URLs eintragen -->
       <div class="social">
