@@ -12,7 +12,7 @@
 :root{
   --navy:#132A3B; --navy-2:#1F3D54; --gold:#CCAA67; --gold-ink:#8C6E2F; --gold-soft:#F4ECDC;
   --teal:#087C80; --teal-soft:#E4F1F1;
-  --nrw-green:#3F983E; --nrw-red:#C1001F;
+  --nrw-green:#009B48; --nrw-red:#E1001A;
   --hero-ink:#F2F5F7; --hero-muted:#AFBCC6;
   color-scheme:dark;
   --bg:#0D1C27; --bg-alt:#112433; --surface:#15293A; --ink:#E7EDF1; --muted:#9EAFBC; --line:#26404F;
@@ -56,11 +56,18 @@ p{margin:0}
 
 /* header */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hero-bg);border-bottom:1px solid rgba(204,170,103,.18)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:88px}
+.top{--topH:104px}
+.top.scrolled{--topH:78px}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;
+  height:var(--topH);transition:height .28s ease}
 .logo{display:flex;align-items:center;gap:13px;flex:none;text-decoration:none;color:#fff;line-height:1}
-.logo .mark{width:clamp(36px,4.3vw,46px);height:clamp(36px,4.3vw,46px);flex:none;display:block;color:var(--gold)}
+.logo .mark{width:var(--markW,clamp(42px,5vw,54px));height:var(--markW,clamp(42px,5vw,54px));
+  flex:none;display:block;color:var(--gold);transition:width .28s ease,height .28s ease}
+.top.scrolled{--markW:clamp(34px,4.1vw,43px)}
 .wordmark{display:flex;flex-direction:column}
-.logo b{font:700 clamp(1.3rem,2.1vw,1.72rem)/1 var(--serif);letter-spacing:.13em;white-space:nowrap}
+.logo b{font:700 var(--wordSize,clamp(1.36rem,2.3vw,1.95rem))/1 var(--serif);
+  letter-spacing:.13em;white-space:nowrap;transition:font-size .28s ease}
+.top.scrolled{--wordSize:clamp(1.22rem,1.95vw,1.56rem)}
 .logo .wordmark>span{font:500 clamp(.6rem,.78vw,.68rem)/1 var(--sans);letter-spacing:.4em;
   color:var(--gold);margin-top:7px;text-transform:uppercase}
 .nav{display:flex;align-items:center;gap:clamp(10px,1.2vw,19px)}
@@ -71,7 +78,7 @@ p{margin:0}
 .menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:4px;padding:9px 12px;font:500 .9rem var(--sans)}
 @media (max-width:1240px){
   .menu-btn{display:block}
-  .nav{position:absolute;inset:88px 0 auto 0;background:var(--hero-bg);flex-direction:column;align-items:flex-start;gap:0;padding:8px var(--gutter) 22px;border-bottom:1px solid rgba(204,170,103,.25)}
+  .nav{position:absolute;inset:var(--topH) 0 auto 0;background:var(--hero-bg);flex-direction:column;align-items:flex-start;gap:0;padding:8px var(--gutter) 22px;border-bottom:1px solid rgba(204,170,103,.25)}
   .nav:not(.open){display:none}
   .nav a{padding:13px 0;width:100%;border-bottom:1px solid rgba(255,255,255,.07)}
   .nav .btn{margin-top:14px;width:auto;border:0;padding:14px 20px}
@@ -189,7 +196,10 @@ p{margin:0}
 @media (max-width:480px){.info div{grid-template-columns:1fr;gap:2px}}
 
 /* footer */
-.nrw{height:3px;background:linear-gradient(90deg,var(--nrw-green) 0 33.3%,#fff 33.3% 66.6%,var(--nrw-red) 66.6%)}
+/* Landesfarben NRW: green over white over red, stacked - a left-to-right
+   split reads as the Italian flag instead */
+.nrw{height:9px;background:linear-gradient(180deg,
+  var(--nrw-green) 0 33.333%,#fff 33.333% 66.666%,var(--nrw-red) 66.666% 100%)}
 footer{background:#0B1B26;color:#9EAFBC;font-size:.9rem;padding-block:48px 90px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px}
 footer .logo b{font-size:1.32rem}
@@ -436,23 +446,29 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 .lang button{padding:6px 8px;font-size:.7rem}
 
 @media (max-width:760px){
-  .top .wrap{height:74px;gap:10px}
+  .top{--topH:82px}
+  .top.scrolled{--topH:64px}
+  .top .wrap{gap:10px}
   .top-tools{gap:7px}
   .top-tools .wa{display:none}
-  .logo .mark{width:34px;height:34px}
+  .top{--markW:38px}
+  .top.scrolled{--markW:32px}
   .logo{gap:9px}
-  .logo b{font-size:1rem;letter-spacing:.09em}
+  .top{--wordSize:1.08rem}
+  .top.scrolled{--wordSize:.95rem}
+  .logo b{letter-spacing:.09em}
   .logo .wordmark>span{font-size:.5rem;letter-spacing:.3em;margin-top:5px}
   .lang{padding:2px}
   .lang button{padding:6px 6px;font-size:.66rem;letter-spacing:.02em}
   .top-tools .icon-btn{width:34px;height:34px}
   .menu-btn{padding:7px 10px;font-size:.8rem}
   .nav:not(.open){display:none}
-  .nav{inset:74px 0 auto 0}
+  .nav{inset:var(--topH) 0 auto 0}
 }
 @media (max-width:430px){
   .logo .wordmark>span{display:none}
-  .logo b{font-size:.95rem}
+  .top{--wordSize:1rem}
+  .top.scrolled{--wordSize:.9rem}
 }
 @media (max-width:700px){
   .mbar{grid-template-columns:1fr auto 1.3fr}
@@ -463,7 +479,8 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   /* at this width the wordmark, the language switch and the menu cannot all fit;
      the mark alone carries the brand and the hero states the name immediately */
   .logo .wordmark{display:none}
-  .logo .mark{width:38px;height:38px}
+  .top{--markW:40px}
+  .top.scrolled{--markW:34px}
 }
 @media (max-width:480px){
   .menu-btn{width:38px;height:38px;padding:0;font-size:0;display:grid;place-items:center}
@@ -528,6 +545,13 @@ p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
 .loc-credit{position:absolute;top:8px;right:10px;z-index:2;font:400 .6rem var(--sans);
   color:rgba(226,238,246,.5);letter-spacing:.02em}
 [dir="rtl"] .loc-credit{right:auto;left:10px}
+
+/* between the burger breakpoint and 1400 the header is tightest in German,
+   so the enlarged logo only applies above that */
+@media (min-width:761px) and (max-width:1400px){
+  .top{--markW:clamp(36px,4.3vw,46px);--wordSize:clamp(1.3rem,2.1vw,1.72rem);--topH:92px}
+  .top.scrolled{--markW:clamp(33px,4vw,42px);--wordSize:clamp(1.2rem,1.9vw,1.52rem);--topH:74px}
+}
 </style>
 </head>
 <body>
@@ -710,6 +734,19 @@ p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
     THEME = (THEME==='light') ? 'dark' : 'light';
     applyTheme(THEME);
   });
+})();
+</script>
+
+<script>
+(function(){
+  var top=document.querySelector('.top'); if(!top) return;
+  var on=false, q=false;
+  function upd(){ q=false;
+    var want = scrollY > 40;
+    if(want!==on){ on=want; top.classList.toggle('scrolled',on); }
+  }
+  addEventListener('scroll',function(){ if(!q){ q=true; requestAnimationFrame(upd); } },{passive:true});
+  upd();
 })();
 </script>
 
