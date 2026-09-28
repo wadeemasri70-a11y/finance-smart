@@ -30,9 +30,13 @@ def page(main, desc, sub):
         t = re.sub(r'href="#([a-z-]+)"', r'href="index.html#\1"', t)
     return DOC.format(desc=desc, head=head, symbol=symbol, header=h, main=main, tail=t)
 
-W("index.html", page(home, "Buchhaltung, Lohnabrechnung, Controlling und Digitalisierung "
-                           "für kleine und mittelständische Unternehmen in Neuss.", False))
-built = ["index.html"]
+HOME_DESC = ("Buchhaltung, Lohnabrechnung, Controlling und Digitalisierung "
+             "für kleine und mittelständische Unternehmen in Neuss.")
+W("index.html", page(home, HOME_DESC, False))
+# the artifact preview publishes a page WITHOUT its own doctype/head, so emit
+# that form too - with the dictionary substituted, which body.html itself lacks
+W("artifact-page.html", head + "\n\n" + symbol + "\n" + header + "\n" + home + "\n" + tail)
+built = ["index.html", "artifact-page.html"]
 for f in sorted(glob.glob(os.path.join(HERE, "pages", "*.html"))):
     body = R(os.path.join("pages", os.path.basename(f)))
     d = re.search(r'<!--\s*desc:\s*(.*?)\s*-->', body)
@@ -41,4 +45,7 @@ for f in sorted(glob.glob(os.path.join(HERE, "pages", "*.html"))):
     out = os.path.basename(f)
     W(out, page(main, desc, True))
     built.append(out)
+for f in built:
+    if "__I18N_DICT__" in R(f):
+        raise SystemExit("BUILD FAILED: %s still contains the dictionary placeholder" % f)
 print("built:", ", ".join(built))
