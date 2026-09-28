@@ -1,10 +1,18 @@
 # Shot list — Smart Finance Consulting
-**6 shots · 24 seconds · 16:9**
+**5 shots · 15 seconds · 16:9**
 
-No shot contains generated text. All wording is added in the edit, which is
-how brand films are made anyway — it is the only way the spelling is
-guaranteed and the typeface is your own. Every prompt below is complete and
-self-contained: paste it as it stands, nothing to append.
+No shot contains generated text. All wording is added in the edit, which is how
+brand films are made anyway — it is the only way the spelling is guaranteed and
+the typeface stays your own. Every prompt is complete and self-contained: paste
+it as it stands, nothing to append.
+
+At 15 seconds there is no room for six shots without it feeling choppy, so the
+office shot is dropped; it is kept at the bottom as an optional swap. The
+handshake keeps 4 seconds because two names have to be read on screen, and a
+name needs roughly two seconds to land.
+
+Generate each shot at whatever length your tool produces (most give 5–10 s) and
+trim to the durations below. Take the calmest stretch of the clip, not the start.
 
 ---
 
@@ -12,14 +20,14 @@ self-contained: paste it as it stands, nothing to append.
 
 | File | Where it is used |
 |------|------------------|
-| `frame-16x9.png` | first frame of shot 1, last frame of shot 6 |
+| `frame-16x9.png` | first frame of shot 1, last frame of shot 5 |
 | `frame-9x16.png` | the vertical cut for Reels and Stories |
-| `logo-transparent.png` | the logo overlay on shot 6 |
+| `logo-transparent.png` | the logo overlay on shot 5 |
 
 A logo reference transfers palette and mood only. It will not redraw your logo
 correctly, which is why the logo is an overlay, never generated.
 
-## Negative prompt — use on all six shots
+## Negative prompt — use on all five shots
 
 ```
 text, letters, words, numbers, watermark, logo, signature, subtitles,
@@ -30,7 +38,7 @@ camera shake, fast motion
 
 ---
 
-## Shot 1 · Logo materialises · 0:00–0:03
+## Shot 1 · Logo materialises · 0:00–0:02.5 · 2.5 s
 
 Image-to-video. First frame: `frame-16x9.png`.
 
@@ -47,7 +55,7 @@ Overlay: none.
 
 ---
 
-## Shot 2 · Figures rising · 0:03–0:08
+## Shot 2 · Figures rising · 0:02.5–0:05.5 · 3 s
 
 ```
 Abstract 3D scene, a row of tall polished gold bars of increasing height rising
@@ -62,63 +70,51 @@ Overlay: none.
 
 ---
 
-## Shot 3 · The work · 0:08–0:12
+## Shot 3 · The work · 0:05.5–0:08 · 2.5 s
 
 ```
 Slow cinematic push-in over a dark wooden desk. An open laptop shows soft
-out-of-focus golden charts, beside it a neat stack of documents, a fountain
-pen and a cup of coffee. Warm golden window light from camera left, deep navy
-and gold colour grade, soft falloff into deep shadow, shallow depth of field,
-85mm lens, subtle film grain, no people, 4k.
+out-of-focus golden charts, beside it a neat stack of documents, a fountain pen
+and a cup of coffee. Warm golden window light from camera left, deep navy and
+gold colour grade, soft falloff into deep shadow, shallow depth of field, 85mm
+lens, subtle film grain, no people, 4k.
 ```
 
 Overlay: none.
 
 ---
 
-## Shot 4 · The handshake · 0:12–0:17
+## Shot 4 · The handshake · 0:08–0:12 · 4 s
 
-This is the key shot. Generate at least six takes and pick the one where the
-fingers stay intact for the whole clip.
+The key shot. Generate at least six takes and keep the one where the fingers
+stay intact for the whole clip.
 
 ```
 Extreme close-up, two businessmen shaking hands, only forearms and hands in
 frame. Dark navy suit sleeves, crisp white shirt cuffs, one polished gold
 cufflink catching the light. Hands already clasped, holding steady with a very
-slow subtle movement. Deep navy background, a single warm key light from
-camera left, soft falloff into deep shadow, shallow depth of field, 85mm lens,
-subtle film grain, locked-off camera, shot on Arri Alexa, 4k.
+slow subtle movement. Deep navy background, a single warm key light from camera
+left, soft falloff into deep shadow, shallow depth of field, 85mm lens, subtle
+film grain, locked-off camera, shot on Arri Alexa, 4k.
 ```
 
-**Overlay — this is where the two names appear:**
+**Overlay — the two names appear here:**
 
 | | Left third | Right third |
 |---|---|---|
 | Text | SMART FINANCE | MANDANT |
-| In | 0:13.0 | 0:13.4 |
-| Out | 0:16.6 | 0:16.6 |
+| Fade in | 0:08.8 | 0:09.2 |
+| Fade out | 0:11.7 | 0:11.7 |
+| On screen | 2.9 s | 2.5 s |
 
-Typography for both: Cormorant Garamond SemiBold, 54 px at 1080p, letter-spacing
-0.18 em, colour `#CCAA67`, vertically centred, 12 % in from each edge. Fade in
-0.4 s, fade out 0.4 s. No box, no shadow — the background is already dark.
-
----
-
-## Shot 5 · The office · 0:17–0:20
-
-```
-Slow dolly through a modern accounting office at golden hour. Empty desks with
-monitors, glass partitions, warm sunlight through tall windows, dust motes
-drifting in the light beams. Deep navy and gold colour grade, soft falloff into
-deep shadow, shallow depth of field, 85mm lens, subtle film grain, no people,
-4k.
-```
-
-Overlay: none.
+Typography for both: Cormorant Garamond SemiBold, 54 px at 1080p,
+letter-spacing 0.18 em, colour `#CCAA67`, vertically centred, 12 % in from each
+edge. Fade in 0.4 s, fade out 0.4 s. No box, no shadow — the plate is already
+dark.
 
 ---
 
-## Shot 6 · End card · 0:20–0:24
+## Shot 5 · End card · 0:12–0:15 · 3 s
 
 Image-to-video. Last frame: `frame-16x9.png`.
 
@@ -130,36 +126,55 @@ of field, subtle film grain, locked-off camera, elegant, minimal, 4k.
 ```
 
 **Overlay:** `logo-transparent.png` centred, 34 % of frame width, fading in
-from 0:21.5 to 0:22.2 and holding to the end.
+from 0:12.8 to 0:13.4 and holding to the end.
 
-Optional line under the logo from 0:22.5: *Ihre Zahlen. Ihre Systeme.
-Intelligent verbunden.* — Outfit Regular, 26 px, colour `#AFBCC6`,
-letter-spacing 0.05 em.
+There is no room for a tagline under the logo at this length — it would be on
+screen for barely a second. Leave it out, or use the 24-second cut for that.
 
 ---
 
 ## Timeline
 
 ```
-0:00   0:03        0:08      0:12         0:17     0:20        0:24
- |  1   |     2     |    3    |     4      |   5    |     6     |
-                              ^ the two names appear here
-                                                    ^ logo overlay
+0:00      0:02.5        0:05.5     0:08              0:12        0:15
+ |   1     |      2      |    3     |        4        |     5     |
+                                      ^ names 0:08.8   ^ logo 0:12.8
 ```
 
 ## Settings
 
-- 16:9, 1920×1080 or higher, 24 or 25 fps, held consistent across all six.
+- 16:9, 1920×1080 or higher, 24 or 25 fps, the same figure on all five shots.
 - Generate each shot 4–6 times and keep the best take.
 - Cut on movement, never on a still frame.
-- Music: calm, no percussion, fade out under shot 6. Or no music at all.
+- Music: calm, no percussion, fading out under shot 5. Or none at all.
 - Export per `docs/video-option.md`, then send it to me and I will place it in
   the page, with scroll scrubbing if you want the feel the 3D section has now.
 
 ## Risk
 
-Every shot except 4 has no people and no text, so it will come out clean on the
-first or second try. Shot 4 is the only one that needs patience, because hands
-are the weak point of every video model. If six takes do not give you clean
-fingers, cut shot 4 shorter — a one second glimpse of the clasp still reads as
-a handshake, and the two names carry the meaning anyway.
+Four of the five shots have no people and no text, so they come out clean on
+the first or second try. Shot 4 is the only one needing patience, because hands
+are the weak point of every video model. If six takes do not give clean
+fingers, cut shot 4 to 3 seconds and give shot 2 the extra second — a short
+glimpse of the clasp still reads as a handshake, and the two names carry the
+meaning regardless.
+
+## Vertical cut (9:16, for Reels)
+
+Same five shots, same order. Regenerate in 9:16 rather than cropping — cropping
+a 16:9 close-up cuts the hands in half. Use `frame-9x16.png` for shots 1 and 5,
+and move the two names in shot 4 to stacked lines, centred, instead of left and
+right.
+
+## Optional swap — office shot
+
+If you would rather have the office than the desk, replace shot 3 with this at
+the same 2.5 s:
+
+```
+Slow dolly through a modern accounting office at golden hour. Empty desks with
+monitors, glass partitions, warm sunlight through tall windows, dust motes
+drifting in the light beams. Deep navy and gold colour grade, soft falloff into
+deep shadow, shallow depth of field, 85mm lens, subtle film grain, no people,
+4k.
+```
