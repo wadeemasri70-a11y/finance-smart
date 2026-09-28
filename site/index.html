@@ -59,19 +59,22 @@ p{margin:0}
 
 /* header */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hero-bg);border-bottom:1px solid rgba(204,170,103,.18)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:76px}
-.logo{display:flex;flex-direction:column;text-decoration:none;color:#fff;line-height:1}
-.logo b{font:700 1.45rem/1 var(--serif);letter-spacing:.14em}
-.logo span{font:500 .62rem/1 var(--sans);letter-spacing:.42em;color:var(--gold);margin-top:6px;text-transform:uppercase}
-.nav{display:flex;align-items:center;gap:30px}
-.nav a{color:#D5DEE4;text-decoration:none;font-size:.95rem}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:88px}
+.logo{display:flex;align-items:center;gap:13px;flex:none;text-decoration:none;color:#fff;line-height:1}
+.logo .mark{width:clamp(38px,4.4vw,48px);height:clamp(38px,4.4vw,48px);flex:none;display:block}
+.wordmark{display:flex;flex-direction:column}
+.logo b{font:700 clamp(1.3rem,2.1vw,1.72rem)/1 var(--serif);letter-spacing:.13em;white-space:nowrap}
+.logo .wordmark>span{font:500 clamp(.6rem,.78vw,.68rem)/1 var(--sans);letter-spacing:.4em;
+  color:var(--gold);margin-top:7px;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:clamp(12px,1.4vw,22px)}
+.nav a{color:#D5DEE4;text-decoration:none;font-size:.89rem;white-space:nowrap}
 .nav a:hover{color:var(--gold)}
-.nav .btn{padding:12px 18px;font-size:.92rem;color:#132A3B}
+.nav .btn{padding:12px 17px;font-size:.88rem;color:#132A3B;white-space:nowrap}
 .nav .btn:hover{color:#132A3B}
 .menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:4px;padding:9px 12px;font:500 .9rem var(--sans)}
-@media (max-width:900px){
+@media (max-width:1200px){
   .menu-btn{display:block}
-  .nav{position:absolute;inset:76px 0 auto 0;background:var(--hero-bg);flex-direction:column;align-items:flex-start;gap:0;padding:8px var(--gutter) 22px;border-bottom:1px solid rgba(204,170,103,.25)}
+  .nav{position:absolute;inset:88px 0 auto 0;background:var(--hero-bg);flex-direction:column;align-items:flex-start;gap:0;padding:8px var(--gutter) 22px;border-bottom:1px solid rgba(204,170,103,.25)}
   .nav:not(.open){display:none}
   .nav a{padding:13px 0;width:100%;border-bottom:1px solid rgba(255,255,255,.07)}
   .nav .btn{margin-top:14px;width:auto;border:0;padding:14px 20px}
@@ -192,6 +195,8 @@ p{margin:0}
 .nrw{height:3px;background:linear-gradient(90deg,var(--nrw-green) 0 33.3%,#fff 33.3% 66.6%,var(--nrw-red) 66.6%)}
 footer{background:#0B1B26;color:#9EAFBC;font-size:.9rem;padding-block:48px 90px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px}
+footer .logo b{font-size:1.32rem}
+footer .logo .mark{width:42px;height:42px}
 footer nav{display:flex;flex-wrap:wrap;gap:22px}
 footer a{color:#D5DEE4;text-decoration:none}
 footer a:hover{color:var(--gold)}
@@ -278,8 +283,8 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   background:linear-gradient(180deg,#FDFAF2,#F5EDDC);
   box-shadow:inset 0 0 0 1px rgba(158,106,38,.3),0 8px 22px rgba(80,44,10,.22);
   display:grid;gap:15px;overflow:hidden}
-.note-paper .wm{position:absolute;right:-30px;bottom:-34px;width:210px;height:210px;
-  fill:#B9832F;stroke:#B9832F;stroke-width:1.6;opacity:.09;pointer-events:none}
+.note-paper .wm{position:absolute;right:-24px;bottom:-40px;width:200px;height:200px;
+  fill:#B9832F;opacity:.09;pointer-events:none}
 .note-paper h3{position:relative;font-size:1.5rem;color:#3A2409}
 .note-paper .hint{position:relative;font-size:.85rem;color:#7A5A30;margin-top:-6px}
 .note-paper label{display:grid;gap:6px;font:500 .84rem var(--sans);color:#4A331A;position:relative}
@@ -319,23 +324,68 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   max-width:52ch;margin-inline:auto}
 @media (prefers-reduced-motion:reduce){.trust{height:auto}.trust .pin{position:relative;height:auto;
   padding-block:clamp(56px,9vw,104px)}#tcanvas{position:relative;height:min(52vh,420px)}}
+
+/* ============ Standort ============ */
+.loc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,64px);align-items:center}
+.loc-card{position:relative;border-radius:8px;overflow:hidden;background:var(--hero-bg);
+  aspect-ratio:4/3;max-width:100%;display:grid;place-items:center;
+  box-shadow:var(--shadow);border:1px solid rgba(204,170,103,.28)}
+.loc-card::before{content:"";position:absolute;inset:0;opacity:.5;
+  background:linear-gradient(rgba(204,170,103,.13) 1px,transparent 1px) 0 0/100% 34px,
+             linear-gradient(90deg,rgba(204,170,103,.13) 1px,transparent 1px) 0 0/34px 100%}
+.loc-card::after{content:"";position:absolute;left:50%;top:50%;width:132px;height:132px;
+  transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(204,170,103,.3),transparent 68%)}
+.loc-pin{position:relative;z-index:1;display:grid;justify-items:center;gap:14px;text-align:center;
+  padding:var(--gutter)}
+.loc-pin svg{width:44px;height:44px;fill:var(--gold);filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
+.loc-pin b{font:600 1.18rem/1.4 var(--serif);color:#fff}
+.loc-pin code{font:500 .76rem ui-monospace,Menlo,Consolas,monospace;color:var(--gold);
+  letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.loc-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.loc dl{display:grid;gap:0;margin:26px 0 0;font-variant-numeric:tabular-nums}
+.loc dl div{display:grid;grid-template-columns:118px 1fr;gap:16px;padding:13px 0;border-top:1px solid var(--line)}
+.loc dt{color:var(--gold-ink);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding-top:3px}
+.loc dd{margin:0}
+@media (max-width:860px){.loc{grid-template-columns:1fr}}
+@media (max-width:480px){.loc dl div{grid-template-columns:1fr;gap:2px}}
+
+/* ============ Social ============ */
+.icon-btn{display:grid;place-items:center;border-radius:50%;flex:none;
+  border:1px solid rgba(204,170,103,.5);color:var(--gold);text-decoration:none;
+  transition:background .2s,color .2s,border-color .2s}
+.icon-btn svg{width:56%;height:56%;display:block}
+.icon-btn:hover,.icon-btn:focus-visible{background:var(--gold);color:#12222F;border-color:var(--gold)}
+.nav a.wa{width:40px;height:40px;color:var(--gold);border:1px solid rgba(204,170,103,.5)}
+.nav a.wa:hover{color:#12222F}
+.social{display:flex;gap:11px;align-items:center}
+.social .icon-btn{width:42px;height:42px}
+.foot-col{display:grid;gap:18px}
+@media (max-width:1200px){
+  .nav a.wa{width:auto;height:auto;border:0;border-radius:0;justify-items:start;
+    display:flex;align-items:center;gap:10px;color:var(--gold)}
+  .nav a.wa svg{width:22px;height:22px}
+  .nav a.wa::after{content:"WhatsApp"}
+}
 </style>
 </head>
 <body>
 
-<svg width="0" height="0" aria-hidden="true" style="position:absolute"><symbol id="adler" viewBox="0 0 220 220"><g class="ea-line" fill="none" stroke-linecap="round"><path d="M103.0,88.0 Q93.7,67.2 79.1,49.8" stroke-width="1.05"/><path d="M103.5,90.0 Q90.4,67.3 71.5,49.1" stroke-width="1.26"/><path d="M103.9,92.0 Q86.5,68.0 63.1,49.7" stroke-width="1.46"/><path d="M104.3,94.0 Q82.8,70.1 55.5,53.0" stroke-width="1.64"/><path d="M104.8,96.0 Q79.0,72.8 47.8,57.6" stroke-width="1.79"/><path d="M105.2,98.0 Q76.0,76.8 42.0,64.4" stroke-width="1.91"/><path d="M105.7,100.0 Q73.1,81.2 36.7,72.1" stroke-width="1.98"/><path d="M106.2,102.0 Q71.0,86.4 33.0,81.0" stroke-width="2.00"/><path d="M106.6,104.0 Q69.4,91.9 30.3,90.5" stroke-width="1.98"/><path d="M107.0,106.0 Q68.7,97.9 29.7,100.6" stroke-width="1.91"/><path d="M107.5,108.0 Q68.7,103.9 30.2,110.7" stroke-width="1.79"/><path d="M108.0,110.0 Q70.0,110.0 33.6,120.5" stroke-width="1.64"/><path d="M108.4,112.0 Q72.0,115.8 38.1,129.5" stroke-width="1.46"/><path d="M108.8,114.0 Q75.3,121.1 45.1,137.2" stroke-width="1.26"/><path d="M109.3,116.0 Q79.2,125.8 52.9,143.5" stroke-width="1.05"/><path d="M106.0,94.0 Q95.4,71.7 75.3,57.5" stroke-width="1.10"/><path d="M106.7,96.3 Q90.1,73.8 64.6,62.2" stroke-width="1.10"/><path d="M107.4,98.6 Q84.8,77.9 55.0,70.8" stroke-width="1.10"/><path d="M108.1,100.9 Q80.2,83.8 47.5,82.4" stroke-width="1.10"/><path d="M108.8,103.2 Q76.7,91.1 42.8,96.3" stroke-width="1.10"/><path d="M109.5,105.5 Q74.9,99.7 41.8,111.4" stroke-width="1.10"/><path d="M110.2,107.8 Q75.3,108.7 45.3,126.4" stroke-width="1.10"/><g transform="translate(220,0) scale(-1,1)"><path d="M103.0,88.0 Q93.7,67.2 79.1,49.8" stroke-width="1.05"/><path d="M103.5,90.0 Q90.4,67.3 71.5,49.1" stroke-width="1.26"/><path d="M103.9,92.0 Q86.5,68.0 63.1,49.7" stroke-width="1.46"/><path d="M104.3,94.0 Q82.8,70.1 55.5,53.0" stroke-width="1.64"/><path d="M104.8,96.0 Q79.0,72.8 47.8,57.6" stroke-width="1.79"/><path d="M105.2,98.0 Q76.0,76.8 42.0,64.4" stroke-width="1.91"/><path d="M105.7,100.0 Q73.1,81.2 36.7,72.1" stroke-width="1.98"/><path d="M106.2,102.0 Q71.0,86.4 33.0,81.0" stroke-width="2.00"/><path d="M106.6,104.0 Q69.4,91.9 30.3,90.5" stroke-width="1.98"/><path d="M107.0,106.0 Q68.7,97.9 29.7,100.6" stroke-width="1.91"/><path d="M107.5,108.0 Q68.7,103.9 30.2,110.7" stroke-width="1.79"/><path d="M108.0,110.0 Q70.0,110.0 33.6,120.5" stroke-width="1.64"/><path d="M108.4,112.0 Q72.0,115.8 38.1,129.5" stroke-width="1.46"/><path d="M108.8,114.0 Q75.3,121.1 45.1,137.2" stroke-width="1.26"/><path d="M109.3,116.0 Q79.2,125.8 52.9,143.5" stroke-width="1.05"/><path d="M106.0,94.0 Q95.4,71.7 75.3,57.5" stroke-width="1.10"/><path d="M106.7,96.3 Q90.1,73.8 64.6,62.2" stroke-width="1.10"/><path d="M107.4,98.6 Q84.8,77.9 55.0,70.8" stroke-width="1.10"/><path d="M108.1,100.9 Q80.2,83.8 47.5,82.4" stroke-width="1.10"/><path d="M108.8,103.2 Q76.7,91.1 42.8,96.3" stroke-width="1.10"/><path d="M109.5,105.5 Q74.9,99.7 41.8,111.4" stroke-width="1.10"/><path d="M110.2,107.8 Q75.3,108.7 45.3,126.4" stroke-width="1.10"/></g><path d="M103.5,90 Q100.9,120 102.5,150" stroke-width="1.45"/><path d="M106.8,90 Q105.5,120 106.3,150" stroke-width="1.70"/><path d="M110.0,90 Q110.0,120 110.0,150" stroke-width="1.85"/><path d="M113.2,90 Q114.5,120 113.7,150" stroke-width="1.70"/><path d="M116.5,90 Q119.1,120 117.5,150" stroke-width="1.45"/><path d="M105.0,148.0 Q106.0,164.1 108.4,180.0" stroke-width="1.45"/><path d="M106.3,148.0 Q109.2,164.1 113.3,179.9" stroke-width="1.58"/><path d="M107.7,148.0 Q112.3,163.9 118.2,179.5" stroke-width="1.70"/><path d="M109.0,148.0 Q115.4,163.6 123.1,178.6" stroke-width="1.77"/><path d="M110.4,148.0 Q118.6,163.0 127.9,177.4" stroke-width="1.80"/><path d="M111.8,148.0 Q121.7,162.3 132.7,175.8" stroke-width="1.77"/><path d="M113.1,148.0 Q124.7,161.4 137.3,173.8" stroke-width="1.70"/><path d="M114.5,148.0 Q127.6,160.3 141.8,171.4" stroke-width="1.58"/><path d="M115.8,148.0 Q130.5,158.9 146.0,168.7" stroke-width="1.45"/></g><g class="ea-solid" stroke="none"><path d="M110,88 C100,83 95,73 97.5,63 C100,53 110,49 118,52.5 C125,56 127,64 125.5,72 L121,88 Z"/><path d="M98,61.5 L78,67.5 L99,74 Z"/><circle cx="113.5" cy="61" r="2.8" fill="#EFE0BC"/><path d="M101,148 C97.5,156 93,162 87,165.5 L90.5,169.5 C97,166 103,159.5 106.5,152 Z"/><path d="M119,148 C122.5,156 127,162 133,165.5 L129.5,169.5 C123,166 117,159.5 113.5,152 Z"/></g></symbol></svg>
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#start" aria-label="Smart Finance Consulting – Startseite"><b>SMART FINANCE</b><span>Consulting</span></a>
+    <a class="logo" href="#start" aria-label="Smart Finance Consulting &#8211; Startseite"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="mkg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2DFAF"/><stop offset=".45" stop-color="#CCAA67"/><stop offset="1" stop-color="#9C7C3C"/></linearGradient></defs><circle cx="24" cy="24" r="23.2" fill="url(#mkg)"/><g stroke="#8E7134" stroke-width=".55" opacity=".55"><line x1="43.20" y1="24.00" x2="46.30" y2="24.00"/><line x1="43.04" y1="26.51" x2="46.11" y2="26.91"/><line x1="42.55" y1="28.97" x2="45.54" y2="29.77"/><line x1="41.74" y1="31.35" x2="44.60" y2="32.53"/><line x1="40.63" y1="33.60" x2="43.31" y2="35.15"/><line x1="39.23" y1="35.69" x2="41.69" y2="37.58"/><line x1="37.58" y1="37.58" x2="39.77" y2="39.77"/><line x1="35.69" y1="39.23" x2="37.58" y2="41.69"/><line x1="33.60" y1="40.63" x2="35.15" y2="43.31"/><line x1="31.35" y1="41.74" x2="32.53" y2="44.60"/><line x1="28.97" y1="42.55" x2="29.77" y2="45.54"/><line x1="26.51" y1="43.04" x2="26.91" y2="46.11"/><line x1="24.00" y1="43.20" x2="24.00" y2="46.30"/><line x1="21.49" y1="43.04" x2="21.09" y2="46.11"/><line x1="19.03" y1="42.55" x2="18.23" y2="45.54"/><line x1="16.65" y1="41.74" x2="15.47" y2="44.60"/><line x1="14.40" y1="40.63" x2="12.85" y2="43.31"/><line x1="12.31" y1="39.23" x2="10.42" y2="41.69"/><line x1="10.42" y1="37.58" x2="8.23" y2="39.77"/><line x1="8.77" y1="35.69" x2="6.31" y2="37.58"/><line x1="7.37" y1="33.60" x2="4.69" y2="35.15"/><line x1="6.26" y1="31.35" x2="3.40" y2="32.53"/><line x1="5.45" y1="28.97" x2="2.46" y2="29.77"/><line x1="4.96" y1="26.51" x2="1.89" y2="26.91"/><line x1="4.80" y1="24.00" x2="1.70" y2="24.00"/><line x1="4.96" y1="21.49" x2="1.89" y2="21.09"/><line x1="5.45" y1="19.03" x2="2.46" y2="18.23"/><line x1="6.26" y1="16.65" x2="3.40" y2="15.47"/><line x1="7.37" y1="14.40" x2="4.69" y2="12.85"/><line x1="8.77" y1="12.31" x2="6.31" y2="10.42"/><line x1="10.42" y1="10.42" x2="8.23" y2="8.23"/><line x1="12.31" y1="8.77" x2="10.42" y2="6.31"/><line x1="14.40" y1="7.37" x2="12.85" y2="4.69"/><line x1="16.65" y1="6.26" x2="15.47" y2="3.40"/><line x1="19.03" y1="5.45" x2="18.23" y2="2.46"/><line x1="21.49" y1="4.96" x2="21.09" y2="1.89"/><line x1="24.00" y1="4.80" x2="24.00" y2="1.70"/><line x1="26.51" y1="4.96" x2="26.91" y2="1.89"/><line x1="28.97" y1="5.45" x2="29.77" y2="2.46"/><line x1="31.35" y1="6.26" x2="32.53" y2="3.40"/><line x1="33.60" y1="7.37" x2="35.15" y2="4.69"/><line x1="35.69" y1="8.77" x2="37.58" y2="6.31"/><line x1="37.58" y1="10.42" x2="39.77" y2="8.23"/><line x1="39.23" y1="12.31" x2="41.69" y2="10.42"/><line x1="40.63" y1="14.40" x2="43.31" y2="12.85"/><line x1="41.74" y1="16.65" x2="44.60" y2="15.47"/><line x1="42.55" y1="19.03" x2="45.54" y2="18.23"/><line x1="43.04" y1="21.49" x2="46.11" y2="21.09"/></g><circle cx="24" cy="24" r="18.6" fill="#132A3B"/><circle cx="24" cy="24" r="16.4" fill="none" stroke="#CCAA67" stroke-width=".7" opacity=".55"/><text x="24" y="30.6" text-anchor="middle" font-size="17.5" font-weight="700" fill="#CCAA67" font-family="Cormorant Garamond, Georgia, serif" letter-spacing=".5">SF</text></svg><span class="wordmark"><b>SMART FINANCE</b><span>Consulting</span></span></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menü</button>
     <nav class="nav" id="nav">
       <a href="#leistungen">Leistungen</a>
       <a href="#agenda">Digital arbeiten</a>
       <a href="#zusammenarbeit">Steuerberatung</a>
       <a href="#ueber-uns">Über uns</a>
+      <a href="#standort">Standort</a>
       <a href="#kontakt">Kontakt</a>
-      <a class="btn btn-gold" href="#kontakt">Erstgespräch vereinbaren</a>
+      <a class="icon-btn wa" href="https://wa.me/491629631605" target="_blank" rel="noopener"
+         aria-label="Per WhatsApp schreiben"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.1 15.07l-.3-.18-3.1.82.83-3.02-.2-.31A8.1 8.1 0 0 1 12.04 3.8zm4.66 10.2c-.25-.13-1.48-.73-1.71-.81-.23-.09-.4-.13-.56.12-.17.25-.65.81-.8.98-.14.17-.29.19-.54.06-.25-.12-1.06-.39-2.02-1.24-.75-.67-1.25-1.49-1.4-1.74-.14-.25-.01-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.6c.12.18 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.48-.6 1.69-1.19.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg></a>
+      <a class="btn btn-gold" href="#kontakt">Erstgespräch</a>
     </nav>
   </div>
 </header>
@@ -360,7 +410,7 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
           <div class="rim" aria-hidden="true"><i style="--i:0">·</i><i style="--i:1"> </i><i style="--i:2">S</i><i style="--i:3">M</i><i style="--i:4">A</i><i style="--i:5">R</i><i style="--i:6">T</i><i style="--i:7"> </i><i style="--i:8">F</i><i style="--i:9">I</i><i style="--i:10">N</i><i style="--i:11">A</i><i style="--i:12">N</i><i style="--i:13">C</i><i style="--i:14">E</i><i style="--i:15"> </i><i style="--i:16">C</i><i style="--i:17">O</i><i style="--i:18">N</i><i style="--i:19">S</i><i style="--i:20">U</i><i style="--i:21">L</i><i style="--i:22">T</i><i style="--i:23">I</i><i style="--i:24">N</i><i style="--i:25">G</i><i style="--i:26"> </i><i style="--i:27">·</i><i style="--i:28"> </i><i style="--i:29">N</i><i style="--i:30">E</i><i style="--i:31">U</i><i style="--i:32">S</i><i style="--i:33">S</i><i style="--i:34"> </i><i style="--i:35">·</i><i style="--i:36"> </i><i style="--i:37">A</i><i style="--i:38">G</i><i style="--i:39">E</i><i style="--i:40">N</i><i style="--i:41">D</i><i style="--i:42">A</i><i style="--i:43"> </i><i style="--i:44">·</i><i style="--i:45"> </i><i style="--i:46">S</i><i style="--i:47">M</i></div>
           <div class="coin-face coin-back" aria-hidden="true"></div>
           <div class="coin-face coin-front">
-            <svg viewBox="0 0 220 220" role="img" aria-label="Medaille von Smart Finance Consulting mit Adler">
+            <svg viewBox="0 0 220 220" role="img" aria-label="Medaille von Smart Finance Consulting">
               <defs>
                 <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0" stop-color="#F6E6BC"/><stop offset=".34" stop-color="#D3B273"/>
@@ -380,14 +430,21 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
               <g fill="#BC9A57" filter="url(#emb)" opacity=".95"><polygon points="110.0,15.6 112.0,21.3 118.0,21.4 113.2,25.0 114.9,30.8 110.0,27.4 105.1,30.8 106.8,25.0 102.0,21.4 108.0,21.3"/><polygon points="153.0,27.1 155.0,32.8 161.0,32.9 156.2,36.6 157.9,42.3 153.0,38.9 148.1,42.3 149.8,36.6 145.0,32.9 151.0,32.8"/><polygon points="184.5,58.6 186.5,64.3 192.5,64.4 187.7,68.0 189.4,73.8 184.5,70.4 179.5,73.8 181.3,68.0 176.5,64.4 182.5,64.3"/><polygon points="196.0,101.6 198.0,107.3 204.0,107.4 199.2,111.0 200.9,116.8 196.0,113.4 191.1,116.8 192.8,111.0 188.0,107.4 194.0,107.3"/><polygon points="184.5,144.6 186.5,150.3 192.5,150.4 187.7,154.0 189.4,159.8 184.5,156.4 179.5,159.8 181.3,154.0 176.5,150.4 182.5,150.3"/><polygon points="153.0,176.1 155.0,181.8 161.0,181.9 156.2,185.5 157.9,191.3 153.0,187.8 148.1,191.3 149.8,185.5 145.0,181.9 151.0,181.8"/><polygon points="110.0,187.6 112.0,193.3 118.0,193.4 113.2,197.0 114.9,202.8 110.0,199.4 105.1,202.8 106.8,197.0 102.0,193.4 108.0,193.3"/><polygon points="67.0,176.1 69.0,181.8 75.0,181.9 70.2,185.5 71.9,191.3 67.0,187.8 62.1,191.3 63.8,185.5 59.0,181.9 65.0,181.8"/><polygon points="35.5,144.6 37.5,150.3 43.5,150.4 38.7,154.0 40.5,159.8 35.5,156.4 30.6,159.8 32.3,154.0 27.5,150.4 33.5,150.3"/><polygon points="24.0,101.6 26.0,107.3 32.0,107.4 27.2,111.0 28.9,116.8 24.0,113.4 19.1,116.8 20.8,111.0 16.0,107.4 22.0,107.3"/><polygon points="35.5,58.6 37.5,64.3 43.5,64.4 38.7,68.0 40.5,73.8 35.5,70.4 30.6,73.8 32.3,68.0 27.5,64.4 33.5,64.3"/><polygon points="67.0,27.1 69.0,32.8 75.0,32.9 70.2,36.6 71.9,42.3 67.0,38.9 62.1,42.3 63.8,36.6 59.0,32.9 65.0,32.8"/></g>
               <circle cx="110" cy="110" r="69" fill="url(#disc)"/>
               <circle cx="110" cy="110" r="68.5" fill="none" stroke="#9C8348" stroke-width="1.2" opacity=".55"/>
-              <g transform="translate(110 110) scale(.795) translate(-110 -117)" filter="url(#emb)"
-                 stroke="#9B7E42" fill="#9B7E42" opacity=".9"><g class="ea-line" fill="none" stroke-linecap="round"><path d="M103.0,88.0 Q93.7,67.2 79.1,49.8" stroke-width="1.05"/><path d="M103.5,90.0 Q90.4,67.3 71.5,49.1" stroke-width="1.26"/><path d="M103.9,92.0 Q86.5,68.0 63.1,49.7" stroke-width="1.46"/><path d="M104.3,94.0 Q82.8,70.1 55.5,53.0" stroke-width="1.64"/><path d="M104.8,96.0 Q79.0,72.8 47.8,57.6" stroke-width="1.79"/><path d="M105.2,98.0 Q76.0,76.8 42.0,64.4" stroke-width="1.91"/><path d="M105.7,100.0 Q73.1,81.2 36.7,72.1" stroke-width="1.98"/><path d="M106.2,102.0 Q71.0,86.4 33.0,81.0" stroke-width="2.00"/><path d="M106.6,104.0 Q69.4,91.9 30.3,90.5" stroke-width="1.98"/><path d="M107.0,106.0 Q68.7,97.9 29.7,100.6" stroke-width="1.91"/><path d="M107.5,108.0 Q68.7,103.9 30.2,110.7" stroke-width="1.79"/><path d="M108.0,110.0 Q70.0,110.0 33.6,120.5" stroke-width="1.64"/><path d="M108.4,112.0 Q72.0,115.8 38.1,129.5" stroke-width="1.46"/><path d="M108.8,114.0 Q75.3,121.1 45.1,137.2" stroke-width="1.26"/><path d="M109.3,116.0 Q79.2,125.8 52.9,143.5" stroke-width="1.05"/><path d="M106.0,94.0 Q95.4,71.7 75.3,57.5" stroke-width="1.10"/><path d="M106.7,96.3 Q90.1,73.8 64.6,62.2" stroke-width="1.10"/><path d="M107.4,98.6 Q84.8,77.9 55.0,70.8" stroke-width="1.10"/><path d="M108.1,100.9 Q80.2,83.8 47.5,82.4" stroke-width="1.10"/><path d="M108.8,103.2 Q76.7,91.1 42.8,96.3" stroke-width="1.10"/><path d="M109.5,105.5 Q74.9,99.7 41.8,111.4" stroke-width="1.10"/><path d="M110.2,107.8 Q75.3,108.7 45.3,126.4" stroke-width="1.10"/><g transform="translate(220,0) scale(-1,1)"><path d="M103.0,88.0 Q93.7,67.2 79.1,49.8" stroke-width="1.05"/><path d="M103.5,90.0 Q90.4,67.3 71.5,49.1" stroke-width="1.26"/><path d="M103.9,92.0 Q86.5,68.0 63.1,49.7" stroke-width="1.46"/><path d="M104.3,94.0 Q82.8,70.1 55.5,53.0" stroke-width="1.64"/><path d="M104.8,96.0 Q79.0,72.8 47.8,57.6" stroke-width="1.79"/><path d="M105.2,98.0 Q76.0,76.8 42.0,64.4" stroke-width="1.91"/><path d="M105.7,100.0 Q73.1,81.2 36.7,72.1" stroke-width="1.98"/><path d="M106.2,102.0 Q71.0,86.4 33.0,81.0" stroke-width="2.00"/><path d="M106.6,104.0 Q69.4,91.9 30.3,90.5" stroke-width="1.98"/><path d="M107.0,106.0 Q68.7,97.9 29.7,100.6" stroke-width="1.91"/><path d="M107.5,108.0 Q68.7,103.9 30.2,110.7" stroke-width="1.79"/><path d="M108.0,110.0 Q70.0,110.0 33.6,120.5" stroke-width="1.64"/><path d="M108.4,112.0 Q72.0,115.8 38.1,129.5" stroke-width="1.46"/><path d="M108.8,114.0 Q75.3,121.1 45.1,137.2" stroke-width="1.26"/><path d="M109.3,116.0 Q79.2,125.8 52.9,143.5" stroke-width="1.05"/><path d="M106.0,94.0 Q95.4,71.7 75.3,57.5" stroke-width="1.10"/><path d="M106.7,96.3 Q90.1,73.8 64.6,62.2" stroke-width="1.10"/><path d="M107.4,98.6 Q84.8,77.9 55.0,70.8" stroke-width="1.10"/><path d="M108.1,100.9 Q80.2,83.8 47.5,82.4" stroke-width="1.10"/><path d="M108.8,103.2 Q76.7,91.1 42.8,96.3" stroke-width="1.10"/><path d="M109.5,105.5 Q74.9,99.7 41.8,111.4" stroke-width="1.10"/><path d="M110.2,107.8 Q75.3,108.7 45.3,126.4" stroke-width="1.10"/></g><path d="M103.5,90 Q100.9,120 102.5,150" stroke-width="1.45"/><path d="M106.8,90 Q105.5,120 106.3,150" stroke-width="1.70"/><path d="M110.0,90 Q110.0,120 110.0,150" stroke-width="1.85"/><path d="M113.2,90 Q114.5,120 113.7,150" stroke-width="1.70"/><path d="M116.5,90 Q119.1,120 117.5,150" stroke-width="1.45"/><path d="M105.0,148.0 Q106.0,164.1 108.4,180.0" stroke-width="1.45"/><path d="M106.3,148.0 Q109.2,164.1 113.3,179.9" stroke-width="1.58"/><path d="M107.7,148.0 Q112.3,163.9 118.2,179.5" stroke-width="1.70"/><path d="M109.0,148.0 Q115.4,163.6 123.1,178.6" stroke-width="1.77"/><path d="M110.4,148.0 Q118.6,163.0 127.9,177.4" stroke-width="1.80"/><path d="M111.8,148.0 Q121.7,162.3 132.7,175.8" stroke-width="1.77"/><path d="M113.1,148.0 Q124.7,161.4 137.3,173.8" stroke-width="1.70"/><path d="M114.5,148.0 Q127.6,160.3 141.8,171.4" stroke-width="1.58"/><path d="M115.8,148.0 Q130.5,158.9 146.0,168.7" stroke-width="1.45"/></g><g class="ea-solid" stroke="none"><path d="M110,88 C100,83 95,73 97.5,63 C100,53 110,49 118,52.5 C125,56 127,64 125.5,72 L121,88 Z"/><path d="M98,61.5 L78,67.5 L99,74 Z"/><circle cx="113.5" cy="61" r="2.8" fill="#EFE0BC"/><path d="M101,148 C97.5,156 93,162 87,165.5 L90.5,169.5 C97,166 103,159.5 106.5,152 Z"/><path d="M119,148 C122.5,156 127,162 133,165.5 L129.5,169.5 C123,166 117,159.5 113.5,152 Z"/></g></g>
-              <g filter="url(#emb)" fill="#7E6427" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif">
-                <text x="110" y="110" font-size="18.5" font-weight="700" letter-spacing="1">SMART FINANCE</text>
-                <text x="110" y="125" font-size="8" font-weight="600" letter-spacing="5.2"
+              <g filter="url(#emb)" stroke="#A98C50" stroke-width=".62" opacity=".55"><line x1="170.00" y1="110.00" x2="178.00" y2="110.00"/><line x1="169.96" y1="112.09" x2="177.96" y2="112.37"/><line x1="169.85" y1="114.19" x2="177.83" y2="114.74"/><line x1="169.67" y1="116.27" x2="177.63" y2="117.11"/><line x1="169.42" y1="118.35" x2="177.34" y2="119.46"/><line x1="169.09" y1="120.42" x2="176.97" y2="121.81"/><line x1="168.69" y1="122.47" x2="176.51" y2="124.14"/><line x1="168.22" y1="124.52" x2="175.98" y2="126.45"/><line x1="167.68" y1="126.54" x2="175.37" y2="128.74"/><line x1="167.06" y1="128.54" x2="174.67" y2="131.01"/><line x1="166.38" y1="130.52" x2="173.90" y2="133.26"/><line x1="165.63" y1="132.48" x2="173.05" y2="135.47"/><line x1="164.81" y1="134.40" x2="172.12" y2="137.66"/><line x1="163.93" y1="136.30" x2="171.12" y2="139.81"/><line x1="162.98" y1="138.17" x2="170.04" y2="141.92"/><line x1="161.96" y1="140.00" x2="168.89" y2="144.00"/><line x1="160.88" y1="141.80" x2="167.67" y2="146.03"/><line x1="159.74" y1="143.55" x2="166.37" y2="148.03"/><line x1="158.54" y1="145.27" x2="165.01" y2="149.97"/><line x1="157.28" y1="146.94" x2="163.58" y2="151.86"/><line x1="155.96" y1="148.57" x2="162.09" y2="153.71"/><line x1="154.59" y1="150.15" x2="160.53" y2="155.50"/><line x1="153.16" y1="151.68" x2="158.92" y2="157.24"/><line x1="151.68" y1="153.16" x2="157.24" y2="158.92"/><line x1="150.15" y1="154.59" x2="155.50" y2="160.53"/><line x1="148.57" y1="155.96" x2="153.71" y2="162.09"/><line x1="146.94" y1="157.28" x2="151.86" y2="163.58"/><line x1="145.27" y1="158.54" x2="149.97" y2="165.01"/><line x1="143.55" y1="159.74" x2="148.03" y2="166.37"/><line x1="141.80" y1="160.88" x2="146.03" y2="167.67"/><line x1="140.00" y1="161.96" x2="144.00" y2="168.89"/><line x1="138.17" y1="162.98" x2="141.92" y2="170.04"/><line x1="136.30" y1="163.93" x2="139.81" y2="171.12"/><line x1="134.40" y1="164.81" x2="137.66" y2="172.12"/><line x1="132.48" y1="165.63" x2="135.47" y2="173.05"/><line x1="130.52" y1="166.38" x2="133.26" y2="173.90"/><line x1="128.54" y1="167.06" x2="131.01" y2="174.67"/><line x1="126.54" y1="167.68" x2="128.74" y2="175.37"/><line x1="124.52" y1="168.22" x2="126.45" y2="175.98"/><line x1="122.47" y1="168.69" x2="124.14" y2="176.51"/><line x1="120.42" y1="169.09" x2="121.81" y2="176.97"/><line x1="118.35" y1="169.42" x2="119.46" y2="177.34"/><line x1="116.27" y1="169.67" x2="117.11" y2="177.63"/><line x1="114.19" y1="169.85" x2="114.74" y2="177.83"/><line x1="112.09" y1="169.96" x2="112.37" y2="177.96"/><line x1="110.00" y1="170.00" x2="110.00" y2="178.00"/><line x1="107.91" y1="169.96" x2="107.63" y2="177.96"/><line x1="105.81" y1="169.85" x2="105.26" y2="177.83"/><line x1="103.73" y1="169.67" x2="102.89" y2="177.63"/><line x1="101.65" y1="169.42" x2="100.54" y2="177.34"/><line x1="99.58" y1="169.09" x2="98.19" y2="176.97"/><line x1="97.53" y1="168.69" x2="95.86" y2="176.51"/><line x1="95.48" y1="168.22" x2="93.55" y2="175.98"/><line x1="93.46" y1="167.68" x2="91.26" y2="175.37"/><line x1="91.46" y1="167.06" x2="88.99" y2="174.67"/><line x1="89.48" y1="166.38" x2="86.74" y2="173.90"/><line x1="87.52" y1="165.63" x2="84.53" y2="173.05"/><line x1="85.60" y1="164.81" x2="82.34" y2="172.12"/><line x1="83.70" y1="163.93" x2="80.19" y2="171.12"/><line x1="81.83" y1="162.98" x2="78.08" y2="170.04"/><line x1="80.00" y1="161.96" x2="76.00" y2="168.89"/><line x1="78.20" y1="160.88" x2="73.97" y2="167.67"/><line x1="76.45" y1="159.74" x2="71.97" y2="166.37"/><line x1="74.73" y1="158.54" x2="70.03" y2="165.01"/><line x1="73.06" y1="157.28" x2="68.14" y2="163.58"/><line x1="71.43" y1="155.96" x2="66.29" y2="162.09"/><line x1="69.85" y1="154.59" x2="64.50" y2="160.53"/><line x1="68.32" y1="153.16" x2="62.76" y2="158.92"/><line x1="66.84" y1="151.68" x2="61.08" y2="157.24"/><line x1="65.41" y1="150.15" x2="59.47" y2="155.50"/><line x1="64.04" y1="148.57" x2="57.91" y2="153.71"/><line x1="62.72" y1="146.94" x2="56.42" y2="151.86"/><line x1="61.46" y1="145.27" x2="54.99" y2="149.97"/><line x1="60.26" y1="143.55" x2="53.63" y2="148.03"/><line x1="59.12" y1="141.80" x2="52.33" y2="146.03"/><line x1="58.04" y1="140.00" x2="51.11" y2="144.00"/><line x1="57.02" y1="138.17" x2="49.96" y2="141.92"/><line x1="56.07" y1="136.30" x2="48.88" y2="139.81"/><line x1="55.19" y1="134.40" x2="47.88" y2="137.66"/><line x1="54.37" y1="132.48" x2="46.95" y2="135.47"/><line x1="53.62" y1="130.52" x2="46.10" y2="133.26"/><line x1="52.94" y1="128.54" x2="45.33" y2="131.01"/><line x1="52.32" y1="126.54" x2="44.63" y2="128.74"/><line x1="51.78" y1="124.52" x2="44.02" y2="126.45"/><line x1="51.31" y1="122.47" x2="43.49" y2="124.14"/><line x1="50.91" y1="120.42" x2="43.03" y2="121.81"/><line x1="50.58" y1="118.35" x2="42.66" y2="119.46"/><line x1="50.33" y1="116.27" x2="42.37" y2="117.11"/><line x1="50.15" y1="114.19" x2="42.17" y2="114.74"/><line x1="50.04" y1="112.09" x2="42.04" y2="112.37"/><line x1="50.00" y1="110.00" x2="42.00" y2="110.00"/><line x1="50.04" y1="107.91" x2="42.04" y2="107.63"/><line x1="50.15" y1="105.81" x2="42.17" y2="105.26"/><line x1="50.33" y1="103.73" x2="42.37" y2="102.89"/><line x1="50.58" y1="101.65" x2="42.66" y2="100.54"/><line x1="50.91" y1="99.58" x2="43.03" y2="98.19"/><line x1="51.31" y1="97.53" x2="43.49" y2="95.86"/><line x1="51.78" y1="95.48" x2="44.02" y2="93.55"/><line x1="52.32" y1="93.46" x2="44.63" y2="91.26"/><line x1="52.94" y1="91.46" x2="45.33" y2="88.99"/><line x1="53.62" y1="89.48" x2="46.10" y2="86.74"/><line x1="54.37" y1="87.52" x2="46.95" y2="84.53"/><line x1="55.19" y1="85.60" x2="47.88" y2="82.34"/><line x1="56.07" y1="83.70" x2="48.88" y2="80.19"/><line x1="57.02" y1="81.83" x2="49.96" y2="78.08"/><line x1="58.04" y1="80.00" x2="51.11" y2="76.00"/><line x1="59.12" y1="78.20" x2="52.33" y2="73.97"/><line x1="60.26" y1="76.45" x2="53.63" y2="71.97"/><line x1="61.46" y1="74.73" x2="54.99" y2="70.03"/><line x1="62.72" y1="73.06" x2="56.42" y2="68.14"/><line x1="64.04" y1="71.43" x2="57.91" y2="66.29"/><line x1="65.41" y1="69.85" x2="59.47" y2="64.50"/><line x1="66.84" y1="68.32" x2="61.08" y2="62.76"/><line x1="68.32" y1="66.84" x2="62.76" y2="61.08"/><line x1="69.85" y1="65.41" x2="64.50" y2="59.47"/><line x1="71.43" y1="64.04" x2="66.29" y2="57.91"/><line x1="73.06" y1="62.72" x2="68.14" y2="56.42"/><line x1="74.73" y1="61.46" x2="70.03" y2="54.99"/><line x1="76.45" y1="60.26" x2="71.97" y2="53.63"/><line x1="78.20" y1="59.12" x2="73.97" y2="52.33"/><line x1="80.00" y1="58.04" x2="76.00" y2="51.11"/><line x1="81.83" y1="57.02" x2="78.08" y2="49.96"/><line x1="83.70" y1="56.07" x2="80.19" y2="48.88"/><line x1="85.60" y1="55.19" x2="82.34" y2="47.88"/><line x1="87.52" y1="54.37" x2="84.53" y2="46.95"/><line x1="89.48" y1="53.62" x2="86.74" y2="46.10"/><line x1="91.46" y1="52.94" x2="88.99" y2="45.33"/><line x1="93.46" y1="52.32" x2="91.26" y2="44.63"/><line x1="95.48" y1="51.78" x2="93.55" y2="44.02"/><line x1="97.53" y1="51.31" x2="95.86" y2="43.49"/><line x1="99.58" y1="50.91" x2="98.19" y2="43.03"/><line x1="101.65" y1="50.58" x2="100.54" y2="42.66"/><line x1="103.73" y1="50.33" x2="102.89" y2="42.37"/><line x1="105.81" y1="50.15" x2="105.26" y2="42.17"/><line x1="107.91" y1="50.04" x2="107.63" y2="42.04"/><line x1="110.00" y1="50.00" x2="110.00" y2="42.00"/><line x1="112.09" y1="50.04" x2="112.37" y2="42.04"/><line x1="114.19" y1="50.15" x2="114.74" y2="42.17"/><line x1="116.27" y1="50.33" x2="117.11" y2="42.37"/><line x1="118.35" y1="50.58" x2="119.46" y2="42.66"/><line x1="120.42" y1="50.91" x2="121.81" y2="43.03"/><line x1="122.47" y1="51.31" x2="124.14" y2="43.49"/><line x1="124.52" y1="51.78" x2="126.45" y2="44.02"/><line x1="126.54" y1="52.32" x2="128.74" y2="44.63"/><line x1="128.54" y1="52.94" x2="131.01" y2="45.33"/><line x1="130.52" y1="53.62" x2="133.26" y2="46.10"/><line x1="132.48" y1="54.37" x2="135.47" y2="46.95"/><line x1="134.40" y1="55.19" x2="137.66" y2="47.88"/><line x1="136.30" y1="56.07" x2="139.81" y2="48.88"/><line x1="138.17" y1="57.02" x2="141.92" y2="49.96"/><line x1="140.00" y1="58.04" x2="144.00" y2="51.11"/><line x1="141.80" y1="59.12" x2="146.03" y2="52.33"/><line x1="143.55" y1="60.26" x2="148.03" y2="53.63"/><line x1="145.27" y1="61.46" x2="149.97" y2="54.99"/><line x1="146.94" y1="62.72" x2="151.86" y2="56.42"/><line x1="148.57" y1="64.04" x2="153.71" y2="57.91"/><line x1="150.15" y1="65.41" x2="155.50" y2="59.47"/><line x1="151.68" y1="66.84" x2="157.24" y2="61.08"/><line x1="153.16" y1="68.32" x2="158.92" y2="62.76"/><line x1="154.59" y1="69.85" x2="160.53" y2="64.50"/><line x1="155.96" y1="71.43" x2="162.09" y2="66.29"/><line x1="157.28" y1="73.06" x2="163.58" y2="68.14"/><line x1="158.54" y1="74.73" x2="165.01" y2="70.03"/><line x1="159.74" y1="76.45" x2="166.37" y2="71.97"/><line x1="160.88" y1="78.20" x2="167.67" y2="73.97"/><line x1="161.96" y1="80.00" x2="168.89" y2="76.00"/><line x1="162.98" y1="81.83" x2="170.04" y2="78.08"/><line x1="163.93" y1="83.70" x2="171.12" y2="80.19"/><line x1="164.81" y1="85.60" x2="172.12" y2="82.34"/><line x1="165.63" y1="87.52" x2="173.05" y2="84.53"/><line x1="166.38" y1="89.48" x2="173.90" y2="86.74"/><line x1="167.06" y1="91.46" x2="174.67" y2="88.99"/><line x1="167.68" y1="93.46" x2="175.37" y2="91.26"/><line x1="168.22" y1="95.48" x2="175.98" y2="93.55"/><line x1="168.69" y1="97.53" x2="176.51" y2="95.86"/><line x1="169.09" y1="99.58" x2="176.97" y2="98.19"/><line x1="169.42" y1="101.65" x2="177.34" y2="100.54"/><line x1="169.67" y1="103.73" x2="177.63" y2="102.89"/><line x1="169.85" y1="105.81" x2="177.83" y2="105.26"/><line x1="169.96" y1="107.91" x2="177.96" y2="107.63"/></g>
+              <g fill="none" stroke="#A98C50" stroke-width=".8" opacity=".5">
+                <circle cx="110" cy="110" r="58.5"/><circle cx="110" cy="110" r="69.5"/>
+              </g>
+              <g filter="url(#emb)" fill="#7E6427" text-anchor="middle">
+                <path d="M110,65.0 L114.3,72.0 L110,79.0 L105.7,72.0 Z"/>
+                <text x="110" y="100" font-size="21" font-weight="700" letter-spacing="1"
+                      font-family="Cormorant Garamond, Georgia, serif">SMART</text>
+                <text x="110" y="123" font-size="21" font-weight="700" letter-spacing="1"
+                      font-family="Cormorant Garamond, Georgia, serif">FINANCE</text>
+                <rect x="78" y="133" width="64" height="1.1" rx=".5"/>
+                <text x="110" y="148" font-size="7.8" font-weight="600" letter-spacing="5.5"
                       font-family="Outfit, Segoe UI, sans-serif">CONSULTING</text>
-                <text x="110" y="166" font-size="9.5" font-weight="600" letter-spacing="1.6"
-                      font-family="Outfit, Segoe UI, sans-serif">2026</text>
+                <text x="110" y="163" font-size="7.4" font-weight="600" letter-spacing="1.4"
+                      font-family="Outfit, Segoe UI, sans-serif" opacity=".85">NEUSS &#183; 2026</text>
               </g>
             </svg>
           </div>
@@ -586,6 +643,35 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   </div>
 </section>
 
+<section class="section" id="standort">
+  <div class="wrap loc">
+    <div>
+      <p class="eyebrow">Standort</p>
+      <h2 style="margin-top:18px">Mitten in Neuss.</h2>
+      <p class="lead" style="margin-top:18px">Sie finden uns in der Mainstra&#223;e. Termine nach Vereinbarung &#8211;
+        melden Sie sich gern vorab telefonisch oder per E-Mail.</p>
+      <dl>
+        <div><dt>Adresse</dt><dd>Mainstra&#223;e 26&#8211;30<br>41469 Neuss</dd></div>
+        <div><dt>Telefon</dt><dd>+49 2131 5398501</dd></div>
+        <div><dt>Termine</dt><dd>Nach Vereinbarung</dd></div>
+      </dl>
+      <div class="loc-actions">
+        <a class="btn btn-navy arrow" href="https://maps.app.goo.gl/UEfZgx9Jsora8MZEA" target="_blank" rel="noopener">In Google Maps &#246;ffnen</a>
+        <a class="btn" style="border-color:var(--line);color:var(--ink)" href="https://www.google.com/maps/dir/?api=1&amp;destination=Smart+Finance+Consulting%2C+Mainstra%C3%9Fe+26-30%2C+41469+Neuss"
+           target="_blank" rel="noopener">Route planen</a>
+      </div>
+    </div>
+    <a class="loc-card" href="https://maps.app.goo.gl/UEfZgx9Jsora8MZEA" target="_blank" rel="noopener"
+       aria-label="Standort Mainstra&#223;e 26-30, 41469 Neuss in Google Maps &#246;ffnen">
+      <span class="loc-pin">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        <b>Smart Finance Consulting<br>Mainstra&#223;e 26&#8211;30, 41469 Neuss</b>
+        <code>51.158264&#176; N &#183; 6.736446&#176; E</code>
+      </span>
+    </a>
+  </div>
+</section>
+
 <section class="section contact" id="kontakt">
   <div class="wrap">
     <div>
@@ -616,7 +702,7 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
         <div class="note-value"><b>50</b><i>MIN</i></div>
       </header>
       <div class="note-paper">
-        <svg class="wm" viewBox="0 0 220 220" aria-hidden="true"><use href="#adler"/></svg>
+        <svg class="wm" viewBox="0 0 220 220" aria-hidden="true"><text x="110" y="150" text-anchor="middle" font-size="128" font-weight="700" font-family="Cormorant Garamond, Georgia, serif">SF</text></svg>
         <h3>Erstgespr&#228;ch anfragen</h3>
         <p class="hint">Wir melden uns innerhalb eines Werktags bei Ihnen.</p>
         <div class="two">
@@ -654,12 +740,20 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 <footer>
   <div class="wrap">
     <div>
-      <a class="logo" href="#start"><b>SMART FINANCE</b><span>Consulting</span></a>
+      <a class="logo" href="#start"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="mkg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2DFAF"/><stop offset=".45" stop-color="#CCAA67"/><stop offset="1" stop-color="#9C7C3C"/></linearGradient></defs><circle cx="24" cy="24" r="23.2" fill="url(#mkg)"/><g stroke="#8E7134" stroke-width=".55" opacity=".55"><line x1="43.20" y1="24.00" x2="46.30" y2="24.00"/><line x1="43.04" y1="26.51" x2="46.11" y2="26.91"/><line x1="42.55" y1="28.97" x2="45.54" y2="29.77"/><line x1="41.74" y1="31.35" x2="44.60" y2="32.53"/><line x1="40.63" y1="33.60" x2="43.31" y2="35.15"/><line x1="39.23" y1="35.69" x2="41.69" y2="37.58"/><line x1="37.58" y1="37.58" x2="39.77" y2="39.77"/><line x1="35.69" y1="39.23" x2="37.58" y2="41.69"/><line x1="33.60" y1="40.63" x2="35.15" y2="43.31"/><line x1="31.35" y1="41.74" x2="32.53" y2="44.60"/><line x1="28.97" y1="42.55" x2="29.77" y2="45.54"/><line x1="26.51" y1="43.04" x2="26.91" y2="46.11"/><line x1="24.00" y1="43.20" x2="24.00" y2="46.30"/><line x1="21.49" y1="43.04" x2="21.09" y2="46.11"/><line x1="19.03" y1="42.55" x2="18.23" y2="45.54"/><line x1="16.65" y1="41.74" x2="15.47" y2="44.60"/><line x1="14.40" y1="40.63" x2="12.85" y2="43.31"/><line x1="12.31" y1="39.23" x2="10.42" y2="41.69"/><line x1="10.42" y1="37.58" x2="8.23" y2="39.77"/><line x1="8.77" y1="35.69" x2="6.31" y2="37.58"/><line x1="7.37" y1="33.60" x2="4.69" y2="35.15"/><line x1="6.26" y1="31.35" x2="3.40" y2="32.53"/><line x1="5.45" y1="28.97" x2="2.46" y2="29.77"/><line x1="4.96" y1="26.51" x2="1.89" y2="26.91"/><line x1="4.80" y1="24.00" x2="1.70" y2="24.00"/><line x1="4.96" y1="21.49" x2="1.89" y2="21.09"/><line x1="5.45" y1="19.03" x2="2.46" y2="18.23"/><line x1="6.26" y1="16.65" x2="3.40" y2="15.47"/><line x1="7.37" y1="14.40" x2="4.69" y2="12.85"/><line x1="8.77" y1="12.31" x2="6.31" y2="10.42"/><line x1="10.42" y1="10.42" x2="8.23" y2="8.23"/><line x1="12.31" y1="8.77" x2="10.42" y2="6.31"/><line x1="14.40" y1="7.37" x2="12.85" y2="4.69"/><line x1="16.65" y1="6.26" x2="15.47" y2="3.40"/><line x1="19.03" y1="5.45" x2="18.23" y2="2.46"/><line x1="21.49" y1="4.96" x2="21.09" y2="1.89"/><line x1="24.00" y1="4.80" x2="24.00" y2="1.70"/><line x1="26.51" y1="4.96" x2="26.91" y2="1.89"/><line x1="28.97" y1="5.45" x2="29.77" y2="2.46"/><line x1="31.35" y1="6.26" x2="32.53" y2="3.40"/><line x1="33.60" y1="7.37" x2="35.15" y2="4.69"/><line x1="35.69" y1="8.77" x2="37.58" y2="6.31"/><line x1="37.58" y1="10.42" x2="39.77" y2="8.23"/><line x1="39.23" y1="12.31" x2="41.69" y2="10.42"/><line x1="40.63" y1="14.40" x2="43.31" y2="12.85"/><line x1="41.74" y1="16.65" x2="44.60" y2="15.47"/><line x1="42.55" y1="19.03" x2="45.54" y2="18.23"/><line x1="43.04" y1="21.49" x2="46.11" y2="21.09"/></g><circle cx="24" cy="24" r="18.6" fill="#132A3B"/><circle cx="24" cy="24" r="16.4" fill="none" stroke="#CCAA67" stroke-width=".7" opacity=".55"/><text x="24" y="30.6" text-anchor="middle" font-size="17.5" font-weight="700" fill="#CCAA67" font-family="Cormorant Garamond, Georgia, serif" letter-spacing=".5">SF</text></svg><span class="wordmark"><b>SMART FINANCE</b><span>Consulting</span></span></a>
       <small>Kaufmännische Betreuung, Beratung und Digitalisierung in Neuss. Steuerliche Leistungen erbringt die rechtlich eigenständige Partner-Steuerberatungsgesellschaft.</small>
     </div>
-    <nav aria-label="Rechtliches">
-      <a href="#leistungen">Leistungen</a><a href="#kontakt">Kontakt</a><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a>
-    </nav>
+    <div class="foot-col">
+      <nav aria-label="Rechtliches">
+        <a href="#leistungen">Leistungen</a><a href="#standort">Standort</a><a href="#kontakt">Kontakt</a><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a>
+      </nav>
+      <!-- TODO vor dem Livegang: echte Profil-URLs eintragen -->
+      <div class="social">
+        <a class="icon-btn" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="6.9" r="1.25" fill="currentColor"/></svg></a>
+        <a class="icon-btn" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.3-.04-1.3-.13-2.47-.13-2.45 0-4.13 1.5-4.13 4.24V9.9H7.4V13h2.7v8z"/></svg></a>
+        <a class="icon-btn" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3.2 9.2h3.6V21H3.2zM9.6 9.2h3.45v1.6h.05c.5-.9 1.78-1.9 3.7-1.9 3.95 0 4.7 2.45 4.7 5.65V21h-3.6v-5.5c0-1.32-.03-3.02-1.87-3.02-1.87 0-2.83 1.42-2.83 2.92V21H9.6z"/></svg></a>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -677,11 +771,50 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   var rnd; try{ rnd=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true}); }catch(e){ return; }
   rnd.setPixelRatio(Math.min(devicePixelRatio,2));
   rnd.outputEncoding=THREE.sRGBEncoding;
-  rnd.toneMapping=THREE.ACESFilmicToneMapping; rnd.toneMappingExposure=.82;
+  rnd.toneMapping=THREE.ACESFilmicToneMapping; rnd.toneMappingExposure=.86;
+  rnd.shadowMap.enabled=true; rnd.shadowMap.type=THREE.PCFSoftShadowMap;
 
   var scene=new THREE.Scene();
-  var cam=new THREE.PerspectiveCamera(38,1,.1,100); cam.position.set(0,0,5.4);
+  var cam=new THREE.PerspectiveCamera(38,1,.1,100); cam.position.set(0,0,7.3);
 
+  // ---------- procedural skin and cloth maps ----------
+  function noiseTex(rep,amp){
+    var c=document.createElement('canvas'); c.width=c.height=256;
+    var x=c.getContext('2d'), d=x.createImageData(256,256);
+    for(var i=0;i<d.data.length;i+=4){
+      var v=128+(Math.random()-.5)*amp;
+      d.data[i]=d.data[i+1]=d.data[i+2]=v; d.data[i+3]=255;
+    }
+    x.putImageData(d,0,0);
+    var t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.repeat.set(rep,rep);
+    return t;
+  }
+  function skinTex(){                                  // mottled skin, never a flat fill
+    var c=document.createElement('canvas'); c.width=c.height=256;
+    var x=c.getContext('2d');
+    x.fillStyle='#9c6347'; x.fillRect(0,0,256,256);
+    for(var i=0;i<420;i++){
+      var r=6+Math.random()*26;
+      x.fillStyle=['rgba(138,82,56,.16)','rgba(176,114,84,.16)','rgba(150,70,58,.13)'][i%3];
+      x.beginPath(); x.arc(Math.random()*256,Math.random()*256,r,0,7); x.fill();
+    }
+    var t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.repeat.set(2,2);
+    return t;
+  }
+  var skin=new THREE.MeshPhysicalMaterial({
+    map:skinTex(), bumpMap:noiseTex(9,54), bumpScale:.0045,
+    roughness:.66, clearcoat:.24, clearcoatRoughness:.72
+  });
+  skin.envMapIntensity=.62;
+  var nailMat=new THREE.MeshPhysicalMaterial({color:0xc2917a,roughness:.28,clearcoat:.7,clearcoatRoughness:.2});
+  var fabric=new THREE.MeshStandardMaterial({color:0x0c1824,roughness:.95,metalness:0,
+    bumpMap:noiseTex(26,70), bumpScale:.006});
+  fabric.envMapIntensity=.22;
+  var shirt=new THREE.MeshStandardMaterial({color:0xd6d2c6,roughness:.86,bumpMap:noiseTex(30,40),bumpScale:.003});
+  shirt.envMapIntensity=.45;
+  var gold=new THREE.MeshStandardMaterial({color:0xccaa67,metalness:1,roughness:.26});
+
+  // ---------- environment ----------
   var ec=document.createElement('canvas'); ec.width=64; ec.height=32;
   var ex=ec.getContext('2d'), gr=ex.createLinearGradient(0,0,0,32);
   gr.addColorStop(0,'#cdb590'); gr.addColorStop(.45,'#3d4d5c'); gr.addColorStop(1,'#0c1720');
@@ -690,45 +823,88 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   var et=new THREE.CanvasTexture(ec); et.mapping=THREE.EquirectangularReflectionMapping;
   var pm=new THREE.PMREMGenerator(rnd); scene.environment=pm.fromEquirectangular(et).texture;
 
-  var key=new THREE.DirectionalLight(0xffe4bb,1.5); key.position.set(-3.6,4,5); scene.add(key);
-  var rim=new THREE.DirectionalLight(0xccaa67,1.35); rim.position.set(4.6,1.4,-3.2); scene.add(rim);
-  var fil=new THREE.DirectionalLight(0x7fa6c4,.22); fil.position.set(2.4,-2.6,3.4); scene.add(fil);
-  scene.add(new THREE.AmbientLight(0x16283a,.3));
+  var key=new THREE.DirectionalLight(0xffe4bb,1.55); key.position.set(-3.4,4.2,4.6);
+  key.castShadow=true; key.shadow.mapSize.set(1024,1024); key.shadow.bias=-.0016;
+  var sc=key.shadow.camera; sc.left=-2.6; sc.right=2.6; sc.top=2.6; sc.bottom=-2.6; sc.near=.5; sc.far=16;
+  scene.add(key);
+  var rim=new THREE.DirectionalLight(0xccaa67,1.4); rim.position.set(4.6,1.4,-3.2); scene.add(rim);
+  var fil=new THREE.DirectionalLight(0x7fa6c4,.24); fil.position.set(2.4,-2.6,3.4); scene.add(fil);
+  scene.add(new THREE.HemisphereLight(0x9db6c9,0x18242f,.55));
 
-  var skin  =new THREE.MeshPhysicalMaterial({color:0x8a553a,roughness:.74,clearcoat:.18,clearcoatRoughness:.75});
-  skin.envMapIntensity=.7;
-  var fabric=new THREE.MeshStandardMaterial({color:0x0c1824,roughness:.97,metalness:0});
-  fabric.envMapIntensity=.22;
-  var shirt =new THREE.MeshStandardMaterial({color:0xd6d2c6,roughness:.88});
-  shirt.envMapIntensity=.45;
-  var gold  =new THREE.MeshStandardMaterial({color:0xccaa67,metalness:1,roughness:.26});
-
-  function tube(pts,r){
-    var c=new THREE.CatmullRomCurve3(pts.map(function(q){return new THREE.Vector3(q[0],q[1],q[2]);}));
-    return new THREE.Mesh(new THREE.TubeGeometry(c,30,r,14,false),skin);
+  // ---------- geometry helper: a tube whose radius varies along its length ----------
+  function taperTube(pts,rFn,seg,rad){
+    var curve=new THREE.CatmullRomCurve3(pts.map(function(q){return new THREE.Vector3(q[0],q[1],q[2]);}));
+    var fr=curve.computeFrenetFrames(seg,false), pos=[],nor=[],uv=[],idx=[];
+    for(var i=0;i<=seg;i++){
+      var t=i/seg, P=curve.getPointAt(t), N=fr.normals[i], B=fr.binormals[i], r=rFn(t);
+      for(var j=0;j<=rad;j++){
+        var a=j/rad*Math.PI*2, cx=Math.cos(a), sy=Math.sin(a);
+        var nx=N.x*cx+B.x*sy, ny=N.y*cx+B.y*sy, nz=N.z*cx+B.z*sy;
+        pos.push(P.x+nx*r,P.y+ny*r,P.z+nz*r); nor.push(nx,ny,nz); uv.push(j/rad,t);
+      }
+    }
+    for(var i2=0;i2<seg;i2++) for(var j2=0;j2<rad;j2++){
+      var a2=i2*(rad+1)+j2, b2=a2+rad+1;
+      idx.push(a2,a2+1,b2, b2,a2+1,b2+1);
+    }
+    var g=new THREE.BufferGeometry();
+    g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
+    g.setAttribute('normal',new THREE.Float32BufferAttribute(nor,3));
+    g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));
+    g.setIndex(idx); g.computeVertexNormals();
+    return {geo:g,curve:curve};
   }
+  // fingers taper toward the tip, swell at the two joints and round off at the end
+  function fingerR(base){
+    return function(t){
+      var taper=base*(1-.34*t);
+      var joint=1+.115*Math.exp(-Math.pow((t-.31)/.10,2))+.09*Math.exp(-Math.pow((t-.63)/.085,2));
+      var tip=t>.88?.62+.38*Math.sqrt(Math.max(0,1-Math.pow((t-.88)/.12,2))):1;
+      var root=t<.06?.86+.14*(t/.06):1;
+      return taper*joint*tip*root;
+    };
+  }
+  function addMesh(g,m,parent){
+    var me=new THREE.Mesh(g,m); me.castShadow=true; me.receiveShadow=true; parent.add(me); return me;
+  }
+
   var root=new THREE.Group(); scene.add(root);
-
-  // ---- clasped hands: forearm-sized mass, fingers wrapped across the front ----
   var clasp=new THREE.Group(); clasp.rotation.z=-.10; root.add(clasp);
-  var palm=new THREE.Mesh(new THREE.SphereGeometry(1,40,28),skin);
-  palm.scale.set(.56,.70,.44); clasp.add(palm);
-  [-1,1].forEach(function(d){
-    var w=new THREE.Mesh(new THREE.CylinderGeometry(.30,.38,.55,28),skin);
-    w.rotation.z=Math.PI/2; w.position.x=d*.62; clasp.add(w);
-  });
-  var fy=[.33,.12,-.09,-.30], fr=[.108,.104,.098,.082];
-  for(var i=0;i<4;i++){
-    clasp.add(tube([[-.52,fy[i]+.06,.10],[-.16,fy[i]+.01,.42],[.22,fy[i]-.04,.39],[.50,fy[i]-.12,.08]],fr[i]));
-    var k=new THREE.Mesh(new THREE.SphereGeometry(fr[i]*1.15,14,10),skin);
-    k.position.set(-.34,fy[i]+.04,.30); clasp.add(k);
-  }
-  clasp.add(tube([[.46,.40,.20],[.08,.55,.26],[-.26,.50,.13]],.115));     // thumb across the top
-  for(var j=0;j<3;j++){
-    var yb=.22-j*.23;
-    clasp.add(tube([[-.48,yb+.05,-.12],[-.14,yb,-.38],[.22,yb-.05,-.35],[.48,yb-.11,-.10]],.088));
-  }
 
+  // joined palms
+  var palm=new THREE.Mesh(new THREE.SphereGeometry(1,48,32),skin);
+  palm.scale.set(.56,.70,.44); palm.castShadow=palm.receiveShadow=true; clasp.add(palm);
+  [-1,1].forEach(function(d){
+    var w=new THREE.Mesh(new THREE.CylinderGeometry(.30,.38,.55,32),skin);
+    w.rotation.z=Math.PI/2; w.position.x=d*.62; w.castShadow=w.receiveShadow=true; clasp.add(w);
+  });
+
+  // four fingers wrapped across the front, each its own length and thickness
+  var FING=[{y:.335,r:.107,z:.445,e:.46},{y:.125,r:.105,z:.465,e:.50},
+            {y:-.085,r:.099,z:.445,e:.45},{y:-.285,r:.084,z:.405,e:.38}];
+  FING.forEach(function(f){
+    var pts=[[-.53,f.y+.075,.10],[-.21,f.y+.02,f.z],[.17,f.y-.045,f.z*.93],[f.e,f.y-.145,.10]];
+    var tt=taperTube(pts,fingerR(f.r),40,18);
+    addMesh(tt.geo,skin,clasp);
+    var P=tt.curve.getPointAt(.9), out=P.clone().normalize();       // fingernail on the outer face
+    out.y=0; out.normalize();
+    var n=new THREE.Mesh(new THREE.SphereGeometry(f.r*.92,16,12),nailMat);
+    n.scale.set(.74,.92,.20);
+    n.position.copy(P).addScaledVector(out,f.r*.40);
+    n.lookAt(P.clone().addScaledVector(out,2));
+    n.castShadow=false; n.receiveShadow=true; clasp.add(n);
+  });
+  // thumb across the top, thicker and shorter
+  var th=taperTube([[.47,.395,.19],[.09,.555,.26],[-.27,.505,.12]],fingerR(.126),34,18);
+  addMesh(th.geo,skin,clasp);
+  // far hand: fingers curling over the back edge
+  [.225,-.005,-.235].forEach(function(yb){
+    var t2=taperTube([[-.49,yb+.05,-.12],[-.15,yb,-.40],[.21,yb-.05,-.37],[.47,yb-.12,-.10]],
+                     fingerR(.089),32,16);
+    addMesh(t2.geo,skin,clasp);
+  });
+
+  // ---------- sleeves ----------
   function label(txt){
     var c=document.createElement('canvas'); c.width=1024; c.height=200;
     var x=c.getContext('2d');
@@ -740,11 +916,12 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   var labels=[];
   function arm(dir,txt){
     var g=new THREE.Group(), L=3.6, R=.44;
-    var sl=new THREE.Mesh(new THREE.CylinderGeometry(.58,R,L,40),fabric);
-    sl.rotation.z=-dir*Math.PI/2; sl.position.x=dir*(1.02+L/2); g.add(sl);
-    var cf=new THREE.Mesh(new THREE.CylinderGeometry(.455,.445,.26,32),shirt);
-    cf.rotation.z=Math.PI/2; cf.position.x=dir*.97; g.add(cf);
-    var cl=new THREE.Mesh(new THREE.CylinderGeometry(.062,.062,.05,16),gold);
+    var sl=new THREE.Mesh(new THREE.CylinderGeometry(.58,R,L,44,1),fabric);
+    sl.rotation.z=-dir*Math.PI/2; sl.position.x=dir*(1.02+L/2);
+    sl.castShadow=sl.receiveShadow=true; g.add(sl);
+    var cf=new THREE.Mesh(new THREE.CylinderGeometry(.455,.445,.26,36),shirt);
+    cf.rotation.z=Math.PI/2; cf.position.x=dir*.97; cf.castShadow=cf.receiveShadow=true; g.add(cf);
+    var cl=new THREE.Mesh(new THREE.CylinderGeometry(.062,.062,.05,18),gold);
     cl.rotation.x=Math.PI/2; cl.position.set(dir*.97,-.34,.30); g.add(cl);
     var pg=new THREE.PlaneGeometry(1.9,.62,28,10), po=pg.attributes.position, SR=.50;
     for(var i=0;i<po.count;i++){
