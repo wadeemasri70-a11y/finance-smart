@@ -27,7 +27,7 @@ click-out card, which sends nothing to Google until the visitor clicks.
 
 | Item | Status |
 |------|--------|
-| Logo file (SVG or PNG) | **missing** – neither PDF contains one, so the site uses an "SF" mark built from the coin motif |
+| Logo file | **done** – traced from the supplied JPG to `site/logo-smart-finance.svg` (plus a navy-background version). The mark is used in the header, footer, coin and banknote watermark. |
 | Instagram / Facebook / LinkedIn URLs | **missing** – the footer icons currently point at `#` |
 | Photos (owner, office) | **missing** – do not take these from the Google Maps listing unless you own them |
 | Owner's name | placeholder in the texts |
@@ -46,3 +46,19 @@ Beatrix Antiqua and Garet from the business card are not free web fonts.
 The site uses Cormorant Garamond (headings) and Outfit (body) from Google
 Fonts. To keep the exact card fonts, a web licence has to be bought and the
 files self-hosted.
+
+## 5. The logo
+
+The only logo supplied was a JPG. It has been vectorised by tracing the
+pixels, so it is now resolution-independent:
+
+- `site/logo-smart-finance.svg` — full lockup, transparent background
+- `site/logo-smart-finance-navy.svg` — same on the navy ground
+
+Both are exact traces, including the wordmark, so the original typefaces are
+preserved as outlines and no font licence is needed to display them. The mark
+alone is inlined in the page as the `#sfmark` symbol.
+
+If you ever get the original vector file from whoever designed the logo,
+prefer that one — a trace is faithful but its curves are polygons, not the
+designer's original Béziers.

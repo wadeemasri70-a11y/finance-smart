@@ -61,7 +61,7 @@ p{margin:0}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hero-bg);border-bottom:1px solid rgba(204,170,103,.18)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:88px}
 .logo{display:flex;align-items:center;gap:13px;flex:none;text-decoration:none;color:#fff;line-height:1}
-.logo .mark{width:clamp(38px,4.4vw,48px);height:clamp(38px,4.4vw,48px);flex:none;display:block}
+.logo .mark{width:clamp(36px,4.3vw,46px);height:clamp(36px,4.3vw,46px);flex:none;display:block;color:var(--gold)}
 .wordmark{display:flex;flex-direction:column}
 .logo b{font:700 clamp(1.3rem,2.1vw,1.72rem)/1 var(--serif);letter-spacing:.13em;white-space:nowrap}
 .logo .wordmark>span{font:500 clamp(.6rem,.78vw,.68rem)/1 var(--sans);letter-spacing:.4em;
@@ -196,7 +196,7 @@ p{margin:0}
 footer{background:#0B1B26;color:#9EAFBC;font-size:.9rem;padding-block:48px 90px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px}
 footer .logo b{font-size:1.32rem}
-footer .logo .mark{width:42px;height:42px}
+footer .logo .mark{width:44px;height:44px}
 footer nav{display:flex;flex-wrap:wrap;gap:22px}
 footer a{color:#D5DEE4;text-decoration:none}
 footer a:hover{color:var(--gold)}
@@ -283,8 +283,8 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   background:linear-gradient(180deg,#FDFAF2,#F5EDDC);
   box-shadow:inset 0 0 0 1px rgba(158,106,38,.3),0 8px 22px rgba(80,44,10,.22);
   display:grid;gap:15px;overflow:hidden}
-.note-paper .wm{position:absolute;right:-24px;bottom:-40px;width:200px;height:200px;
-  fill:#B9832F;opacity:.09;pointer-events:none}
+.note-paper .wm{position:absolute;right:-18px;bottom:-26px;width:185px;height:185px;
+  color:#B9832F;opacity:.09;pointer-events:none}
 .note-paper h3{position:relative;font-size:1.5rem;color:#3A2409}
 .note-paper .hint{position:relative;font-size:.85rem;color:#7A5A30;margin-top:-6px}
 .note-paper label{display:grid;gap:6px;font:500 .84rem var(--sans);color:#4A331A;position:relative}
@@ -371,10 +371,12 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 </head>
 <body>
 
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><symbol id="sfmark" viewBox="0 0 120 120"><g fill="currentColor" fill-rule="evenodd"><path d="M68.44,3.89L68.11,4.22L68.11,38.85L75.67,39.18L79.40,40.05L80.71,40.05L81.04,39.73L81.04,4.22L80.49,3.89Z M50.90,15.51L50.36,16.05L50.36,20.66L51.01,40.38L51.56,40.93L52.22,40.93L55.73,39.84L60.99,39.18L62.52,39.18L63.29,38.63L63.29,16.27L62.74,15.73L61.64,15.51Z M32.93,29.32L32.38,29.86L32.38,47.84L32.93,48.16L33.59,47.95L36.66,46.19L39.95,45.10L40.93,44.33L44.11,43.34L45.32,42.36L45.32,29.64L44.77,29.32Z M66.90,42.03L59.23,42.68L49.81,44.66L48.71,45.32L45.21,46.19L39.95,48.60L38.63,48.82L28.99,54.30L21.53,60.44L19.01,63.18L19.01,63.62L16.38,66.68L13.75,71.51L12.22,75.67L11.34,80.49L11.34,84.00L12.22,89.26L14.85,95.18L16.60,97.81L18.03,98.58L16.60,93.42L16.38,87.73L17.04,84.22L19.23,78.74L22.52,73.70L26.14,69.86L26.79,69.64L30.08,66.58L36.88,62.19L38.19,61.75L43.01,59.34L48.27,57.59L49.15,56.93L50.25,56.93L54.41,55.40L59.67,54.52L61.42,53.86L67.34,53.21L77.86,53.21L81.81,53.64L90.58,56.05L95.84,58.68L96.27,59.34L98.68,60.66L102.30,64.27L104.71,68.00L106.68,73.70L106.90,76.99L107.45,76.88L108.22,73.26L108.44,68.00L107.12,61.64L105.59,58.58L103.62,56.16L103.18,55.07L102.19,54.52L100.44,52.55L93.86,48.38L84.88,44.66L76.55,42.68Z M70.63,56.27L68.11,56.60L68.11,109.86L69.32,110.19L75.89,106.90L79.40,104.93L81.26,102.85L81.26,58.36L81.04,57.48L79.62,56.71Z M61.64,57.15L53.97,58.90L52.44,59.78L51.34,59.78L50.14,61.21L50.14,112.71L50.36,114.90L50.68,115.23L51.67,115.12L62.08,112.82L63.29,111.84L63.29,57.70L62.74,57.15Z M44.33,62.41L34.68,67.45L33.15,68.55L32.38,69.75L32.38,114.47L32.93,115.23L34.25,115.23L38.63,115.89L44.33,115.89L45.32,115.34L45.53,62.74Z M97.59,62.85L99.01,66.68L99.23,68.66L99.23,73.04L98.79,75.23L98.36,76.77L95.29,82.25L91.45,86.52L88.16,88.93L86.96,90.36L86.74,98.68L87.51,99.23L89.15,97.81L95.95,91.67L95.95,91.23L99.45,87.29L100.99,84.00L101.42,83.78L102.74,80.05L103.18,77.64L102.96,71.73L100.77,66.68Z M20.00,84.11L19.01,87.51L19.01,92.99L19.45,95.18L20.11,97.59L21.86,101.32L24.05,104.60L25.37,105.70L26.25,105.48L26.25,97.15L22.52,92.55L20.77,88.60Z"/></g></symbol></svg>
+
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#start" aria-label="Smart Finance Consulting &#8211; Startseite"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="mkg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2DFAF"/><stop offset=".45" stop-color="#CCAA67"/><stop offset="1" stop-color="#9C7C3C"/></linearGradient></defs><circle cx="24" cy="24" r="23.2" fill="url(#mkg)"/><g stroke="#8E7134" stroke-width=".55" opacity=".55"><line x1="43.20" y1="24.00" x2="46.30" y2="24.00"/><line x1="43.04" y1="26.51" x2="46.11" y2="26.91"/><line x1="42.55" y1="28.97" x2="45.54" y2="29.77"/><line x1="41.74" y1="31.35" x2="44.60" y2="32.53"/><line x1="40.63" y1="33.60" x2="43.31" y2="35.15"/><line x1="39.23" y1="35.69" x2="41.69" y2="37.58"/><line x1="37.58" y1="37.58" x2="39.77" y2="39.77"/><line x1="35.69" y1="39.23" x2="37.58" y2="41.69"/><line x1="33.60" y1="40.63" x2="35.15" y2="43.31"/><line x1="31.35" y1="41.74" x2="32.53" y2="44.60"/><line x1="28.97" y1="42.55" x2="29.77" y2="45.54"/><line x1="26.51" y1="43.04" x2="26.91" y2="46.11"/><line x1="24.00" y1="43.20" x2="24.00" y2="46.30"/><line x1="21.49" y1="43.04" x2="21.09" y2="46.11"/><line x1="19.03" y1="42.55" x2="18.23" y2="45.54"/><line x1="16.65" y1="41.74" x2="15.47" y2="44.60"/><line x1="14.40" y1="40.63" x2="12.85" y2="43.31"/><line x1="12.31" y1="39.23" x2="10.42" y2="41.69"/><line x1="10.42" y1="37.58" x2="8.23" y2="39.77"/><line x1="8.77" y1="35.69" x2="6.31" y2="37.58"/><line x1="7.37" y1="33.60" x2="4.69" y2="35.15"/><line x1="6.26" y1="31.35" x2="3.40" y2="32.53"/><line x1="5.45" y1="28.97" x2="2.46" y2="29.77"/><line x1="4.96" y1="26.51" x2="1.89" y2="26.91"/><line x1="4.80" y1="24.00" x2="1.70" y2="24.00"/><line x1="4.96" y1="21.49" x2="1.89" y2="21.09"/><line x1="5.45" y1="19.03" x2="2.46" y2="18.23"/><line x1="6.26" y1="16.65" x2="3.40" y2="15.47"/><line x1="7.37" y1="14.40" x2="4.69" y2="12.85"/><line x1="8.77" y1="12.31" x2="6.31" y2="10.42"/><line x1="10.42" y1="10.42" x2="8.23" y2="8.23"/><line x1="12.31" y1="8.77" x2="10.42" y2="6.31"/><line x1="14.40" y1="7.37" x2="12.85" y2="4.69"/><line x1="16.65" y1="6.26" x2="15.47" y2="3.40"/><line x1="19.03" y1="5.45" x2="18.23" y2="2.46"/><line x1="21.49" y1="4.96" x2="21.09" y2="1.89"/><line x1="24.00" y1="4.80" x2="24.00" y2="1.70"/><line x1="26.51" y1="4.96" x2="26.91" y2="1.89"/><line x1="28.97" y1="5.45" x2="29.77" y2="2.46"/><line x1="31.35" y1="6.26" x2="32.53" y2="3.40"/><line x1="33.60" y1="7.37" x2="35.15" y2="4.69"/><line x1="35.69" y1="8.77" x2="37.58" y2="6.31"/><line x1="37.58" y1="10.42" x2="39.77" y2="8.23"/><line x1="39.23" y1="12.31" x2="41.69" y2="10.42"/><line x1="40.63" y1="14.40" x2="43.31" y2="12.85"/><line x1="41.74" y1="16.65" x2="44.60" y2="15.47"/><line x1="42.55" y1="19.03" x2="45.54" y2="18.23"/><line x1="43.04" y1="21.49" x2="46.11" y2="21.09"/></g><circle cx="24" cy="24" r="18.6" fill="#132A3B"/><circle cx="24" cy="24" r="16.4" fill="none" stroke="#CCAA67" stroke-width=".7" opacity=".55"/><text x="24" y="30.6" text-anchor="middle" font-size="17.5" font-weight="700" fill="#CCAA67" font-family="Cormorant Garamond, Georgia, serif" letter-spacing=".5">SF</text></svg><span class="wordmark"><b>SMART FINANCE</b><span>Consulting</span></span></a>
+    <a class="logo" href="#start" aria-label="Smart Finance Consulting &#8211; Startseite"><svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><use href="#sfmark"/></svg><span class="wordmark"><b>SMART FINANCE</b><span>Consulting</span></span></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menü</button>
     <nav class="nav" id="nav">
       <a href="#leistungen">Leistungen</a>
@@ -434,17 +436,15 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
               <g fill="none" stroke="#A98C50" stroke-width=".8" opacity=".5">
                 <circle cx="110" cy="110" r="58.5"/><circle cx="110" cy="110" r="69.5"/>
               </g>
+              <g style="color:#9B7E42" filter="url(#emb)"
+                 transform="translate(110 82) scale(.464) translate(-60 -60)"><use href="#sfmark" width="120" height="120"/></g>
               <g filter="url(#emb)" fill="#7E6427" text-anchor="middle">
-                <path d="M110,65.0 L114.3,72.0 L110,79.0 L105.7,72.0 Z"/>
-                <text x="110" y="100" font-size="21" font-weight="700" letter-spacing="1"
-                      font-family="Cormorant Garamond, Georgia, serif">SMART</text>
-                <text x="110" y="123" font-size="21" font-weight="700" letter-spacing="1"
-                      font-family="Cormorant Garamond, Georgia, serif">FINANCE</text>
-                <rect x="78" y="133" width="64" height="1.1" rx=".5"/>
-                <text x="110" y="148" font-size="7.8" font-weight="600" letter-spacing="5.5"
+                <text x="110" y="131" font-size="12.5" font-weight="700" letter-spacing=".8"
+                      font-family="Cormorant Garamond, Georgia, serif">SMART FINANCE</text>
+                <text x="110" y="143" font-size="6.4" font-weight="600" letter-spacing="4.4"
                       font-family="Outfit, Segoe UI, sans-serif">CONSULTING</text>
-                <text x="110" y="163" font-size="7.4" font-weight="600" letter-spacing="1.4"
-                      font-family="Outfit, Segoe UI, sans-serif" opacity=".85">NEUSS &#183; 2026</text>
+                <text x="110" y="160" font-size="7.6" font-weight="600" letter-spacing="1.3"
+                      font-family="Outfit, Segoe UI, sans-serif" opacity=".85">2026</text>
               </g>
             </svg>
           </div>
@@ -702,7 +702,7 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
         <div class="note-value"><b>50</b><i>MIN</i></div>
       </header>
       <div class="note-paper">
-        <svg class="wm" viewBox="0 0 220 220" aria-hidden="true"><text x="110" y="150" text-anchor="middle" font-size="128" font-weight="700" font-family="Cormorant Garamond, Georgia, serif">SF</text></svg>
+        <svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><use href="#sfmark"/></svg>
         <h3>Erstgespr&#228;ch anfragen</h3>
         <p class="hint">Wir melden uns innerhalb eines Werktags bei Ihnen.</p>
         <div class="two">
@@ -740,7 +740,7 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 <footer>
   <div class="wrap">
     <div>
-      <a class="logo" href="#start"><svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="mkg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2DFAF"/><stop offset=".45" stop-color="#CCAA67"/><stop offset="1" stop-color="#9C7C3C"/></linearGradient></defs><circle cx="24" cy="24" r="23.2" fill="url(#mkg)"/><g stroke="#8E7134" stroke-width=".55" opacity=".55"><line x1="43.20" y1="24.00" x2="46.30" y2="24.00"/><line x1="43.04" y1="26.51" x2="46.11" y2="26.91"/><line x1="42.55" y1="28.97" x2="45.54" y2="29.77"/><line x1="41.74" y1="31.35" x2="44.60" y2="32.53"/><line x1="40.63" y1="33.60" x2="43.31" y2="35.15"/><line x1="39.23" y1="35.69" x2="41.69" y2="37.58"/><line x1="37.58" y1="37.58" x2="39.77" y2="39.77"/><line x1="35.69" y1="39.23" x2="37.58" y2="41.69"/><line x1="33.60" y1="40.63" x2="35.15" y2="43.31"/><line x1="31.35" y1="41.74" x2="32.53" y2="44.60"/><line x1="28.97" y1="42.55" x2="29.77" y2="45.54"/><line x1="26.51" y1="43.04" x2="26.91" y2="46.11"/><line x1="24.00" y1="43.20" x2="24.00" y2="46.30"/><line x1="21.49" y1="43.04" x2="21.09" y2="46.11"/><line x1="19.03" y1="42.55" x2="18.23" y2="45.54"/><line x1="16.65" y1="41.74" x2="15.47" y2="44.60"/><line x1="14.40" y1="40.63" x2="12.85" y2="43.31"/><line x1="12.31" y1="39.23" x2="10.42" y2="41.69"/><line x1="10.42" y1="37.58" x2="8.23" y2="39.77"/><line x1="8.77" y1="35.69" x2="6.31" y2="37.58"/><line x1="7.37" y1="33.60" x2="4.69" y2="35.15"/><line x1="6.26" y1="31.35" x2="3.40" y2="32.53"/><line x1="5.45" y1="28.97" x2="2.46" y2="29.77"/><line x1="4.96" y1="26.51" x2="1.89" y2="26.91"/><line x1="4.80" y1="24.00" x2="1.70" y2="24.00"/><line x1="4.96" y1="21.49" x2="1.89" y2="21.09"/><line x1="5.45" y1="19.03" x2="2.46" y2="18.23"/><line x1="6.26" y1="16.65" x2="3.40" y2="15.47"/><line x1="7.37" y1="14.40" x2="4.69" y2="12.85"/><line x1="8.77" y1="12.31" x2="6.31" y2="10.42"/><line x1="10.42" y1="10.42" x2="8.23" y2="8.23"/><line x1="12.31" y1="8.77" x2="10.42" y2="6.31"/><line x1="14.40" y1="7.37" x2="12.85" y2="4.69"/><line x1="16.65" y1="6.26" x2="15.47" y2="3.40"/><line x1="19.03" y1="5.45" x2="18.23" y2="2.46"/><line x1="21.49" y1="4.96" x2="21.09" y2="1.89"/><line x1="24.00" y1="4.80" x2="24.00" y2="1.70"/><line x1="26.51" y1="4.96" x2="26.91" y2="1.89"/><line x1="28.97" y1="5.45" x2="29.77" y2="2.46"/><line x1="31.35" y1="6.26" x2="32.53" y2="3.40"/><line x1="33.60" y1="7.37" x2="35.15" y2="4.69"/><line x1="35.69" y1="8.77" x2="37.58" y2="6.31"/><line x1="37.58" y1="10.42" x2="39.77" y2="8.23"/><line x1="39.23" y1="12.31" x2="41.69" y2="10.42"/><line x1="40.63" y1="14.40" x2="43.31" y2="12.85"/><line x1="41.74" y1="16.65" x2="44.60" y2="15.47"/><line x1="42.55" y1="19.03" x2="45.54" y2="18.23"/><line x1="43.04" y1="21.49" x2="46.11" y2="21.09"/></g><circle cx="24" cy="24" r="18.6" fill="#132A3B"/><circle cx="24" cy="24" r="16.4" fill="none" stroke="#CCAA67" stroke-width=".7" opacity=".55"/><text x="24" y="30.6" text-anchor="middle" font-size="17.5" font-weight="700" fill="#CCAA67" font-family="Cormorant Garamond, Georgia, serif" letter-spacing=".5">SF</text></svg><span class="wordmark"><b>SMART FINANCE</b><span>Consulting</span></span></a>
+      <a class="logo" href="#start"><svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><use href="#sfmark"/></svg><span class="wordmark"><b>SMART FINANCE</b><span>Consulting</span></span></a>
       <small>Kaufmännische Betreuung, Beratung und Digitalisierung in Neuss. Steuerliche Leistungen erbringt die rechtlich eigenständige Partner-Steuerberatungsgesellschaft.</small>
     </div>
     <div class="foot-col">
