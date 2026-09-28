@@ -507,6 +507,27 @@ p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
 .back{color:var(--muted);text-decoration:none;font-size:.94rem}
 .back:hover{color:var(--gold-ink)}
 @media (max-width:860px){.svc-block{grid-template-columns:1fr;gap:26px}}
+
+/* ============ Standort-Karte ============ */
+.loc-card{position:relative;display:block;overflow:hidden;border-radius:8px;
+  aspect-ratio:4/3;max-width:100%;background:var(--hero-bg);text-decoration:none;
+  box-shadow:var(--shadow);border:1px solid rgba(204,170,103,.28)}
+.loc-map{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .6s ease}
+.loc-card:hover .loc-map{transform:scale(1.04)}
+.loc-scrim{position:absolute;inset:auto 0 0 0;height:58%;pointer-events:none;
+  background:linear-gradient(transparent,rgba(8,20,29,.88) 62%)}
+.loc-label{position:absolute;inset:auto 0 0 0;z-index:2;display:grid;gap:6px;
+  padding:clamp(16px,2.6vw,24px);text-align:left}
+[dir="rtl"] .loc-label{text-align:right}
+.loc-label b{font:600 1.08rem/1.35 var(--serif);color:#fff}
+.loc-label code{font:500 .74rem ui-monospace,Menlo,Consolas,monospace;color:var(--gold);
+  letter-spacing:.05em;font-variant-numeric:tabular-nums}
+.loc-open{display:inline-flex;align-items:center;gap:.5em;margin-top:4px;
+  font:500 .88rem var(--sans);color:var(--gold)}
+.loc-credit{position:absolute;top:8px;right:10px;z-index:2;font:400 .6rem var(--sans);
+  color:rgba(226,238,246,.5);letter-spacing:.02em}
+[dir="rtl"] .loc-credit{right:auto;left:10px}
 </style>
 </head>
 <body>
@@ -836,10 +857,13 @@ p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
     </div>
     <a class="loc-card" href="https://maps.app.goo.gl/UEfZgx9Jsora8MZEA" target="_blank" rel="noopener"
        aria-label="Standort Mainstra&#223;e 26-30, 41469 Neuss in Google Maps &#246;ffnen">
-      <span class="loc-pin">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+      <img class="loc-map" src="map-neuss.svg" alt="" loading="lazy" decoding="async" width="1000" height="1016">
+      <span class="loc-scrim" aria-hidden="true"></span>
+      <span class="loc-credit">&#169; OpenStreetMap</span>
+      <span class="loc-label">
         <b>Smart Finance Consulting<br>Mainstra&#223;e 26&#8211;30, 41469 Neuss</b>
         <code>51.158264&#176; N &#183; 6.736446&#176; E</code>
+        <span class="loc-open arrow" data-i18n="k130">In Google Maps &#246;ffnen</span>
       </span>
     </a>
   </div>

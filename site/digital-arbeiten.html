@@ -507,6 +507,27 @@ p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
 .back{color:var(--muted);text-decoration:none;font-size:.94rem}
 .back:hover{color:var(--gold-ink)}
 @media (max-width:860px){.svc-block{grid-template-columns:1fr;gap:26px}}
+
+/* ============ Standort-Karte ============ */
+.loc-card{position:relative;display:block;overflow:hidden;border-radius:8px;
+  aspect-ratio:4/3;max-width:100%;background:var(--hero-bg);text-decoration:none;
+  box-shadow:var(--shadow);border:1px solid rgba(204,170,103,.28)}
+.loc-map{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .6s ease}
+.loc-card:hover .loc-map{transform:scale(1.04)}
+.loc-scrim{position:absolute;inset:auto 0 0 0;height:58%;pointer-events:none;
+  background:linear-gradient(transparent,rgba(8,20,29,.88) 62%)}
+.loc-label{position:absolute;inset:auto 0 0 0;z-index:2;display:grid;gap:6px;
+  padding:clamp(16px,2.6vw,24px);text-align:left}
+[dir="rtl"] .loc-label{text-align:right}
+.loc-label b{font:600 1.08rem/1.35 var(--serif);color:#fff}
+.loc-label code{font:500 .74rem ui-monospace,Menlo,Consolas,monospace;color:var(--gold);
+  letter-spacing:.05em;font-variant-numeric:tabular-nums}
+.loc-open{display:inline-flex;align-items:center;gap:.5em;margin-top:4px;
+  font:500 .88rem var(--sans);color:var(--gold)}
+.loc-credit{position:absolute;top:8px;right:10px;z-index:2;font:400 .6rem var(--sans);
+  color:rgba(226,238,246,.5);letter-spacing:.02em}
+[dir="rtl"] .loc-credit{right:auto;left:10px}
 </style>
 </head>
 <body>
