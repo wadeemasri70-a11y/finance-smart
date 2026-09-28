@@ -81,7 +81,7 @@ p{margin:0}
 .hero{background:var(--hero-bg);color:var(--hero-ink);position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:
   repeating-linear-gradient(0deg,transparent 0 47px,rgba(204,170,103,.06) 47px 48px);pointer-events:none;mask-image:linear-gradient(90deg,transparent 30%,#000 100%)}
-.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(40px,6vw,80px);align-items:center;padding-block:clamp(56px,8vw,104px)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,80px);align-items:center;padding-block:clamp(56px,8vw,104px)}
 .hero h1{font-size:clamp(2.7rem,6vw,4.7rem);font-weight:600;color:#fff}
 .hero h1 em{font-style:italic;color:var(--gold);font-weight:500}
 .hero .sub{color:var(--hero-muted);font-size:1.15rem;max-width:54ch;margin-top:24px}
@@ -133,7 +133,8 @@ p{margin:0}
 
 /* agenda */
 .agenda{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,80px);align-items:start}
-.agenda .head{position:sticky;top:110px;margin:0}
+.agenda .head{margin:0}
+.agenda .voucher{transform:none;max-width:430px;box-shadow:var(--shadow);margin-top:6px}
 .feat{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
 .feat div{padding:26px 24px 26px 0;border-bottom:1px solid var(--line);display:grid;gap:8px}
 .feat div:nth-child(odd){border-right:1px solid var(--line)}
@@ -176,6 +177,7 @@ p{margin:0}
 /* contact */
 .contact{background:var(--hero-bg);color:var(--hero-ink)}
 .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px)}
+.contact .wrap>*{min-width:0}
 .contact h2{color:#fff}
 .contact .lead{color:var(--hero-muted)}
 .info{display:grid;gap:0;margin-top:30px;font-variant-numeric:tabular-nums}
@@ -183,18 +185,8 @@ p{margin:0}
 .info dt{color:var(--gold);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding-top:3px}
 .info dd{margin:0;color:#fff;user-select:all}
 .info dd.plain{user-select:auto}
-.form{background:#FBFAF6;color:#16232E;border-radius:6px;padding:clamp(24px,4vw,36px);display:grid;gap:16px;align-content:start}
-.form h3{font-size:1.6rem}
-.form label{display:grid;gap:6px;font-size:.88rem;font-weight:500;color:#34424D}
-.form input,.form select,.form textarea{font:400 1rem var(--sans);padding:13px 14px;border:1px solid #CCD4DA;border-radius:4px;background:#fff;color:#16232E;width:100%}
-.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--teal);outline-offset:0;border-color:var(--teal)}
-.form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form .consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.85rem;color:#56646F}
-.form .consent input{width:auto;margin-top:3px}
-.form .btn{justify-content:center}
-.form .ok{background:#E4F1F1;color:#0A5A5D;border-radius:4px;padding:12px 14px;font-size:.92rem}
 @media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
-@media (max-width:480px){.form .two{grid-template-columns:1fr}.info div{grid-template-columns:1fr;gap:2px}}
+@media (max-width:480px){.info div{grid-template-columns:1fr;gap:2px}}
 
 /* footer */
 .nrw{height:3px;background:linear-gradient(90deg,var(--nrw-green) 0 33.3%,#fff 33.3% 66.6%,var(--nrw-red) 66.6%)}
@@ -213,9 +205,106 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 }
 @media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.voucher{max-width:440px;transform:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ============ Münze (3D) ============ */
+.coin-stage{--d:clamp(230px,32vw,370px);--t:calc(var(--d)*.085);--r:calc(var(--d)/2);
+  --seg:calc(var(--d)*3.1416/48 + 1.2px);
+  width:var(--d);height:var(--d);margin-inline:auto;perspective:1200px;perspective-origin:50% 45%}
+.coin{position:relative;width:100%;height:100%;transform-style:preserve-3d;will-change:transform;
+  transform:rotateX(9deg) rotateY(-27deg);animation:sway 11s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotateX(9deg) rotateY(-31deg)}50%{transform:rotateX(5deg) rotateY(-20deg)}}
+.coin-face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;overflow:hidden}
+.coin-front{transform:translateZ(calc(var(--t)/2));
+  box-shadow:0 0 0 1px rgba(90,68,25,.55),0 26px 50px rgba(0,0,0,.45)}
+.coin-back{transform:rotateY(180deg) translateZ(calc(var(--t)/2));
+  background:radial-gradient(circle at 36% 30%,#EBD9AE,#C2A063 55%,#8E7134)}
+.coin-face svg{display:block;width:100%;height:100%}
+.rim{position:absolute;inset:0;transform-style:preserve-3d}
+.rim i{position:absolute;left:50%;top:50%;width:var(--seg);height:var(--t);
+  margin-left:calc(var(--seg)/-2);margin-top:calc(var(--t)/-2);
+  transform:rotateZ(calc(var(--i)*7.5deg)) translateX(var(--r)) rotateY(90deg) rotateZ(90deg);
+  backface-visibility:hidden;
+  background:linear-gradient(90deg,#856828,#DCC183 20%,#F3E3B9 46%,#C1A05C 74%,#7A5E26);
+  display:flex;align-items:center;justify-content:center;
+  font:600 calc(var(--t)*.5)/1 var(--sans);color:#6B5320;letter-spacing:.02em;
+  text-shadow:0 1px 0 rgba(255,246,222,.5)}
+.rim i::before{content:"";position:absolute;inset:0;opacity:.5;
+  background:repeating-linear-gradient(90deg,rgba(255,248,226,.55) 0 1px,rgba(96,74,30,.4) 1px 2.4px)}
+.glint{position:absolute;inset:0;border-radius:50%;pointer-events:none;overflow:hidden;
+  transform:translateZ(calc(var(--t)/2 + .6px))}
+.glint::after{content:"";position:absolute;top:-60%;bottom:-60%;width:46%;left:-60%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1) 25%,rgba(255,255,255,.72),rgba(255,255,255,.1) 75%,transparent);
+  transform:rotate(19deg);mix-blend-mode:screen;animation:glint 2s linear infinite}
+@keyframes glint{0%{left:-60%}26%{left:118%}100%{left:118%}}
+.coin-cap{margin-top:22px;text-align:center;font-size:.82rem;color:var(--hero-muted);
+  letter-spacing:.08em;text-transform:uppercase}
+
+/* ============ Kontaktformular als Geldschein ============ */
+.banknote{--holo:clamp(16px,4.6vw,30px);position:relative;overflow:hidden;min-width:0;border-radius:10px;
+  padding:clamp(16px,2.6vw,22px);padding-right:calc(var(--holo) + clamp(18px,3vw,26px));
+  background:linear-gradient(132deg,#F3B057 0%,#E28F32 34%,#C66B1B 68%,#EBA24A 100%);
+  box-shadow:0 30px 64px rgba(0,0,0,.42),inset 0 0 0 1px rgba(255,238,205,.45);
+  display:grid;gap:14px;align-content:start;color:#5A3410}
+.banknote::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background:repeating-linear-gradient(47deg,rgba(255,246,224,.3) 0 1px,transparent 1px 5px),
+             repeating-linear-gradient(-47deg,rgba(116,58,8,.24) 0 1px,transparent 1px 6px)}
+.note-guilloche{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.3}
+.note-guilloche svg{position:absolute;fill:none;stroke:#FFF0D2;stroke-width:.5}
+.note-guilloche .g1{right:-70px;top:-64px;width:260px;height:260px}
+.note-guilloche .g2{left:-56px;bottom:-60px;width:200px;height:200px;stroke:#6F3A08;opacity:.5}
+.note-holo{position:absolute;top:8px;bottom:8px;right:10px;width:var(--holo);border-radius:3px;
+  pointer-events:none;mix-blend-mode:screen;opacity:.8;
+  background:linear-gradient(168deg,rgba(255,255,255,.75),rgba(138,214,255,.6) 18%,rgba(255,196,238,.65) 38%,
+    rgba(186,255,214,.6) 56%,rgba(255,231,160,.7) 76%,rgba(255,255,255,.7));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.note-serial{position:absolute;left:6px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;
+  font:600 .6rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.24em;color:#7A4410;opacity:.85}
+.note-head{min-width:0;position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
+  padding-left:42px}
+.note-brand{min-width:0}
+.note-brand b{display:block;font:600 1.12rem/1.05 var(--serif);letter-spacing:.11em;color:#FFF6E4;
+  text-shadow:0 1px 0 rgba(120,60,8,.55)}
+.note-brand span{display:block;margin-top:4px;font:500 .56rem/1 var(--sans);letter-spacing:.42em;color:#FCE7BE}
+.note-brand small{display:block;margin-top:9px;font:500 .66rem/1.3 var(--sans);color:#FFF1D8;opacity:.9;
+  letter-spacing:.02em;max-width:24ch}
+.note-value{display:flex;align-items:baseline;gap:4px;flex:none}
+.note-value b{font:600 2.9rem/.85 var(--serif);
+  background:linear-gradient(150deg,#FFFBEF,#FFE7A8 40%,#B9E8C8 62%,#FFF6E0);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 1px 0 rgba(120,60,8,.5))}
+.note-value i{font-style:normal;font:500 .72rem/1 var(--sans);letter-spacing:.18em;color:#FFEFD2}
+.note-stars{position:absolute;left:-8px;top:-9px;width:44px;height:44px;fill:#FFE9B8;opacity:.5}
+.note-paper{position:relative;border-radius:7px;padding:clamp(18px,3vw,26px);
+  background:linear-gradient(180deg,#FDFAF2,#F5EDDC);
+  box-shadow:inset 0 0 0 1px rgba(158,106,38,.3),0 8px 22px rgba(80,44,10,.22);
+  display:grid;gap:15px;overflow:hidden}
+.note-paper .wm{position:absolute;right:-30px;bottom:-34px;width:210px;height:210px;
+  fill:#B9832F;opacity:.09;pointer-events:none}
+.note-paper h3{position:relative;font-size:1.5rem;color:#3A2409}
+.note-paper .hint{position:relative;font-size:.85rem;color:#7A5A30;margin-top:-6px}
+.note-paper label{display:grid;gap:6px;font:500 .84rem var(--sans);color:#4A331A;position:relative}
+.note-paper input,.note-paper select,.note-paper textarea{font:400 1rem var(--sans);width:100%;
+  padding:12px 13px;border:1px solid #D9BF93;border-radius:4px;background:#FFFDF8;color:#2C1C08}
+.note-paper input:focus,.note-paper select:focus,.note-paper textarea:focus{
+  outline:2px solid #0F6F72;outline-offset:0;border-color:#0F6F72}
+.note-paper .two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.note-paper .consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.82rem;color:#6B4E2A}
+.note-paper .consent input{width:auto;margin-top:3px}
+.note-paper .btn{justify-content:center;position:relative}
+.note-paper .ok{background:#E4F1F1;color:#0A5A5D;border-radius:4px;padding:12px 14px;font-size:.9rem;
+  border-left:3px solid #0F6F72}
+.note-foot{min-width:0;position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding-left:42px;font-size:.62rem;letter-spacing:.14em;color:#FFEDD2;text-transform:uppercase}
+.note-micro{flex:1;min-width:0;overflow:hidden;white-space:nowrap;font-size:.32rem;letter-spacing:.06em;
+  color:rgba(255,240,214,.8);line-height:1}
+@media (max-width:480px){.note-paper .two{grid-template-columns:1fr}
+  .note-head{flex-direction:column}.note-value b{font-size:2.3rem}}
+@media (prefers-reduced-motion:reduce){.coin{animation:none}.glint::after{animation:none;opacity:.35;left:20%}}
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><symbol id="adler" viewBox="0 0 220 220"><g class="ea-wing"><path d="M102.4,84.9 Q98.4,56.7 82.3,34.6 Q82.2,61.9 95.6,87.1 Z"/><path d="M102.5,83.7 Q88.7,52.8 63.2,32.9 Q72.1,64.0 95.5,88.3 Z"/><path d="M101.8,82.6 Q77.1,53.9 43.8,39.7 Q63.6,70.0 96.2,89.4 Z"/><path d="M100.8,82.0 Q67.2,60.3 29.6,55.1 Q58.6,79.5 97.2,90.0 Z"/><path d="M99.6,82.1 Q64.0,70.8 28.9,74.9 Q61.0,89.6 98.4,89.9 Z"/><path d="M98.6,82.5 Q67.0,81.4 39.4,93.3 Q69.1,98.2 99.4,89.5 Z"/></g><g class="ea-wing" transform="translate(220,0) scale(-1,1)"><path d="M102.4,84.9 Q98.4,56.7 82.3,34.6 Q82.2,61.9 95.6,87.1 Z"/><path d="M102.5,83.7 Q88.7,52.8 63.2,32.9 Q72.1,64.0 95.5,88.3 Z"/><path d="M101.8,82.6 Q77.1,53.9 43.8,39.7 Q63.6,70.0 96.2,89.4 Z"/><path d="M100.8,82.0 Q67.2,60.3 29.6,55.1 Q58.6,79.5 97.2,90.0 Z"/><path d="M99.6,82.1 Q64.0,70.8 28.9,74.9 Q61.0,89.6 98.4,89.9 Z"/><path d="M98.6,82.5 Q67.0,81.4 39.4,93.3 Q69.1,98.2 99.4,89.5 Z"/></g><g class="ea-tail"><path d="M113.3,137.8 Q128.7,120.0 130.7,97.2 Q112.8,111.6 106.7,134.2 Z"/><path d="M114.2,136.0 Q120.0,109.0 110.0,84.0 Q100.0,109.0 105.8,136.0 Z"/><path d="M113.3,134.2 Q107.2,111.6 89.3,97.2 Q91.3,120.0 106.7,137.8 Z"/></g><circle cx="110" cy="48" r="11.5"/><path d="M101.5,42.5 L82,49.5 L101.5,55.5 Z"/><path d="M99.5,57 C96.5,67 95.5,73 96.5,81 L123.5,81 C124.5,73 123.5,67 120.5,57 Z"/><path d="M96.5,81 C92,101 94,125 104,139 L116,139 C126,125 128,101 123.5,81 Z"/><path d="M101,130 C97,140 92,146 86,150 L90,154 C97,150 103,143 106,136 Z"/><path d="M119,130 C123,140 128,146 134,150 L130,154 C123,150 117,143 114,136 Z"/><circle cx="106.5" cy="45" r="2.1" fill="#7a6027" opacity=".55"/></symbol></svg>
 
 <header class="top">
   <div class="wrap">
@@ -246,22 +335,48 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
       </div>
       <p class="micro">Persönlich · unverbindlich · mit festem Ansprechpartner</p>
     </div>
-    <aside class="voucher" aria-label="Beispiel: digitaler Beleg mit Buchungsvorschlag">
-      <div class="v-head"><b>Eingangsrechnung</b><small>XRechnung</small></div>
-      <div class="v-row"><span>Lieferant</span><span>Bürobedarf Rhein GmbH</span></div>
-      <div class="v-row"><span>Rechnungsdatum</span><span>14.09.2026</span></div>
-      <div class="v-row"><span>Netto</span><span>210,00 €</span></div>
-      <div class="v-row"><span>USt 19 %</span><span>39,90 €</span></div>
-      <div class="v-row" style="border-top:1px solid #DDE2E6;margin-top:4px;padding-top:10px"><span><b style="color:#16232E">Brutto</b></span><span>249,90 €</span></div>
-      <div class="booking">
-        <div class="lbl">Buchungsvorschlag · Agenda</div>
-        <div class="line"><code>4930</code><span>Bürobedarf</span><code>210,00</code></div>
-        <div class="line"><code>1576</code><span>Vorsteuer 19 %</span><code>39,90</code></div>
-        <div class="line"><code>1200</code><span>an Bank</span><code>249,90</code></div>
+<div class="coin-wrap">
+      <div class="coin-stage">
+        <div class="coin">
+          <div class="rim" aria-hidden="true"><i style="--i:0">·</i><i style="--i:1"> </i><i style="--i:2">S</i><i style="--i:3">M</i><i style="--i:4">A</i><i style="--i:5">R</i><i style="--i:6">T</i><i style="--i:7"> </i><i style="--i:8">F</i><i style="--i:9">I</i><i style="--i:10">N</i><i style="--i:11">A</i><i style="--i:12">N</i><i style="--i:13">C</i><i style="--i:14">E</i><i style="--i:15"> </i><i style="--i:16">C</i><i style="--i:17">O</i><i style="--i:18">N</i><i style="--i:19">S</i><i style="--i:20">U</i><i style="--i:21">L</i><i style="--i:22">T</i><i style="--i:23">I</i><i style="--i:24">N</i><i style="--i:25">G</i><i style="--i:26"> </i><i style="--i:27">·</i><i style="--i:28"> </i><i style="--i:29">N</i><i style="--i:30">E</i><i style="--i:31">U</i><i style="--i:32">S</i><i style="--i:33">S</i><i style="--i:34"> </i><i style="--i:35">·</i><i style="--i:36"> </i><i style="--i:37">A</i><i style="--i:38">G</i><i style="--i:39">E</i><i style="--i:40">N</i><i style="--i:41">D</i><i style="--i:42">A</i><i style="--i:43"> </i><i style="--i:44">·</i><i style="--i:45"> </i><i style="--i:46">S</i><i style="--i:47">M</i></div>
+          <div class="coin-face coin-back" aria-hidden="true"></div>
+          <div class="coin-face coin-front">
+            <svg viewBox="0 0 220 220" role="img" aria-label="Medaille von Smart Finance Consulting mit Bundesadler">
+              <defs>
+                <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#F6E6BC"/><stop offset=".34" stop-color="#D3B273"/>
+                  <stop offset=".62" stop-color="#A88641"/><stop offset="1" stop-color="#E3CA92"/>
+                </linearGradient>
+                <linearGradient id="disc" x1=".2" y1="0" x2=".8" y2="1">
+                  <stop offset="0" stop-color="#F7F1E2"/><stop offset=".45" stop-color="#D8CEB6"/>
+                  <stop offset="1" stop-color="#EFE6D0"/>
+                </linearGradient>
+                <filter id="emb" x="-15%" y="-15%" width="130%" height="130%">
+                  <feDropShadow dx="-1" dy="-1.1" stdDeviation=".5" flood-color="#FFFBEE" flood-opacity=".95"/>
+                  <feDropShadow dx="1.3" dy="1.5" stdDeviation=".7" flood-color="#6B5220" flood-opacity=".6"/>
+                </filter>
+              </defs>
+              <circle cx="110" cy="110" r="110" fill="url(#ring)"/>
+              <circle cx="110" cy="110" r="103" fill="none" stroke="#8B6F33" stroke-width=".8" opacity=".55"/>
+              <g fill="#BC9A57" filter="url(#emb)" opacity=".95"><polygon points="110.0,15.6 112.0,21.3 118.0,21.4 113.2,25.0 114.9,30.8 110.0,27.4 105.1,30.8 106.8,25.0 102.0,21.4 108.0,21.3"/><polygon points="153.0,27.1 155.0,32.8 161.0,32.9 156.2,36.6 157.9,42.3 153.0,38.9 148.1,42.3 149.8,36.6 145.0,32.9 151.0,32.8"/><polygon points="184.5,58.6 186.5,64.3 192.5,64.4 187.7,68.0 189.4,73.8 184.5,70.4 179.5,73.8 181.3,68.0 176.5,64.4 182.5,64.3"/><polygon points="196.0,101.6 198.0,107.3 204.0,107.4 199.2,111.0 200.9,116.8 196.0,113.4 191.1,116.8 192.8,111.0 188.0,107.4 194.0,107.3"/><polygon points="184.5,144.6 186.5,150.3 192.5,150.4 187.7,154.0 189.4,159.8 184.5,156.4 179.5,159.8 181.3,154.0 176.5,150.4 182.5,150.3"/><polygon points="153.0,176.1 155.0,181.8 161.0,181.9 156.2,185.5 157.9,191.3 153.0,187.8 148.1,191.3 149.8,185.5 145.0,181.9 151.0,181.8"/><polygon points="110.0,187.6 112.0,193.3 118.0,193.4 113.2,197.0 114.9,202.8 110.0,199.4 105.1,202.8 106.8,197.0 102.0,193.4 108.0,193.3"/><polygon points="67.0,176.1 69.0,181.8 75.0,181.9 70.2,185.5 71.9,191.3 67.0,187.8 62.1,191.3 63.8,185.5 59.0,181.9 65.0,181.8"/><polygon points="35.5,144.6 37.5,150.3 43.5,150.4 38.7,154.0 40.5,159.8 35.5,156.4 30.6,159.8 32.3,154.0 27.5,150.4 33.5,150.3"/><polygon points="24.0,101.6 26.0,107.3 32.0,107.4 27.2,111.0 28.9,116.8 24.0,113.4 19.1,116.8 20.8,111.0 16.0,107.4 22.0,107.3"/><polygon points="35.5,58.6 37.5,64.3 43.5,64.4 38.7,68.0 40.5,73.8 35.5,70.4 30.6,73.8 32.3,68.0 27.5,64.4 33.5,64.3"/><polygon points="67.0,27.1 69.0,32.8 75.0,32.9 70.2,36.6 71.9,42.3 67.0,38.9 62.1,42.3 63.8,36.6 59.0,32.9 65.0,32.8"/></g>
+              <circle cx="110" cy="110" r="69" fill="url(#disc)"/>
+              <circle cx="110" cy="110" r="68" fill="none" stroke="#A08A54" stroke-width="1.1" opacity=".6"/>
+              <g transform="translate(110 112) scale(.78) translate(-110 -112)"
+                 fill="#B29456" filter="url(#emb)" opacity=".82"><g class="ea-wing"><path d="M102.4,84.9 Q98.4,56.7 82.3,34.6 Q82.2,61.9 95.6,87.1 Z"/><path d="M102.5,83.7 Q88.7,52.8 63.2,32.9 Q72.1,64.0 95.5,88.3 Z"/><path d="M101.8,82.6 Q77.1,53.9 43.8,39.7 Q63.6,70.0 96.2,89.4 Z"/><path d="M100.8,82.0 Q67.2,60.3 29.6,55.1 Q58.6,79.5 97.2,90.0 Z"/><path d="M99.6,82.1 Q64.0,70.8 28.9,74.9 Q61.0,89.6 98.4,89.9 Z"/><path d="M98.6,82.5 Q67.0,81.4 39.4,93.3 Q69.1,98.2 99.4,89.5 Z"/></g><g class="ea-wing" transform="translate(220,0) scale(-1,1)"><path d="M102.4,84.9 Q98.4,56.7 82.3,34.6 Q82.2,61.9 95.6,87.1 Z"/><path d="M102.5,83.7 Q88.7,52.8 63.2,32.9 Q72.1,64.0 95.5,88.3 Z"/><path d="M101.8,82.6 Q77.1,53.9 43.8,39.7 Q63.6,70.0 96.2,89.4 Z"/><path d="M100.8,82.0 Q67.2,60.3 29.6,55.1 Q58.6,79.5 97.2,90.0 Z"/><path d="M99.6,82.1 Q64.0,70.8 28.9,74.9 Q61.0,89.6 98.4,89.9 Z"/><path d="M98.6,82.5 Q67.0,81.4 39.4,93.3 Q69.1,98.2 99.4,89.5 Z"/></g><g class="ea-tail"><path d="M113.3,137.8 Q128.7,120.0 130.7,97.2 Q112.8,111.6 106.7,134.2 Z"/><path d="M114.2,136.0 Q120.0,109.0 110.0,84.0 Q100.0,109.0 105.8,136.0 Z"/><path d="M113.3,134.2 Q107.2,111.6 89.3,97.2 Q91.3,120.0 106.7,137.8 Z"/></g><circle cx="110" cy="48" r="11.5"/><path d="M101.5,42.5 L82,49.5 L101.5,55.5 Z"/><path d="M99.5,57 C96.5,67 95.5,73 96.5,81 L123.5,81 C124.5,73 123.5,67 120.5,57 Z"/><path d="M96.5,81 C92,101 94,125 104,139 L116,139 C126,125 128,101 123.5,81 Z"/><path d="M101,130 C97,140 92,146 86,150 L90,154 C97,150 103,143 106,136 Z"/><path d="M119,130 C123,140 128,146 134,150 L130,154 C123,150 117,143 114,136 Z"/><circle cx="106.5" cy="45" r="2.1" fill="#7a6027" opacity=".55"/></g>
+              <g filter="url(#emb)" fill="#8A6C2C" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif">
+                <text x="110" y="116" font-size="19.5" font-weight="700" letter-spacing="1.1">SMART FINANCE</text>
+                <text x="110" y="132" font-size="8.4" font-weight="600" letter-spacing="5.2"
+                      font-family="Outfit, Segoe UI, sans-serif">CONSULTING</text>
+                <text x="110" y="152" font-size="8.6" font-weight="600" letter-spacing="2.4"
+                      font-family="Outfit, Segoe UI, sans-serif" opacity=".8">NEUSS &#183; 2026</text>
+              </g>
+            </svg>
+          </div>
+          <div class="glint" aria-hidden="true"></div>
+        </div>
       </div>
-      <div class="stamp">Geprüft</div>
-      <p class="v-foot">Beispieldarstellung · SKR 03</p>
-    </aside>
+      <p class="coin-cap">Buchhaltung &#183; Lohn &#183; Controlling</p>
+    </div>
   </div>
 </section>
 
@@ -365,6 +480,22 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
       <h2>Moderne Buchhaltung mit Agenda.</h2>
       <p class="lead">Wir setzen auf Agenda als professionelle Softwarebasis. Gemeinsam legen wir fest, welche digitalen Prozesse für Sie sinnvoll sind – so digital, wie es zu Ihrem Unternehmen passt.</p>
       <div class="benefits"><span>Weniger Verwaltungsaufwand</span><span>Strukturierte Informationen</span><span>Persönliche Betreuung</span></div>
+    <aside class="voucher" aria-label="Beispiel: digitaler Beleg mit Buchungsvorschlag in Agenda">
+      <div class="v-head"><b>Eingangsrechnung</b><small>XRechnung</small></div>
+      <div class="v-row"><span>Lieferant</span><span>Bürobedarf Rhein GmbH</span></div>
+      <div class="v-row"><span>Rechnungsdatum</span><span>14.09.2026</span></div>
+      <div class="v-row"><span>Netto</span><span>210,00 €</span></div>
+      <div class="v-row"><span>USt 19 %</span><span>39,90 €</span></div>
+      <div class="v-row" style="border-top:1px solid #DDE2E6;margin-top:4px;padding-top:10px"><span><b style="color:#16232E">Brutto</b></span><span>249,90 €</span></div>
+      <div class="booking">
+        <div class="lbl">Buchungsvorschlag · Agenda</div>
+        <div class="line"><code>4930</code><span>Bürobedarf</span><code>210,00</code></div>
+        <div class="line"><code>1576</code><span>Vorsteuer 19 %</span><code>39,90</code></div>
+        <div class="line"><code>1200</code><span>an Bank</span><code>249,90</code></div>
+      </div>
+      <div class="stamp">Geprüft</div>
+      <p class="v-foot">Beispieldarstellung · SKR 03</p>
+    </aside>
     </div>
     <div class="feat">
       <div><h3>Belege digital bereitstellen</h3><p>Belege und Unterlagen digital übermitteln – für einen geordneten Informationsfluss zwischen Ihnen und unserem Büro.</p></div>
@@ -437,25 +568,51 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
         <div><dt>Termine</dt><dd class="plain">Nach Vereinbarung</dd></div>
       </dl>
     </div>
-    <form class="form" id="form" novalidate>
-      <h3>Erstgespräch anfragen</h3>
-      <div class="two">
-        <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
-        <label for="f-firma">Unternehmen<input id="f-firma" name="firma" autocomplete="organization"></label>
+<form class="banknote" id="form" novalidate>
+      <div class="note-guilloche" aria-hidden="true">
+        <svg class="g1" viewBox="-150 -150 300 300"><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(0.0 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(5.3 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(10.6 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(15.9 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(21.2 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(26.5 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(31.8 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(37.1 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(42.4 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(47.6 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(52.9 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(58.2 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(63.5 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(68.8 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(74.1 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(79.4 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(84.7 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(90.0 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(95.3 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(100.6 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(105.9 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(111.2 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(116.5 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(121.8 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(127.1 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(132.4 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(137.6 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(142.9 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(148.2 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(153.5 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(158.8 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(164.1 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(169.4 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(174.7 0 0)"/></svg>
+        <svg class="g2" viewBox="-96 -96 192 192"><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(0.0 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(6.9 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(13.8 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(20.8 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(27.7 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(34.6 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(41.5 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(48.5 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(55.4 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(62.3 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(69.2 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(76.2 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(83.1 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(90.0 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(96.9 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(103.8 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(110.8 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(117.7 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(124.6 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(131.5 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(138.5 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(145.4 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(152.3 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(159.2 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(166.2 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(173.1 0 0)"/></svg>
       </div>
-      <div class="two">
-        <label for="f-mail">E-Mail<input id="f-mail" name="email" type="email" autocomplete="email" required></label>
-        <label for="f-tel">Telefon<input id="f-tel" name="tel" type="tel" autocomplete="tel"></label>
+      <div class="note-holo" aria-hidden="true"></div>
+      <span class="note-serial">SF&#8239;2026&#8239;NE</span>
+      <header class="note-head">
+        <svg class="note-stars" viewBox="0 0 60 60" aria-hidden="true"><polygon points="30.0,3.4 31.1,6.5 34.4,6.6 31.7,8.6 32.7,11.7 30.0,9.8 27.3,11.7 28.3,8.6 25.6,6.6 28.9,6.5"/><polygon points="41.0,6.3 42.1,9.5 45.4,9.5 42.7,11.5 43.7,14.7 41.0,12.8 38.3,14.7 39.3,11.5 36.6,9.5 39.9,9.5"/><polygon points="49.1,14.4 50.1,17.5 53.4,17.6 50.8,19.6 51.8,22.7 49.1,20.8 46.3,22.7 47.3,19.6 44.7,17.6 48.0,17.5"/><polygon points="52.0,25.4 53.1,28.5 56.4,28.6 53.7,30.6 54.7,33.7 52.0,31.8 49.3,33.7 50.3,30.6 47.6,28.6 50.9,28.5"/><polygon points="49.1,36.4 50.1,39.5 53.4,39.6 50.8,41.6 51.8,44.7 49.1,42.8 46.3,44.7 47.3,41.6 44.7,39.6 48.0,39.5"/><polygon points="41.0,44.5 42.1,47.6 45.4,47.6 42.7,49.6 43.7,52.8 41.0,50.9 38.3,52.8 39.3,49.6 36.6,47.6 39.9,47.6"/><polygon points="30.0,47.4 31.1,50.5 34.4,50.6 31.7,52.6 32.7,55.7 30.0,53.8 27.3,55.7 28.3,52.6 25.6,50.6 28.9,50.5"/><polygon points="19.0,44.5 20.1,47.6 23.4,47.6 20.7,49.6 21.7,52.8 19.0,50.9 16.3,52.8 17.3,49.6 14.6,47.6 17.9,47.6"/><polygon points="10.9,36.4 12.0,39.5 15.3,39.6 12.7,41.6 13.7,44.7 10.9,42.8 8.2,44.7 9.2,41.6 6.6,39.6 9.9,39.5"/><polygon points="8.0,25.4 9.1,28.5 12.4,28.6 9.7,30.6 10.7,33.7 8.0,31.8 5.3,33.7 6.3,30.6 3.6,28.6 6.9,28.5"/><polygon points="10.9,14.4 12.0,17.5 15.3,17.6 12.7,19.6 13.7,22.7 10.9,20.8 8.2,22.7 9.2,19.6 6.6,17.6 9.9,17.5"/><polygon points="19.0,6.3 20.1,9.5 23.4,9.5 20.7,11.5 21.7,14.7 19.0,12.8 16.3,14.7 17.3,11.5 14.6,9.5 17.9,9.5"/></svg>
+        <div class="note-brand">
+          <b>SMART FINANCE</b><span>CONSULTING</span>
+          <small>Erstgespr&#228;ch &#183; kostenlos &#183; unverbindlich</small>
+        </div>
+        <div class="note-value"><b>50</b><i>MIN</i></div>
+      </header>
+      <div class="note-paper">
+        <svg class="wm" viewBox="0 0 220 220" aria-hidden="true"><use href="#adler"/></svg>
+        <h3>Erstgespr&#228;ch anfragen</h3>
+        <p class="hint">Wir melden uns innerhalb eines Werktags bei Ihnen.</p>
+        <div class="two">
+          <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
+          <label for="f-firma">Unternehmen<input id="f-firma" name="firma" autocomplete="organization"></label>
+        </div>
+        <div class="two">
+          <label for="f-mail">E-Mail<input id="f-mail" name="email" type="email" autocomplete="email" required></label>
+          <label for="f-tel">Telefon<input id="f-tel" name="tel" type="tel" autocomplete="tel"></label>
+        </div>
+        <label for="f-thema">Worum geht es?
+          <select id="f-thema" name="thema">
+            <option>Buchhaltung</option><option>Lohnabrechnung</option>
+            <option>Controlling &amp; Beratung</option><option>Digitalisierung mit Agenda</option>
+            <option>Etwas anderes</option>
+          </select>
+        </label>
+        <label for="f-msg">Nachricht<textarea id="f-msg" name="nachricht" rows="3"></textarea></label>
+        <label class="consent" for="f-ok"><input id="f-ok" type="checkbox" required>
+          Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden
+          (siehe Datenschutzerkl&#228;rung).</label>
+        <button class="btn btn-navy" type="submit">Anfrage senden</button>
+        <p class="ok" id="ok" hidden>Entwurf: Das Formular wird beim Livegang an Ihr Postfach angebunden.</p>
       </div>
-      <label for="f-thema">Worum geht es?
-        <select id="f-thema" name="thema">
-          <option>Buchhaltung</option><option>Lohnabrechnung</option><option>Controlling &amp; Beratung</option><option>Digitalisierung mit Agenda</option><option>Etwas anderes</option>
-        </select>
-      </label>
-      <label for="f-msg">Nachricht<textarea id="f-msg" name="nachricht" rows="4"></textarea></label>
-      <label class="consent" for="f-ok"><input id="f-ok" type="checkbox" required> Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden (siehe Datenschutzerklärung).</label>
-      <button class="btn btn-navy" type="submit">Anfrage senden</button>
-      <p class="ok" id="ok" hidden>Entwurf: Das Formular wird beim Livegang an Ihr Postfach angebunden.</p>
+      <div class="note-foot">
+        <span class="note-micro">SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;</span>
+        <span>Mainstra&#223;e&#8239;26&#8211;30</span>
+      </div>
     </form>
   </div>
 </section>
