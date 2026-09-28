@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart Finance Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap">
+<style>
+:root{
+  --navy:#132A3B; --navy-2:#1F3D54; --gold:#CCAA67; --gold-ink:#8C6E2F; --gold-soft:#F4ECDC;
+  --teal:#087C80; --teal-soft:#E4F1F1;
+  --nrw-green:#3F983E; --nrw-red:#C1001F;
+  --bg:#FFFFFF; --bg-alt:#F3F5F7; --surface:#FFFFFF; --ink:#16232E; --muted:#56646F; --line:#DCE2E7;
+  --hero-bg:#132A3B; --hero-ink:#F2F5F7; --hero-muted:#AFBCC6;
+  --shadow:0 1px 2px rgba(19,42,59,.06),0 10px 28px rgba(19,42,59,.08);
+  --serif:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --sans:"Outfit","Segoe UI",system-ui,-apple-system,sans-serif;
+  --wrap:1180px; --gutter:clamp(16px,4vw,40px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --bg:#0D1C27; --bg-alt:#112433; --surface:#15293A; --ink:#E7EDF1; --muted:#9EAFBC; --line:#26404F;
+  --gold-ink:#D9BB7E; --gold-soft:#2A2A22; --teal:#4FB8BB; --teal-soft:#11323A;
+  --hero-bg:#0A1822; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D1C27; --bg-alt:#112433; --surface:#15293A; --ink:#E7EDF1; --muted:#9EAFBC; --line:#26404F;
+  --gold-ink:#D9BB7E; --gold-soft:#2A2A22; --teal:#4FB8BB; --teal-soft:#11323A;
+  --hero-bg:#0A1822; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--teal)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;text-wrap:balance;margin:0;letter-spacing:-.005em}
+h2{font-size:clamp(2rem,3.6vw,2.9rem)}
+h3{font-size:1.55rem}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.section{padding-block:clamp(64px,9vw,112px)}
+.alt{background:var(--bg-alt)}
+.eyebrow{font:600 .78rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);display:flex;align-items:center;gap:.7em}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.lead{font-size:1.14rem;color:var(--muted);max-width:60ch}
+.head{display:grid;gap:18px;max-width:760px;margin-bottom:clamp(36px,5vw,56px)}
+.btn{display:inline-flex;align-items:center;gap:.6em;font:500 1rem/1 var(--sans);padding:17px 26px;border-radius:4px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn-gold{background:var(--gold);color:#132A3B}
+.btn-gold:hover{background:#D9BB7E}
+.btn-ghost{border-color:rgba(242,245,247,.35);color:var(--hero-ink)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-2)}
+.arrow::after{content:"→";transition:transform .2s}
+.arrow:hover::after{transform:translateX(3px)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hero-bg);border-bottom:1px solid rgba(204,170,103,.18)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:76px}
+.logo{display:flex;flex-direction:column;text-decoration:none;color:#fff;line-height:1}
+.logo b{font:700 1.45rem/1 var(--serif);letter-spacing:.14em}
+.logo span{font:500 .62rem/1 var(--sans);letter-spacing:.42em;color:var(--gold);margin-top:6px;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{color:#D5DEE4;text-decoration:none;font-size:.95rem}
+.nav a:hover{color:var(--gold)}
+.nav .btn{padding:12px 18px;font-size:.92rem;color:#132A3B}
+.nav .btn:hover{color:#132A3B}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:4px;padding:9px 12px;font:500 .9rem var(--sans)}
+@media (max-width:900px){
+  .menu-btn{display:block}
+  .nav{position:absolute;inset:76px 0 auto 0;background:var(--hero-bg);flex-direction:column;align-items:flex-start;gap:0;padding:8px var(--gutter) 22px;border-bottom:1px solid rgba(204,170,103,.25)}
+  .nav:not(.open){display:none}
+  .nav a{padding:13px 0;width:100%;border-bottom:1px solid rgba(255,255,255,.07)}
+  .nav .btn{margin-top:14px;width:auto;border:0;padding:14px 20px}
+}
+
+/* hero */
+.hero{background:var(--hero-bg);color:var(--hero-ink);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(0deg,transparent 0 47px,rgba(204,170,103,.06) 47px 48px);pointer-events:none;mask-image:linear-gradient(90deg,transparent 30%,#000 100%)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(40px,6vw,80px);align-items:center;padding-block:clamp(56px,8vw,104px)}
+.hero h1{font-size:clamp(2.7rem,6vw,4.7rem);font-weight:600;color:#fff}
+.hero h1 em{font-style:italic;color:var(--gold);font-weight:500}
+.hero .sub{color:var(--hero-muted);font-size:1.15rem;max-width:54ch;margin-top:24px}
+.tags{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:28px;padding:0;list-style:none}
+.tags li{font-size:.85rem;color:#D5DEE4;border:1px solid rgba(204,170,103,.35);padding:6px 12px;border-radius:999px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.micro{margin-top:14px;font-size:.85rem;color:var(--hero-muted)}
+
+/* booking voucher visual */
+.voucher{background:#FBFAF6;color:#16232E;border-radius:6px;box-shadow:0 30px 60px rgba(0,0,0,.35);padding:26px 26px 22px;position:relative;font-size:.92rem;transform:rotate(1.2deg)}
+.voucher::before{content:"";position:absolute;left:0;right:0;top:-8px;height:8px;background:radial-gradient(circle at 6px 8px,#FBFAF6 5px,transparent 5.5px) 0 0/12px 8px repeat-x}
+.v-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed #C9CFD4;padding-bottom:12px;margin-bottom:14px}
+.v-head b{font:600 1.25rem var(--serif)}
+.v-head small{color:#6A7680;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+.v-row{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:7px 0;font-variant-numeric:tabular-nums}
+.v-row span:first-child{color:#56646F}
+.v-row span:last-child{text-align:right;font-weight:500}
+.booking{margin-top:14px;background:#EEF2F4;border-radius:4px;padding:14px;font-variant-numeric:tabular-nums}
+.booking .lbl{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#087C80;font-weight:600}
+.booking .line{display:grid;grid-template-columns:auto 1fr auto;gap:10px;margin-top:8px;align-items:baseline}
+.booking code{font:500 .85rem ui-monospace,Menlo,Consolas,monospace;color:#132A3B}
+.stamp{position:absolute;right:18px;bottom:62px;border:2px solid #087C80;color:#087C80;font:600 .72rem var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:6px 10px;border-radius:4px;transform:rotate(-9deg);background:rgba(251,250,246,.85)}
+.v-foot{margin-top:14px;font-size:.72rem;color:#7A858E}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.card{grid-column:span 2;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:30px 28px;display:flex;flex-direction:column;gap:14px}
+.card.wide{grid-column:span 3}
+.card .n{font:500 .78rem var(--sans);letter-spacing:.14em;color:var(--gold-ink);text-transform:uppercase}
+.card p{color:var(--muted)}
+.checks{list-style:none;padding:0;margin:4px 0 0;display:grid;gap:9px}
+.checks li{position:relative;padding-left:28px;font-size:.96rem}
+.checks li::before{content:"";position:absolute;left:0;top:.42em;width:16px;height:9px;border-left:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(-45deg) scale(.8);transform-origin:left top}
+.card .more{margin-top:auto;padding-top:8px;font-weight:500;text-decoration:none;display:inline-flex;gap:.5em}
+@media (max-width:980px){.card,.card.wide{grid-column:span 3}}
+@media (max-width:640px){.svc{grid-template-columns:1fr}.card,.card.wide{grid-column:auto}}
+
+/* tandem */
+.tandem{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch}
+.party{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:32px 30px;display:grid;gap:14px;align-content:start}
+.party.us{border-top:3px solid var(--gold)}
+.party.partner{border-top:3px solid var(--teal)}
+.party .who{font:600 .78rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.link-col{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 18px;color:var(--muted);font-size:.82rem;text-align:center;gap:8px}
+.link-col i{display:block;width:1px;flex:1;background:repeating-linear-gradient(var(--line) 0 6px,transparent 6px 12px)}
+.link-col b{font:600 1.05rem var(--serif);color:var(--ink);white-space:nowrap}
+.note{margin-top:28px;background:var(--teal-soft);border-left:3px solid var(--teal);padding:16px 20px;border-radius:0 4px 4px 0;font-size:.93rem;color:var(--ink);max-width:880px}
+@media (max-width:860px){.tandem{grid-template-columns:1fr}.link-col{flex-direction:row;padding:14px 0}.link-col i{height:1px;width:auto;background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 12px)}}
+
+/* agenda */
+.agenda{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,80px);align-items:start}
+.agenda .head{position:sticky;top:110px;margin:0}
+.feat{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.feat div{padding:26px 24px 26px 0;border-bottom:1px solid var(--line);display:grid;gap:8px}
+.feat div:nth-child(odd){border-right:1px solid var(--line)}
+.feat div:nth-child(even){padding-left:24px}
+.feat h3{font-size:1.3rem}
+.feat p{color:var(--muted);font-size:.95rem}
+.benefits{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.benefits span{background:var(--gold-soft);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:.88rem}
+@media (max-width:900px){.agenda{grid-template-columns:1fr}.agenda .head{position:static}}
+@media (max-width:560px){.feat{grid-template-columns:1fr}.feat div,.feat div:nth-child(even){padding:22px 0;border-right:0}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;display:grid;gap:10px;padding-top:22px;border-top:1px solid var(--navy)}
+:root[data-theme="dark"] .steps li{border-top-color:var(--gold)}
+.steps li::before{content:counter(s,decimal-leading-zero);font:600 2.6rem/1 var(--serif);color:var(--gold-ink)}
+.steps p{color:var(--muted)}
+@media (max-width:780px){.steps{grid-template-columns:1fr}}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+.portrait{aspect-ratio:4/5;max-width:100%;background:linear-gradient(160deg,var(--navy-2),var(--navy));border-radius:6px;display:flex;align-items:flex-end;padding:24px;color:#C9D3DA;font-size:.85rem;position:relative;overflow:hidden}
+.portrait::before{content:"SF";position:absolute;right:-10px;top:-30px;font:700 13rem/1 var(--serif);color:rgba(204,170,103,.14)}
+.values{display:grid;gap:18px;margin-top:26px}
+.values div{display:grid;grid-template-columns:130px 1fr;gap:16px;border-top:1px solid var(--line);padding-top:16px}
+.values b{font:600 1.3rem var(--serif);color:var(--gold-ink)}
+.values span{color:var(--muted)}
+@media (max-width:860px){.about{grid-template-columns:1fr}.portrait{aspect-ratio:16/10}}
+@media (max-width:480px){.values div{grid-template-columns:1fr;gap:4px}}
+
+/* faq */
+.faq{max-width:860px;display:grid}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font:600 1.3rem/1.3 var(--serif);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:18px;font:300 1.7rem var(--sans);color:var(--gold-ink);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 24px;color:var(--muted);max-width:68ch}
+
+/* contact */
+.contact{background:var(--hero-bg);color:var(--hero-ink)}
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px)}
+.contact h2{color:#fff}
+.contact .lead{color:var(--hero-muted)}
+.info{display:grid;gap:0;margin-top:30px;font-variant-numeric:tabular-nums}
+.info div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-top:1px solid rgba(255,255,255,.1)}
+.info dt{color:var(--gold);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding-top:3px}
+.info dd{margin:0;color:#fff;user-select:all}
+.info dd.plain{user-select:auto}
+.form{background:#FBFAF6;color:#16232E;border-radius:6px;padding:clamp(24px,4vw,36px);display:grid;gap:16px;align-content:start}
+.form h3{font-size:1.6rem}
+.form label{display:grid;gap:6px;font-size:.88rem;font-weight:500;color:#34424D}
+.form input,.form select,.form textarea{font:400 1rem var(--sans);padding:13px 14px;border:1px solid #CCD4DA;border-radius:4px;background:#fff;color:#16232E;width:100%}
+.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--teal);outline-offset:0;border-color:var(--teal)}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form .consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.85rem;color:#56646F}
+.form .consent input{width:auto;margin-top:3px}
+.form .btn{justify-content:center}
+.form .ok{background:#E4F1F1;color:#0A5A5D;border-radius:4px;padding:12px 14px;font-size:.92rem}
+@media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+@media (max-width:480px){.form .two{grid-template-columns:1fr}.info div{grid-template-columns:1fr;gap:2px}}
+
+/* footer */
+.nrw{height:3px;background:linear-gradient(90deg,var(--nrw-green) 0 33.3%,#fff 33.3% 66.6%,var(--nrw-red) 66.6%)}
+footer{background:#0B1B26;color:#9EAFBC;font-size:.9rem;padding-block:48px 90px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px}
+footer nav{display:flex;flex-wrap:wrap;gap:22px}
+footer a{color:#D5DEE4;text-decoration:none}
+footer a:hover{color:var(--gold)}
+footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
+
+/* mobile bar */
+.mbar{display:none}
+@media (max-width:700px){
+  .mbar{display:grid;grid-template-columns:1fr 1.4fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--hero-bg);padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(204,170,103,.3)}
+  .mbar .btn{justify-content:center;padding:14px 10px;font-size:.95rem}
+}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.voucher{max-width:440px;transform:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#start" aria-label="Smart Finance Consulting – Startseite"><b>SMART FINANCE</b><span>Consulting</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menü</button>
+    <nav class="nav" id="nav">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#agenda">Digital arbeiten</a>
+      <a href="#zusammenarbeit">Steuerberatung</a>
+      <a href="#ueber-uns">Über uns</a>
+      <a href="#kontakt">Kontakt</a>
+      <a class="btn btn-gold" href="#kontakt">Erstgespräch vereinbaren</a>
+    </nav>
+  </div>
+</header>
+
+<main id="start">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Neuss · Nordrhein-Westfalen</p>
+      <h1 style="margin-top:22px">Ihre Zahlen. Ihre Systeme. <em>Intelligent verbunden.</em></h1>
+      <p class="sub">Smart Finance Consulting unterstützt Selbstständige sowie kleine und mittelständische Unternehmen dabei, kaufmännische Abläufe zu organisieren, ihre wirtschaftliche Situation zu verstehen und fundierte Entscheidungen zu treffen.</p>
+      <ul class="tags"><li>Buchhaltung</li><li>Lohnabrechnung</li><li>Unternehmensberatung</li><li>Controlling</li><li>Digitalisierung</li></ul>
+      <div class="cta-row">
+        <a class="btn btn-gold arrow" href="#kontakt">Erstgespräch vereinbaren</a>
+        <a class="btn btn-ghost" href="#leistungen">Unsere Leistungen kennenlernen</a>
+      </div>
+      <p class="micro">Persönlich · unverbindlich · mit festem Ansprechpartner</p>
+    </div>
+    <aside class="voucher" aria-label="Beispiel: digitaler Beleg mit Buchungsvorschlag">
+      <div class="v-head"><b>Eingangsrechnung</b><small>XRechnung</small></div>
+      <div class="v-row"><span>Lieferant</span><span>Bürobedarf Rhein GmbH</span></div>
+      <div class="v-row"><span>Rechnungsdatum</span><span>14.09.2026</span></div>
+      <div class="v-row"><span>Netto</span><span>210,00 €</span></div>
+      <div class="v-row"><span>USt 19 %</span><span>39,90 €</span></div>
+      <div class="v-row" style="border-top:1px solid #DDE2E6;margin-top:4px;padding-top:10px"><span><b style="color:#16232E">Brutto</b></span><span>249,90 €</span></div>
+      <div class="booking">
+        <div class="lbl">Buchungsvorschlag · Agenda</div>
+        <div class="line"><code>4930</code><span>Bürobedarf</span><code>210,00</code></div>
+        <div class="line"><code>1576</code><span>Vorsteuer 19 %</span><code>39,90</code></div>
+        <div class="line"><code>1200</code><span>an Bank</span><code>249,90</code></div>
+      </div>
+      <div class="stamp">Geprüft</div>
+      <p class="v-foot">Beispieldarstellung · SKR 03</p>
+    </aside>
+  </div>
+</section>
+
+<section class="section" id="leistungen">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Was wir für Sie übernehmen</p>
+      <h2>Verlässlich im kaufmännischen Alltag. Aus Zahlen werden Entscheidungen.</h2>
+      <p class="lead">Wir verbinden kaufmännische Betreuung mit betriebswirtschaftlicher Beratung und digitalen Prozessen – strukturiert und passend zu Ihrem Unternehmen.</p>
+    </div>
+    <div class="svc">
+      <article class="card wide">
+        <span class="n">Buchhaltung</span>
+        <h3>Laufende Geschäftsvorfälle, sauber gebucht</h3>
+        <p>Wir buchen Ihre laufenden Geschäftsvorfälle und schaffen eine strukturierte Grundlage für Ihre kaufmännischen Abläufe.</p>
+        <ul class="checks">
+          <li>Buchen laufender Geschäftsvorfälle</li>
+          <li>Digitale Verarbeitung und Organisation von Belegen</li>
+          <li>Abstimmung der Datenbereitstellung für die Steuerberatung</li>
+        </ul>
+      </article>
+      <article class="card wide">
+        <span class="n">Lohnabrechnung</span>
+        <h3>Lohn und Gehalt mit klaren Abläufen</h3>
+        <p>Wir begleiten die laufende Lohn- und Gehaltsabrechnung mit gepflegten Mitarbeiterdaten und digitaler Dokumentenorganisation.</p>
+        <ul class="checks">
+          <li>Laufende Lohn- und Gehaltsabrechnung</li>
+          <li>Lohnsteuer-Anmeldungen im gesetzlich zulässigen Umfang</li>
+          <li>Digitale Bereitstellung der Abrechnungsunterlagen</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="n">Unternehmensberatung</span>
+        <h3>Umsetzbare Schritte für Ihren Alltag</h3>
+        <ul class="checks">
+          <li>Analyse kaufmännischer Strukturen</li>
+          <li>Kosten- und Prozessoptimierung</li>
+          <li>Begleitung bei Wachstum</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="n">Controlling</span>
+        <h3>Zahlen, die steuern helfen</h3>
+        <ul class="checks">
+          <li>Budgetplanung und Soll-Ist-Vergleiche</li>
+          <li>Liquiditätsplanung und Forecasting</li>
+          <li>Individuelle Management-Auswertungen</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="n">Digitalisierung</span>
+        <h3>Prozesse, die den Alltag einfacher machen</h3>
+        <ul class="checks">
+          <li>Digitale Beleg- und Dokumentenprozesse</li>
+          <li>Weniger manuelle Dateneingaben</li>
+          <li>Einführung passender Software</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="zusammenarbeit">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Kaufmännische Betreuung und steuerliche Kompetenz</p>
+      <h2>Persönlich beraten. Fachlich vernetzt.</h2>
+      <p class="lead">Die laufende kaufmännische Betreuung übernimmt unser internes Team. Steuerliche Angelegenheiten betreut unsere rechtlich befugte Partnergesellschaft – in enger Abstimmung und mit klar geregelten Verantwortlichkeiten.</p>
+    </div>
+    <div class="tandem">
+      <div class="party us">
+        <span class="who">Smart Finance Consulting</span>
+        <h3>Kaufmännisch &amp; betriebswirtschaftlich</h3>
+        <ul class="checks">
+          <li>Buchhaltung und Lohnabrechnung</li>
+          <li>Controlling und Unternehmensberatung</li>
+          <li>Digitalisierung mit Agenda</li>
+          <li>Ein fester Ansprechpartner</li>
+        </ul>
+      </div>
+      <div class="link-col" aria-hidden="true"><i></i><b>in enger Abstimmung</b><i></i></div>
+      <div class="party partner">
+        <span class="who">[Name der Steuerberatungsgesellschaft] mbH</span>
+        <h3>Steuerberatung</h3>
+        <ul class="checks">
+          <li>Betriebliche und private Steuererklärungen</li>
+          <li>Jahresabschlüsse und Einnahmenüberschussrechnungen</li>
+          <li>Beratung bei Gründungen und Umstrukturierungen</li>
+          <li>Begleitung von Betriebsprüfungen</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">Die steuerlichen Leistungen werden durch die rechtlich eigenständige Steuerberatungsgesellschaft in eigener Verantwortung erbracht. Smart Finance Consulting übernimmt die vereinbarten kaufmännischen und betriebswirtschaftlichen Leistungen.</p>
+  </div>
+</section>
+
+<section class="section" id="agenda">
+  <div class="wrap agenda">
+    <div class="head">
+      <p class="eyebrow">Digital arbeiten</p>
+      <h2>Moderne Buchhaltung mit Agenda.</h2>
+      <p class="lead">Wir setzen auf Agenda als professionelle Softwarebasis. Gemeinsam legen wir fest, welche digitalen Prozesse für Sie sinnvoll sind – so digital, wie es zu Ihrem Unternehmen passt.</p>
+      <div class="benefits"><span>Weniger Verwaltungsaufwand</span><span>Strukturierte Informationen</span><span>Persönliche Betreuung</span></div>
+    </div>
+    <div class="feat">
+      <div><h3>Belege digital bereitstellen</h3><p>Belege und Unterlagen digital übermitteln – für einen geordneten Informationsfluss zwischen Ihnen und unserem Büro.</p></div>
+      <div><h3>Bank- und PayPal-Umsätze</h3><p>Kontobewegungen werden digital eingelesen und mithilfe von Buchungsvorschlägen weiterverarbeitet.</p></div>
+      <div><h3>Automatisierung mit Kontrolle</h3><p>Agenda schlägt Buchungen vor, wir prüfen sie. Das reduziert wiederkehrende Erfassungsschritte.</p></div>
+      <div><h3>E-Rechnungen</h3><p>Annahme und Verarbeitung von XRechnung und ZUGFeRD – Prüfung und Freigabe im Browser.</p></div>
+      <div><h3>Nachvollziehbar archiviert</h3><p>GoBD-konforme Archivierung mit Volltextsuche: Belege bleiben geordnet und leicht auffindbar.</p></div>
+      <div><h3>Auswertungen online</h3><p>Betriebswirtschaftliche Berichte und ausgewählte Kennzahlen übersichtlich im Agenda-Cockpit.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="ablauf">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">So starten wir</p>
+      <h2>In drei Schritten zur Zusammenarbeit.</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Erstgespräch</h3><p>In einem persönlichen Gespräch klären wir Ihren Bedarf und die nächsten Schritte.</p></li>
+      <li><h3>Analyse &amp; Einrichtung</h3><p>Wir prüfen Ihre bestehenden Systeme und richten passende Übermittlungswege und Agenda-Funktionen ein.</p></li>
+      <li><h3>Laufende Betreuung</h3><p>Buchhaltung, Lohn und Auswertungen laufen strukturiert – mit einem festen Ansprechpartner.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="ueber-uns">
+  <div class="wrap about">
+    <div class="portrait">[Foto des Inhabers]</div>
+    <div>
+      <p class="eyebrow">Über Smart Finance Consulting</p>
+      <h2 style="margin-top:18px">Persönlich. Unternehmerisch. Digital.</h2>
+      <p class="lead" style="margin-top:18px">Der Inhaber von Smart Finance Consulting verfügt über ein abgeschlossenes Diplomstudium im wirtschaftswissenschaftlichen Bereich. Dieser betriebswirtschaftliche Hintergrund prägt unseren Blick auf Zahlen, Prozesse und unternehmerische Entscheidungen.</p>
+      <div class="values">
+        <div><b>Verständlich</b><span>Klare Kommunikation statt Fachjargon.</span></div>
+        <div><b>Verbindlich</b><span>Ein fester Ansprechpartner für Ihr Unternehmen.</span></div>
+        <div><b>Passend</b><span>Lösungen, die zu Ihren Systemen und Abläufen passen.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="faq">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Häufige Fragen</p>
+      <h2>Gut verbunden. Sorgfältig organisiert.</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>Übernehmen Sie auch die Steuerberatung?</summary><p>Steuerberatung und steuerliche Vorbehaltsaufgaben übernimmt die beauftragte, rechtlich eigenständige Steuerberatungsgesellschaft. Wir kümmern uns um die kaufmännische Betreuung und stimmen uns eng mit ihr ab.</p></details>
+      <details><summary>Ich nutze bereits eine andere Software. Geht das?</summary><p>Sprechen Sie uns an. Wir prüfen anhand Ihres Systems und einer geeigneten Beispieldatei, welche Daten und Dokumente sich übernehmen lassen – über eine Schnittstelle oder einen strukturierten Import, etwa als CSV-Buchungsstapel.</p></details>
+      <details><summary>Können Sie E-Rechnungen verarbeiten?</summary><p>Ja. XRechnung und ZUGFeRD können in den dafür vorgesehenen Agenda-Lösungen angenommen und verarbeitet werden. Den passenden Belegweg legen wir bei der Einrichtung fest.</p></details>
+      <details><summary>Wie sicher sind meine Daten?</summary><p>Für die eingesetzten Agenda-Cloud-Lösungen beschreibt der Hersteller eine verschlüsselte Datenübertragung und Speicherung sowie den Betrieb in einem Rechenzentrum in Deutschland.</p></details>
+      <details><summary>Muss ich komplett digital arbeiten?</summary><p>Nein. Wir wählen die Funktionen, die zu Ihrem Unternehmen passen, und stimmen den digitalen Austausch auf die vereinbarte Zusammenarbeit ab.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="kontakt">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Kontakt</p>
+      <h2 style="margin-top:18px">Lassen Sie uns über Ihr Unternehmen sprechen.</h2>
+      <p class="lead" style="margin-top:18px">In einem persönlichen Erstgespräch klären wir Ihren Bedarf und die nächsten Schritte.</p>
+      <dl class="info">
+        <div><dt>Adresse</dt><dd>Mainstraße 26–30<br>41469 Neuss</dd></div>
+        <div><dt>Telefon</dt><dd>+49 2131 5398501</dd></div>
+        <div><dt>Mobil</dt><dd>+49 162 9631605</dd></div>
+        <div><dt>E-Mail</dt><dd>info@smartfinance-nrw.de</dd></div>
+        <div><dt>Termine</dt><dd class="plain">Nach Vereinbarung</dd></div>
+      </dl>
+    </div>
+    <form class="form" id="form" novalidate>
+      <h3>Erstgespräch anfragen</h3>
+      <div class="two">
+        <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
+        <label for="f-firma">Unternehmen<input id="f-firma" name="firma" autocomplete="organization"></label>
+      </div>
+      <div class="two">
+        <label for="f-mail">E-Mail<input id="f-mail" name="email" type="email" autocomplete="email" required></label>
+        <label for="f-tel">Telefon<input id="f-tel" name="tel" type="tel" autocomplete="tel"></label>
+      </div>
+      <label for="f-thema">Worum geht es?
+        <select id="f-thema" name="thema">
+          <option>Buchhaltung</option><option>Lohnabrechnung</option><option>Controlling &amp; Beratung</option><option>Digitalisierung mit Agenda</option><option>Etwas anderes</option>
+        </select>
+      </label>
+      <label for="f-msg">Nachricht<textarea id="f-msg" name="nachricht" rows="4"></textarea></label>
+      <label class="consent" for="f-ok"><input id="f-ok" type="checkbox" required> Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden (siehe Datenschutzerklärung).</label>
+      <button class="btn btn-navy" type="submit">Anfrage senden</button>
+      <p class="ok" id="ok" hidden>Entwurf: Das Formular wird beim Livegang an Ihr Postfach angebunden.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<div class="nrw" aria-hidden="true"></div>
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="logo" href="#start"><b>SMART FINANCE</b><span>Consulting</span></a>
+      <small>Kaufmännische Betreuung, Beratung und Digitalisierung in Neuss. Steuerliche Leistungen erbringt die rechtlich eigenständige Partner-Steuerberatungsgesellschaft.</small>
+    </div>
+    <nav aria-label="Rechtliches">
+      <a href="#leistungen">Leistungen</a><a href="#kontakt">Kontakt</a><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="btn btn-ghost" href="tel:+4921315398501">Anrufen</a>
+  <a class="btn btn-gold" href="#kontakt">Erstgespräch</a>
+</div>
+
+<script>
+const b=document.getElementById('menuBtn'),n=document.getElementById('nav');
+b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');b.setAttribute('aria-expanded',false)}));
+const f=document.getElementById('form');
+f.addEventListener('submit',e=>{e.preventDefault();if(!f.checkValidity()){f.reportValidity();return}document.getElementById('ok').hidden=false});
+</script>
+</body>
+</html>

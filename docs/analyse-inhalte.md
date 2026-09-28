@@ -52,3 +52,20 @@ The texts PDF uses slightly different colors: `#123043` (navy), `#087C80` (petro
 - Primary: navy `#132A3B`; accent: gold `#CCAA67` (matches the business card); optional secondary: teal `#087C80` for digital topics.
 - Serif headings (Beatrix Antiqua or a web alternative such as Cormorant/Playfair) + a sans-serif body font.
 - A regional touch for NRW/Neuss, e.g. through photography or a small green/white/red detail. **Do not use the official NRW coat of arms**: its use is legally restricted, and the site must not look like an authority (Finanzamt).
+
+## 6. Analysis of the reference sites (28.09.2026)
+
+**Competitors:** kalkuel, hksteuerberatung, skalar, axcon, limetax, integral
+- Typical homepage order: Hero (promise + CTA „Kostenloses Erstgespräch“ + microcopy) → key figures/promises → services (5–6 cards, title + 1 sentence + 3 checkmarks) → collaboration model → 3-step process → Why us → team/founder → testimonials → tools/integrations → FAQ (6–9) → location + contact form.
+- axcon and limetax: an explicit note that tax advice is provided only by the partner firm. This is exactly our model.
+- Skalar: concrete promises and microcopy under the CTA. H&K: FAQ on the homepage. Kalkül: sticky mobile bar with „Anrufen / Erstgespräch“.
+
+**Design references**
+- Finanzamt Neuss: clear contact/hours block, info boxes, accessibility. Primary colour #233755.
+- NRW coat of arms: a Hoheitszeichen whose use is not allowed for private companies (law of 10.03.1953). We use only a thin green/white/red line (#3F983E / #C1001F).
+- Agenda: alternating text/image rows, checkmark lists, a recurring lead box. Colours #CF112D, font Milo.
+
+## 7. Design tokens (draft `site/index.html`)
+- Navy #132A3B · Gold #CCAA67 · Teal #087C80 · Surface #F3F5F7
+- Headings: Cormorant Garamond (web alternative to Beatrix Antiqua) · Body: Outfit (alternative to Garet)
+- Radius 4–6px, section spacing 64–112px, container 1180px
