@@ -9,8 +9,14 @@ W = lambda f, t: io.open(os.path.join(HERE, f), "w", encoding="utf-8").write(t)
 
 src   = R("body.html")
 i18n  = R("i18n.json").strip()
-head, rest = src.split("</style>", 1)
-head += "</style>"
+# split at the LAST </style> before the symbol block, not the first: the page
+# now has a font-face <style> ahead of the main stylesheet
+MARK = '</style>\n\n<svg width="0"'
+if MARK in src:
+    i = src.index(MARK) + len('</style>')
+else:
+    i = src.index("</style>") + len("</style>")
+head, rest = src[:i], src[i:]
 symbol = re.search(r'<svg width="0".*?</svg>', rest, re.S).group(0)
 header = re.search(r'<header class="top">.*?</header>', rest, re.S).group(0)
 home   = re.search(r'<main id="start">.*?</main>', rest, re.S).group(0)
