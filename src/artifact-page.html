@@ -120,27 +120,23 @@ p{margin:0}
 @media (max-width:760px){.film{height:calc(100vh - 82px);height:calc(100svh - 82px);min-height:360px}}
 .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;
   /* scaled a little so the blur never shows a soft edge */
-  filter:blur(3px) brightness(.58) saturate(1.05);transform:scale(1.05)}
+  filter:blur(1px) brightness(.74) saturate(1.05);transform:scale(1.02)}
 .film-fade{position:absolute;inset:0;z-index:1;pointer-events:none;background:
-  radial-gradient(ellipse at center,rgba(9,22,32,.15) 0%,rgba(9,22,32,.5) 70%),
+  radial-gradient(ellipse 55% 32% at 50% 50%,rgba(9,22,32,.45) 0%,rgba(9,22,32,0) 100%),
   linear-gradient(180deg,rgba(9,22,32,0) 0%,rgba(9,22,32,0) 62%,rgba(9,22,32,.55) 84%,var(--hero-bg) 100%)}
 .film-title{position:relative;z-index:2;margin:0;text-align:center;color:#fff;direction:ltr;
   padding-inline:var(--gutter)}
 .film-name{display:block;font:500 clamp(3.2rem,10vw,8.5rem)/1 var(--serif);letter-spacing:.01em;
-  text-shadow:0 4px 40px rgba(5,14,22,.55);white-space:nowrap}
+  text-shadow:0 2px 6px rgba(5,14,22,.45),0 4px 40px rgba(5,14,22,.6);white-space:nowrap}
 .film-sub{display:block;margin-top:clamp(14px,1.8vw,24px);font:500 clamp(.7rem,1.1vw,.95rem)/1 var(--sans);
-  letter-spacing:.55em;text-transform:uppercase;color:var(--gold);padding-left:.55em}
-/* "na" is set in a digital face: gold glyphs with a faint split-colour glow,
-   scanlines, and a short scramble every few seconds (script below) */
-.cy{position:relative;display:inline-block;font:400 .86em/1 "Share Tech Mono",ui-monospace,Menlo,Consolas,monospace;
-  color:#F3DDA4;letter-spacing:0;margin-inline:.01em;
-  text-shadow:-.035em 0 rgba(90,220,255,.55),.035em 0 rgba(255,80,120,.4),0 0 .28em rgba(200,165,95,.9)}
-.cy::after{content:"";position:absolute;inset:-.05em -.04em;pointer-events:none;
-  background:repeating-linear-gradient(180deg,rgba(9,22,32,.4) 0 1px,transparent 1px 4px);mix-blend-mode:multiply}
+  letter-spacing:.55em;text-transform:uppercase;color:#E3C27E;padding-left:.55em;
+  font-weight:600;text-shadow:0 1px 3px rgba(5,14,22,.8),0 0 18px rgba(5,14,22,.6)}
+/* "na" is set in a digital face in plain gold with a soft glow; every few
+   seconds the two letters run through digital glyphs (script below) */
+.cy{display:inline-block;font:400 .86em/1 "Share Tech Mono",ui-monospace,Menlo,Consolas,monospace;
+  color:#E3C27E;letter-spacing:0;margin-inline:.01em;
+  text-shadow:0 0 .22em rgba(200,165,95,.45),0 2px 6px rgba(5,14,22,.45)}
 .cy-c{display:inline-block;text-align:center}
-.cy.glitch{animation:cyGlitch .26s steps(2) 1}
-@keyframes cyGlitch{0%{transform:translate(0)}33%{transform:translate(-.03em,.02em) skewX(-6deg)}
-  66%{transform:translate(.03em,-.02em) skewX(5deg)}100%{transform:none}}
 .film-cue{position:absolute;z-index:2;left:50%;bottom:clamp(18px,4vh,40px);width:1px;height:46px;
   background:linear-gradient(transparent,var(--gold));transform:translateX(-50%);animation:cue 2.2s ease-in-out infinite}
 @keyframes cue{0%,100%{opacity:.25;transform:translate(-50%,-6px)}50%{opacity:1;transform:translate(-50%,4px)}}
@@ -1388,7 +1384,6 @@ footer nav a:hover{transform:translateY(-1px)}
   function rnd(){ return G.charAt(Math.floor(Math.random()*G.length)); }
   function run(){
     var f=0, stop=[10+Math.floor(Math.random()*4),14+Math.floor(Math.random()*5)];
-    cy.classList.remove('glitch'); void cy.offsetWidth; cy.classList.add('glitch');
     var iv=setInterval(function(){
       f++;
       for(var i=0;i<cs.length;i++) cs[i].textContent = f>=stop[i] ? FIN[i] : rnd();
