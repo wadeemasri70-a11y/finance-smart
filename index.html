@@ -127,13 +127,14 @@ p{margin:0}
 @media (max-width:760px){.film{height:calc(100vh - 82px);height:calc(100svh - 82px);min-height:360px}}
 .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;
   /* scaled a little so the blur never shows a soft edge */
-  filter:blur(1px) brightness(.74) saturate(1.05);transform:scale(1.02)}
+  filter:blur(2px) brightness(.72) saturate(1.05);transform:scale(1.03)}
 .film-fade{position:absolute;inset:0;z-index:1;pointer-events:none;background:
-  linear-gradient(90deg,rgba(9,22,32,.62) 0%,rgba(9,22,32,.38) 32%,rgba(9,22,32,0) 58%)}
+  linear-gradient(90deg,rgba(9,22,32,.62) 0%,rgba(9,22,32,.38) 32%,rgba(9,22,32,0) 58%),
+  radial-gradient(ellipse 120% 100% at 50% 50%,transparent 62%,rgba(9,22,32,.4) 100%)}
 .film-title{position:relative;z-index:2;margin:0;color:#fff;direction:ltr;text-align:left;
   width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
-/* a two-column grid: "Sm" fills the first column, so "art" and "Finance"
-   both start in the second one, right under the "a" */
+/* a two-column grid: "S" fills the first column, so "mart" and "Finance"
+   both start in the second one, right under the "m" */
 .film-name{display:inline-grid;grid-template-columns:auto auto;justify-items:start;row-gap:.12em;
   font:500 clamp(2.5rem,6.4vw,5.8rem)/1.02 var(--serif);letter-spacing:.01em;
   text-shadow:0 2px 6px rgba(5,14,22,.45),0 4px 40px rgba(5,14,22,.6)}
@@ -849,7 +850,7 @@ footer nav a:hover{transform:translateY(-1px)}
   </video>
   <div class="film-fade" aria-hidden="true"></div>
   <p class="film-title" role="img" aria-label="Smart Finance Consulting">
-    <span class="film-name" aria-hidden="true"><span>Sm</span><span>art</span><span class="film-l2">Fi<span class="cy" id="cy"><span class="cy-c">n</span><span class="cy-c">a</span></span>nce</span><span class="film-sub">Consulting</span></span>
+    <span class="film-name" aria-hidden="true"><span>S</span><span>mart</span><span class="film-l2">Fi<span class="cy" id="cy"><span class="cy-c">n</span><span class="cy-c">a</span></span>nce</span><span class="film-sub">Consulting</span></span>
   </p>
   <span class="film-cue" aria-hidden="true"></span>
 </section>
