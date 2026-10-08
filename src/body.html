@@ -151,6 +151,17 @@ p{margin:0}
 .hero .sub{margin-inline:auto}
 .tags,.cta-row{justify-content:center}
 .hero h1{font-size:clamp(2.4rem,5.3vw,4.2rem);font-weight:500;color:#fff}
+/* wide screens: the copy on the reading side, the coin opposite it */
+@media (min-width:900px){
+  .hero .wrap{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);grid-template-areas:"copy coin";
+    align-items:center;justify-items:stretch;text-align:start;column-gap:clamp(32px,5vw,80px);
+    padding-block:clamp(56px,7vw,6rem)}
+  .hero .coin-wrap{grid-area:coin}
+  .hero-copy{grid-area:copy;justify-items:start;max-width:none}
+  .hero .sub{margin-inline:0}
+  .hero .tags,.hero .cta-row{justify-content:flex-start}
+  .hero .coin-stage{--d:clamp(230px,26vw,360px)}
+}
 .hero h1 em{font-style:italic;color:var(--gold);font-weight:500}
 .hero .sub{color:var(--hero-muted);font-size:1.15rem;max-width:54ch;margin-top:24px}
 .tags{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:28px;padding:0;list-style:none}
