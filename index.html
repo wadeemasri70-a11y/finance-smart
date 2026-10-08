@@ -116,7 +116,11 @@ p{margin:0}
 /* opening film: fills the whole first screen under the sticky header. The
    video is softly blurred and dimmed so the name on top of it reads clearly;
    the fade at the bottom carries it into the hero without a seam. */
-.film{position:relative;overflow:hidden;background:var(--hero-bg);isolation:isolate;
+.film{position:relative;overflow:hidden;isolation:isolate;
+  /* without a video: a soft gold glow behind the name and a faint ledger grid */
+  background:radial-gradient(ellipse 60% 45% at 50% 50%,rgba(200,165,95,.2),transparent 70%),
+    linear-gradient(rgba(200,165,95,.05) 1px,transparent 1px) 0 0/100% 48px,
+    linear-gradient(90deg,rgba(200,165,95,.05) 1px,transparent 1px) 0 0/48px 100%,var(--hero-bg);
   height:calc(100vh - 7rem);height:calc(100svh - 7rem);min-height:420px;display:grid;place-items:center}
 @media (max-width:1400px){.film{height:calc(100vh - 92px);height:calc(100svh - 92px)}}
 @media (max-width:760px){.film{height:calc(100vh - 82px);height:calc(100svh - 82px);min-height:360px}}
@@ -826,11 +830,6 @@ footer nav a:hover{transform:translateY(-1px)}
 </header>
 <main id="start">
 <section class="film" aria-label="Smart Finance Consulting">
-  <video class="film-vid band-vid" muted loop playsinline autoplay preload="auto"
-         poster="img/brand-bars-1800.jpg"
-         aria-label="Drei goldene S&#228;ulen mit einem goldenen Ring, das Zeichen von Smart Finance Consulting">
-    <source src="video/brand-bars.mp4" type="video/mp4">
-  </video>
   <div class="film-fade" aria-hidden="true"></div>
   <p class="film-title" role="img" aria-label="Smart Finance Consulting">
     <span class="film-name" aria-hidden="true">Smart Fi<span class="cy" id="cy"><span class="cy-c">n</span><span class="cy-c">a</span></span>nce</span>
