@@ -121,22 +121,27 @@ p{margin:0}
   background:radial-gradient(ellipse 60% 45% at 50% 50%,rgba(200,165,95,.2),transparent 70%),
     linear-gradient(rgba(200,165,95,.05) 1px,transparent 1px) 0 0/100% 48px,
     linear-gradient(90deg,rgba(200,165,95,.05) 1px,transparent 1px) 0 0/48px 100%,var(--hero-bg);
-  height:calc(100vh - 7rem);height:calc(100svh - 7rem);min-height:420px;display:grid;place-items:center}
+  height:calc(100vh - 7rem);height:calc(100svh - 7rem);min-height:420px;display:grid;align-items:center;
+  border-bottom:1px solid rgba(200,165,95,.55);box-shadow:0 1px 0 rgba(0,0,0,.35)}
 @media (max-width:1400px){.film{height:calc(100vh - 92px);height:calc(100svh - 92px)}}
 @media (max-width:760px){.film{height:calc(100vh - 82px);height:calc(100svh - 82px);min-height:360px}}
 .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;
   /* scaled a little so the blur never shows a soft edge */
   filter:blur(1px) brightness(.74) saturate(1.05);transform:scale(1.02)}
 .film-fade{position:absolute;inset:0;z-index:1;pointer-events:none;background:
-  radial-gradient(ellipse 55% 32% at 50% 50%,rgba(9,22,32,.45) 0%,rgba(9,22,32,0) 100%),
-  linear-gradient(180deg,rgba(9,22,32,0) 0%,rgba(9,22,32,0) 62%,rgba(9,22,32,.55) 84%,var(--hero-bg) 100%)}
-.film-title{position:relative;z-index:2;margin:0;text-align:center;color:#fff;direction:ltr;
-  padding-inline:var(--gutter)}
-.film-name{display:block;font:500 clamp(3.2rem,10vw,8.5rem)/1 var(--serif);letter-spacing:.01em;
-  text-shadow:0 2px 6px rgba(5,14,22,.45),0 4px 40px rgba(5,14,22,.6);white-space:nowrap}
-.film-sub{display:block;margin-top:clamp(14px,1.8vw,24px);font:500 clamp(.7rem,1.1vw,.95rem)/1 var(--sans);
-  letter-spacing:.55em;text-transform:uppercase;color:#E3C27E;padding-left:.55em;
-  font-weight:600;text-shadow:0 1px 3px rgba(5,14,22,.8),0 0 18px rgba(5,14,22,.6)}
+  linear-gradient(90deg,rgba(9,22,32,.62) 0%,rgba(9,22,32,.38) 32%,rgba(9,22,32,0) 58%)}
+.film-title{position:relative;z-index:2;margin:0;color:#fff;direction:ltr;text-align:left;
+  width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+/* a two-column grid: "Sm" fills the first column, so "art" and "Finance"
+   both start in the second one, right under the "a" */
+.film-name{display:inline-grid;grid-template-columns:auto auto;justify-items:start;row-gap:.12em;
+  font:500 clamp(2.5rem,6.4vw,5.8rem)/1.02 var(--serif);letter-spacing:.01em;
+  text-shadow:0 2px 6px rgba(5,14,22,.45),0 4px 40px rgba(5,14,22,.6)}
+.film-name>span{display:block;white-space:nowrap}
+.film-l2{grid-column:2}
+.film-sub{grid-column:2;margin-top:clamp(10px,1.4vw,18px);font:600 clamp(.66rem,.95vw,.88rem)/1 var(--sans);
+  letter-spacing:.55em;text-transform:uppercase;color:#E3C27E;
+  text-shadow:0 1px 3px rgba(5,14,22,.8),0 0 18px rgba(5,14,22,.6)}
 /* "na" is set in a digital face in plain gold with a soft glow; every few
    seconds the two letters run through digital glyphs (script below) */
 .cy{display:inline-block;font:400 .86em/1 "Share Tech Mono",ui-monospace,Menlo,Consolas,monospace;
