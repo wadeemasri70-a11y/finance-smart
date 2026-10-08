@@ -25,7 +25,7 @@ head, rest = src[:i], src[i:]
 symbol = re.search(r'<svg width="0".*?</svg>', rest, re.S).group(0)
 header = re.search(r'<header class="top">.*?</header>', rest, re.S).group(0)
 home   = re.search(r'<main id="start">.*?</main>', rest, re.S).group(0)
-tail   = rest[rest.index('<div class="nrw"'):].replace("__I18N_DICT__", i18n)
+tail   = rest[rest.index('<div class="foot-rule"'):].replace("__I18N_DICT__", i18n)
 
 DOC = ('<!doctype html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n'
        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
@@ -35,10 +35,10 @@ DOC = ('<!doctype html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n'
 def page(main, desc, sub):
     h = header
     if sub:                       # anchors on a subpage have to point back home
-        h = re.sub(r'href="#([a-z-]+)"', r'href="index.html#\1"', h)
+        h = re.sub(r'href="#(?!sfmark")([a-z-]+)"', r'href="index.html#\1"', h)
     t = tail
     if sub:
-        t = re.sub(r'href="#([a-z-]+)"', r'href="index.html#\1"', t)
+        t = re.sub(r'href="#(?!sfmark")([a-z-]+)"', r'href="index.html#\1"', t)
     return DOC.format(desc=desc, head=head, symbol=symbol, header=h, main=main, tail=t)
 
 HOME_DESC = ("Buchhaltung, Lohnabrechnung, Controlling und Digitalisierung "
