@@ -30,6 +30,7 @@
 @font-face{font-family:'IBM Plex Sans Arabic';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/IBMPlexSansArabic-500-normal-arabic.woff2) format('woff2');unicode-range:U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC4, U+10EFC-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
 @font-face{font-family:'IBM Plex Sans Arabic';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/IBMPlexSansArabic-600-normal-arabic.woff2) format('woff2');unicode-range:U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC4, U+10EFC-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
 @font-face{font-family:'IBM Plex Sans Arabic';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/IBMPlexSansArabic-700-normal-arabic.woff2) format('woff2');unicode-range:U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC4, U+10EFC-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:'Share Tech Mono';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ShareTechMono-400-normal-latin.woff2) format('woff2');unicode-range:U+0000-00FF}
 </style>
 <style>
 :root{
@@ -106,14 +107,40 @@ p{margin:0}
 }
 
 /* hero */
-/* opening film: full-bleed, the first thing under the header. The header is
-   sticky and opaque, so the video needs no scrim of its own at the top; the
-   fade at the bottom carries it into the hero's background without a seam. */
-.film{position:relative;overflow:hidden;background:var(--hero-bg);
-  height:clamp(300px,62vh,46rem)}
-.film video{width:100%;height:100%;object-fit:cover;display:block}
-.film-fade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,
-  rgba(9,22,32,0) 0%,rgba(9,22,32,0) 58%,rgba(9,22,32,.55) 82%,var(--hero-bg) 100%)}
+/* opening film: fills the whole first screen under the sticky header. The
+   video is softly blurred and dimmed so the name on top of it reads clearly;
+   the fade at the bottom carries it into the hero without a seam. */
+.film{position:relative;overflow:hidden;background:var(--hero-bg);isolation:isolate;
+  height:calc(100vh - 7rem);height:calc(100svh - 7rem);min-height:420px;display:grid;place-items:center}
+@media (max-width:1400px){.film{height:calc(100vh - 92px);height:calc(100svh - 92px)}}
+@media (max-width:760px){.film{height:calc(100vh - 82px);height:calc(100svh - 82px);min-height:360px}}
+.film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;
+  /* scaled a little so the blur never shows a soft edge */
+  filter:blur(5px) brightness(.62) saturate(1.05);transform:scale(1.06)}
+.film-fade{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  radial-gradient(ellipse at center,rgba(9,22,32,.15) 0%,rgba(9,22,32,.5) 70%),
+  linear-gradient(180deg,rgba(9,22,32,0) 0%,rgba(9,22,32,0) 62%,rgba(9,22,32,.55) 84%,var(--hero-bg) 100%)}
+.film-title{position:relative;z-index:2;margin:0;text-align:center;color:#fff;direction:ltr;
+  padding-inline:var(--gutter)}
+.film-name{display:block;font:500 clamp(3.2rem,10vw,8.5rem)/1 var(--serif);letter-spacing:.01em;
+  text-shadow:0 4px 40px rgba(5,14,22,.55);white-space:nowrap}
+.film-sub{display:block;margin-top:clamp(14px,1.8vw,24px);font:500 clamp(.7rem,1.1vw,.95rem)/1 var(--sans);
+  letter-spacing:.55em;text-transform:uppercase;color:var(--gold);padding-left:.55em}
+/* "na" is set in a digital face: gold glyphs with a faint split-colour glow,
+   scanlines, and a short scramble every few seconds (script below) */
+.cy{position:relative;display:inline-block;font:400 .86em/1 "Share Tech Mono",ui-monospace,Menlo,Consolas,monospace;
+  color:#F3DDA4;letter-spacing:0;margin-inline:.01em;
+  text-shadow:-.035em 0 rgba(90,220,255,.55),.035em 0 rgba(255,80,120,.4),0 0 .28em rgba(200,165,95,.9)}
+.cy::after{content:"";position:absolute;inset:-.05em -.04em;pointer-events:none;
+  background:repeating-linear-gradient(180deg,rgba(9,22,32,.4) 0 1px,transparent 1px 4px);mix-blend-mode:multiply}
+.cy-c{display:inline-block;text-align:center}
+.cy.glitch{animation:cyGlitch .26s steps(2) 1}
+@keyframes cyGlitch{0%{transform:translate(0)}33%{transform:translate(-.03em,.02em) skewX(-6deg)}
+  66%{transform:translate(.03em,-.02em) skewX(5deg)}100%{transform:none}}
+.film-cue{position:absolute;z-index:2;left:50%;bottom:clamp(18px,4vh,40px);width:1px;height:46px;
+  background:linear-gradient(transparent,var(--gold));transform:translateX(-50%);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:translate(-50%,-6px)}50%{opacity:1;transform:translate(-50%,4px)}}
+@media (prefers-reduced-motion:reduce){.film-cue{animation:none}}
 
 .hero{background:var(--hero-bg);color:var(--hero-ink);position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:
@@ -801,6 +828,11 @@ footer nav a:hover{transform:translateY(-1px)}
     <source src="video/brand-bars.mp4" type="video/mp4">
   </video>
   <div class="film-fade" aria-hidden="true"></div>
+  <p class="film-title" role="img" aria-label="Smart Finance Consulting">
+    <span class="film-name" aria-hidden="true">Smart Fi<span class="cy" id="cy"><span class="cy-c">n</span><span class="cy-c">a</span></span>nce</span>
+    <span class="film-sub" aria-hidden="true">Consulting</span>
+  </p>
+  <span class="film-cue" aria-hidden="true"></span>
 </section>
 
 <section class="hero">
@@ -1343,6 +1375,27 @@ footer nav a:hover{transform:translateY(-1px)}
   }
   addEventListener('scroll',function(){ if(!q){ q=true; requestAnimationFrame(upd); } },{passive:true});
   upd();
+})();
+</script>
+
+<script>
+(function(){
+  // "na" in the opening title: every few seconds the two letters run through
+  // digital glyphs and settle back
+  var cy=document.getElementById('cy'); if(!cy) return;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var cs=cy.querySelectorAll('.cy-c'), FIN=['n','a'], G='01#<>/\\_=+*$%@&ABCDEF';
+  function rnd(){ return G.charAt(Math.floor(Math.random()*G.length)); }
+  function run(){
+    var f=0, stop=[10+Math.floor(Math.random()*4),14+Math.floor(Math.random()*5)];
+    cy.classList.remove('glitch'); void cy.offsetWidth; cy.classList.add('glitch');
+    var iv=setInterval(function(){
+      f++;
+      for(var i=0;i<cs.length;i++) cs[i].textContent = f>=stop[i] ? FIN[i] : rnd();
+      if(f>=stop[1]){ clearInterval(iv); setTimeout(run,2600+Math.random()*1800); }
+    },55);
+  }
+  setTimeout(run,900);
 })();
 </script>
 
