@@ -134,8 +134,7 @@ main>section+section{border-top:var(--rule)}
 
 /* hero */
 /* opening film: fills the whole first screen under the sticky header and
-   plays as it is; only a shade on the left, behind the name, keeps the
-   lettering readable. */
+   plays as it is, with nothing laid over it */
 .film{position:relative;overflow:hidden;isolation:isolate;
   /* without a video: a soft gold glow behind the name and a faint ledger grid */
   background:radial-gradient(ellipse 60% 45% at 50% 50%,rgba(197,160,89,.2),transparent 70%),
@@ -147,26 +146,13 @@ main>section+section{border-top:var(--rule)}
 @media (max-width:760px){.film{height:calc(100vh - 82px);height:calc(100svh - 82px);min-height:360px}}
 .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;
 }
-.film-fade{position:absolute;inset:0;z-index:1;pointer-events:none;background:
-  linear-gradient(90deg,rgba(10,26,42,.62) 0%,rgba(10,26,42,.38) 32%,rgba(10,26,42,0) 58%)}
-.film-title{position:relative;z-index:2;margin:0;color:#fff;direction:ltr;text-align:left;
-  width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
-/* a two-column grid: "S" fills the first column, so "mart" and "Finance"
-   both start in the second one, right under the "m" */
-.film-name{display:inline-grid;grid-template-columns:auto auto;justify-items:start;row-gap:.12em;
-  font:500 clamp(2.5rem,6.4vw,5.8rem)/1.02 var(--serif);letter-spacing:.01em;
-  text-shadow:0 2px 6px rgba(10,26,42,.45),0 4px 40px rgba(10,26,42,.6)}
-.film-name>span{display:block;white-space:nowrap}
-.film-l2{grid-column:2}
-.film-sub{grid-column:2;margin-top:clamp(10px,1.4vw,18px);font:600 clamp(.66rem,.95vw,.88rem)/1 var(--sans);
-  letter-spacing:.55em;text-transform:uppercase;color:#D6B874;
-  text-shadow:0 1px 3px rgba(10,26,42,.8),0 0 18px rgba(10,26,42,.6)}
-/* "na" is set in a digital face in plain gold with a soft glow; every few
-   seconds the two letters run through digital glyphs (script below) */
-.cy{display:inline-block;font:400 .86em/1 "Share Tech Mono",ui-monospace,Menlo,Consolas,monospace;
-  color:#D6B874;letter-spacing:0;margin-inline:.01em;
-  text-shadow:0 0 .22em rgba(197,160,89,.45),0 2px 6px rgba(10,26,42,.45)}
+/* the "NA" of FINANCE in the header wordmark is set in a digital face in
+   gold; every few seconds the two letters run through digital glyphs */
+.cy{display:inline-block;font:400 1.04em/1 "Share Tech Mono",ui-monospace,Menlo,Consolas,monospace;
+  color:var(--gold);letter-spacing:inherit;text-shadow:0 0 .3em rgba(197,160,89,.35)}
 .cy-c{display:inline-block;text-align:center}
+/* screen readers hear FINANCE, not the scramble */
+.cy-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .film-cue{position:absolute;z-index:2;left:50%;bottom:clamp(18px,4vh,40px);width:1px;height:46px;
   background:linear-gradient(transparent,var(--gold));transform:translateX(-50%);animation:cue 2.2s ease-in-out infinite}
 @keyframes cue{0%,100%{opacity:.25;transform:translate(-50%,-6px)}50%{opacity:1;transform:translate(-50%,4px)}}
@@ -790,7 +776,7 @@ footer nav a:hover{transform:translateY(-1px)}
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#start" aria-label="Smart Finance Consulting &#8211; Startseite"><svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><use href="#sfmark"/></svg><span class="wordmark"><b>SMART FINANCE</b><span>Consulting</span></span></a>
+    <a class="logo" href="#start" aria-label="Smart Finance Consulting &#8211; Startseite"><svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><use href="#sfmark"/></svg><span class="wordmark"><b>SMART FI<span class="cy" id="cy" aria-hidden="true"><span class="cy-c">N</span><span class="cy-c">A</span></span><span class="cy-sr">NA</span>NCE</b><span>Consulting</span></span></a>
     <nav class="nav" id="nav">
       <a data-i18n="k1" href="#leistungen">Leistungen</a>
       <a data-i18n="k2" href="#agenda">Digital arbeiten</a>
@@ -820,10 +806,6 @@ footer nav a:hover{transform:translateY(-1px)}
     <source src="video/intro-1280.mp4" type="video/mp4" media="(max-width:760px)">
     <source src="video/intro.mp4" type="video/mp4">
   </video>
-  <div class="film-fade" aria-hidden="true"></div>
-  <p class="film-title" role="img" aria-label="Smart Finance Consulting">
-    <span class="film-name" aria-hidden="true"><span>S</span><span>mart</span><span class="film-l2">Fi<span class="cy" id="cy"><span class="cy-c">n</span><span class="cy-c">a</span></span>nce</span><span class="film-sub">Consulting</span></span>
-  </p>
   <span class="film-cue" aria-hidden="true"></span>
 </section>
 
@@ -1336,11 +1318,11 @@ footer nav a:hover{transform:translateY(-1px)}
 
 <script>
 (function(){
-  // "na" in the opening title: every few seconds the two letters run through
-  // digital glyphs and settle back
+  // "NA" in the header wordmark: every few seconds the two letters run
+  // through digital glyphs and settle back
   var cy=document.getElementById('cy'); if(!cy) return;
   if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  var cs=cy.querySelectorAll('.cy-c'), FIN=['n','a'], G='01#<>/\\_=+*$%@&ABCDEF';
+  var cs=cy.querySelectorAll('.cy-c'), FIN=['N','A'], G='01#<>/\\_=+*$%@&ABCDEF';
   function rnd(){ return G.charAt(Math.floor(Math.random()*G.length)); }
   function run(){
     var f=0, stop=[10+Math.floor(Math.random()*4),14+Math.floor(Math.random()*5)];
