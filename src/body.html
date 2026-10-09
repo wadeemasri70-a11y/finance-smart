@@ -38,9 +38,9 @@
   color-scheme:light;
   --navy:#0E2235; --navy-2:#1C3A52; --foot-bg:#0A1A2A;
   --gold:#C5A059; --gold-light:#D6B874; --gold-ink:#8A6A2C; --gold-soft:#F1E7D3;
-  --bg:#FAF6EE; --bg-alt:#EFE6D6; --surface:#FFFDF9; --line:#E3D9C6;
+  --bg:#F3EEE3; --bg-alt:#E9E1D1; --surface:#F8F4EB; --line:#DDD3C0;
   --ink:#18232D; --muted:#5E6670;
-  --on-dark:#D9DEE3; --hero-ink:#FAF6EE; --hero-muted:#B7C0C8; --hero-bg:var(--navy);
+  --on-dark:#D9DEE3; --hero-ink:#F3EEE3; --hero-muted:#B7C0C8; --hero-bg:var(--navy);
   /* the frame (header, hero, contact, footer...) has its own text colours,
      so night mode can turn it light while the content turns dark */
   --frame-head:#fff; --frame-text:#D9DEE3; --frame-line:rgba(255,255,255,.1);
@@ -70,50 +70,55 @@ p{margin:0}
 :root{--rule:1px solid rgba(197,160,89,.45)}
 main>section+section{border-top:var(--rule)}
 
-/* night mode is the day page inverted: the navy frame (header, hero,
-   contact, footer) turns ivory, the ivory content turns navy, and every box
-   swaps too, white cards and papers to navy. Gold stays gold, one shade
-   deeper on ivory so it still reads. */
+/* night mode: the ivory content turns navy, and the frame below the header
+   (hero, contact, footer) turns ivory. The header stays navy in both modes.
+   Gold stays gold, one shade deeper on ivory so it still reads. */
 :root[data-sf-theme="dark"]{
   color-scheme:dark;
   --bg:#0E2235; --bg-alt:#0B1C2D; --surface:#142C41; --line:#244259;
   --ink:#EEE8DC; --muted:#A9B4BE; --gold-ink:#D6B874; --gold-soft:#1E3346;
   --navy-2:#D6B874;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px rgba(0,0,0,.35);
-  --hero-bg:#FAF6EE; --foot-bg:#EFE6D6; --hero-ink:#18232D; --hero-muted:#5E6670;
+  --hero-bg:#F3EEE3; --foot-bg:#E9E1D1; --hero-ink:#18232D; --hero-muted:#5E6670;
   --frame-head:#0E2235; --frame-text:#2D3A46; --frame-line:rgba(14,34,53,.12);
   --frame-gold:#8A6A2C; --frame-ghost:rgba(14,34,53,.3);
 }
+/* the header keeps the navy frame of the day page */
+:root[data-sf-theme="dark"] .top{
+  --hero-bg:#0E2235; --hero-ink:#F3EEE3; --hero-muted:#B7C0C8;
+  --frame-head:#fff; --frame-text:#D9DEE3; --frame-line:rgba(255,255,255,.1);
+  --frame-gold:var(--gold); --frame-ghost:rgba(250,246,238,.35)}
 /* inside the light frame, eyebrows and lines take their day colours */
-:root[data-sf-theme="dark"] :is(.top,.hero,.contact,.phero,.trust,footer,.mbar){
-  --gold-ink:#8A6A2C; --line:#E3D9C6}
-/* a navy button turns ivory on navy content, and stays navy in the frame */
-:root[data-sf-theme="dark"] .btn-navy{background:#FAF6EE;color:#0E2235}
+:root[data-sf-theme="dark"] :is(.hero,.contact,.phero,.trust,footer,.mbar){
+  --gold-ink:#8A6A2C; --line:#DDD3C0}
+/* a navy button turns light on navy content, and stays navy on ivory */
+:root[data-sf-theme="dark"] .btn-navy{background:#F3EEE3;color:#0E2235}
 :root[data-sf-theme="dark"] .btn-navy:hover{background:var(--gold-light)}
 :root[data-sf-theme="dark"] :is(.contact,.phero,.mbar) .btn-navy{background:#0E2235;color:#fff}
-/* the sample invoice: white paper becomes a navy sheet */
-:root[data-sf-theme="dark"] .voucher{background:#142C41;color:#EEE8DC;box-shadow:var(--shadow)}
-:root[data-sf-theme="dark"] .voucher::before{background:radial-gradient(circle at 6px 8px,#142C41 5px,transparent 5.5px) 0 0/12px 8px repeat-x}
-:root[data-sf-theme="dark"] .v-head{border-bottom-color:#2B4A63}
-:root[data-sf-theme="dark"] :is(.v-head small,.v-row span:first-child,.v-foot){color:#A9B4BE}
-:root[data-sf-theme="dark"] .voucher .v-row[style]{border-top-color:#2B4A63!important}
-:root[data-sf-theme="dark"] .voucher b[style]{color:#EEE8DC!important}
-:root[data-sf-theme="dark"] .booking{background:#0E2235}
-:root[data-sf-theme="dark"] .booking .lbl{color:#D6B874}
-:root[data-sf-theme="dark"] .booking code{color:#EEE8DC}
-:root[data-sf-theme="dark"] .stamp{border-color:#D6B874;color:#D6B874;background:rgba(14,34,53,.85)}
-/* the form paper inside the gold note becomes navy too */
-:root[data-sf-theme="dark"] .note-paper{background:linear-gradient(180deg,#142C41,#0E2235);
-  box-shadow:inset 0 0 0 1px rgba(197,160,89,.35),0 8px 22px rgba(0,0,0,.3)}
-:root[data-sf-theme="dark"] .note-paper h3{color:#FAF6EE}
-:root[data-sf-theme="dark"] :is(.note-paper .hint,.note-paper .consent){color:#A9B4BE}
-:root[data-sf-theme="dark"] .note-paper label{color:#D9DEE3}
-:root[data-sf-theme="dark"] .note-paper :is(input,select,textarea){background:#0B1C2D;border-color:#2B4A63;color:#FAF6EE}
-:root[data-sf-theme="dark"] .note-paper :is(input,select,textarea):focus{outline-color:#D6B874;border-color:#D6B874}
-:root[data-sf-theme="dark"] .note-paper .wm{color:#D6B874}
-:root[data-sf-theme="dark"] .note-paper .btn-navy{background:var(--gold);color:#0E2235}
-:root[data-sf-theme="dark"] .note-paper .ok{background:#0B1C2D;color:#EEE8DC}
-:root[data-sf-theme="dark"] .shot-ph code{color:var(--ink)}
+
+/* boxes always take the opposite of their page so they stand out: navy
+   boxes on the off-white day page, off-white boxes on the navy night page */
+:is(.card,.party,.shot,.infobox,.note){
+  --surface:#12283A; --ink:#F3EEE3; --muted:#B7C0C8; --line:#2B4A63;
+  --gold-ink:#D6B874; --gold-soft:#1A3348; --navy-2:#D6B874;
+  color:var(--ink)}
+:root[data-sf-theme="dark"] :is(.card,.party,.shot,.infobox,.note){
+  --surface:#F3EEE3; --ink:#18232D; --muted:#5E6670; --line:#DDD3C0;
+  --gold-ink:#8A6A2C; --gold-soft:#E9E1D1; --navy-2:#1C3A52}
+:is(.infobox,.note){background:var(--surface)}
+.card>.shot{--gold-soft:#0E2235}
+:root[data-sf-theme="dark"] .card>.shot{--gold-soft:#E9E1D1}
+/* the sample invoice follows the same rule: a navy sheet by day, paper by night */
+:root:not([data-sf-theme="dark"]) .voucher{background:#12283A;color:#F3EEE3;box-shadow:var(--shadow)}
+:root:not([data-sf-theme="dark"]) .voucher::before{background:radial-gradient(circle at 6px 8px,#12283A 5px,transparent 5.5px) 0 0/12px 8px repeat-x}
+:root:not([data-sf-theme="dark"]) .v-head{border-bottom-color:#2B4A63}
+:root:not([data-sf-theme="dark"]) :is(.v-head small,.v-row span:first-child,.v-foot){color:#B7C0C8}
+:root:not([data-sf-theme="dark"]) .voucher .v-row[style]{border-top-color:#2B4A63!important}
+:root:not([data-sf-theme="dark"]) .voucher b[style]{color:#F3EEE3!important}
+:root:not([data-sf-theme="dark"]) .booking{background:#0E2235}
+:root:not([data-sf-theme="dark"]) .booking .lbl{color:#D6B874}
+:root:not([data-sf-theme="dark"]) .booking code{color:#F3EEE3}
+:root:not([data-sf-theme="dark"]) .stamp{border-color:#D6B874;color:#D6B874;background:rgba(14,34,53,.85)}
 .theme-btn{background:none;padding:0;cursor:pointer;font:inherit}
 .theme-btn .sun{display:none}
 :root[data-sf-theme="dark"] .theme-btn .sun{display:block}
@@ -741,7 +746,6 @@ footer nav a:hover{transform:translateY(-1px)}
    placeholder says what belongs there. */
 .shot{position:relative;margin:0;overflow:hidden;border-radius:6px;aspect-ratio:var(--ar,16/10);
   background:var(--gold-soft);isolation:isolate}
-.alt .shot{background:var(--bg)}
 .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1;
   transition:transform .8s cubic-bezier(.2,.6,.2,1)}
 .shot:hover img{transform:scale(1.04)}
