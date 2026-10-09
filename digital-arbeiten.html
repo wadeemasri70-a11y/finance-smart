@@ -105,14 +105,14 @@ main>section+section{border-top:var(--rule)}
 
 /* boxes always take the opposite of their page so they stand out: navy
    boxes on the off-white day page, off-white boxes on the navy night page */
-:is(.card,.party,.shot,.infobox,.note){
+:is(.card,.party,.shot,.infobox){
   --surface:#12283A; --ink:#F3EEE3; --muted:#B7C0C8; --line:#2B4A63;
   --gold-ink:#D6B874; --gold-soft:#1A3348; --navy-2:#D6B874;
   color:var(--ink)}
-:root[data-sf-theme="dark"] :is(.card,.party,.shot,.infobox,.note){
+:root[data-sf-theme="dark"] :is(.card,.party,.shot,.infobox){
   --surface:#F3EEE3; --ink:#18232D; --muted:#5E6670; --line:#DDD3C0;
   --gold-ink:#8A6A2C; --gold-soft:#E9E1D1; --navy-2:#1C3A52}
-:is(.infobox,.note){background:var(--surface)}
+.infobox{background:var(--surface)}
 .card>.shot{--gold-soft:#0E2235}
 :root[data-sf-theme="dark"] .card>.shot{--gold-soft:#E9E1D1}
 .theme-btn{background:none;padding:0;cursor:pointer;font:inherit}
@@ -228,7 +228,11 @@ main>section+section{border-top:var(--rule)}
 .link-col{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 18px;color:var(--muted);font-size:.82rem;text-align:center;gap:8px}
 .link-col i{display:block;width:1px;flex:1;background:repeating-linear-gradient(var(--line) 0 6px,transparent 6px 12px)}
 .link-col b{font:600 1.05rem var(--serif);color:var(--ink);white-space:nowrap}
-.note{margin-top:28px;background:var(--teal-soft);border-left:3px solid var(--gold);padding:16px 20px;border-radius:0 4px 4px 0;font-size:.93rem;color:var(--ink);max-width:880px}
+/* the legal note reads best as light paper in both modes: warm off-white,
+   navy text, a gold rule on the reading side */
+.note{margin-top:28px;background:#FBF8F2;border-left:3px solid var(--gold);padding:20px 24px;
+  border-radius:0 6px 6px 0;font-size:1rem;line-height:1.7;color:#18232D;max-width:880px;
+  box-shadow:0 1px 2px rgba(14,34,53,.05),0 8px 22px rgba(14,34,53,.06)}
 @media (max-width:860px){.tandem{grid-template-columns:1fr}.link-col{flex-direction:row;padding:14px 0}.link-col i{height:1px;width:auto;background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 12px)}}
 
 /* agenda */
