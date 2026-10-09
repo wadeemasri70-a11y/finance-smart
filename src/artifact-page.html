@@ -270,8 +270,12 @@ main>section+section{border-top:var(--rule)}
 @media (max-width:480px){.info div{grid-template-columns:1fr;gap:2px}}
 
 /* footer */
-/* the footer takes the same divider as every section */
-.foot-rule{border-top:var(--rule)}
+/* the footer takes the same divider as every section, with a small gold
+   lozenge sitting on it at the centre */
+.foot-rule{position:relative;z-index:1;border-top:var(--rule)}
+.foot-rule::after{content:"";position:absolute;left:50%;top:-1px;width:9px;height:9px;
+  transform:translate(-50%,-50%) rotate(45deg);background:var(--foot-bg);
+  border:1px solid var(--gold);box-shadow:0 0 0 4px var(--foot-bg)}
 footer{background:var(--foot-bg);color:#B7C0C8;font-size:.9rem;padding-block:48px 90px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px}
 footer .logo b{font-size:1.32rem}
