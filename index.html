@@ -89,13 +89,14 @@ main>section+section{border-top:var(--rule)}
   --frame-head:#0E2235; --frame-text:#2D3A46; --frame-line:rgba(14,34,53,.12);
   --frame-gold:#8A6A2C; --frame-ghost:rgba(14,34,53,.3);
 }
-/* the header keeps the navy frame of the day page */
-:root[data-sf-theme="dark"] .top{
+/* the header and the contact section with the gold note keep the navy
+   frame of the day page */
+:root[data-sf-theme="dark"] :is(.top,.contact){
   --hero-bg:#0E2235; --hero-ink:#F3EEE3; --hero-muted:#B7C0C8;
   --frame-head:#fff; --frame-text:#D9DEE3; --frame-line:rgba(255,255,255,.1);
   --frame-gold:var(--gold); --frame-ghost:rgba(250,246,238,.35)}
 /* inside the light frame, eyebrows and lines take their day colours */
-:root[data-sf-theme="dark"] :is(.hero,.contact,.phero,.trust,footer,.mbar){
+:root[data-sf-theme="dark"] :is(.hero,.phero,.trust,footer,.mbar){
   --gold-ink:#8A6A2C; --line:#DDD3C0}
 /* a navy button turns light on navy content, and stays navy on ivory */
 :root[data-sf-theme="dark"] .btn-navy{background:#F3EEE3;color:#0E2235}
