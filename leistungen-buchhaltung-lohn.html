@@ -105,11 +105,11 @@ main>section+section{border-top:var(--rule)}
 
 /* boxes always take the opposite of their page so they stand out: navy
    boxes on the off-white day page, off-white boxes on the navy night page */
-:is(.card,.party,.shot,.infobox){
+:is(.card,.party,.shot,.infobox,.shift-card){
   --surface:#12283A; --ink:#F3EEE3; --muted:#B7C0C8; --line:#2B4A63;
   --gold-ink:#D6B874; --gold-soft:#1A3348; --navy-2:#D6B874;
   color:var(--ink)}
-:root[data-sf-theme="dark"] :is(.card,.party,.shot,.infobox){
+:root[data-sf-theme="dark"] :is(.card,.party,.shot,.infobox,.shift-card){
   --surface:#F3EEE3; --ink:#18232D; --muted:#5E6670; --line:#DDD3C0;
   --gold-ink:#8A6A2C; --gold-soft:#E9E1D1; --navy-2:#1C3A52}
 .infobox{background:var(--surface)}
@@ -775,27 +775,75 @@ footer nav a:hover{transform:translateY(-1px)}
 .svc-side{display:grid;gap:26px;min-width:0}
 .svc-side .shot{--ar:3/2;box-shadow:var(--shadow)}
 
-/* paper to digital: three frames read left to right, the arrows between them */
+/* paper to digital: three boxes read left to right, each pointing at the
+   next. Each box holds a small animated drawing that plays on hover (and
+   on phones while the box is in view): papers gather into a tray, a phone
+   scans a receipt and sends it on, the archive takes it in and confirms */
 .shift{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:clamp(10px,1.6vw,22px);
-  align-items:center;list-style:none;margin:0;padding:0}
-.shift li{display:grid;gap:14px;min-width:0;align-self:start}
-.shift .shot{--ar:4/5;box-shadow:var(--shadow)}
-.shift li:last-child .shot{outline:1px solid var(--gold);outline-offset:5px}
+  align-items:stretch;list-style:none;margin:0;padding:0}
+.shift-card{position:relative;display:grid;gap:12px;align-content:start;min-width:0;
+  background:var(--surface);border:1px solid var(--line);border-radius:8px;
+  padding:clamp(18px,2vw,24px);box-shadow:var(--shadow);
+  transition:transform .3s ease,border-color .3s ease}
+.shift-card:hover{transform:translateY(-3px);border-color:rgba(197,160,89,.6)}
+/* a notch on the trailing edge points at the next box */
+.shift-card:not(:last-child)::after{content:"";position:absolute;top:50%;inset-inline-end:-9px;
+  width:16px;height:16px;background:var(--surface);
+  border-top:1px solid var(--line);border-right:1px solid var(--line);
+  transform:translateY(-50%) rotate(45deg)}
+[dir="rtl"] .shift-card:not(:last-child)::after{border-right:0;border-left:1px solid var(--line);
+  transform:translateY(-50%) rotate(-45deg)}
+.shift-ico{position:relative;aspect-ratio:4/3;border-radius:6px;background:var(--gold-soft);
+  overflow:hidden;margin-bottom:6px}
+.shift-ico svg{position:absolute;inset:6%;width:88%;height:88%;display:block;color:var(--ink);overflow:visible}
+.shift-ico .ln{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.shift-ico .pg{fill:var(--surface);stroke:currentColor;stroke-width:1.6}
+.shift-ico .gl{fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round}
+.shift-ico .gf{fill:var(--gold)}
+.shift-ico g,.shift-ico line{transform-box:fill-box;transform-origin:center}
 .shift-tag{font:600 .74rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink)}
 .shift h3{font-size:1.3rem}
 .shift p{color:var(--muted);font-size:.95rem}
-.shift li.shift-arrow{align-self:center}
-.shift-arrow{width:clamp(28px,3vw,44px);height:2px;background:var(--gold);position:relative;
-  align-self:center;margin-bottom:5rem}
+.shift-arrow{width:clamp(28px,3vw,44px);height:2px;background:var(--gold);position:relative;align-self:center}
 .shift-arrow::after{content:"";position:absolute;right:-1px;top:50%;width:10px;height:10px;
   border-top:2px solid var(--gold);border-right:2px solid var(--gold);transform:translateY(-50%) rotate(45deg)}
 [dir="rtl"] .shift-arrow{transform:scaleX(-1)}
+
+/* 1 · papers scattered on the desk gather into the tray */
+.sh{transition:transform .75s cubic-bezier(.3,.7,.2,1)}
+.sh1{transform:translate(-40px,-34px) rotate(-16deg)}
+.sh2{transform:translate(4px,-44px) rotate(8deg)}
+.sh3{transform:translate(42px,-26px) rotate(18deg)}
+.shift-card:is(:hover,:focus-within,.in) .sh1{transform:none}
+.shift-card:is(:hover,:focus-within,.in) .sh2{transform:translateY(-4px);transition-delay:.08s}
+.shift-card:is(:hover,:focus-within,.in) .sh3{transform:translateY(-8px);transition-delay:.16s}
+/* 2 · the phone scans the receipt and sends it on */
+.scan{opacity:.55}
+.fly{opacity:0}
+.shift-card:is(:hover,:focus-within,.in) .scan{opacity:1;animation:icoScan 1.6s ease-in-out infinite}
+.shift-card:is(:hover,:focus-within,.in) .fly{animation:icoFly 1.6s ease-in infinite}
+.shift-card:is(:hover,:focus-within,.in) .fly2{animation-delay:.8s}
+@keyframes icoScan{0%,100%{transform:translateY(0)}50%{transform:translateY(38px)}}
+@keyframes icoFly{0%{opacity:0;transform:translateX(-16px)}25%{opacity:1}100%{opacity:0;transform:translate(34px,-6px)}}
+/* 3 · the receipt drops into the archive, a tick confirms it */
+.ok{opacity:.3;transform:scale(.8)}
+.shift-card:is(:hover,:focus-within,.in) .drop{animation:icoDrop 1.8s cubic-bezier(.5,0,.3,1) infinite}
+.shift-card:is(:hover,:focus-within,.in) .ok{animation:icoOk 1.8s ease-out infinite}
+@keyframes icoDrop{0%{opacity:0;transform:translateY(-12px)}15%{opacity:1;transform:none}
+  70%{opacity:1;transform:translateY(40px)}80%,100%{opacity:0;transform:translateY(40px)}}
+@keyframes icoOk{0%,62%{opacity:.3;transform:scale(.8)}76%{opacity:1;transform:scale(1.15)}100%{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .sh{transition:none}.shift-ico *{animation:none!important}}
+
 @media (max-width:860px){
   .shift{grid-template-columns:1fr}
-  .shift .shot{--ar:16/10}
-  .shift-arrow{justify-self:center;margin:0;width:2px;height:30px}
+  .shift-ico{aspect-ratio:16/9}
+  .shift-arrow{justify-self:center;width:2px;height:30px}
   .shift-arrow::after{right:auto;left:50%;top:auto;bottom:-1px;transform:translateX(-50%) rotate(135deg)}
   [dir="rtl"] .shift-arrow{transform:none}
+  .shift-card:not(:last-child)::after,[dir="rtl"] .shift-card:not(:last-child)::after{top:auto;bottom:-9px;
+    inset-inline-end:auto;left:50%;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    transform:translateX(-50%) rotate(45deg)}
 }
 
 /* ============ Rechtstexte ============ */
@@ -1053,6 +1101,17 @@ footer nav a:hover{transform:translateY(-1px)}
   }
   function req(){ if(!q){ q=true; requestAnimationFrame(upd); } }
   addEventListener('scroll',req,{passive:true}); addEventListener('resize',req); upd();
+})();
+</script>
+
+<script>
+(function(){
+  // phones have no hover: the paper-to-digital drawings play while in view
+  if(!matchMedia('(hover:none)').matches || !('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ e.target.classList.toggle('in', e.isIntersecting); });
+  },{threshold:.6});
+  [].forEach.call(document.querySelectorAll('.shift-card'),function(c){ io.observe(c); });
 })();
 </script>
 
