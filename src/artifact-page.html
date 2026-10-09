@@ -113,9 +113,9 @@ main>section+section{border-top:var(--rule)}
 }
 
 /* hero */
-/* opening film: fills the whole first screen under the sticky header. The
-   video is softly blurred and dimmed so the name on top of it reads clearly;
-   the fade at the bottom carries it into the hero without a seam. */
+/* opening film: fills the whole first screen under the sticky header and
+   plays as it is; only a shade on the left, behind the name, keeps the
+   lettering readable. */
 .film{position:relative;overflow:hidden;isolation:isolate;
   /* without a video: a soft gold glow behind the name and a faint ledger grid */
   background:radial-gradient(ellipse 60% 45% at 50% 50%,rgba(197,160,89,.2),transparent 70%),
@@ -126,11 +126,9 @@ main>section+section{border-top:var(--rule)}
 @media (max-width:1400px){.film{height:calc(100vh - 92px);height:calc(100svh - 92px)}}
 @media (max-width:760px){.film{height:calc(100vh - 82px);height:calc(100svh - 82px);min-height:360px}}
 .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0;
-  /* scaled a little so the blur never shows a soft edge */
-  filter:blur(2px) brightness(.72) saturate(1.05);transform:scale(1.03)}
+}
 .film-fade{position:absolute;inset:0;z-index:1;pointer-events:none;background:
-  linear-gradient(90deg,rgba(10,26,42,.62) 0%,rgba(10,26,42,.38) 32%,rgba(10,26,42,0) 58%),
-  radial-gradient(ellipse 120% 100% at 50% 50%,transparent 62%,rgba(10,26,42,.4) 100%)}
+  linear-gradient(90deg,rgba(10,26,42,.62) 0%,rgba(10,26,42,.38) 32%,rgba(10,26,42,0) 58%)}
 .film-title{position:relative;z-index:2;margin:0;color:#fff;direction:ltr;text-align:left;
   width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
 /* a two-column grid: "S" fills the first column, so "mart" and "Finance"
