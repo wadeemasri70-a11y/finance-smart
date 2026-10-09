@@ -68,6 +68,26 @@ p{margin:0}
    hairline across the full width */
 :root{--rule:1px solid rgba(197,160,89,.45)}
 main>section+section{border-top:var(--rule)}
+
+/* night mode: the same navy, gold and ivory, with the content sections
+   turned to navy and the ivory moved to the text */
+:root[data-sf-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0B1A2A; --bg-alt:#10263A; --surface:#142C41; --line:#244259;
+  --ink:#EEE8DC; --muted:#A9B4BE; --gold-ink:#D6B874; --gold-soft:#1E3346;
+  --navy-2:#D6B874;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 30px rgba(0,0,0,.35);
+}
+/* a navy button would vanish on navy, so at night it turns gold; the form
+   and the voucher stay paper-coloured and keep theirs */
+:root[data-sf-theme="dark"] .btn-navy{background:var(--gold);color:var(--navy)}
+:root[data-sf-theme="dark"] .btn-navy:hover{background:var(--gold-light)}
+:root[data-sf-theme="dark"] .note-paper .btn-navy{background:var(--navy);color:#fff}
+:root[data-sf-theme="dark"] .shot-ph code{color:var(--ink)}
+.theme-btn{background:none;padding:0;cursor:pointer;font:inherit}
+.theme-btn .sun{display:none}
+:root[data-sf-theme="dark"] .theme-btn .sun{display:block}
+:root[data-sf-theme="dark"] .theme-btn .moon{display:none}
 .eyebrow{font:600 .78rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);display:flex;align-items:center;gap:.7em}
 .eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
 .lead{font-size:1.14rem;color:var(--muted);max-width:60ch}
@@ -785,6 +805,7 @@ footer nav a:hover{transform:translateY(-1px)}
         <button type="button" data-lang="en" aria-pressed="false">EN</button>
         <button type="button" data-lang="ar" aria-pressed="false">AR</button>
       </div>
+      <button class="icon-btn theme-btn" id="themeBtn" type="button" aria-label="Design wechseln"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="moon" fill="currentColor" d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/><g class="sun" fill="currentColor"><circle cx="12" cy="12" r="4.6"/><path d="M12 1.6v3M12 19.4v3M1.6 12h3M19.4 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M19.4 4.6l-2.1 2.1M6.7 17.3l-2.1 2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></g></svg></button>
       <a class="icon-btn wa" href="https://wa.me/491629631605" target="_blank" rel="noopener"
          aria-label="Per WhatsApp schreiben"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.1 15.07l-.3-.18-3.1.82.83-3.02-.2-.31A8.1 8.1 0 0 1 12.04 3.8zm4.66 10.2c-.25-.13-1.48-.73-1.71-.81-.23-.09-.4-.13-.56.12-.17.25-.65.81-.8.98-.14.17-.29.19-.54.06-.25-.12-1.06-.39-2.02-1.24-.75-.67-1.25-1.49-1.4-1.74-.14-.25-.01-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.09-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.03 2.6c.12.18 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.48-.6 1.69-1.19.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg></a>
       <button data-i18n="k0" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Men&#252;</button>
@@ -796,7 +817,7 @@ footer nav a:hover{transform:translateY(-1px)}
 <section class="film" aria-label="Smart Finance Consulting">
   <video class="film-vid band-vid" muted loop playsinline autoplay preload="auto" poster="img/intro-poster.jpg"
          aria-label="Imagefilm: Beratung im Besprechungsraum, Unterschrift, Handschlag und das Firmenzeichen von Smart Finance Consulting">
-    <source src="video/intro-960.mp4" type="video/mp4" media="(max-width:760px)">
+    <source src="video/intro-1280.mp4" type="video/mp4" media="(max-width:760px)">
     <source src="video/intro.mp4" type="video/mp4">
   </video>
   <div class="film-fade" aria-hidden="true"></div>
@@ -1261,6 +1282,7 @@ footer nav a:hover{transform:translateY(-1px)}
 (function(){
   var I18N=__I18N_DICT__;
   var ARIA={lang:{de:"Sprache",en:"Language",ar:"اللغة"},
+            theme:{de:"Hell / Dunkel",en:"Light / dark",ar:"فاتح / داكن"},
             legal:{de:"Rechtliches",en:"Legal",ar:"قانوني"}};
   var R=document.documentElement, LS=null;
   try{ LS=window.localStorage; }catch(e){}
@@ -1275,12 +1297,22 @@ footer nav a:hover{transform:translateY(-1px)}
       if(t && t[l]) n[i].innerHTML=t[l];
     }
     var g=document.querySelector('.lang'); if(g) g.setAttribute('aria-label',ARIA.lang[l]);
+    var tb=document.getElementById('themeBtn'); if(tb) tb.setAttribute('aria-label',ARIA.theme[l]);
     var lg=document.querySelector('footer nav'); if(lg) lg.setAttribute('aria-label',ARIA.legal[l]);
     var bs=document.querySelectorAll('.lang button');
     for(var j=0;j<bs.length;j++) bs[j].setAttribute('aria-pressed', String(bs[j].dataset.lang===l));
     set('sf-lang',l);
   }
+  // day or night: the visitor's choice, else what their system prefers
+  function applyTheme(m){ R.setAttribute('data-sf-theme',m); set('sf-theme',m); }
+  var dark=false; try{ dark=matchMedia('(prefers-color-scheme: dark)').matches; }catch(e){}
+  var stored=get('sf-theme','');
+  applyTheme(stored==='dark'||stored==='light' ? stored : (dark?'dark':'light'));
   applyLang(get('sf-lang','de'));
+  var tb0=document.getElementById('themeBtn');
+  if(tb0) tb0.addEventListener('click',function(){
+    applyTheme(R.getAttribute('data-sf-theme')==='dark' ? 'light' : 'dark');
+  });
 
   var lg0=document.querySelector('.lang');
   if(lg0) lg0.addEventListener('click',function(e){
