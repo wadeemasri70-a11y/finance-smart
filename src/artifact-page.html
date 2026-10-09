@@ -109,17 +109,6 @@ main>section+section{border-top:var(--rule)}
 :is(.infobox,.note){background:var(--surface)}
 .card>.shot{--gold-soft:#0E2235}
 :root[data-sf-theme="dark"] .card>.shot{--gold-soft:#E9E1D1}
-/* the sample invoice follows the same rule: a navy sheet by day, paper by night */
-:root:not([data-sf-theme="dark"]) .voucher{background:#12283A;color:#F3EEE3;box-shadow:var(--shadow)}
-:root:not([data-sf-theme="dark"]) .voucher::before{background:radial-gradient(circle at 6px 8px,#12283A 5px,transparent 5.5px) 0 0/12px 8px repeat-x}
-:root:not([data-sf-theme="dark"]) .v-head{border-bottom-color:#2B4A63}
-:root:not([data-sf-theme="dark"]) :is(.v-head small,.v-row span:first-child,.v-foot){color:#B7C0C8}
-:root:not([data-sf-theme="dark"]) .voucher .v-row[style]{border-top-color:#2B4A63!important}
-:root:not([data-sf-theme="dark"]) .voucher b[style]{color:#F3EEE3!important}
-:root:not([data-sf-theme="dark"]) .booking{background:#0E2235}
-:root:not([data-sf-theme="dark"]) .booking .lbl{color:#D6B874}
-:root:not([data-sf-theme="dark"]) .booking code{color:#F3EEE3}
-:root:not([data-sf-theme="dark"]) .stamp{border-color:#D6B874;color:#D6B874;background:rgba(14,34,53,.85)}
 .theme-btn{background:none;padding:0;cursor:pointer;font:inherit}
 .theme-btn .sun{display:none}
 :root[data-sf-theme="dark"] .theme-btn .sun{display:block}
@@ -210,21 +199,6 @@ main>section+section{border-top:var(--rule)}
 .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
 .micro{margin-top:14px;font-size:.85rem;color:var(--hero-muted)}
 
-/* booking voucher visual */
-.voucher{background:#FFFDF9;color:#18232D;border-radius:6px;box-shadow:0 30px 60px rgba(0,0,0,.35);padding:26px 26px 22px;position:relative;font-size:.92rem;transform:rotate(1.2deg)}
-.voucher::before{content:"";position:absolute;left:0;right:0;top:-8px;height:8px;background:radial-gradient(circle at 6px 8px,#FFFDF9 5px,transparent 5.5px) 0 0/12px 8px repeat-x}
-.v-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed #E3D9C6;padding-bottom:12px;margin-bottom:14px}
-.v-head b{font:600 1.25rem var(--serif)}
-.v-head small{color:#5E6670;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
-.v-row{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:7px 0;font-variant-numeric:tabular-nums}
-.v-row span:first-child{color:#5E6670}
-.v-row span:last-child{text-align:right;font-weight:500}
-.booking{margin-top:14px;background:#F1E7D3;border-radius:4px;padding:14px;font-variant-numeric:tabular-nums}
-.booking .lbl{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#8A6A2C;font-weight:600}
-.booking .line{display:grid;grid-template-columns:auto 1fr auto;gap:10px;margin-top:8px;align-items:baseline}
-.booking code{font:500 .85rem ui-monospace,Menlo,Consolas,monospace;color:#0E2235}
-.stamp{position:absolute;right:18px;bottom:62px;border:2px solid #1C3A52;color:#1C3A52;font:600 .72rem var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:6px 10px;border-radius:4px;transform:rotate(-9deg);background:rgba(251,250,246,.85)}
-.v-foot{margin-top:14px;font-size:.72rem;color:#5E6670}
 
 /* services */
 .svc{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
@@ -254,7 +228,6 @@ main>section+section{border-top:var(--rule)}
 /* agenda */
 .agenda{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,80px);align-items:start}
 .agenda .head{margin:0}
-.agenda .voucher{transform:none;max-width:430px;box-shadow:var(--shadow);margin-top:6px}
 .feat{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
 .feat div{padding:26px 24px 26px 0;border-bottom:1px solid var(--line);display:grid;gap:8px}
 .feat div:nth-child(odd){border-right:1px solid var(--line)}
@@ -330,7 +303,6 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
   .mbar{display:grid;grid-template-columns:1fr 1.4fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--hero-bg);padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(197,160,89,.3)}
   .mbar .btn{justify-content:center;padding:14px 10px;font-size:.95rem}
 }
-@media (max-width:900px){.voucher{max-width:440px;transform:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 /* ============ Kontaktformular als Geldschein ============ */
@@ -510,8 +482,6 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 [dir="rtl"] .banknote{padding-right:clamp(16px,2.6vw,22px);
   padding-left:calc(var(--holo) + clamp(18px,3vw,26px))}
 [dir="rtl"] .note-paper .wm{right:auto;left:-18px}
-[dir="rtl"] .voucher .v-row span:last-child,[dir="rtl"] .booking .line code:last-child{text-align:left}
-[dir="rtl"] .stamp{right:auto;left:18px}
 [dir="rtl"] .values b,[dir="rtl"] .loc dt,[dir="rtl"] .info dt{text-align:right}
 /* the photo dictates this side, so it must not flip with the text direction */
 .band--right .band-inner{justify-items:right;text-align:right}
@@ -589,8 +559,6 @@ h1,h2,h3,p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
   .card,.party{padding:24px 18px}
   .note-paper{padding:18px 15px}
   .loc-pin{padding:14px}
-  .voucher{padding:18px 15px 15px;font-size:.86rem}
-  .voucher .v-row{gap:8px}
   .checks li{padding-left:24px}
   [dir="rtl"] .checks li{padding-left:0;padding-right:24px}
 }
@@ -747,6 +715,10 @@ footer nav a:hover{transform:translateY(-1px)}
    placeholder says what belongs there. */
 .shot{position:relative;margin:0;overflow:hidden;border-radius:6px;aspect-ratio:var(--ar,16/10);
   background:var(--gold-soft);isolation:isolate}
+.shot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1;
+  opacity:0;transition:opacity .4s}
+.shot video.on{opacity:1}
+.agenda-film{max-width:430px;margin-top:6px;box-shadow:var(--shadow)}
 .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1;
   transition:transform .8s cubic-bezier(.2,.6,.2,1)}
 .shot:hover img{transform:scale(1.04)}
@@ -1041,22 +1013,13 @@ footer nav a:hover{transform:translateY(-1px)}
       <p data-i18n="k64" class="lead">Wir setzen auf Agenda als professionelle Softwarebasis. Gemeinsam legen wir fest, welche digitalen Prozesse für Sie sinnvoll sind – so digital, wie es zu Ihrem Unternehmen passt.</p>
       <p style="margin-top:14px"><a data-i18n="k189" class="more arrow" href="digital-arbeiten.html">Mehr erfahren</a></p>
       <div class="benefits"><span data-i18n="k65">Weniger Verwaltungsaufwand</span><span data-i18n="k66">Strukturierte Informationen</span><span data-i18n="k67">Persönliche Betreuung</span></div>
-    <aside class="voucher" aria-label="Beispiel: digitaler Beleg mit Buchungsvorschlag in Agenda">
-      <div class="v-head"><b data-i18n="k68">Eingangsrechnung</b><small>XRechnung</small></div>
-      <div class="v-row"><span data-i18n="k69">Lieferant</span><span>Bürobedarf Rhein GmbH</span></div>
-      <div class="v-row"><span data-i18n="k70">Rechnungsdatum</span><span>14.09.2026</span></div>
-      <div class="v-row"><span data-i18n="k71">Netto</span><span>210,00 €</span></div>
-      <div class="v-row"><span data-i18n="k72">USt 19 %</span><span>39,90 €</span></div>
-      <div class="v-row" style="border-top:1px solid #E3D9C6;margin-top:4px;padding-top:10px"><span><b data-i18n="k73" style="color:#18232D">Brutto</b></span><span>249,90 €</span></div>
-      <div class="booking">
-        <div data-i18n="k78" class="lbl">Buchungsvorschlag · Agenda</div>
-        <div class="line"><code>4930</code><span data-i18n="k74">Bürobedarf</span><code>210,00</code></div>
-        <div class="line"><code>1576</code><span data-i18n="k75">Vorsteuer 19 %</span><code>39,90</code></div>
-        <div class="line"><code>1200</code><span data-i18n="k76">an Bank</span><code>249,90</code></div>
-      </div>
-      <div data-i18n="k79" class="stamp">Geprüft</div>
-      <p data-i18n="k77" class="v-foot">Beispieldarstellung · SKR 03</p>
-    </aside>
+    <figure class="shot agenda-film" style="--ar:16/9">
+      <video class="band-vid" muted loop playsinline preload="none" onloadeddata="this.classList.add('on')"
+             aria-label="Kurzfilm: so arbeiten wir digital mit Agenda">
+        <source src="video/agenda.mp4" type="video/mp4">
+      </video>
+      <figcaption class="shot-ph" aria-hidden="true"><b>Videoplatz</b><span>Kurzer Vorstellungsfilm: digitale Buchhaltung mit Agenda</span><code>video/agenda.mp4 &#183; 16:9</code></figcaption>
+    </figure>
     </div>
     <div class="feat">
       <div><h3 data-i18n="k80">Belege digital bereitstellen</h3><p data-i18n="k81">Belege und Unterlagen digital übermitteln – für einen geordneten Informationsfluss zwischen Ihnen und unserem Büro.</p></div>
