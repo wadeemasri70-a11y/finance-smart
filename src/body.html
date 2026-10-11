@@ -329,72 +329,50 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
-/* ============ Kontaktformular als Geldschein ============ */
-.banknote{--holo:clamp(16px,4.6vw,30px);position:relative;overflow:hidden;min-width:0;border-radius:10px;
-  padding:clamp(16px,2.6vw,22px);padding-right:calc(var(--holo) + clamp(18px,3vw,26px));
-  background:linear-gradient(132deg,#E9D39C 0%,#CDAA62 32%,#A6823D 66%,#DCC285 100%);
-  box-shadow:0 30px 64px rgba(0,0,0,.42),inset 0 0 0 1px rgba(255,246,220,.5);
-  display:grid;gap:14px;align-content:start;color:#3E2C0E;
-  /* --sp runs from 1 (note below the fold) to -1 (scrolled past); set by script */
-  transform:translateY(calc(var(--sp,0) * 16px)) rotate(calc(var(--sp,0) * -1.1deg));
-  will-change:transform}
-.banknote::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;
-  background:linear-gradient(105deg,transparent 38%,rgba(255,251,235,.55) 50%,transparent 62%)
-               calc(50% + var(--sp,0) * 70%) 0/260% 100% no-repeat,
-             repeating-linear-gradient(47deg,rgba(255,248,226,.3) 0 1px,transparent 1px 5px),
-             repeating-linear-gradient(-47deg,rgba(92,66,18,.22) 0 1px,transparent 1px 6px)}
-.note-guilloche{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.3}
-.note-guilloche svg{position:absolute;fill:none;stroke:#FFF7E0;stroke-width:.5}
-.note-guilloche .g1{right:-70px;top:-64px;width:260px;height:260px}
-.note-guilloche .g2{left:-56px;bottom:-60px;width:200px;height:200px;stroke:#6A4E18;opacity:.5}
-.note-holo{position:absolute;top:8px;bottom:8px;right:10px;width:var(--holo);border-radius:3px;
-  pointer-events:none;mix-blend-mode:screen;opacity:.8;
-  background:linear-gradient(168deg,rgba(255,255,255,.75),rgba(138,214,255,.6) 18%,rgba(255,196,238,.65) 38%,
-    rgba(186,255,214,.6) 56%,rgba(255,231,160,.7) 76%,rgba(255,255,255,.7));
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
-.note-serial{position:absolute;left:6px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;
-  font:600 .6rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.24em;color:#5C4414;opacity:.85}
-.note-head{min-width:0;position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
-  padding-left:42px}
-.note-brand{min-width:0}
-.note-brand b{display:block;font:600 1.12rem/1.05 var(--serif);letter-spacing:.11em;color:#2E2108;
-  text-shadow:0 1px 0 rgba(255,246,220,.55)}
-.note-brand span{display:block;margin-top:4px;font:500 .56rem/1 var(--sans);letter-spacing:.42em;color:#4A3810}
-.note-brand small{display:block;margin-top:9px;font:600 .66rem/1.3 var(--sans);color:#3A2B0D;opacity:.9;
-  letter-spacing:.02em;max-width:24ch}
-.note-value{display:flex;align-items:baseline;gap:4px;flex:none}
-.note-value b{font:600 2.9rem/.85 var(--serif);
-  background:linear-gradient(160deg,#6B5019,#3A2A0C 55%,#5E4614);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 1px 0 rgba(255,246,220,.6))}
-.note-value i{font-style:normal;font:500 .72rem/1 var(--sans);letter-spacing:.18em;color:#3A2B0D}
-.note-stars{position:absolute;left:-8px;top:-9px;width:44px;height:44px;fill:#FFF4D2;opacity:.55}
-.note-paper{position:relative;border-radius:7px;padding:clamp(18px,3vw,26px);
-  background:linear-gradient(180deg,#FFFDF9,#F7F0E2);
-  box-shadow:inset 0 0 0 1px rgba(140,106,44,.3),0 8px 22px rgba(70,52,16,.22);
-  display:grid;gap:15px;overflow:hidden}
-.note-paper .wm{position:absolute;right:-18px;bottom:-26px;width:185px;height:185px;
-  color:#A6823D;opacity:.09;pointer-events:none}
-.note-paper h3{position:relative;font-size:1.45rem;color:#2A1E08}
-.note-paper .hint{position:relative;font-size:.85rem;color:#6E5A33;margin-top:-6px}
-.note-paper label{display:grid;gap:6px;font:500 .84rem var(--sans);color:#3F3118;position:relative}
-.note-paper input,.note-paper select,.note-paper textarea{font:400 1rem var(--sans);width:100%;
-  padding:12px 13px;border:1px solid #DCC9A0;border-radius:4px;background:#FFFEFA;color:#22190A}
-.note-paper input:focus,.note-paper select:focus,.note-paper textarea:focus{
-  outline:2px solid #0E2235;outline-offset:0;border-color:#0E2235}
-.note-paper .two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.note-paper .consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.82rem;color:#5E4C2A}
-.note-paper .consent input{width:auto;margin-top:3px}
-.note-paper .btn{justify-content:center;position:relative}
-.note-paper .ok{background:#F1E7D3;color:#4A3A16;border-radius:4px;padding:12px 14px;font-size:.9rem;
-  border-left:3px solid #8A6A2C}
-.note-foot{min-width:0;position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding-left:42px;font-size:.62rem;letter-spacing:.14em;color:#3A2B0D;text-transform:uppercase}
-.note-micro{flex:1;min-width:0;overflow:hidden;white-space:nowrap;font-size:.32rem;letter-spacing:.06em;
-  color:rgba(58,43,13,.55);line-height:1}
-@media (max-width:480px){.note-paper .two{grid-template-columns:1fr}
-  .note-head{flex-direction:column}.note-value b{font-size:2.3rem}}
-@media (prefers-reduced-motion:reduce){.banknote{transform:none}}
+/* ============ Kontaktformular: das goldgerahmte Blatt ============ */
+/* a formal sheet instead of a banknote: champagne paper inside a double
+   gold frame, a lozenge on the top edge and in each inner corner, a gold
+   rule under the title, and at the foot a light drawing of a rearing
+   horse between two gold hairlines */
+.deed{--g:#B8934A;position:relative;min-width:0;align-self:start;
+  background:linear-gradient(180deg,#FBF7EE 0%,#F4EAD3 100%);color:#18232D;
+  border:1px solid var(--g);border-radius:3px;
+  padding:clamp(30px,4vw,46px) clamp(22px,3.4vw,42px) clamp(22px,3vw,30px);
+  box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 26px 60px rgba(0,0,0,.38);
+  display:grid;gap:15px}
+.deed::before{content:"";position:absolute;inset:9px;border:1px solid rgba(184,147,74,.55);
+  pointer-events:none}
+.deed-gem{position:absolute;width:12px;height:12px;background:var(--gold);
+  transform:translate(-50%,-50%) rotate(45deg);box-shadow:0 0 0 3px #FBF7EE,0 0 0 4px var(--g)}
+.deed-gem.crest{left:50%;top:0;background:var(--g);box-shadow:0 0 0 4px var(--hero-bg),0 0 0 5px var(--g)}
+.deed-gem.c{width:7px;height:7px;box-shadow:none;background:var(--g)}
+.deed-gem.tl{left:9px;top:9px}.deed-gem.tr{left:calc(100% - 9px);top:9px}
+.deed-gem.bl{left:9px;top:calc(100% - 9px)}.deed-gem.br{left:calc(100% - 9px);top:calc(100% - 9px)}
+.deed-head{display:grid;justify-items:center;text-align:center;gap:10px;margin-bottom:6px}
+.deed-kicker{font:600 .7rem/1.3 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#86672A}
+.deed h3{font-size:clamp(1.5rem,2.2vw,1.85rem);color:#0E2235}
+.deed-rule{display:flex;align-items:center;gap:10px;width:min(240px,70%)}
+.deed-rule::before,.deed-rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--g))}
+.deed-rule::after{background:linear-gradient(90deg,var(--g),transparent)}
+.deed-rule i{width:7px;height:7px;background:var(--g);transform:rotate(45deg)}
+.deed .hint{font-size:.88rem;color:#5E6670}
+.deed label{display:grid;gap:6px;font:500 .84rem var(--sans);color:#2D3A46}
+.deed input,.deed select,.deed textarea{font:400 1rem var(--sans);width:100%;
+  padding:12px 13px;border:1px solid #D9C9A4;border-radius:2px;background:#FFFDF8;color:#18232D}
+.deed input:focus,.deed select:focus,.deed textarea:focus{outline:2px solid #0E2235;outline-offset:0;border-color:#0E2235}
+.deed .two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.deed .consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.82rem;color:#5E6670}
+.deed .consent input{width:auto;margin-top:3px}
+.deed .btn{justify-content:center;letter-spacing:.06em}
+.deed .ok{background:#F1E7D3;color:#4A3A16;border-radius:2px;padding:12px 14px;font-size:.9rem;
+  border-inline-start:3px solid #86672A}
+.deed-foot{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin-top:4px;color:var(--g)}
+.deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:6px;
+  background:linear-gradient(90deg,transparent,rgba(184,147,74,.75))}
+.deed-foot::after{background:linear-gradient(90deg,rgba(184,147,74,.75),transparent)}
+.deed-foot svg{width:92px;height:92px;flex:none;opacity:.5}
+@media (max-width:480px){.deed .two{grid-template-columns:1fr}}
+
 
 /* ============ Vertrauen: Handschlag (Scroll, WebGL) ============ */
 .trust{position:relative;background:var(--hero-bg);overflow:hidden}
@@ -484,7 +462,6 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 /* ============ Sprache & Design ============ */
 :root[lang="ar"]{--serif:"Amiri","Libre Caslon Text",Georgia,serif;
   --sans:"IBM Plex Sans Arabic","Source Sans 3",system-ui,sans-serif}
-:root[lang="ar"] .note-brand b{font-family:var(--serif)}
 .lang{display:flex;align-items:center;gap:2px;padding:3px;border-radius:999px;flex:none;
   border:1px solid rgba(197,160,89,.4)}
 .lang button{border:0;background:none;cursor:pointer;color:var(--frame-text);border-radius:999px;
@@ -499,13 +476,6 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 [dir="rtl"] .arrow:hover::after{transform:translateX(-3px)}
 [dir="rtl"] .faq summary{padding:22px 0 22px 40px}
 [dir="rtl"] .faq summary::after{right:auto;left:4px}
-[dir="rtl"] .note-serial{left:auto;right:6px}
-[dir="rtl"] .note-head,[dir="rtl"] .note-foot{padding-left:0;padding-right:42px}
-[dir="rtl"] .note-stars{left:auto;right:-8px}
-[dir="rtl"] .note-holo{right:auto;left:10px}
-[dir="rtl"] .banknote{padding-right:clamp(16px,2.6vw,22px);
-  padding-left:calc(var(--holo) + clamp(18px,3vw,26px))}
-[dir="rtl"] .note-paper .wm{right:auto;left:-18px}
 [dir="rtl"] .values b,[dir="rtl"] .loc dt,[dir="rtl"] .info dt{text-align:right}
 /* the photo dictates this side, so it must not flip with the text direction */
 .band--right .band-inner{justify-items:right;text-align:right}
@@ -587,7 +557,6 @@ h1,h2,h3,p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
   .party,.card,.feat div,.values div,.loc dd,.info dd,.checks li,.who,
   h1,h2,h3,p,li,dd,dt,.lead,.eyebrow,.stair span{overflow-wrap:anywhere}
   .card,.party{padding:24px 18px}
-  .note-paper{padding:18px 15px}
   .loc-pin{padding:14px}
   .checks li{padding-left:24px}
   [dir="rtl"] .checks li{padding-left:0;padding-right:24px}
@@ -1215,25 +1184,15 @@ footer nav a:hover{transform:translateY(-1px)}
         <div><dt data-i18n="k128">Termine</dt><dd data-i18n="k129" class="plain">Nach Vereinbarung</dd></div>
       </dl>
     </div>
-<form class="banknote" id="form" novalidate>
-      <div class="note-guilloche" aria-hidden="true">
-        <svg class="g1" viewBox="-150 -150 300 300"><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(0.0 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(5.3 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(10.6 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(15.9 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(21.2 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(26.5 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(31.8 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(37.1 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(42.4 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(47.6 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(52.9 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(58.2 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(63.5 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(68.8 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(74.1 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(79.4 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(84.7 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(90.0 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(95.3 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(100.6 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(105.9 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(111.2 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(116.5 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(121.8 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(127.1 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(132.4 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(137.6 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(142.9 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(148.2 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(153.5 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(158.8 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(164.1 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(169.4 0 0)"/><ellipse cx="0" cy="0" rx="150.0" ry="51.0" transform="rotate(174.7 0 0)"/></svg>
-        <svg class="g2" viewBox="-96 -96 192 192"><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(0.0 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(6.9 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(13.8 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(20.8 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(27.7 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(34.6 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(41.5 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(48.5 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(55.4 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(62.3 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(69.2 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(76.2 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(83.1 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(90.0 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(96.9 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(103.8 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(110.8 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(117.7 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(124.6 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(131.5 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(138.5 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(145.4 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(152.3 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(159.2 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(166.2 0 0)"/><ellipse cx="0" cy="0" rx="96.0" ry="48.0" transform="rotate(173.1 0 0)"/></svg>
-      </div>
-      <div class="note-holo" aria-hidden="true"></div>
-      <span class="note-serial">SF&#8239;2026&#8239;NE</span>
-      <header class="note-head">
-        <svg class="note-stars" viewBox="0 0 60 60" aria-hidden="true"><polygon points="30.0,3.4 31.1,6.5 34.4,6.6 31.7,8.6 32.7,11.7 30.0,9.8 27.3,11.7 28.3,8.6 25.6,6.6 28.9,6.5"/><polygon points="41.0,6.3 42.1,9.5 45.4,9.5 42.7,11.5 43.7,14.7 41.0,12.8 38.3,14.7 39.3,11.5 36.6,9.5 39.9,9.5"/><polygon points="49.1,14.4 50.1,17.5 53.4,17.6 50.8,19.6 51.8,22.7 49.1,20.8 46.3,22.7 47.3,19.6 44.7,17.6 48.0,17.5"/><polygon points="52.0,25.4 53.1,28.5 56.4,28.6 53.7,30.6 54.7,33.7 52.0,31.8 49.3,33.7 50.3,30.6 47.6,28.6 50.9,28.5"/><polygon points="49.1,36.4 50.1,39.5 53.4,39.6 50.8,41.6 51.8,44.7 49.1,42.8 46.3,44.7 47.3,41.6 44.7,39.6 48.0,39.5"/><polygon points="41.0,44.5 42.1,47.6 45.4,47.6 42.7,49.6 43.7,52.8 41.0,50.9 38.3,52.8 39.3,49.6 36.6,47.6 39.9,47.6"/><polygon points="30.0,47.4 31.1,50.5 34.4,50.6 31.7,52.6 32.7,55.7 30.0,53.8 27.3,55.7 28.3,52.6 25.6,50.6 28.9,50.5"/><polygon points="19.0,44.5 20.1,47.6 23.4,47.6 20.7,49.6 21.7,52.8 19.0,50.9 16.3,52.8 17.3,49.6 14.6,47.6 17.9,47.6"/><polygon points="10.9,36.4 12.0,39.5 15.3,39.6 12.7,41.6 13.7,44.7 10.9,42.8 8.2,44.7 9.2,41.6 6.6,39.6 9.9,39.5"/><polygon points="8.0,25.4 9.1,28.5 12.4,28.6 9.7,30.6 10.7,33.7 8.0,31.8 5.3,33.7 6.3,30.6 3.6,28.6 6.9,28.5"/><polygon points="10.9,14.4 12.0,17.5 15.3,17.6 12.7,19.6 13.7,22.7 10.9,20.8 8.2,22.7 9.2,19.6 6.6,17.6 9.9,17.5"/><polygon points="19.0,6.3 20.1,9.5 23.4,9.5 20.7,11.5 21.7,14.7 19.0,12.8 16.3,14.7 17.3,11.5 14.6,9.5 17.9,9.5"/></svg>
-        <div class="note-brand">
-          <b>SMART FINANCE</b><span>CONSULTING</span>
-          <small data-i18n="k134">Erstgespr&#228;ch &#183; kostenlos &#183; unverbindlich</small>
-        </div>
-        <div class="note-value"><b>50</b><i>MIN</i></div>
-      </header>
-      <div class="note-paper">
-        <svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><use href="#sfmark"/></svg>
+<form class="deed" id="form" novalidate>
+      <span class="deed-gem crest" aria-hidden="true"></span>
+      <span class="deed-gem c tl" aria-hidden="true"></span><span class="deed-gem c tr" aria-hidden="true"></span><span class="deed-gem c bl" aria-hidden="true"></span><span class="deed-gem c br" aria-hidden="true"></span>
+      <header class="deed-head">
+        <p data-i18n="k134" class="deed-kicker">Erstgespr&#228;ch &#183; kostenlos &#183; unverbindlich</p>
         <h3 data-i18n="k135">Erstgespr&#228;ch anfragen</h3>
+        <span class="deed-rule" aria-hidden="true"><i></i></span>
         <p data-i18n="k136" class="hint">Wir melden uns innerhalb eines Werktags bei Ihnen.</p>
+      </header>
         <div class="two">
           <label for="f-name"><span data-i18n="k137">Name</span><input id="f-name" name="name" autocomplete="name" required></label>
           <label for="f-firma"><span data-i18n="k138">Unternehmen</span><input id="f-firma" name="firma" autocomplete="organization"></label>
@@ -1253,11 +1212,7 @@ footer nav a:hover{transform:translateY(-1px)}
           (siehe Datenschutzerkl&#228;rung).</span></label>
         <button data-i18n="k144" class="btn btn-navy" type="submit">Anfrage senden</button>
         <p data-i18n="k145" class="ok" id="ok" hidden>Entwurf: Das Formular wird beim Livegang an Ihr Postfach angebunden.</p>
-      </div>
-      <div class="note-foot">
-        <span class="note-micro">SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;SMARTFINANCECONSULTING&#183;NEUSS&#183;BUCHHALTUNG&#183;LOHN&#183;CONTROLLING&#183;DIGITALISIERUNG&#183;</span>
-        <span>Mainstra&#223;e&#8239;26&#8211;30</span>
-      </div>
+      <div class="deed-foot" aria-hidden="true"><svg viewBox="0 0 200 200" aria-hidden="true"><g fill="currentColor"><path d="M62 30L58 18L66 27L70 16L72 30C84 34 96 46 102 60C112 72 128 80 140 94C148 104 152 116 152 128C154 142 160 156 168 170L174 184L161 184L157 174C150 160 144 148 140 138C138 146 134 156 132 166L134 184L122 184L121 168C121 156 124 144 126 134C116 130 104 124 96 114C92 118 86 120 80 120C74 122 70 128 70 136L62 140L60 132C60 122 66 114 74 110C78 108 82 106 84 104C80 100 74 98 66 98C58 98 52 102 50 110L42 112L42 104C46 94 54 88 64 87C72 86 78 88 84 90C80 80 74 70 66 64C60 66 52 68 44 68C38 68 34 64 34 60C34 54 40 48 46 44C52 38 56 34 62 30Z"/><path d="M146 98C162 96 174 108 172 126C170 142 162 152 170 168C154 158 156 140 156 128C156 116 152 106 146 102Z"/><path d="M72 30C80 36 84 44 92 50C88 44 90 38 86 34C94 40 98 48 102 58C96 50 86 40 72 34Z" opacity=".55"/><path d="M20 186H184" stroke="currentColor" stroke-width="2"/></g></svg></div>
     </form>
   </div>
 </section>
@@ -1388,22 +1343,6 @@ footer nav a:hover{transform:translateY(-1px)}
     },55);
   }
   setTimeout(run,900);
-})();
-</script>
-
-<script>
-(function(){
-  // the gold note drifts and tilts slightly while it passes through the viewport
-  var el=document.querySelector('.banknote'); if(!el) return;
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  var q=false;
-  function upd(){ q=false;
-    var r=el.getBoundingClientRect(), h=innerHeight;
-    var p=((r.top+r.height/2)-h/2)/(h/2+r.height/2);
-    el.style.setProperty('--sp',Math.max(-1,Math.min(1,p)).toFixed(3));
-  }
-  function req(){ if(!q){ q=true; requestAnimationFrame(upd); } }
-  addEventListener('scroll',req,{passive:true}); addEventListener('resize',req); upd();
 })();
 </script>
 

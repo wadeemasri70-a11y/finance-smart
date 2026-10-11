@@ -335,72 +335,50 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
-/* ============ Kontaktformular als Geldschein ============ */
-.banknote{--holo:clamp(16px,4.6vw,30px);position:relative;overflow:hidden;min-width:0;border-radius:10px;
-  padding:clamp(16px,2.6vw,22px);padding-right:calc(var(--holo) + clamp(18px,3vw,26px));
-  background:linear-gradient(132deg,#E9D39C 0%,#CDAA62 32%,#A6823D 66%,#DCC285 100%);
-  box-shadow:0 30px 64px rgba(0,0,0,.42),inset 0 0 0 1px rgba(255,246,220,.5);
-  display:grid;gap:14px;align-content:start;color:#3E2C0E;
-  /* --sp runs from 1 (note below the fold) to -1 (scrolled past); set by script */
-  transform:translateY(calc(var(--sp,0) * 16px)) rotate(calc(var(--sp,0) * -1.1deg));
-  will-change:transform}
-.banknote::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;
-  background:linear-gradient(105deg,transparent 38%,rgba(255,251,235,.55) 50%,transparent 62%)
-               calc(50% + var(--sp,0) * 70%) 0/260% 100% no-repeat,
-             repeating-linear-gradient(47deg,rgba(255,248,226,.3) 0 1px,transparent 1px 5px),
-             repeating-linear-gradient(-47deg,rgba(92,66,18,.22) 0 1px,transparent 1px 6px)}
-.note-guilloche{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.3}
-.note-guilloche svg{position:absolute;fill:none;stroke:#FFF7E0;stroke-width:.5}
-.note-guilloche .g1{right:-70px;top:-64px;width:260px;height:260px}
-.note-guilloche .g2{left:-56px;bottom:-60px;width:200px;height:200px;stroke:#6A4E18;opacity:.5}
-.note-holo{position:absolute;top:8px;bottom:8px;right:10px;width:var(--holo);border-radius:3px;
-  pointer-events:none;mix-blend-mode:screen;opacity:.8;
-  background:linear-gradient(168deg,rgba(255,255,255,.75),rgba(138,214,255,.6) 18%,rgba(255,196,238,.65) 38%,
-    rgba(186,255,214,.6) 56%,rgba(255,231,160,.7) 76%,rgba(255,255,255,.7));
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
-.note-serial{position:absolute;left:6px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;
-  font:600 .6rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.24em;color:#5C4414;opacity:.85}
-.note-head{min-width:0;position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
-  padding-left:42px}
-.note-brand{min-width:0}
-.note-brand b{display:block;font:600 1.12rem/1.05 var(--serif);letter-spacing:.11em;color:#2E2108;
-  text-shadow:0 1px 0 rgba(255,246,220,.55)}
-.note-brand span{display:block;margin-top:4px;font:500 .56rem/1 var(--sans);letter-spacing:.42em;color:#4A3810}
-.note-brand small{display:block;margin-top:9px;font:600 .66rem/1.3 var(--sans);color:#3A2B0D;opacity:.9;
-  letter-spacing:.02em;max-width:24ch}
-.note-value{display:flex;align-items:baseline;gap:4px;flex:none}
-.note-value b{font:600 2.9rem/.85 var(--serif);
-  background:linear-gradient(160deg,#6B5019,#3A2A0C 55%,#5E4614);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 1px 0 rgba(255,246,220,.6))}
-.note-value i{font-style:normal;font:500 .72rem/1 var(--sans);letter-spacing:.18em;color:#3A2B0D}
-.note-stars{position:absolute;left:-8px;top:-9px;width:44px;height:44px;fill:#FFF4D2;opacity:.55}
-.note-paper{position:relative;border-radius:7px;padding:clamp(18px,3vw,26px);
-  background:linear-gradient(180deg,#FFFDF9,#F7F0E2);
-  box-shadow:inset 0 0 0 1px rgba(140,106,44,.3),0 8px 22px rgba(70,52,16,.22);
-  display:grid;gap:15px;overflow:hidden}
-.note-paper .wm{position:absolute;right:-18px;bottom:-26px;width:185px;height:185px;
-  color:#A6823D;opacity:.09;pointer-events:none}
-.note-paper h3{position:relative;font-size:1.45rem;color:#2A1E08}
-.note-paper .hint{position:relative;font-size:.85rem;color:#6E5A33;margin-top:-6px}
-.note-paper label{display:grid;gap:6px;font:500 .84rem var(--sans);color:#3F3118;position:relative}
-.note-paper input,.note-paper select,.note-paper textarea{font:400 1rem var(--sans);width:100%;
-  padding:12px 13px;border:1px solid #DCC9A0;border-radius:4px;background:#FFFEFA;color:#22190A}
-.note-paper input:focus,.note-paper select:focus,.note-paper textarea:focus{
-  outline:2px solid #0E2235;outline-offset:0;border-color:#0E2235}
-.note-paper .two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.note-paper .consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.82rem;color:#5E4C2A}
-.note-paper .consent input{width:auto;margin-top:3px}
-.note-paper .btn{justify-content:center;position:relative}
-.note-paper .ok{background:#F1E7D3;color:#4A3A16;border-radius:4px;padding:12px 14px;font-size:.9rem;
-  border-left:3px solid #8A6A2C}
-.note-foot{min-width:0;position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding-left:42px;font-size:.62rem;letter-spacing:.14em;color:#3A2B0D;text-transform:uppercase}
-.note-micro{flex:1;min-width:0;overflow:hidden;white-space:nowrap;font-size:.32rem;letter-spacing:.06em;
-  color:rgba(58,43,13,.55);line-height:1}
-@media (max-width:480px){.note-paper .two{grid-template-columns:1fr}
-  .note-head{flex-direction:column}.note-value b{font-size:2.3rem}}
-@media (prefers-reduced-motion:reduce){.banknote{transform:none}}
+/* ============ Kontaktformular: das goldgerahmte Blatt ============ */
+/* a formal sheet instead of a banknote: champagne paper inside a double
+   gold frame, a lozenge on the top edge and in each inner corner, a gold
+   rule under the title, and at the foot a light drawing of a rearing
+   horse between two gold hairlines */
+.deed{--g:#B8934A;position:relative;min-width:0;align-self:start;
+  background:linear-gradient(180deg,#FBF7EE 0%,#F4EAD3 100%);color:#18232D;
+  border:1px solid var(--g);border-radius:3px;
+  padding:clamp(30px,4vw,46px) clamp(22px,3.4vw,42px) clamp(22px,3vw,30px);
+  box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 26px 60px rgba(0,0,0,.38);
+  display:grid;gap:15px}
+.deed::before{content:"";position:absolute;inset:9px;border:1px solid rgba(184,147,74,.55);
+  pointer-events:none}
+.deed-gem{position:absolute;width:12px;height:12px;background:var(--gold);
+  transform:translate(-50%,-50%) rotate(45deg);box-shadow:0 0 0 3px #FBF7EE,0 0 0 4px var(--g)}
+.deed-gem.crest{left:50%;top:0;background:var(--g);box-shadow:0 0 0 4px var(--hero-bg),0 0 0 5px var(--g)}
+.deed-gem.c{width:7px;height:7px;box-shadow:none;background:var(--g)}
+.deed-gem.tl{left:9px;top:9px}.deed-gem.tr{left:calc(100% - 9px);top:9px}
+.deed-gem.bl{left:9px;top:calc(100% - 9px)}.deed-gem.br{left:calc(100% - 9px);top:calc(100% - 9px)}
+.deed-head{display:grid;justify-items:center;text-align:center;gap:10px;margin-bottom:6px}
+.deed-kicker{font:600 .7rem/1.3 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#86672A}
+.deed h3{font-size:clamp(1.5rem,2.2vw,1.85rem);color:#0E2235}
+.deed-rule{display:flex;align-items:center;gap:10px;width:min(240px,70%)}
+.deed-rule::before,.deed-rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--g))}
+.deed-rule::after{background:linear-gradient(90deg,var(--g),transparent)}
+.deed-rule i{width:7px;height:7px;background:var(--g);transform:rotate(45deg)}
+.deed .hint{font-size:.88rem;color:#5E6670}
+.deed label{display:grid;gap:6px;font:500 .84rem var(--sans);color:#2D3A46}
+.deed input,.deed select,.deed textarea{font:400 1rem var(--sans);width:100%;
+  padding:12px 13px;border:1px solid #D9C9A4;border-radius:2px;background:#FFFDF8;color:#18232D}
+.deed input:focus,.deed select:focus,.deed textarea:focus{outline:2px solid #0E2235;outline-offset:0;border-color:#0E2235}
+.deed .two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.deed .consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.82rem;color:#5E6670}
+.deed .consent input{width:auto;margin-top:3px}
+.deed .btn{justify-content:center;letter-spacing:.06em}
+.deed .ok{background:#F1E7D3;color:#4A3A16;border-radius:2px;padding:12px 14px;font-size:.9rem;
+  border-inline-start:3px solid #86672A}
+.deed-foot{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin-top:4px;color:var(--g)}
+.deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:6px;
+  background:linear-gradient(90deg,transparent,rgba(184,147,74,.75))}
+.deed-foot::after{background:linear-gradient(90deg,rgba(184,147,74,.75),transparent)}
+.deed-foot svg{width:92px;height:92px;flex:none;opacity:.5}
+@media (max-width:480px){.deed .two{grid-template-columns:1fr}}
+
 
 /* ============ Vertrauen: Handschlag (Scroll, WebGL) ============ */
 .trust{position:relative;background:var(--hero-bg);overflow:hidden}
@@ -490,7 +468,6 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 /* ============ Sprache & Design ============ */
 :root[lang="ar"]{--serif:"Amiri","Libre Caslon Text",Georgia,serif;
   --sans:"IBM Plex Sans Arabic","Source Sans 3",system-ui,sans-serif}
-:root[lang="ar"] .note-brand b{font-family:var(--serif)}
 .lang{display:flex;align-items:center;gap:2px;padding:3px;border-radius:999px;flex:none;
   border:1px solid rgba(197,160,89,.4)}
 .lang button{border:0;background:none;cursor:pointer;color:var(--frame-text);border-radius:999px;
@@ -505,13 +482,6 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 [dir="rtl"] .arrow:hover::after{transform:translateX(-3px)}
 [dir="rtl"] .faq summary{padding:22px 0 22px 40px}
 [dir="rtl"] .faq summary::after{right:auto;left:4px}
-[dir="rtl"] .note-serial{left:auto;right:6px}
-[dir="rtl"] .note-head,[dir="rtl"] .note-foot{padding-left:0;padding-right:42px}
-[dir="rtl"] .note-stars{left:auto;right:-8px}
-[dir="rtl"] .note-holo{right:auto;left:10px}
-[dir="rtl"] .banknote{padding-right:clamp(16px,2.6vw,22px);
-  padding-left:calc(var(--holo) + clamp(18px,3vw,26px))}
-[dir="rtl"] .note-paper .wm{right:auto;left:-18px}
 [dir="rtl"] .values b,[dir="rtl"] .loc dt,[dir="rtl"] .info dt{text-align:right}
 /* the photo dictates this side, so it must not flip with the text direction */
 .band--right .band-inner{justify-items:right;text-align:right}
@@ -593,7 +563,6 @@ h1,h2,h3,p,li,dd,summary,.lead{hyphens:auto;-webkit-hyphens:auto}
   .party,.card,.feat div,.values div,.loc dd,.info dd,.checks li,.who,
   h1,h2,h3,p,li,dd,dt,.lead,.eyebrow,.stair span{overflow-wrap:anywhere}
   .card,.party{padding:24px 18px}
-  .note-paper{padding:18px 15px}
   .loc-pin{padding:14px}
   .checks li{padding-left:24px}
   [dir="rtl"] .checks li{padding-left:0;padding-right:24px}
@@ -1084,22 +1053,6 @@ footer nav a:hover{transform:translateY(-1px)}
     },55);
   }
   setTimeout(run,900);
-})();
-</script>
-
-<script>
-(function(){
-  // the gold note drifts and tilts slightly while it passes through the viewport
-  var el=document.querySelector('.banknote'); if(!el) return;
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  var q=false;
-  function upd(){ q=false;
-    var r=el.getBoundingClientRect(), h=innerHeight;
-    var p=((r.top+r.height/2)-h/2)/(h/2+r.height/2);
-    el.style.setProperty('--sp',Math.max(-1,Math.min(1,p)).toFixed(3));
-  }
-  function req(){ if(!q){ q=true; requestAnimationFrame(upd); } }
-  addEventListener('scroll',req,{passive:true}); addEventListener('resize',req); upd();
 })();
 </script>
 
