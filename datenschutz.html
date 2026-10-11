@@ -376,13 +376,23 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 .deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:1px;
   background:linear-gradient(90deg,transparent,rgba(184,147,74,.75))}
 .deed-foot::after{background:linear-gradient(90deg,rgba(184,147,74,.75),transparent)}
-.deed-foot .deed-horse{width:74px;aspect-ratio:300/376;flex:none;
-  /* drawn as Grease Pencil strokes in Blender and rendered to a transparent
-     PNG; used as a mask over a polished gold, with a faint highlight below
-     each line so the ink reads as gilded */
-  background:linear-gradient(160deg,#5E4414 0%,#A9843B 26%,#E2C07A 46%,#8F6C2B 62%,#C9A257 80%,#6A4D18 100%);
-  -webkit-mask:url(img/horse.png) center/contain no-repeat;mask:url(img/horse.png) center/contain no-repeat;
-  filter:drop-shadow(0 1px 0 rgba(255,255,255,.7)) drop-shadow(0 1px 1px rgba(90,64,18,.25))}
+.deed-foot .deed-horse{width:52px;height:auto;flex:none;overflow:visible;
+  filter:drop-shadow(0 1px 0 rgba(255,255,255,.6))}
+/* the gold horse rears; every few seconds it drops onto all four legs,
+   holds for a moment and rears up again. Body turns at the hip, forelegs
+   at shoulder and knee; the hind legs stay planted */
+.deed-horse :is(.bd,.fl1,.fk1,.fl2,.fk2){transform-box:view-box}
+.deed-horse .bd{transform:rotate(34deg);animation:hBody 8s ease-in-out infinite}
+.deed-horse .fl1{transform:rotate(68deg);animation:hUp1 8s ease-in-out infinite}
+.deed-horse .fk1{transform:rotate(-112deg);animation:hLow1 8s ease-in-out infinite}
+.deed-horse .fl2{transform:rotate(54deg);animation:hUp2 8s ease-in-out infinite}
+.deed-horse .fk2{transform:rotate(-95deg);animation:hLow2 8s ease-in-out infinite}
+@keyframes hBody{0%,55%,92%,100%{transform:rotate(34deg)}68%,78%{transform:rotate(0)}}
+@keyframes hUp1{0%,55%,92%,100%{transform:rotate(68deg)}68%,78%{transform:rotate(0)}}
+@keyframes hLow1{0%,55%,92%,100%{transform:rotate(-112deg)}68%,78%{transform:rotate(0)}}
+@keyframes hUp2{0%,55%,92%,100%{transform:rotate(54deg)}68%,78%{transform:rotate(0)}}
+@keyframes hLow2{0%,55%,92%,100%{transform:rotate(-95deg)}68%,78%{transform:rotate(0)}}
+@media (prefers-reduced-motion:reduce){.deed-horse *{animation:none!important}}
 @media (max-width:480px){.deed .two{grid-template-columns:1fr}}
 
 

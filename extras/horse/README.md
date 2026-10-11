@@ -14,3 +14,11 @@ units, y down; W = outline, D = detail, F = fine hatching), then:
 and crop/resize the result to img/horse.png (360 px wide, transparent).
 The horse is an original drawing of a rearing horse, not the state coat
 of arms of North Rhine-Westphalia.
+
+## Current site version
+
+The contact form now shows a small solid-gold animated horse instead of
+the Blender line drawing: an inline SVG (`.deed-horse` in src/body.html)
+built from parts that turn at the hip, shoulders and knees. It rears,
+drops onto all four legs every eight seconds and rears up again. The
+Blender script above stays here as the line-art alternative.
