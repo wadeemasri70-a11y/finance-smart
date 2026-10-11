@@ -15,10 +15,18 @@ and crop/resize the result to img/horse.png (360 px wide, transparent).
 The horse is an original drawing of a rearing horse, not the state coat
 of arms of North Rhine-Westphalia.
 
-## Current site version
+## Current site version: animated in Blender
 
-The contact form now shows a small solid-gold animated horse instead of
-the Blender line drawing: an inline SVG (`.deed-horse` in src/body.html)
-built from parts that turn at the hip, shoulders and knees. It rears,
-drops onto all four legs every eight seconds and rears up again. The
-Blender script above stays here as the line-art alternative.
+`horse_animation.py` builds the horse in Blender 5.2 and renders 144
+frames (24 fps, 6 s): body, head and hooves as filled 2D curves, legs,
+mane strands and tail strands as Grease Pencil strokes. A small rig in the
+script turns the body at the hip and each foreleg at shoulder and knee;
+mane and tail sway. The horse stands, rears, paws with its forelegs and
+comes down again.
+
+    EGL_PLATFORM=surfaceless python horse_animation.py /tmp/frames/f_ 144
+
+Every second frame (12 fps) is cropped to the shared bounding box, scaled
+to 128 px and laid in one row in `img/horse-sprite.png` (alpha only, 16
+levels). The page uses it as a CSS mask over a gold gradient and steps
+through it with `steps(72)`; reduced motion shows the reared frame.

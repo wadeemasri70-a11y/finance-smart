@@ -376,23 +376,19 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 .deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:1px;
   background:linear-gradient(90deg,transparent,rgba(184,147,74,.75))}
 .deed-foot::after{background:linear-gradient(90deg,rgba(184,147,74,.75),transparent)}
-.deed-foot .deed-horse{width:52px;height:auto;flex:none;overflow:visible;
-  filter:drop-shadow(0 1px 0 rgba(255,255,255,.6))}
-/* the gold horse rears; every few seconds it drops onto all four legs,
-   holds for a moment and rears up again. Body turns at the hip, forelegs
-   at shoulder and knee; the hind legs stay planted */
-.deed-horse :is(.bd,.fl1,.fk1,.fl2,.fk2){transform-box:view-box}
-.deed-horse .bd{transform:rotate(34deg);animation:hBody 8s ease-in-out infinite}
-.deed-horse .fl1{transform:rotate(68deg);animation:hUp1 8s ease-in-out infinite}
-.deed-horse .fk1{transform:rotate(-112deg);animation:hLow1 8s ease-in-out infinite}
-.deed-horse .fl2{transform:rotate(54deg);animation:hUp2 8s ease-in-out infinite}
-.deed-horse .fk2{transform:rotate(-95deg);animation:hLow2 8s ease-in-out infinite}
-@keyframes hBody{0%,55%,92%,100%{transform:rotate(34deg)}68%,78%{transform:rotate(0)}}
-@keyframes hUp1{0%,55%,92%,100%{transform:rotate(68deg)}68%,78%{transform:rotate(0)}}
-@keyframes hLow1{0%,55%,92%,100%{transform:rotate(-112deg)}68%,78%{transform:rotate(0)}}
-@keyframes hUp2{0%,55%,92%,100%{transform:rotate(54deg)}68%,78%{transform:rotate(0)}}
-@keyframes hLow2{0%,55%,92%,100%{transform:rotate(-95deg)}68%,78%{transform:rotate(0)}}
-@media (prefers-reduced-motion:reduce){.deed-horse *{animation:none!important}}
+.deed-foot .deed-horse{--w:64px;--h:68px;width:var(--w);height:var(--h);flex:none;
+  /* drawn and animated in Blender (Grease Pencil strokes for legs, mane
+     and tail, curve fills for the body): 72 frames at 12 fps in one strip,
+     used as a mask over polished gold and stepped through. Standing on
+     four legs, it rears, paws with its forelegs while mane and tail sway,
+     and comes down again; the loop is six seconds */
+  background:linear-gradient(155deg,#5E4414 0%,#B28D42 28%,#E9CF8C 50%,#96722E 68%,#D0AA60 86%,#6A4D18 100%);
+  -webkit-mask:url(img/horse-sprite.png) 0 0/calc(var(--w)*72) var(--h) no-repeat;
+  mask:url(img/horse-sprite.png) 0 0/calc(var(--w)*72) var(--h) no-repeat;
+  animation:hRun 6s steps(72) infinite}
+@keyframes hRun{to{-webkit-mask-position:calc(var(--w)*-72) 0;mask-position:calc(var(--w)*-72) 0}}
+@media (prefers-reduced-motion:reduce){.deed-foot .deed-horse{animation:none;
+  -webkit-mask-position:calc(var(--w)*-36) 0;mask-position:calc(var(--w)*-36) 0}}
 @media (max-width:480px){.deed .two{grid-template-columns:1fr}}
 
 
@@ -1232,7 +1228,7 @@ footer nav a:hover{transform:translateY(-1px)}
           (siehe Datenschutzerkl&#228;rung).</span></label>
         <button data-i18n="k144" class="btn btn-navy" type="submit">Anfrage senden</button>
         <p data-i18n="k145" class="ok" id="ok" hidden>Entwurf: Das Formular wird beim Livegang an Ihr Postfach angebunden.</p>
-      <div class="deed-foot" aria-hidden="true"><svg class="deed-horse" viewBox="0 -14 120 110" aria-hidden="true"><defs><linearGradient id="hgold" gradientUnits="userSpaceOnUse" x1="10" y1="0" x2="100" y2="96"><stop offset="0" stop-color="#6A4D18"/><stop offset=".3" stop-color="#B8934A"/><stop offset=".5" stop-color="#E9CF8C"/><stop offset=".68" stop-color="#9C7832"/><stop offset=".86" stop-color="#D2AD62"/><stop offset="1" stop-color="#6A4D18"/></linearGradient></defs><g fill="url(#hgold)" stroke="url(#hgold)" stroke-linecap="round" stroke-linejoin="round"> <g class="hl"> <path d="M85 58 C89 66 91 73 90 80 L87 92" fill="none" stroke-width="4.6"/> <path d="M77 60 C80 67 81 74 80 80 L76 92" fill="none" stroke-width="4.2"/> <path d="M83 91 L91 91 L90 94.5 L83 94.5Z" stroke-width=".8"/><path d="M72 91 L80 91 L79 94.5 L72 94.5Z" stroke-width=".8"/> </g> <g class="bd" style="transform-origin:82px 60px"> <path stroke-width=".8" d="M93 47 C101 51 104 61 103 75 C101 67 97 60 91 55Z"/> <path stroke-width=".8" d="M38 48 C42 43 50 41 58 41 L80 41 C88 41 94 44 95 50 C96 57 93 63 86 65 C74 67 60 67 50 66 C44 65 39 63 37 58 C36 54 36 51 38 48Z"/> <path stroke-width=".8" d="M39 51 C35 46 33 40 31 35 C28 36 25 38 22 39 L15 39 C12 39 11 35 13 33 L22 25 C25 22 28 20 31 19 L30 12 L34 18 L36 11 L37 19 C44 23 52 32 58 41 L50 45Z"/> <g class="fl1" style="transform-origin:42px 60px"> <path d="M42 60 L42 76" fill="none" stroke-width="5.2"/> <g class="fk1" style="transform-origin:42px 76px"> <path d="M42 76 L42 91" fill="none" stroke-width="3.6"/><path d="M38 91 L46 91 L45 94.5 L38 94.5Z" stroke-width=".8"/></g> </g> <g class="fl2" style="transform-origin:48px 61px"> <path d="M48 61 L49 77" fill="none" stroke-width="4.8"/> <g class="fk2" style="transform-origin:49px 77px"> <path d="M49 77 L49 91" fill="none" stroke-width="3.4"/><path d="M45 91 L53 91 L52 94.5 L45 94.5Z" stroke-width=".8"/></g> </g> </g> </g></svg></div>
+      <div class="deed-foot" aria-hidden="true"><span class="deed-horse"></span></div>
     </form>
   </div>
 </section>
