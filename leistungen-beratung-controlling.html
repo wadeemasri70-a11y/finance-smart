@@ -373,10 +373,13 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 .deed .ok{background:#F1E7D3;color:#4A3A16;border-radius:2px;padding:12px 14px;font-size:.9rem;
   border-inline-start:3px solid #86672A}
 .deed-foot{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin-top:4px;color:var(--g)}
-.deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:6px;
+.deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:3px;
   background:linear-gradient(90deg,transparent,rgba(184,147,74,.75))}
 .deed-foot::after{background:linear-gradient(90deg,rgba(184,147,74,.75),transparent)}
-.deed-foot svg{width:100px;height:auto;aspect-ratio:146/182;flex:none;opacity:.9}
+.deed-foot .deed-horse{width:104px;aspect-ratio:360/440;flex:none;background:var(--g);
+  /* drawn as Grease Pencil strokes in Blender and rendered to a transparent
+     PNG; used as a mask so the ink takes the frame's gold */
+  -webkit-mask:url(img/horse.png) center/contain no-repeat;mask:url(img/horse.png) center/contain no-repeat}
 @media (max-width:480px){.deed .two{grid-template-columns:1fr}}
 
 

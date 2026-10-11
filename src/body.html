@@ -367,10 +367,13 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 .deed .ok{background:#F1E7D3;color:#4A3A16;border-radius:2px;padding:12px 14px;font-size:.9rem;
   border-inline-start:3px solid #86672A}
 .deed-foot{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin-top:4px;color:var(--g)}
-.deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:6px;
+.deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:3px;
   background:linear-gradient(90deg,transparent,rgba(184,147,74,.75))}
 .deed-foot::after{background:linear-gradient(90deg,rgba(184,147,74,.75),transparent)}
-.deed-foot svg{width:100px;height:auto;aspect-ratio:146/182;flex:none;opacity:.9}
+.deed-foot .deed-horse{width:104px;aspect-ratio:360/440;flex:none;background:var(--g);
+  /* drawn as Grease Pencil strokes in Blender and rendered to a transparent
+     PNG; used as a mask so the ink takes the frame's gold */
+  -webkit-mask:url(img/horse.png) center/contain no-repeat;mask:url(img/horse.png) center/contain no-repeat}
 @media (max-width:480px){.deed .two{grid-template-columns:1fr}}
 
 
@@ -1212,7 +1215,7 @@ footer nav a:hover{transform:translateY(-1px)}
           (siehe Datenschutzerkl&#228;rung).</span></label>
         <button data-i18n="k144" class="btn btn-navy" type="submit">Anfrage senden</button>
         <p data-i18n="k145" class="ok" id="ok" hidden>Entwurf: Das Formular wird beim Livegang an Ihr Postfach angebunden.</p>
-      <div class="deed-foot" aria-hidden="true"><svg viewBox="48 24 146 182" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M112 47C109 41 109 36 112 31 C114 36 116 39 118 42C121 37 125 34 128 33 C127 39 125 44 122 48C130 56 135 66 136 78C138 92 146 104 152 116C158 128 160 140 156 152C162 164 170 176 168 190L171 200 L158 202 L156 196C158 186 152 176 144 168C140 176 136 182 128 186L122 198 L110 199 L112 192C120 188 126 180 128 172C124 168 120 162 118 156C110 150 102 144 98 134C96 128 94 124 92 120C88 124 84 128 80 132 L76 142 L68 141 L70 134C74 128 80 122 84 116C80 114 76 110 72 106L62 112 L56 108 L62 100C68 98 74 98 80 100C84 102 88 104 92 104C90 96 92 88 98 82C94 78 90 76 86 76L84 72 L78 72 L80 68 L76 66C74 62 76 58 80 56C88 52 98 48 106 46Z"/><path d="M78 66 C84 67 89 69 92 72"/><path d="M76 66 L72 70 L80 72"/><path d="M98 54 C100 52 103 52 104 54 C102 56 100 56 98 54 Z" fill="currentColor"/><path d="M88 58 C92 56 96 55 100 56"/><path d="M122 48 C130 50 136 56 140 64"/><path d="M124 54 C132 58 138 66 140 74"/><path d="M126 62 C134 66 140 74 142 84"/><path d="M128 70 C136 76 142 84 144 94"/><path d="M130 80 C138 86 144 96 146 104"/><path d="M118 42 C124 40 130 42 134 46"/><path d="M120 45 C128 44 134 48 138 54"/><path d="M132 88 C140 94 146 102 148 112"/><path d="M126 58 C130 60 133 64 134 68"/><path d="M155 132 C164 122 166 110 162 98 C160 90 164 82 172 80 C178 79 182 84 179 89"/><path d="M156 138 C168 128 172 114 169 102 C168 94 171 88 177 86"/><path d="M157 144 C172 136 178 120 176 106"/><path d="M158 150 C174 146 182 132 182 118"/><path d="M158 156 C170 158 180 152 186 140"/><path d="M104 100 C110 104 116 106 122 106"/><path d="M130 150 C136 146 140 140 142 132"/><path d="M118 132 C122 136 126 138 132 138"/><path d="M96 112 C100 116 104 118 108 118"/><path d="M106 88 l7 -2 M107 92 l7 -2 M108 96 l7 -2" stroke-width="1"/><path d="M140 156 l4 5 M144 154 l4 5 M148 152 l4 5" stroke-width="1"/><path d="M146 176 l5 3 M148 182 l5 3" stroke-width="1"/><path d="M62 104 l4 3 M66 102 l4 3" stroke-width="1"/><path d="M56 108 L60 114"/><path d="M68 141 L74 144"/><path d="M110 199 H122"/><path d="M158 202 H171"/></g></svg></div>
+      <div class="deed-foot" aria-hidden="true"><span class="deed-horse"></span></div>
     </form>
   </div>
 </section>
