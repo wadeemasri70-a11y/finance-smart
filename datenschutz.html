@@ -373,13 +373,16 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 .deed .ok{background:#F1E7D3;color:#4A3A16;border-radius:2px;padding:12px 14px;font-size:.9rem;
   border-inline-start:3px solid #86672A}
 .deed-foot{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin-top:4px;color:var(--g)}
-.deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:3px;
+.deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:1px;
   background:linear-gradient(90deg,transparent,rgba(184,147,74,.75))}
 .deed-foot::after{background:linear-gradient(90deg,rgba(184,147,74,.75),transparent)}
-.deed-foot .deed-horse{width:104px;aspect-ratio:360/440;flex:none;background:var(--g);
+.deed-foot .deed-horse{width:74px;aspect-ratio:300/376;flex:none;
   /* drawn as Grease Pencil strokes in Blender and rendered to a transparent
-     PNG; used as a mask so the ink takes the frame's gold */
-  -webkit-mask:url(img/horse.png) center/contain no-repeat;mask:url(img/horse.png) center/contain no-repeat}
+     PNG; used as a mask over a polished gold, with a faint highlight below
+     each line so the ink reads as gilded */
+  background:linear-gradient(160deg,#5E4414 0%,#A9843B 26%,#E2C07A 46%,#8F6C2B 62%,#C9A257 80%,#6A4D18 100%);
+  -webkit-mask:url(img/horse.png) center/contain no-repeat;mask:url(img/horse.png) center/contain no-repeat;
+  filter:drop-shadow(0 1px 0 rgba(255,255,255,.7)) drop-shadow(0 1px 1px rgba(90,64,18,.25))}
 @media (max-width:480px){.deed .two{grid-template-columns:1fr}}
 
 

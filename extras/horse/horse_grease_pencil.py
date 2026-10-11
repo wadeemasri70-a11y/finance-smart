@@ -4,19 +4,20 @@ W=1.0   # outline weight
 D=0.62  # detail weight
 F=0.42  # fine hatching
 STROKES=[
- # head: long noble profile tapering to the muzzle, calm eye, alert ears
- (W,"M116 44 C106 46 96 52 87 60 C81 64 77 67 74 70"),
- (W,"M74 70 C72 73 73 77 77 78"),
- (D,"M77 78 C81 79 85 80 88 80"),
- (D,"M79 82 C82 84 86 84 89 82"),
- (W,"M89 82 C96 84 104 84 109 80 C114 76 116 70 115 64"),
- (F,"M109 62 C105 66 101 70 96 72"),
- (D,"M101 55 C103 53 106 53 107 55 C105 57 103 57 101 55"),
- (F,"M98 51 C101 49 106 48 110 51"),
- (F,"M80 70 C82 69 84 70 84 72"),
- (W,"M115 45 C113 39 113 34 115 29 C118 33 120 38 120 43"),
- (W,"M121 43 C122 38 124 34 127 31 C128 36 127 41 125 46"),
- (F,"M116 35 C117 38 117 40 118 42"),
+ # head: chiselled, angular profile, sharp almond eye, pointed ears
+ (W,"M116 44 C104 48 88 58 74 70"),
+ (W,"M74 70 L72 76 L78 78"),
+ (D,"M78 78 L88 80"),
+ (D,"M79 82 L84 85 L90 82"),
+ (W,"M90 82 C98 84 105 83 110 79 L116 65"),
+ (F,"M110 61 L97 72"),
+ (D,"M99 55 L104 52 L109 55 L104 57 Z"),
+ (1.6,"M102 55 L106 55"),
+ (F,"M97 50 C101 47 106 47 111 50"),
+ (F,"M80 69 L84 68 L85 72"),
+ (W,"M115 45 L112 35 L115 26 L120 43"),
+ (W,"M121 43 L123 33 L128 25 L126 46"),
+ (F,"M115 33 L117 41"),
  # neck front, throat, chest
  (W,"M110 80 C104 86 100 92 99 100 C99 104 100 106 101 108"),
  # crest and back to rump
@@ -100,15 +101,15 @@ lines=[]
 for w,path in STROKES:
     for pl in sample(path): lines.append((w,pl))
 d.add_strokes([len(pl) for w,pl in lines])
-BASE=0.0115
+BASE=0.0135
 for st,(w,pl) in zip(d.strokes,lines):
     n=len(pl)
     for j,(x,y) in enumerate(pl):
         t=j/(n-1) if n>1 else .5
-        taper=0.16+0.84*(math.sin(math.pi*t)**0.65)
+        taper=0.05+0.95*(math.sin(math.pi*t)**1.05)
         p=st.points[j]; p.position=((x-115)/100,0,-(y-115)/100); p.radius=BASE*w*taper
 cam=bpy.data.cameras.new("C"); cam.type='ORTHO'; cam.ortho_scale=1.9
 co=bpy.data.objects.new("C",cam); sc.collection.objects.link(co); co.location=(0,-5,0); co.rotation_euler=(math.pi/2,0,0); sc.camera=co
-sc.render.resolution_x=1000; sc.render.resolution_y=1000; sc.render.film_transparent=True
+sc.render.resolution_x=1400; sc.render.resolution_y=1400; sc.render.film_transparent=True
 sc.render.engine='BLENDER_EEVEE'; sc.view_settings.view_transform='Standard'
 sc.render.filepath=OUT; bpy.ops.render.render(write_still=True)
