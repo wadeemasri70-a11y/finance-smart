@@ -29,7 +29,12 @@ tail   = rest[rest.index('<div class="foot-rule"'):].replace("__I18N_DICT__", i1
 
 DOC = ('<!doctype html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n'
        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-       '<meta name="description" content="{desc}">\n{head}\n</head>\n<body>\n'
+       '<meta name="description" content="{desc}">\n'
+       '<link rel="icon" href="favicon.svg" type="image/svg+xml">\n'
+       '<link rel="icon" href="favicon.ico" sizes="any">\n'
+       '<link rel="apple-touch-icon" href="img/icon-180.png">\n'
+       '<link rel="manifest" href="site.webmanifest">\n'
+       '<meta name="theme-color" content="#0E2235">\n{head}\n</head>\n<body>\n'
        '{symbol}\n{header}\n{main}\n{tail}\n</body>\n</html>\n')
 
 def page(main, desc, sub):
