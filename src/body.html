@@ -370,6 +370,10 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 .deed .btn{justify-content:center;letter-spacing:.06em}
 .deed .ok{background:#F1E7D3;color:#4A3A16;border-radius:2px;padding:12px 14px;font-size:.9rem;
   border-inline-start:3px solid #86672A}
+.deed .err{background:#F6E3DE;color:#5A2118;border-inline-start-color:#9A3B2B}
+/* a field only bots fill in */
+.deed .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.deed .btn[disabled]{opacity:.6;cursor:wait}
 .deed-foot{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin-top:4px;color:var(--g)}
 .deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:1px;
   background:linear-gradient(90deg,transparent,rgba(184,147,74,.75))}
@@ -1245,7 +1249,9 @@ footer nav a:hover{transform:translateY(-1px)}
         <label class="consent" for="f-ok"><input id="f-ok" type="checkbox" required><span data-i18n="k143">Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden
           (siehe Datenschutzerkl&#228;rung).</span></label>
         <button data-i18n="k144" class="btn btn-navy" type="submit">Anfrage senden</button>
-        <p data-i18n="k145" class="ok" id="ok" hidden>Entwurf: Das Formular wird beim Livegang an Ihr Postfach angebunden.</p>
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p data-i18n="k145" class="ok" id="ok" hidden role="status">Vielen Dank! Ihre Anfrage ist bei uns eingegangen. Wir melden uns innerhalb eines Werktags bei Ihnen.</p>
+        <p data-i18n="k206" class="ok err" id="err" hidden role="alert">Die Anfrage konnte gerade nicht gesendet werden. Bitte schreiben Sie uns an info@smartfinance-nrw.de oder rufen Sie an: +49 2131 5398501.</p>
       <div class="deed-foot" aria-hidden="true"><span class="deed-horse"></span></div>
     </form>
   </div>
@@ -1399,10 +1405,25 @@ if(b&&n){
   b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
   n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');b.setAttribute('aria-expanded',false)}));
 }
+// the request goes by e-mail to the office through FormSubmit (formsubmit.co)
 const f=document.getElementById('form');
-if(f) f.addEventListener('submit',e=>{
+if(f) f.addEventListener('submit',async e=>{
   e.preventDefault();
   if(!f.checkValidity()){f.reportValidity();return}
-  const ok=document.getElementById('ok'); if(ok) ok.hidden=false;
+  const ok=document.getElementById('ok'), err=document.getElementById('err'), btn=f.querySelector('button[type=submit]');
+  ok.hidden=true; err.hidden=true;
+  const label=btn.innerHTML; btn.disabled=true; btn.textContent='\u2026';
+  const d=Object.fromEntries(new FormData(f));
+  d._subject='Neue Anfrage \u00fcber smartfinance-nrw.de'+(d.name?' \u2013 '+d.name:'');
+  d._template='table'; d._replyto=d.email||'';
+  d.sprache=document.documentElement.lang;
+  try{
+    const r=await fetch('https://formsubmit.co/ajax/info@smartfinance-nrw.de',{method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)});
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok || String(j.success)!=='true') throw new Error(j.message||r.status);
+    ok.hidden=false; f.reset();
+  }catch(x){ err.hidden=false; }
+  finally{ btn.disabled=false; btn.innerHTML=label; }
 });
 </script>
