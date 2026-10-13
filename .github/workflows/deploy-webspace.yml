@@ -1,0 +1,52 @@
+# Uploads the built site to the United Domains webspace over SFTP on every
+# push to the publishing branch. Needs three repository secrets:
+# SFTP_HOST, SFTP_USER, SFTP_PASSWORD. Without them it does nothing.
+name: Deploy to webspace
+
+on:
+  push:
+    branches: ["claude/relaxed-pasteur-3vipnn"]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-webspace
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SFTP_HOST: ${{ secrets.SFTP_HOST }}
+      SFTP_USER: ${{ secrets.SFTP_USER }}
+      SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+      REMOTE_DIR: smartfinance-nrw
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Skip when the webspace is not configured
+        id: cfg
+        run: |
+          if [ -z "$SFTP_HOST" ] || [ -z "$SFTP_USER" ] || [ -z "$SFTP_PASSWORD" ]; then
+            echo "::notice::SFTP secrets missing, nothing uploaded"; echo "go=no" >> "$GITHUB_OUTPUT"
+          else echo "go=yes" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Collect the files the site needs
+        if: steps.cfg.outputs.go == 'yes'
+        run: |
+          mkdir -p out
+          cp *.html favicon.svg favicon.ico site.webmanifest map-neuss.svg logo-smart-finance*.svg out/
+          cp -r fonts img video out/
+          rm -f out/img/shots/.gitkeep
+          cp extras/deploy/.htaccess out/.htaccess
+          cp server/send.php out/send.php
+
+      - name: Upload over SFTP
+        if: steps.cfg.outputs.go == 'yes'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          mkdir -p ~/.ssh && ssh-keyscan -p 22 "$SFTP_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          lftp -u "$SFTP_USER,$SFTP_PASSWORD" "sftp://$SFTP_HOST" -e "
+            set net:max-retries 3; set net:timeout 30;
+            mkdir -p -f $REMOTE_DIR;
+            mirror --reverse --delete --verbose --parallel=4 out/ $REMOTE_DIR/;
+            bye"
