@@ -34,7 +34,7 @@ jobs:
         if: steps.cfg.outputs.go == 'yes'
         run: |
           mkdir -p out
-          cp *.html favicon.svg favicon.ico site.webmanifest map-neuss.svg logo-smart-finance*.svg out/
+          cp *.html robots.txt sitemap.xml favicon.svg favicon.ico site.webmanifest map-neuss.svg logo-smart-finance*.svg out/
           cp -r fonts img video out/
           rm -f out/img/shots/.gitkeep
           cp extras/deploy/.htaccess out/.htaccess
