@@ -48,8 +48,8 @@ DOC = ('<!doctype html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n'
        '<meta name="theme-color" content="#0E2235">\n{ld}{head}\n</head>\n<body>\n'
        '{symbol}\n{header}\n{main}\n{tail}\n</body>\n</html>\n')
 
-# Google reads the business card from this block: name, address, phone and
-# position match the Impressum and the Google Business Profile, so keep them
+# Google reads the business card from this block: name, address, phone,
+# position and opening hours match the Impressum and the Google Business Profile, so keep them
 # in step when one of them changes.
 LD = ('<script type="application/ld+json">' + json.dumps({
     "@context": "https://schema.org",
@@ -70,6 +70,10 @@ LD = ('<script type="application/ld+json">' + json.dumps({
     "hasMap": "https://maps.app.goo.gl/UEfZgx9Jsora8MZEA",
     "areaServed": ["Neuss", "Rhein-Kreis Neuss", "Düsseldorf"],
     "knowsLanguage": ["de", "en", "ar"],
+    "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00", "closes": "18:00"}],
 }, ensure_ascii=False) + '</script>\n')
 
 def page(main, desc, sub, title, name):
