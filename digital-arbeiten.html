@@ -321,6 +321,8 @@ main>section+section{border-top:var(--rule)}
 .info dt{color:var(--frame-gold);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding-top:3px}
 .info dd{margin:0;color:var(--frame-head);user-select:all}
 .info dd.plain{user-select:auto}
+/* phone numbers and the address keep their order in Arabic and can be tapped */
+dd a.tel{color:inherit;text-decoration:none;unicode-bidi:isolate}
 @media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
 @media (max-width:480px){.info div{grid-template-columns:1fr;gap:2px}}
 
@@ -390,8 +392,9 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 .deed .ok{background:#F1E7D3;color:#4A3A16;border-radius:2px;padding:12px 14px;font-size:.9rem;
   border-inline-start:3px solid #86672A}
 .deed .err{background:#F6E3DE;color:#5A2118;border-inline-start-color:#9A3B2B}
-/* a field only bots fill in */
-.deed .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+/* a field only bots fill in: clipped in place rather than pushed off to the
+   left, which in Arabic (rtl) widened the page by 10000px */
+.deed .hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;opacity:0;pointer-events:none}
 .deed .btn[disabled]{opacity:.6;cursor:wait}
 .deed-foot{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin-top:4px;color:var(--g)}
 .deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:1px;
@@ -510,7 +513,7 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 
 /* ---- RTL ---- */
 [dir="rtl"] .checks li{padding-left:0;padding-right:28px}
-[dir="rtl"] .checks li::before{left:auto;right:6px}
+[dir="rtl"] .checks li::before{left:auto;right:-2px}
 [dir="rtl"] .arrow::after{content:"\2190"}
 [dir="rtl"] .arrow:hover::after{transform:translateX(-3px)}
 [dir="rtl"] .faq summary{padding:22px 0 22px 40px}
@@ -749,8 +752,9 @@ footer nav a:hover{transform:translateY(-1px)}
 
 /* ============ Bildplätze ============ */
 /* every slot names the file it expects. Drop that file into img/shots/ and it
-   covers the placeholder; while it is missing, the <img> removes itself and the
-   placeholder says what belongs there. */
+   covers the placeholder; while it is missing, the live page drops the whole
+   figure instead of showing visitors an empty slot (docs/bildplaetze.md lists
+   the files). */
 .shot{position:relative;margin:0;overflow:hidden;border-radius:6px;aspect-ratio:var(--ar,16/10);
   background:var(--gold-soft);isolation:isolate}
 .agenda-film{max-width:430px;margin-top:6px;box-shadow:var(--shadow)}
@@ -963,7 +967,7 @@ footer nav a:hover{transform:translateY(-1px)}
       </div>
       <div class="svc-side">
         <figure class="shot">
-          <img src="img/shots/datenaustausch.jpg" alt="Daten flie&#223;en zwischen Software und Buchhaltung" loading="lazy" decoding="async" onerror="this.remove()">
+          <img src="img/shots/datenaustausch.jpg" alt="Daten flie&#223;en zwischen Software und Buchhaltung" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
           <figcaption class="shot-ph" aria-hidden="true"><b>Bildplatz</b><span>Datenaustausch: Schnittstelle, Import, verbundene Systeme</span><code>img/shots/datenaustausch.jpg &#183; 1600×1000</code></figcaption>
         </figure>
         <ul class="checks">
@@ -984,7 +988,7 @@ footer nav a:hover{transform:translateY(-1px)}
       </div>
       <div class="svc-side">
         <figure class="shot">
-          <img src="img/shots/sicherheit.jpg" alt="Gesicherte digitale Unterlagen, Schloss-Symbol auf dem Bildschirm" loading="lazy" decoding="async" onerror="this.remove()">
+          <img src="img/shots/sicherheit.jpg" alt="Gesicherte digitale Unterlagen, Schloss-Symbol auf dem Bildschirm" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
           <figcaption class="shot-ph" aria-hidden="true"><b>Bildplatz</b><span>Sicherheit: gesch&#252;tzte Daten, Rechenzentrum, Schloss</span><code>img/shots/sicherheit.jpg &#183; 1600×1000</code></figcaption>
         </figure>
         <ul class="checks">

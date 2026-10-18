@@ -302,6 +302,8 @@ main>section+section{border-top:var(--rule)}
 .info dt{color:var(--frame-gold);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding-top:3px}
 .info dd{margin:0;color:var(--frame-head);user-select:all}
 .info dd.plain{user-select:auto}
+/* phone numbers and the address keep their order in Arabic and can be tapped */
+dd a.tel{color:inherit;text-decoration:none;unicode-bidi:isolate}
 @media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
 @media (max-width:480px){.info div{grid-template-columns:1fr;gap:2px}}
 
@@ -371,8 +373,9 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 .deed .ok{background:#F1E7D3;color:#4A3A16;border-radius:2px;padding:12px 14px;font-size:.9rem;
   border-inline-start:3px solid #86672A}
 .deed .err{background:#F6E3DE;color:#5A2118;border-inline-start-color:#9A3B2B}
-/* a field only bots fill in */
-.deed .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+/* a field only bots fill in: clipped in place rather than pushed off to the
+   left, which in Arabic (rtl) widened the page by 10000px */
+.deed .hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;opacity:0;pointer-events:none}
 .deed .btn[disabled]{opacity:.6;cursor:wait}
 .deed-foot{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin-top:4px;color:var(--g)}
 .deed-foot::before,.deed-foot::after{content:"";flex:1;height:1px;margin-bottom:1px;
@@ -491,7 +494,7 @@ footer small{display:block;margin-top:10px;max-width:60ch;line-height:1.55}
 
 /* ---- RTL ---- */
 [dir="rtl"] .checks li{padding-left:0;padding-right:28px}
-[dir="rtl"] .checks li::before{left:auto;right:6px}
+[dir="rtl"] .checks li::before{left:auto;right:-2px}
 [dir="rtl"] .arrow::after{content:"\2190"}
 [dir="rtl"] .arrow:hover::after{transform:translateX(-3px)}
 [dir="rtl"] .faq summary{padding:22px 0 22px 40px}
@@ -730,8 +733,9 @@ footer nav a:hover{transform:translateY(-1px)}
 
 /* ============ Bildplätze ============ */
 /* every slot names the file it expects. Drop that file into img/shots/ and it
-   covers the placeholder; while it is missing, the <img> removes itself and the
-   placeholder says what belongs there. */
+   covers the placeholder; while it is missing, the live page drops the whole
+   figure instead of showing visitors an empty slot (docs/bildplaetze.md lists
+   the files). */
 .shot{position:relative;margin:0;overflow:hidden;border-radius:6px;aspect-ratio:var(--ar,16/10);
   background:var(--gold-soft);isolation:isolate}
 .agenda-film{max-width:430px;margin-top:6px;box-shadow:var(--shadow)}
@@ -935,7 +939,7 @@ footer nav a:hover{transform:translateY(-1px)}
     <div class="svc">
       <article class="card wide">
         <figure class="shot">
-          <img src="img/shots/buchhaltung.jpg" alt="Belege werden am Schreibtisch sortiert und gebucht" loading="lazy" decoding="async" onerror="this.remove()">
+          <img src="img/shots/buchhaltung.jpg" alt="Belege werden am Schreibtisch sortiert und gebucht" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
           <figcaption class="shot-ph" aria-hidden="true"><b>Bildplatz</b><span>Buchhaltung: Belege, Laptop, ordentlicher Schreibtisch</span><code>img/shots/buchhaltung.jpg &#183; 1600×1000</code></figcaption>
         </figure>
         <span data-i18n="k11" class="n">Buchhaltung</span>
@@ -950,7 +954,7 @@ footer nav a:hover{transform:translateY(-1px)}
       </article>
       <article class="card wide">
         <figure class="shot">
-          <img src="img/shots/lohn.jpg" alt="Lohnabrechnungen und Mitarbeiterunterlagen in einer Mappe" loading="lazy" decoding="async" onerror="this.remove()">
+          <img src="img/shots/lohn.jpg" alt="Lohnabrechnungen und Mitarbeiterunterlagen in einer Mappe" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
           <figcaption class="shot-ph" aria-hidden="true"><b>Bildplatz</b><span>Lohn: Gehaltsabrechnung, Team, Mitarbeiterakte</span><code>img/shots/lohn.jpg &#183; 1600×1000</code></figcaption>
         </figure>
         <span data-i18n="k12" class="n">Lohnabrechnung</span>
@@ -965,7 +969,7 @@ footer nav a:hover{transform:translateY(-1px)}
       </article>
       <article class="card">
         <figure class="shot">
-          <img src="img/shots/beratung.jpg" alt="Beratungsgespr&#228;ch am Besprechungstisch" loading="lazy" decoding="async" onerror="this.remove()">
+          <img src="img/shots/beratung.jpg" alt="Beratungsgespr&#228;ch am Besprechungstisch" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
           <figcaption class="shot-ph" aria-hidden="true"><b>Bildplatz</b><span>Beratung: Gespr&#228;ch am Tisch, H&#228;nde, Unterlagen</span><code>img/shots/beratung.jpg &#183; 1600×1000</code></figcaption>
         </figure>
         <span data-i18n="k13" class="n">Unternehmensberatung</span>
@@ -979,7 +983,7 @@ footer nav a:hover{transform:translateY(-1px)}
       </article>
       <article class="card">
         <figure class="shot">
-          <img src="img/shots/controlling.jpg" alt="Diagramme und Kennzahlen auf einem Bildschirm" loading="lazy" decoding="async" onerror="this.remove()">
+          <img src="img/shots/controlling.jpg" alt="Diagramme und Kennzahlen auf einem Bildschirm" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
           <figcaption class="shot-ph" aria-hidden="true"><b>Bildplatz</b><span>Controlling: Diagramme, Kennzahlen, Dashboard</span><code>img/shots/controlling.jpg &#183; 1600×1000</code></figcaption>
         </figure>
         <span data-i18n="k14" class="n">Controlling</span>
@@ -993,7 +997,7 @@ footer nav a:hover{transform:translateY(-1px)}
       </article>
       <article class="card">
         <figure class="shot">
-          <img src="img/shots/digitalisierung.jpg" alt="Ein Papierbeleg wird zum digitalen Dokument" loading="lazy" decoding="async" onerror="this.remove()">
+          <img src="img/shots/digitalisierung.jpg" alt="Ein Papierbeleg wird zum digitalen Dokument" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
           <figcaption class="shot-ph" aria-hidden="true"><b>Bildplatz</b><span>Digitalisierung: Papierbeleg wird zur Datei</span><code>img/shots/digitalisierung.jpg &#183; 1600×1000</code></figcaption>
         </figure>
         <span data-i18n="k15" class="n">Digitalisierung</span>
@@ -1029,7 +1033,7 @@ footer nav a:hover{transform:translateY(-1px)}
       </div>
       <div class="link-col" aria-hidden="true"><i></i><b data-i18n="k56">in enger Abstimmung</b><i></i></div>
       <div class="party partner">
-        <span class="who">[Name der Steuerberatungsgesellschaft] mbH</span>
+        <span class="who"><bdi>[Name der Steuerberatungsgesellschaft] mbH</bdi></span>
         <h3 data-i18n="k3">Steuerberatung</h3>
         <ul class="checks">
           <li data-i18n="k57">Betriebliche und private Steuererklärungen</li>
@@ -1184,8 +1188,8 @@ footer nav a:hover{transform:translateY(-1px)}
       <p data-i18n="k123" class="lead" style="margin-top:18px">Sie finden uns in der Mainstra&#223;e. Termine nach Vereinbarung &#8211;
         melden Sie sich gern vorab telefonisch oder per E-Mail.</p>
       <dl>
-        <div><dt data-i18n="k124">Adresse</dt><dd>Mainstra&#223;e 26&#8211;30<br>41469 Neuss</dd></div>
-        <div><dt data-i18n="k125">Telefon</dt><dd>+49 2131 5398501</dd></div>
+        <div><dt data-i18n="k124">Adresse</dt><dd><bdi>Mainstra&#223;e 26&#8211;30</bdi><br><bdi>41469 Neuss</bdi></dd></div>
+        <div><dt data-i18n="k125">Telefon</dt><dd><a class="tel" href="tel:+4921315398501" dir="ltr">+49 2131 5398501</a></dd></div>
         <div><dt data-i18n="k128">Termine</dt><dd data-i18n="k129">Nach Vereinbarung</dd></div>
       </dl>
       <div class="loc-actions">
@@ -1198,10 +1202,10 @@ footer nav a:hover{transform:translateY(-1px)}
        aria-label="Standort Mainstra&#223;e 26-30, 41469 Neuss in Google Maps &#246;ffnen">
       <img class="loc-map" src="map-neuss.svg" alt="" loading="lazy" decoding="async" width="1000" height="1016">
       <span class="loc-scrim" aria-hidden="true"></span>
-      <span class="loc-credit">&#169; OpenStreetMap</span>
+      <span class="loc-credit" dir="ltr">&#169; OpenStreetMap</span>
       <span class="loc-label">
         <b>Smart Finance Consulting<br>Mainstra&#223;e 26&#8211;30, 41469 Neuss</b>
-        <code>51.158264&#176; N &#183; 6.736446&#176; E</code>
+        <code dir="ltr">51.158264&#176; N &#183; 6.736446&#176; E</code>
         <span class="loc-open arrow" data-i18n="k130">In Google Maps &#246;ffnen</span>
       </span>
     </a>
@@ -1215,10 +1219,10 @@ footer nav a:hover{transform:translateY(-1px)}
       <h2 data-i18n="k132" style="margin-top:18px">Lassen Sie uns über Ihr Unternehmen sprechen.</h2>
       <p data-i18n="k133" class="lead" style="margin-top:18px">In einem persönlichen Erstgespräch klären wir Ihren Bedarf und die nächsten Schritte.</p>
       <dl class="info">
-        <div><dt data-i18n="k124">Adresse</dt><dd>Mainstraße 26–30<br>41469 Neuss</dd></div>
-        <div><dt data-i18n="k125">Telefon</dt><dd>+49 2131 5398501</dd></div>
-        <div><dt data-i18n="k126">Mobil</dt><dd>+49 162 9631605</dd></div>
-        <div><dt data-i18n="k127">E-Mail</dt><dd>info@smartfinance-nrw.de</dd></div>
+        <div><dt data-i18n="k124">Adresse</dt><dd><bdi>Mainstraße 26–30</bdi><br><bdi>41469 Neuss</bdi></dd></div>
+        <div><dt data-i18n="k125">Telefon</dt><dd><a class="tel" href="tel:+4921315398501" dir="ltr">+49 2131 5398501</a></dd></div>
+        <div><dt data-i18n="k126">Mobil</dt><dd><a class="tel" href="tel:+491629631605" dir="ltr">+49 162 9631605</a></dd></div>
+        <div><dt data-i18n="k127">E-Mail</dt><dd><a class="tel" href="mailto:info@smartfinance-nrw.de" dir="ltr">info@smartfinance-nrw.de</a></dd></div>
         <div><dt data-i18n="k128">Termine</dt><dd data-i18n="k129" class="plain">Nach Vereinbarung</dd></div>
       </dl>
     </div>
