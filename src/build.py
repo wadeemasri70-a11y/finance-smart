@@ -43,6 +43,9 @@ DOC = ('<!doctype html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n'
        '<meta property="og:image" content="' + SITE + 'img/office-1000.jpg">\n'
        '<link rel="icon" href="favicon.svg" type="image/svg+xml">\n'
        '<link rel="icon" href="favicon.ico" sizes="any">\n'
+       # a large raster icon as well: Google recommends a multiple of 48px, and
+       # the SVG and the 48px ICO were the only candidates its crawler saw
+       '<link rel="icon" href="img/icon-192.png" type="image/png" sizes="192x192">\n'
        '<link rel="apple-touch-icon" href="img/icon-180.png">\n'
        '<link rel="manifest" href="site.webmanifest">\n'
        '<meta name="theme-color" content="#0E2235">\n{ld}{head}\n</head>\n<body>\n'
